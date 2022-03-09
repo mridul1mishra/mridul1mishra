@@ -1,0 +1,90 @@
+﻿@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Microsite.Components.IPowerfulFeatures>
+@if (this.IsInEditingMode)
+{
+    <h2 style="text-align:center">[Powerful Features  Three Column component]</h2>
+    if (Model == null)
+    {
+        <p>No component datasource found</p>
+    }
+}
+@if (Model != null)
+{
+<section class="features bg-turqoise">
+    <div class="container">
+        <div class="row text-center">
+            <h3>@Editable(Model, m => m.Title)</h3>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0">
+                <div class="row">
+                    <div class="col-sm-4 col-md-4 col-xs-12 text-center">
+                        @using (BeginRenderLink(Model, m => m.Link1, new System.Collections.Specialized.NameValueCollection {
+                            { "class", "block circle-block center-block"},
+                            { "data-toggle", "swapcolor" },
+                            { "data-hover-color", Model.HoverColour },
+                            { "data-static-color", Model.StaticColour }
+                        }, isEditable: true))
+                        {
+                            <div class="table-display">
+                                <div class="table-cell">
+                                    @RenderImage(Model, m => m.Icon1, new { @class = "img-responsive center-block" }, isEditable: true)
+                                </div>
+                            </div>
+                        }
+                        @using (BeginRenderLink(Model, m => m.Link1, new System.Collections.Specialized.NameValueCollection { { "class", "block feature-desc" } }, isEditable: true))
+                        {
+                            <h4>
+                                @Editable(Model, m => m.Text1)
+                            </h4>
+                        }
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-xs-12 text-center">
+                        @using (BeginRenderLink(Model, m => m.Link2, new System.Collections.Specialized.NameValueCollection {
+                            { "class", "block circle-block center-block"},
+                            { "data-toggle", "swapcolor" },
+                            { "data-hover-color", Model.HoverColour },
+                            { "data-static-color", Model.StaticColour }
+                        }, isEditable: true))
+                        {
+                            <div class="table-display">
+                                <div class="table-cell">
+                                    @RenderImage(Model, m => m.Icon2, new { @class = "img-responsive center-block" }, isEditable: true)
+                                </div>
+                            </div>
+                        }
+                        @using (BeginRenderLink(Model, m => m.Link2, new System.Collections.Specialized.NameValueCollection { { "class", "block feature-desc" } }, isEditable: true))
+                        {
+                            <h4>
+                                @Editable(Model, m => m.Text2)
+                            </h4>
+                        }
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-xs-12 text-center">
+                        @using (BeginRenderLink(Model, m => m.Link3, 
+                            new System.Collections.Specialized.NameValueCollection {
+                            { "class", "block circle-block center-block"},
+                            { "data-toggle", "swapcolor" },
+                            { "data-hover-color", Model.HoverColour },
+                            { "data-static-color", Model.StaticColour }
+                        }, isEditable: true))
+                        {
+                            <div class="table-display">
+                                <div class="table-cell">
+                                    @RenderImage(Model, m => m.Icon3, new { @class = "img-responsive center-block" }, isEditable: true)
+                                </div>
+                            </div>
+                        }
+                        @using (BeginRenderLink(Model, m => m.Link3, new System.Collections.Specialized.NameValueCollection { { "class", "block feature-desc" } }, isEditable: true))
+                        {
+                            <h4>
+                                @Editable(Model, m => m.Text3)
+                            </h4>
+                        }
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+}

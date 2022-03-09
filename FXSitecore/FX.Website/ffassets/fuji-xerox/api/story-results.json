@@ -1,0 +1,80 @@
+{
+	"count": 23,
+	"endIndex": 9,
+	"totalPage": 3,
+	"results": [
+
+		{
+			"title": "Arcadis",
+			"thumbnail": "/fbsg/assets/fuji-xerox/images/solutions/box-1.png",
+			"link": "/company/success-stories/arcadis",
+			"text": "More productive and sustainable with Fuji Xerox Managed Print Services",
+			"industry": "Architecture, Engineering and Construction",
+			"location": "Amsterdam"
+		},
+		{
+			"title": "Thales Solutions Asia",
+			"thumbnail": "/fbsg/assets/fuji-xerox/images/solutions/box-2.png",
+			"link": "/company/success-stories/arcadis",
+			"text": "Improves Productivity with Document Management & Imaging Solution",
+			"industry": "Aerospace",
+			"location": "Singapore"
+		},
+		{
+			"title": "AIA",
+			"thumbnail": "/fbsg/assets/fuji-xerox/images/solutions/box-3.png",
+			"link": "/company/success-stories/arcadis",
+			"text": "Touches base with each customer through an innovative multi-channel marketing campaign",
+			"industry": "Banking, Finance and Insurance",
+			"location": "Singapore"
+		},
+		{
+			"title": "UWC South East Asia",
+			"thumbnail": "/fbsg/assets/fuji-xerox/images/solutions/box-4.png",
+			"link": "/company/success-stories/arcadis",
+			"text": "Transforms Print Infrastructure to Support Teaching & Learning",
+			"industry": "Education",
+			"location": "Singapore"
+		},
+		{
+			"title": "Authority in Energy Regulation",
+			"thumbnail": "/fbsg/assets/fuji-xerox/images/solutions/box-5.png",
+			"link": "/company/success-stories/arcadis",
+			"text": "Enhances Knowledge Sharing with Central e-Registry",
+			"industry": "Government",
+			"location": "Singapore"
+		},
+		{
+			"title": "AD Imaging Solutions",
+			"thumbnail": "/fbsg/assets/fuji-xerox/images/solutions/box-6.png",
+			"link": "/company/success-stories/arcadis",
+			"text": "Reduces turnaround time by up to 40% with Fuji Xerox’s Colour 1000 Press",
+			"industry": "Graphic Communications / Printing",
+			"location": "Singapore"
+		},
+		{
+			"title": "Allegiance Health",
+			"thumbnail": "/fbsg/assets/fuji-xerox/images/solutions/box-1.png",
+			"link": "/company/success-stories/arcadis",
+			"text": "Improving forms and print management with help from a dedicated Xerox Document Advisor",
+			"industry": "Healthcare",
+			"location": "Michigan"
+		},
+		{
+			"title": "Premier Country Club",
+			"thumbnail": "/fbsg/assets/fuji-xerox/images/solutions/box-5.png",
+			"link": "/company/success-stories/arcadis",
+			"text": "Improves Information Sharing and Security with Document Management Solution",
+			"industry": "Hospitality",
+			"location": "Singapore"
+		},
+		{
+			"title": "Clifford Chance",
+			"thumbnail": "/fbsg/assets/fuji-xerox/images/solutions/box-6.png",
+			"link": "/company/success-stories/arcadis",
+			"text": "Reboots the Print & Mail Room with Fuji Xerox Print & Change Management Services",
+			"industry": "Legal",
+			"location": "London"
+		}
+	]
+}

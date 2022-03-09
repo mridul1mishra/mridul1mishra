@@ -1,0 +1,35 @@
+﻿@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Components.IInquiry>
+@using FX.Core.Utils
+
+@{ 
+    bool hasContent = Model != null;
+}
+
+@if (IsInEditingMode)
+{
+    <h2 style="text-align:center">[Inquiry Component]</h2>
+    if (Model == null)
+    {
+        <p>No component datasource found</p>
+    }
+}
+
+
+@if (hasContent)
+{
+<section class="section">
+    @if (Model.ShowInStickyTab)
+    {
+    <a id='content@(Model.Id.ToString("N"))' class="anchor-link" data-label="@Model.SectionTitle.Left(FX.Core.Constants.MaxLength.SectionTitle)"></a>
+    }
+    <div class="inquiry-application">
+        <div class="inquiry-application__text">
+            @Editable(Model, x => x.Description)
+        </div>
+        <div class="inquiry-application__button">
+            @RenderLink(Model, x => x.Link, new { @class = "button" }, isEditable:true)
+            
+        </div>
+    </div>
+</section>
+}

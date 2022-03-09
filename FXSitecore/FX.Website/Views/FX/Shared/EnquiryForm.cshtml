@@ -1,0 +1,34 @@
+﻿@using System.Web.Mvc.Html
+@using Sitecore.Mvc
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Settings.ISiteSettings>
+
+@{
+    bool display = false;
+    Guid guid;
+    if (Guid.TryParse(Model.EnquiryForm, out guid))
+    {
+        var formItem = Sitecore.Context.Database.GetItem(new Sitecore.Data.ID(guid));
+        display = formItem != null;
+    }
+}
+@if (display)
+{
+    <!-- Talk To Us Form Modal -->
+    <div class="modal" id="enquiryForm">
+        <div class="modal-wrapper">
+            <div class="modal-close-button">
+                <a href="#"><i class="icon-cross"></i></a>
+            </div>
+            <div class="modal-form">
+                <div class="modal-form__intro">
+                    @Html.Raw(Model.EnquiryMessage)
+                </div>
+                <div class="legend">
+                    @Html.Raw(Model.EnquiryRequiredFieldsText)
+                </div>
+                @*@Html.Sitecore().Rendering(FX.Core.Keys.RenderingItems.WFFMMVCForm, new { DataSource = Model.EnquiryForm, UniqueId = Guid.NewGuid().ToString(), Parameters="ReadQueryString=1" })*@
+            </div>
+        </div>
+    </div>
+    <!-- End: Talk To Us -->
+}

@@ -1,0 +1,67 @@
+﻿@using FX.Core.Utils
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Components.ThreeQuarterCarousel.IThreeQuarterCarousel>
+
+@{
+    bool hasContent = Model != null && Model.ThreeQuarterCarouselItems != null && Model.ThreeQuarterCarouselItems.Count() > 0
+        || Model != null && this.IsInEditingMode;
+}
+
+@if (this.IsInEditingMode)
+{
+    <h2 style="text-align:center">[3/4 Carousel Component]</h2>
+    if (Model == null)
+    {
+        <p>No component datasource found</p>
+    }
+}
+
+@if (hasContent)
+{
+    <section class="section">
+        @if (!string.IsNullOrEmpty(Model.SectionTitle) && Model.ShowInStickyTab)
+        {
+            <a id='content@(Model.Id.ToString("N"))' class="anchor-link" data-label="@Model.SectionTitle.Left(FX.Core.Constants.MaxLength.SectionTitle)"></a>
+        }
+        <div class="three-four-carousel">
+            <div class="col-sm-9">
+                <div class="three-four-carousel__dots"></div>
+                <div class="three-four-carousel__items">
+                    @foreach (var item in Model.ThreeQuarterCarouselItems)
+                    {
+                        string itemUrl = item != null && item.ButtonLink != null && !string.IsNullOrEmpty(item.ButtonLink.Url) ? item.ButtonLink.Url : string.Empty;
+                        string target = item != null && item.ButtonLink != null && !string.IsNullOrEmpty(item.ButtonLink.Target) ? item.ButtonLink.Target : "_self";
+                        string altText = item != null && item.Image != null && !string.IsNullOrEmpty(item.Image.Alt) ? item.Image.Alt : string.Empty;
+
+                        <div class="panel-caption match-height">
+                            
+                            @using (BeginRenderLink(item, x => x.ButtonLink, isEditable:true))
+                            {
+                                <div class="panel-caption__image">
+                                    @RenderImage(item, x => x.Image)
+                                    <p class="caption">@altText</p>
+                                </div>
+                                <div class="panel-caption__text">
+                                    @if (!string.IsNullOrEmpty(item.Title))
+                                    {
+                                        <h3>@Editable(item, x => x.Title)</h3>
+                                    }
+                                    @if (!string.IsNullOrEmpty(item.Description))
+                                    {
+                                        @Editable(item, x => x.Description)
+                                    }
+                                    @if (!string.IsNullOrEmpty(item.ButtonText))
+                                    {
+                                        <span class="button">@Editable(item, x => x.ButtonText)</span>
+                                    }
+                                </div>
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="col-sm-3 tablet-desktop">
+            @Editable(Model, x => x.Description)
+            </div>
+            </div>
+        </section>
+    }

@@ -1,0 +1,198 @@
+﻿@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Base.IPage>
+@using Sitecore.Mvc
+@using System.Web.Mvc.Html
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+    @Html.Sitecore().Placeholder("exm-title")
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!-- version info please do not remove-->
+    <meta name="author" content=""><!--[if !mso]><!-->
+    <style type="text/css">
+        @@media only screen and (max-width:599px) {
+            @@-ms-viewport {
+                width: 320px;
+            }
+
+            @@viewport {
+                width: 320px;
+            }
+        }
+    </style><!--<![endif]-->
+    <!--[if (gte mso 9)|(IE)]>
+        <style type="text/css">
+          table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            mso-line-height-rule: exactly;
+            mso-margin-bottom-alt: 0;
+            mso-margin-top-alt: 0;
+            mso-table-lspace: 0pt; mso-table-rspace: 0pt;
+          }
+        </style><![endif]-->
+    <!--[if gte mso 9]>
+        <style type="text/css">
+          li {
+            text-indent: -1em; /* Normalise space between bullets and text */
+            text-align:-webkit-match-parent;
+            display:list-item;
+          }
+        </style><![endif]-->
+    <style type="text/css">
+        #outlook a { padding:0; }
+        .ReadMsgBody { width:100%; }
+        .ExternalClass { width:100%; }
+        .ExternalClass * { line-height:100%; }
+        .email-table { display: table !important; }
+        table td { border-collapse: collapse !important; }
+        td, a, span { border-collapse: collapse; mso-line-height-rule: exactly;}
+        span.MsoHyperlink {
+          mso-style-priority:99;
+          color:inherit;
+        }
+        span.MsoHyperlinkFollowed {
+          mso-style-priority:99;
+          color:inherit;
+        }
+        a[x-apple-data-detectors=true] {
+          color:inherit !important;
+          text-decoration:inherit !important;
+        }
+        li {text-align:-webkit-match-parent; display:list-item;}
+        .one-col-item-padding, .one-col-item-padding p {
+          box-sizing: border-box;display: block; margin: 15px 0 15px 0; text-align: left; color: #101010; font-size: 12px; line-height: 16px;
+        }
+        .one-col-item-padding ul {
+          box-sizing: border-box;padding:0; margin: 0 0 0 40px; color: #101010; font-size: 12px; line-height: 16px;
+        }
+        .one-col-item-padding ul li {
+          margin: 3px 0 3px 0 !important;
+        }
+        .hero-image img {
+          width: 610px !important;
+          height: auto !important;
+        }
+        .image-strip img {
+          width: 610px !important;
+          height: auto !important;
+        }
+        .two-second-image img, .third-second-image img {
+          width: 295px !important;
+          height: auto !important;
+        }
+        .left-layout-image img, .right-layout-image img {
+          width: 298px !important;
+          height: auto !important;
+        }
+        @@media screen yahoo {
+          * { overflow:visible !important; }
+          .y-overflow-hidden { overflow:hidden !important; }
+        }
+        @@media only screen and (max-width:639px) {
+          .wrapper {
+              max-width: 320px !important;
+          }
+
+          .gmailfix {
+              display:none;
+              display:none !important;
+          }
+        }
+        @@media only screen and (max-width: 639px) {
+          .browser-padding {
+              padding-left: 12px !important;
+              padding-right: 12px !important;
+          }
+
+          .hero-image, .hero-image img {
+              width: 290px !important;
+              height: auto !important;
+          }
+
+          .image-strip, .image-strip img {
+              width: 290px !important;
+          }
+
+          .one-col-padding {
+              padding-top: 0px !important;
+          }
+
+          .image-strip, .image-strip img {
+              height: 77px !important;
+          }
+
+          .mobile-fullwidth {
+              display: block !important;
+              width: 100% !important;
+          }
+
+          .mobile-fullwidth--left {
+              padding-right: 15px !important;
+              padding-bottom: 15px !important;
+          }
+
+          .mobile-fullwidth--right {
+              padding-left: 0px !important;
+              padding-top: 0px !important;
+          }
+
+          .mobile-fullwidth--bottom {
+              padding-top: 15px !important;
+          }
+
+          .mobile-fullwidth__leftlayout--right {
+              padding-left: 0px !important;
+              padding-top: 15px !important;
+          }
+
+          .mobile-fullwidth__rightlayout--left {
+              padding-left: 15px !important;
+              padding-right: 0px !important;
+              padding-top: 15px !important;
+              border-left:0 !important;
+          }
+
+          .two-second-image, .two-second-image img, .third-second-image, .third-second-image img, .left-layout-image, .left-layout-image img, .right-layout-image img {
+              max-width: 290px !important;
+              width: 290px !important;
+              height: auto !important;
+          }
+
+          .two-second-padding, .three-second-padding, .third-padding {
+              max-width: 290px !important;
+          }
+
+          .two-second-padding .mobile-fullwidth, .left-layout-padding .mobile-fullwidth {
+              max-width: 290px !important;
+          }
+
+          .no-padding-right {
+              padding-right: 0px !important;
+          }
+        }
+
+
+    </style>
+</head>
+<body style="-ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; font-family: Arial, sans-serif; margin: 0; padding: 0;" bgcolor="#d9d9d6">
+    @Html.Sitecore().Placeholder("exm-header")
+
+    <table width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#d9d9d6" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse;">
+        <tbody>
+            <tr>
+                <td align="center" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+                    <div class="wrapper">
+                        <!-- Content Modules Start Here-->
+                        @Html.Sitecore().Placeholder("exm-body")                         
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    @Html.Sitecore().Placeholder("exm-footer")
+   <span class="gmailfix" style="display: block; width: 640px !important; max-width: 640px; height: 1px"></span>
+</body>
+</html>

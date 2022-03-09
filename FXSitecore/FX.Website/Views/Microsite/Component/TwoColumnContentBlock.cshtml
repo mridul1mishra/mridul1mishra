@@ -1,0 +1,25 @@
+﻿@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Microsite.Components.ITwoColumnContentBlock>
+@if (this.IsInEditingMode)
+{
+    <h2 style="text-align:center">[Two Column Content Block Component]</h2>
+    if (Model == null)
+    {
+        <p>No component datasource found</p>
+    }
+}
+@if (Model != null)
+{
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-5">
+                <h3>@Editable(Model, m => m.LeftTitle)</h3>
+                @Editable(Model, m => m.LeftText)
+            </div>
+            <div class="col-sm-7">
+                @Editable(Model, m => m.RightText)
+            </div>
+        </div>
+    </div>
+</section>
+}

@@ -1,0 +1,25 @@
+﻿@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Base.INavigation>
+@using FX.Core.GlassMapper
+@using FX.Core.Utils
+
+@{
+    var topNavItems = new List<FX.Core.Models.Base.INavigation>();
+    topNavItems.AddRange(FX.Core.FXContextItems.HomePage.GetFooterNavItems());
+    bool hasTopNavItems = topNavItems.Any();
+}
+
+@if (hasTopNavItems)
+{
+<!-- Main Navigation -->
+<div class="main-navigation">
+    <nav class="wingspan">
+        <!-- Main Navigation Menu -->
+        <ul class="main-navigation__menu row-col-12">
+           
+          
+        </ul>
+        <!-- End: Main Navigation Menu -->
+    </nav>
+</div>
+<!-- End: Main Navigation -->
+}

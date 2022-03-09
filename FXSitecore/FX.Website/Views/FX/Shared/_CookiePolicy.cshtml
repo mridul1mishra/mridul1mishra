@@ -1,0 +1,284 @@
+﻿<aside class="m-cookie-confirm" data-js-mode="notice" id="cookie-policy-container" style="display: none;">
+    <div class="l-container">
+        <header class="m-cookie-confirm__header font-weight-bold">
+            <p>Use of Cookies</p>
+        </header>
+        <div class="m-cookie-confirm__body">
+            <div class="m-cookie-confirm__body__text">
+                <p>
+                    In order to provide you with a better browsing experience and to improve our site functionality, we
+                    use cookies and other tracking technologies. Detailed information on the use of cookies on our site
+                    and how to opt out is provided in our Cookie Policy. By clicking into any content on this site, you
+                    consent that we can store and access cookies and other tracking technologies as described in our
+                    Cookie Policy.
+                </p>
+            </div>
+            <div class="m-cookie-confirm__body__btns">
+                <a href="javascript:void(0);" class="button d-block m-cookie-confirm__accept-all w-100 text-center"
+                   data-js-cookie-confirm="acceptAll" onclick="saveAllCookies()">Accept All Cookies</a>
+                <div class="js-modal-root">
+                    <div class="m-link-list">
+                        <div class="m-link-list__body">
+                            <ul>
+                                <li>
+                                    or
+                                    <a href="#modal_contents" id="CustomizeSettingsClick" class="m-cookie-confirm__open-setting js-modal-open">
+                                        <span class="btn-link__inner m-icon__arrow-right">Customize Settings</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="modal_contents" class="m-modal__contents">
+                        <div class="m-cookie-manager">
+                            <div class="m-cookie-manager__headline">
+                                <h3 class="typesquare_option">Privacy Preference Center</h3>
+                            </div>
+                            <div class="m-cookie-manager__text">
+                                <p class="">
+                                    When visiting our website, it may store or retrieve information on your
+                                    browser, typically in the form of cookies. This information might be about you, your
+                                    preferences or your device. It does not usually directly identify you, providing you
+                                    with a more personalized web experience. Because we respect your privacy, you can
+                                    choose to disable some types of cookies. If you click on the category headings, you
+                                    can find out the detail of each category and change the settings. However, please
+                                    note that blocking some of cookies could impact your experience of the site and the
+                                    services we are able to offer. <a class="m-cookie__notice__link"
+                                                                      href="/sg/en/cookie-policy">Privacy Policy</a>
+                                </p>
+                            </div>
+                            <div class="m-cookie-manager__accept-all">
+                                <a href="javascript:void(0);" class="button m-cookie__accept-all" data-js-cookie-confirm="acceptAll" onclick="saveAllCookies()">
+                                    Accept
+                                    All Cookies
+                                </a>
+                            </div>
+                            <div class="m-cookie-manager__sub-headline">
+                                <h5 class="typesquare_option">Manage Cookie Preferences</h5>
+                            </div>
+
+                            <!-- Method Post Added to Form Related to Cookie Policy-->
+                            <form class="m-cookie-manager__options" method="post" data-js-cookie-confirm="options">
+                                <!--nds here -->
+                                <dl>
+                                    <div class="m-cookie-manager__option">
+                                        <dt class=" typesquare_option">Strictly Necessary</dt>
+                                        <dd>
+                                            These cookies are necessary for the essential function of website and cannot
+                                            be turned off. They are usually only placed in order to respond to your
+                                            request for services, such as setting your privacy preferences, logging in
+                                            or filling in forms. You can change your browser’s cookie setting to block
+                                            these cookies, but then some parts of the site will not properly function.
+                                        </dd>
+                                        <dd class="m-cookie-manager__option__switch">
+                                            <label>
+                                                <input class="m-toggle-btn" type="checkbox" name="cookieSelect"
+                                                       checked="true" disabled="disabled" value="strict_cookie"><span class="m-toggle-btn__body"></span>
+                                            </label>
+                                        </dd>
+                                    </div>
+                                    <div class="m-cookie-manager__option">
+                                        <dt class=" typesquare_option">Performance</dt>
+                                        <dd>
+                                            These cookies are used to count visits and traffic sources so we can measure
+                                            and enhance the website performance. By measuring them, we are able to know
+                                            how much popular each page is and understand how visitors move around the
+                                            site. All information collected through these cookies is aggregated and
+                                            therefore anonymous. If you disable these cookies we will not know when you
+                                            have visited our site, and will not be able to monitor its performance.
+                                        </dd>
+                                        <dd class="m-cookie-manager__option__switch">
+                                            <label>
+                                                <input class="m-toggle-btn" type="checkbox" checked="true" id="performance_cookie" name="cookieSelect" value="__FFperC__">
+                                                <span class="m-toggle-btn__body"></span>
+                                            </label>
+                                        </dd>
+                                    </div>
+                                    <div class="m-cookie-manager__option">
+                                        <dt class=" typesquare_option">Functional</dt>
+                                        <dd>
+                                            These cookies enable the website to achieve enhanced functionality and
+                                            personalisation for you. They may be set by us or by third party providers
+                                            whose services are added to our websites. If you disable these cookies,
+                                            these services may not work properly.
+                                        </dd>
+                                        <dd class="m-cookie-manager__option__switch">
+                                            <label>
+                                                <input class="m-toggle-btn" type="checkbox" checked="true" id="functional_cookie" name="cookieSelect" value="__FFfunC__">
+                                                <span class="m-toggle-btn__body"></span>
+                                            </label>
+                                        </dd>
+                                    </div>
+
+                                    <div class="m-cookie-manager__option">
+                                        <dt class=" typesquare_option">Targeting</dt>
+                                        <dd>
+                                            These cookies may be set through our website by our advertising partners.
+                                            They may be placed to create a profile of your interests and show you
+                                            relevant advertisement on other sites. They do not store directly personal
+                                            information, but are　uniquely identifying your browser and/or device. If you
+                                            disable these cookies, you will have less targeted advertising.
+                                        </dd>
+                                        <dd class="m-cookie-manager__option__switch">
+                                            <label>
+                                                <input class="m-toggle-btn" type="checkbox" id="target_cookie" name="cookieSelect" value="__FFtarC__">
+                                                <span class="m-toggle-btn__body"></span>
+                                            </label>
+                                        </dd>
+                                    </div>
+                                </dl>
+                                <div class="m-cookie-manager__save">
+                                    <button type="button" class="button m-cookie__save confirm_selection_btn" onclick="saveSelectedCookie()" data-js-cookie-confirm="save">Confirm Selection</button>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="button m-cookie-confirm__close-btn" onclick="closeCookiePolicy()" id="cookie-policy-closeBtn" type="button" data-js-cookie-confirm="close" aria-hidden="true"
+                    tabindex="-1"></button>
+        </div>
+
+</aside>
+<script type="application/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+    var cookieDataArr = "";
+    var clientCookieobj = [];
+    var clientDistinctCategory = new Array();
+
+    function setCookie(name, value, days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "") + expires + "; path=/";
+    }
+
+    function deleteCookie(name) {
+        document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/';
+    }
+
+    function closeCookiePolicy() {
+        document.getElementById("cookie-policy-container").style.display = "none";
+        var x = document.getElementsByClassName("js-modal-close");
+        if (x != null) {
+            if (x[1] != null) {
+                x[1].click();
+            }
+        }
+    }
+
+    function getCookie(cname) {
+        var tvalue = "";
+        var clientCookieArr = document.cookie.split(";");
+        for (var i = 0; i < clientCookieArr.length; i++) {
+            var cookiePair = clientCookieArr[i].split("=");
+            if (cname == cookiePair[0].trim()) {
+                tvalue = cookiePair[1].trim();
+                return tvalue;
+            }
+        }
+        return tvalue;
+    }
+    function getCookieKey(cname) {
+        var tvalue = "";
+        var clientCookieArr = document.cookie.split(";");
+        for (var i = 0; i < clientCookieArr.length; i++) {
+            var cookiePair = clientCookieArr[i].split("=");
+            if (cname == cookiePair[0].trim()) {
+                tvalue = cookiePair[0].trim();
+                return tvalue;
+            }
+        }
+        return tvalue;
+    }
+
+    var cookieCategoryArr = [
+        { 'CookieKey': '__FFperC__', 'CookieValue': 1, 'expires': '720' },
+        { 'CookieKey': '__FFtarC__', 'CookieValue': 1, 'expires': '720' },
+        { 'CookieKey': '__FFfunC__', 'CookieValue': 1, 'expires': '720' },
+        { 'CookieKey': '__FFadvC__', 'CookieValue': 1, 'expires': '720' }
+    ];
+
+    var cookieSetDataObj = [
+        { 'CookieKey': 'SC_ANALYTICS_GLOBAL_COOKIE', 'CookieValue': 1, 'expires': '720', 'CookieCategory': '__FFfunC__' },
+        { 'CookieKey': '__atuvs', 'CookieValue': 1, 'expires': '720', 'CookieCategory': '__FFadvC__' },
+        { 'CookieKey': '_atssc', 'CookieValue': 1, 'expires': '720', 'CookieCategory': '__FFadvC__' },
+        { 'CookieKey': '__atuvc', 'CookieValue': 1, 'expires': '720', 'CookieCategory': '__FFadvC__' }
+    ];
+
+    function saveAllCookies() {
+        for (var i = 0; i < cookieCategoryArr.length; i++) {
+            var obj = cookieCategoryArr[i];
+            setCookie(obj.CookieKey, obj.CookieValue, cookieCategoryArr[i].expires);
+        }
+        setCookie("__selFF__", "1", 365);
+        closeCookiePolicy();
+    }
+
+    var savedClientCustomCookie = new Array();
+    var NotsavedClientCustomCookie = new Array();
+    function setClientCustomCookieRefresh() {
+        debugger;
+        for (var i = 0; i < cookieCategoryArr.length; i++) {
+            //var temp = getCookie(cookieCategoryArr[i].CookieKey);
+            var temp = getCookieKey(cookieCategoryArr[i].CookieKey);
+
+            if (savedClientCustomCookie.indexOf(temp) == -1) {
+                savedClientCustomCookie.push(temp);
+            }
+        }
+
+        for (var i = 0; i < savedClientCustomCookie.length; i++) {
+            for (var j = 0; j < cookieSetDataObj.length; j++) {
+                if (savedClientCustomCookie[i] != cookieSetDataObj[j].CookieCategory) {
+                    var temp = cookieSetDataObj[j].CookieKey;
+                    if (NotsavedClientCustomCookie.indexOf(temp) == -1) {
+                        NotsavedClientCustomCookie.push(temp);
+                    }
+                }
+            }
+        }
+
+        for (var i = 0; i < NotsavedClientCustomCookie.length; i++) {
+            deleteCookie(NotsavedClientCustomCookie[i]);
+        }
+    }
+
+    function saveSelectedCookie() {
+        var cookie_checkboxes = document.getElementsByName("cookieSelect");
+        setCookie("__selFF__", "2", 720);
+        for (var i = 0; i < cookie_checkboxes.length; i++) {
+            if (cookie_checkboxes[i].checked) {
+                setCookie(cookie_checkboxes[i].value, '1', 365);
+            }
+        }
+        closeCookiePolicy();
+        setClientCustomCookieRefresh();
+    }
+
+    $(document).ready(function () {
+        var value = $('#cookiePoliyHidden').val();
+        if (value != undefined) {
+            var cvalue = getCookie('__selFF__');
+            if (cvalue != "") {
+                if (cvalue == 1) {
+                    closeCookiePolicy();
+                }
+                if (cvalue == 2) {
+                    closeCookiePolicy();
+                    setClientCustomCookieRefresh();
+                }
+            }
+            else {
+                $('#cookie-policy-container')[0].style['display'] = 'block';
+            }
+        }
+
+    });
+
+</script>

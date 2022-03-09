@@ -1,0 +1,74 @@
+﻿@using Glass.Mapper.Sc.Web.Mvc
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Settings.ISiteSettings>
+<div class="m-footer-sitemap">
+    <div class="m-column js-disclosure-root" data-disclosure-mode="sp-only">
+        <div class="m-column__body">
+            <div class="row">
+                @if (Model.FooterMainNavigation != null)
+                {
+                    foreach (var Footer in Model.FooterMainNavigation)
+                    {
+                        <div class="col col-sm-3 col-md-3">
+                            <div class="m-footer-sitemap__category js-disclosure-item">
+                                <p class="m-footer-sitemap__head">
+
+                                    @if (Footer.Level == "1")
+                                    {
+                                        using (Html.Glass().BeginRenderLink(Footer, x => x.Link, new { @class = "js-disclosure-trigger" }, isEditable: true))
+                                        {
+                                            @Html.Glass().Editable(Footer, x => x.Title)
+                                        }
+                                    }
+                                </p>
+                                <ul class="m-footer-sitemap__body js-disclosure-contents">
+                                    @if (Footer.Child != null && Footer.Child.Any())
+                                    {
+                                        foreach (var Level1Child in Footer.Child)
+                                        {
+                                            if (Level1Child.Level == "2")
+                                            {
+                                                <li class="m-footer-sitemap__group">
+                                                    <p class="m-footer-sitemap__head">
+                                                        @using (Html.Glass().BeginRenderLink(Level1Child, x => x.Link, isEditable: true))
+                                                        {
+                                                            @Html.Glass().Editable(Level1Child, x => x.Title)
+                                                        }
+                                                    </p>
+                                                    <ul>
+                                                        @if (Level1Child.Child.Any())
+                                                        {
+                                                            foreach (var Level2Child in Level1Child.Child)
+                                                            {
+                                                                <li>
+                                                                    @if (Level2Child.Level == "3")
+                                                                    {
+                                                                        using (Html.Glass().BeginRenderLink(Level2Child, x => x.Link, isEditable: true))
+                                                                        {
+                                                                            @Html.Glass().Editable(Level2Child, x => x.Title)
+                                                                        }
+                                                                    }
+                                                                </li>
+                                                            }
+
+                                                        }
+                                                    </ul>
+                                                </li>
+                                            }
+                                        }
+                                    }
+                                </ul>
+
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+            @if (!String.IsNullOrEmpty(Model.LicenceLabel))
+            {
+                <div>
+                    @Html.Raw(Model.LicenceLabel)
+                </div>
+            }
+        </div>
+    </div>
+</div> 

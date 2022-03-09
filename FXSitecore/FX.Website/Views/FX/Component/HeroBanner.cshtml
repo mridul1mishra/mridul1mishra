@@ -1,0 +1,178 @@
+﻿@using FX.Core.GlassMapper
+@using FX.Core.Utils
+@using FX.Core.Models.Base
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<IBanner>
+
+@helper GetClass()
+{
+    string s = "";
+
+    if (Sitecore.Context.Item.TemplateID.ToString() == FX.Core.Templates.HomePage.Id)
+    {
+        s += "home ";
+    }
+
+    if (Model.Narrow)
+    {
+        s += "narrow ";
+    }
+
+    if (Model.LightTheme)
+    {
+        s += "invert ";
+    }
+
+    if (Model.RightAlign)
+    {
+        s += "col-right ";
+    }
+
+    if (Model.Clear)
+    {
+        s += "clear ";
+    }
+
+    if (Model.Blur)
+    {
+        s += "dark-blur";
+    }
+
+    @*product style should override everything*@
+
+    if (Model.Product)
+    {
+        s = "product";
+    }
+    @s
+}
+
+@if (this.IsInEditingMode)
+{
+    <h2 style="text-align:center">[Hero Banner component]</h2>
+    if (Model == null)
+    {
+        <p>No component datasource found</p>
+    }
+}
+@if ((Model != null && Model.ShowBanner) || this.IsInEditingMode)
+{
+    <div class="hero-banner @GetClass()">
+        <div>
+            @if (!Model.NoText)
+            {
+                <div class="col">
+                    @if (this.IsInEditingMode && Model.BannerImage == null)
+                    {
+                        @RenderImage(Model, m => m.BannerImage, isEditable: true)
+                    }
+                    @if (!this.IsInEditingMode && Model != null)
+                    {
+                        if (!string.IsNullOrEmpty(Model.BannerTitle))
+                        {
+                            <h1 class="hdg-title">@Html.Raw(Model.BannerTitle)</h1>
+                        }
+                        if (!string.IsNullOrEmpty(Model.BannerTitle2))
+                        {
+                            <h2 class="hdg-copy">@Html.Raw(Model.BannerTitle2)</h2>
+                        }
+                    }
+                    else if (this.IsInEditingMode)
+                    {
+                        <h1 class="hdg-title">@Editable(Model, m => m.BannerTitle)</h1>
+                        <h2 class="hdg-copy">@Editable(Model, m => m.BannerTitle2)</h2>
+                    }
+
+                    <div class="detail">
+                        <p> @Editable(Model, m => m.BannerDescription)</p>
+                        @RenderLink(Model, m => m.BannerLink, new { @class = "button" }, isEditable: true)
+                        @if (Model.HasMultipleLinks())
+                        {
+                            <ul>
+                                @if (Model.ExtraLink1 != null)
+                                {
+                                    <li>@Editable(Model, l => l.ExtraLink1)</li>
+                                }
+
+                                @if (Model.ExtraLink2 != null)
+                                {
+                                    <li>@Editable(Model, l => l.ExtraLink2)</li>
+                                }
+
+                                @if (Model.ExtraLink3 != null)
+                                {
+                                    <li>@Editable(Model, l => l.ExtraLink3)</li>
+                                }
+                            </ul>
+                        }
+                    </div>
+                </div>
+            }
+            @if (Model.Video != null && !string.IsNullOrEmpty(Model.Video.Src))
+            {
+                <div class="background">
+                    <video class="video-player" id="video1" src="@Model.Video.Src" autoplay muted loop></video>
+                </div>
+            }
+            else
+            {
+                <div class="background">
+                    @RenderImage(Model, m => m.BannerImage, isEditable: true)
+                </div>
+            }
+        </div>
+        @if (Model.ShowFollowUs)
+        {
+            <div class="follow">
+                <h3>@Model.SiteSettings.BannerLabel</h3>
+                <ul>
+                    @if (Model.SiteSettings.SocialPageLink1 != null)
+                    {
+                        <li>
+                            @using (BeginRenderLink(Model.SiteSettings, x => x.SocialPageLink1))
+                            {
+                                @RenderImage(Model.SiteSettings, x => x.SocialPageIcon1)
+                            }
+                        </li>
+                    }
+                    @if (Model.SiteSettings.SocialPageLink2 != null)
+                    {
+                        <li>
+                            @using (BeginRenderLink(Model.SiteSettings, x => x.SocialPageLink2))
+                            {
+                                @RenderImage(Model.SiteSettings, x => x.SocialPageIcon2)
+                            }
+                        </li>
+                    }
+                    @if (Model.SiteSettings.SocialPageLink3 != null)
+                    {
+                        <li>
+                            @using (BeginRenderLink(Model.SiteSettings, x => x.SocialPageLink3))
+                            {
+                                @RenderImage(Model.SiteSettings, x => x.SocialPageIcon3)
+                            }
+                        </li>
+                    }
+                    @if (Model.SiteSettings.SocialPageLink4 != null)
+                    {
+                        <li>
+                            @using (BeginRenderLink(Model.SiteSettings, x => x.SocialPageLink4))
+                            {
+                                @RenderImage(Model.SiteSettings, x => x.SocialPageIcon4)
+                            }
+                        </li>
+                    }
+                    @if (Model.SiteSettings.SocialPageLink5 != null)
+                    {
+                        <li class="qrcode">
+                            @using (BeginRenderLink(Model.SiteSettings, x => x.SocialPageLink5))
+                            {
+                                @RenderImage(Model.SiteSettings, x => x.SocialPageIcon5)
+                            }
+                            <div class="hover">@RenderImage(Model.SiteSettings, x => x.SocialPageQRCode)</div>
+                        </li>
+                    }
+                </ul>
+            </div>
+        }
+    </div>
+}

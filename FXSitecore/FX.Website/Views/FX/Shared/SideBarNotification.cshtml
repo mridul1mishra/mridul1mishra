@@ -1,0 +1,29 @@
+﻿@using System.Web.Mvc.Html
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Settings.ISiteSettings>
+
+@{
+    var notificationsFolder = Model.NotificationsFolder;
+    bool hasContent = notificationsFolder != null ? (notificationsFolder.Children.Count() > 0 ? true : false) : false;
+}
+
+<!-- Notifications -->
+<div class="notifications" id="notifications">
+    <h3>@Model.NotificationsTitle</h3>
+    @{ if (!hasContent)
+        {
+            @Html.Raw(Model.NoNotificationsMessage)
+        }
+        else
+        {
+            <ul>
+                @foreach (var notification in notificationsFolder.Children)
+                {
+                    <li>
+                        @Html.Raw(notification.Text)
+                    </li>
+                }
+            </ul>
+        }
+    }
+</div>
+<!-- End: Notifications -->

@@ -1,0 +1,40 @@
+﻿@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Microsite.Page.IMicrositePage>
+@using Sitecore.Mvc
+@using Sitecore.Mvc.Analytics.Extensions
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    @Html.Sitecore().Rendering(FX.Core.Keys.RenderingItems.MicrositeHead, FX.Core.Utils.Util.DefaultRenderingCacheParameter)
+    @Html.Sitecore().VisitorIdentification()
+</head>
+<body>
+    @Html.Raw(FX.Core.FXContextItems.HomePage.SiteSettings.TagManagerSnippet)
+    @Html.Sitecore().Placeholder("headerPlaceholder")
+    @Html.Sitecore().Rendering("{99865D0D-2DF4-40B7-BFA2-000E6C316C68}", new { Cacheable = true, Cache_VaryByData = false })
+    @Html.Sitecore().Rendering(FX.Core.Keys.RenderingItems.MicrositeBreadcrumb, new { Cacheable = true, Cache_VaryByData = true })
+    @Html.Sitecore().Placeholder("micrositeBannerPlaceholder")
+    @Html.Sitecore().Rendering(FX.Core.Keys.RenderingItems.MicrositeSubNavigation, new { Cacheable = true, Cache_VaryByData = true })
+    @Html.Sitecore().Placeholder("micrositeMainPlaceholder")
+    @if (this.IsInEditingMode)
+    {
+        <div class="container"></div>
+    }
+    @Html.Sitecore().Rendering(FX.Core.Keys.RenderingItems.MicrositeContactForm, new { Cacheable = true, Cache_VaryByData = false })
+    @Html.Sitecore().Rendering("{7F831732-8A85-4BD5-A55F-A2A8C8804C7D}", new { Cacheable = true, Cache_VaryByData = false })
+    @Html.Sitecore().Placeholder("footerPlaceholder")
+    <!-- JAVASCRIPT -->
+    <script src="/assets/microsite/js/jquery.min.js"></script>
+    <script src="/assets/microsite/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/microsite/js/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+    <script src="/assets/microsite/js/svg-injector.min.js" type="text/javascript"></script>
+    <script src="/assets/microsite/js/jquery.smooth-scroll.js" type="text/javascript"></script>
+    <script src="/assets/microsite/js/owl.carousel.min.js" type="text/javascript"></script>
+    <script src="/assets/microsite/js/jquery.magnific-popup.min.js" type="text/javascript"></script>
+    <script src="/assets/microsite/js/object-fit-polyfill.js" type="text/javascript"></script>
+    <script src="/assets/microsite/js/header.js" type="text/javascript"></script>
+    <script src="/assets/microsite/js/main.js" type="text/javascript"></script>
+    <!-- END JAVASCRIPT -->
+</body>
+</html>

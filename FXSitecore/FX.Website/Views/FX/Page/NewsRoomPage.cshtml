@@ -1,0 +1,323 @@
+﻿@using Sitecore.Mvc
+@using FX.Core.GlassMapper
+@using FX.Website.Models.Pages
+@using FX.Core.Utils
+@using System.Web.Mvc.Html
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Website.Models.Pages.NewsroomModel>
+
+@{
+    var featuredItems = Model.SitecoreModel.FeaturedNews.Take(5).ToArray();
+    int numOfFeaturedItems = featuredItems.Count();
+    bool[] hasFeaturedItems = new bool[5];
+    int counter = 0;
+    while (counter < numOfFeaturedItems)
+    {
+        hasFeaturedItems[counter] = true;
+        counter++;
+    }
+
+    bool hasVideoHighlight = Model.SitecoreModel.ShowFeaturedVideo && (!string.IsNullOrEmpty(Model.SitecoreModel.YoutubeId) || !string.IsNullOrEmpty(Model.SitecoreModel.VideoUrl));
+    bool hasResourceHighlight = Model.SitecoreModel.ShowFeaturedResource && Model.SitecoreModel.ResourceLink != null;
+
+    string backgroundStyle = FXGlassView.RenderBackgroundImageSrc(this, Model, x => x.SitecoreModel.StoryBackgroundImage, new { MW = 300 });
+
+    int FilterToYear = DateTime.Now.Year;
+    int FilterFromYear = Math.Min(FilterToYear, Model.SitecoreModel.FilterFromYear);
+    var FilterYears = Enumerable.Range(FilterFromYear, FilterToYear - FilterFromYear + 1).Reverse().ToArray();
+}
+
+<!-- Newsroom -->
+<div class="main-content">
+    @Html.Sitecore().Rendering(FX.Core.Keys.RenderingItems.Breadcrumb, FX.Core.Utils.Util.DefaultRenderingCacheParameter)
+    @if (!this.IsInEditingMode && Model != null && Model.SitecoreModel != null && !string.IsNullOrEmpty(Model.SitecoreModel.MainTitle))
+    {
+        <h1>@Html.Raw(Model.SitecoreModel.MainTitle)</h1>
+    }
+    else if (this.IsInEditingMode)
+    {
+        <h1>@Editable(Model, x => x.SitecoreModel.MainTitle)</h1>
+    }
+
+    <div class="newsroom">
+
+        <!-- Newsroom Featured -->
+        <div class="newsroom-featured">
+            <div class="column-row">
+                @if (hasFeaturedItems[0])
+                {
+                    <div class="panel-item match-height col-sm-3" itemscope itemtype="http://schema.org/Article">
+                        <div class="bnr-01 ride-hdg">
+                            <a href="@(featuredItems[0].Url)" itemprop="url">
+                                <span class="image">
+                                    @RenderImage(featuredItems[0], x => x.TeaserImage, new { MH = 175, itemprop = "thumbnail" })
+                                </span>
+                                <span class="group">
+                                    @if (FXGlassView.IsFieldVisible(this.IsInEditingMode, featuredItems[0].TeaserTitle))
+                                    {
+                                        <span class="hdg">@Editable(featuredItems[0], x => x.TeaserTitle)</span>
+                                    }
+                                    @if (!string.IsNullOrEmpty(featuredItems[0].TeaserDescription))
+                                    {
+                                        <span class="txt" itemprop="description">@Html.Raw(featuredItems[0].TeaserDescription)</span>
+                                    }
+                                </span>
+                                @if (!string.IsNullOrEmpty(Model.SitecoreModel.ButtonText))
+                                {
+                                    <span class="btn">@Model.SitecoreModel.ButtonText</span>
+                                }
+                            </a>
+                        </div>
+                    </div>
+                }
+                @if (hasFeaturedItems[1])
+                {
+                    <div class="panel-item match-height col-sm-3" itemscope itemtype="http://schema.org/Article">
+                        <div class="bnr-01 ride-hdg">
+                            <a href="@featuredItems[1].Url" itemprop="url">
+                                <span class="image">
+                                    @RenderImage(featuredItems[1], x => x.TeaserImage, new { MH = 175, itemprop = "thumbnail" })
+                                </span>
+                                <span class="group">
+                                    <span class="hdg">@Editable(featuredItems[1], x => x.TeaserTitle)</span>
+                                    @if (!string.IsNullOrEmpty(featuredItems[1].TeaserDescription))
+                                    {
+                                        <span class="txt" itemprop="description">@Html.Raw(featuredItems[1].TeaserDescription)</span>
+                                    }
+                                </span>
+                                @if (!string.IsNullOrEmpty(Model.SitecoreModel.ButtonText))
+                                {
+                                    <span class="btn">@Model.SitecoreModel.ButtonText</span>
+                                }
+                            </a>
+                        </div>
+                    </div>
+                }
+                @if (hasFeaturedItems[2])
+                {
+                    <div class="panel-item match-height col-sm-6" itemscope itemtype="http://schema.org/Article">
+                        <div class="bnr-01 ride-hdg">
+                            <a href="@featuredItems[2].Url" itemprop="url">
+                                <span class="image">
+                                    @RenderImage(featuredItems[2], x => x.TeaserImage, new { MH = 175, itemprop = "thumbnail" })
+                                </span>
+                                <span class="group">
+                                    <span class="hdg" itemprop="name">@Editable(featuredItems[2], x => x.TeaserTitle)</span>
+                                    <span class="txt" itemprop="description">@Html.Raw(featuredItems[2].TeaserDescription)</span>
+                                </span>
+                                @if (!string.IsNullOrEmpty(Model.SitecoreModel.ButtonText))
+                                {
+                                    <span class="btn">@Model.SitecoreModel.ButtonText</span>
+                                }
+                            </a>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <div class="column-row">
+                <div class="panel-blog match-height col-sm-3" itemscope itemtype="http://schema.org/Article">
+                    <div class="panel-blog__image">
+                        @RenderImage(Model.SitecoreModel, x => x.StoryBackgroundImage, new { itemprop = "thumbnail" })
+                    </div>
+                    <div class="panel-blog__text">
+                        <h3 itemprop="name">@Model.SitecoreModel.StoryTitle</h3>
+                        <p itemprop="description">@Model.SitecoreModel.TeaserDescription</p>
+                        @RenderLink(Model.SitecoreModel, x => x.StoryLink, new { @class = "button", itemprop = "url" })
+                    </div>
+                </div>
+                @if (hasVideoHighlight)
+                {
+                    if (!string.IsNullOrEmpty(Model.SitecoreModel.YoutubeId))
+                    {
+                        <div class="panel-item match-height col-sm-3 video">
+
+                            <div class="bnr-01 ride-hdg">
+                                <a data-fancybox="data-fancybox" data-type="iframe" data-src="https://www.youtube.com/embed/@Model.SitecoreModel.YoutubeId" data-fancybox-type="iframe">
+                                    <span class="image">
+                                        @RenderImage(Model, x => x.SitecoreModel.VideoThumbnail, new { MW = 500 }, isEditable: true)
+                                    </span>
+                                    <span class="group">
+                                        <span class="hdg">@Editable(Model, x => x.SitecoreModel.VideoTitle)</span>
+                                        <span class="txt">@Editable(Model, x => x.SitecoreModel.VideoDescription)</span>
+                                    </span>
+                                    @if (!string.IsNullOrEmpty(Model.SitecoreModel.ButtonText))
+                                    {
+                                        <span class="btn">@Model.SitecoreModel.ButtonText</span>
+                                    }
+                                </a>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="panel-item match-height col-sm-3 video">
+                            <div class="bnr-01 ride-hdg">
+                                <a data-fancybox="data-fancybox" href="@Model.SitecoreModel.VideoUrl">
+                                    <span class="image">
+                                        @RenderImage(Model, x => x.SitecoreModel.VideoThumbnail, new { MW = 500 }, isEditable: true)
+                                    </span>
+                                    <span class="group">
+                                        <span class="hdg">@Editable(Model, x => x.SitecoreModel.VideoTitle)</span>
+                                        <span class="txt">@Editable(Model, x => x.SitecoreModel.VideoDescription)</span>
+                                    </span>
+                                    @if (!string.IsNullOrEmpty(Model.SitecoreModel.ButtonText))
+                                    {
+                                        <span class="btn">@Model.SitecoreModel.ButtonText</span>
+                                    }
+                                </a>
+                            </div>
+                        </div>
+                    }
+
+                }
+                @if (hasResourceHighlight)
+                {
+                    <div class="panel-item match-height col-sm-6 resource" itemscope itemtype="http://schema.org/Article">
+                        <div class="bnr-01 ride-hdg">
+                            <a itemprop="url" href="@Model.SitecoreModel.ResourceLink.MediaUrl">
+                                <span class="image">
+                                    @RenderImage(Model.SitecoreModel, x => x.ResourceThumbnail, new { itemprop = "thumbnail" })
+                                </span>
+                                <span class="group">
+                                    <span class="hdg" itemprop="name">@Editable(Model.SitecoreModel, x => x.ResourceTitle)</span>
+                                    <i class="icon-download"></i>
+                                    <span class="txt" itemprop="description">@Editable(Model.SitecoreModel, x => x.ResourceDescription)</span>
+                                </span>
+                                @if (!string.IsNullOrEmpty(Model.SitecoreModel.ButtonText))
+                                {
+                                    <span class="btn">@Model.SitecoreModel.ButtonText</span>
+                                }
+                            </a>
+                        </div>
+                    </div>
+                }
+                @if (!hasVideoHighlight && !hasResourceHighlight && hasFeaturedItems[3])
+                {
+                    <div class="panel-item match-height col-sm-3" itemscope itemtype="http://schema.org/Article">
+
+                        <div class="bnr-01 ride-hdg">
+                            <a href="@featuredItems[3].Url" itemprop="url">
+                                <span class="image">
+                                    @RenderImage(featuredItems[3], x => x.TeaserImage, new { MH = 175, itemprop = "thumbnail" })
+                                </span>
+                                <span class="group">
+                                    <span class="hdg" itemprop="name">@Editable(featuredItems[3], x => x.TeaserTitle)</span>
+                                    @if (!string.IsNullOrEmpty(featuredItems[3].TeaserDescription))
+                                    {
+                                        <span class="txt" itemprop="description">@Html.Raw(featuredItems[3].TeaserDescription)</span>
+                                    }
+                                </span>
+                                @if (!string.IsNullOrEmpty(Model.SitecoreModel.ButtonText))
+                                {
+                                    <span class="btn">@Model.SitecoreModel.ButtonText</span>
+                                }
+                            </a>
+                        </div>
+
+
+                    </div>
+                }
+                @if (!hasVideoHighlight && !hasResourceHighlight && hasFeaturedItems[4])
+                {
+                    <div class="panel-item match-height col-sm-6" itemscope itemtype="http://schema.org/Article">
+                        <div class="bnr-01 ride-hdg">
+                            <a href="@featuredItems[4].Url" itemprop="url">
+                                <span class="image">
+                                    @RenderImage(featuredItems[4], x => x.TeaserImage, new { MH = 175, itemprop = "thumbnail" })
+                                </span>
+                                <span class="group">
+                                    <span class="hdg" itemprop="name">@Editable(featuredItems[4], x => x.TeaserTitle)</span>
+                                    <span class="txt" itemprop="description">@Html.Raw(featuredItems[4].TeaserDescription)</span>
+                                </span>
+                                @if (!string.IsNullOrEmpty(Model.SitecoreModel.ButtonText))
+                                {
+                                    <span class="btn">@Model.SitecoreModel.ButtonText</span>
+                                }
+                            </a>
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+        </div>
+        <!-- End: Newsroom Featured -->
+
+        @using (BeginEditFrame(FX.Core.Keys.EditorItems.NewsroomFilter, Model.SitecoreModel.Id.ToString()))
+        {
+            <!-- Newsroom Newslist -->
+            <div class="newsroom-listing column-row">
+
+                <div class="newsroom-listing__sort-result">
+                    <div class="right">
+                        <label>@Editable(Model, x => x.SitecoreModel.FilterFromYearLabel)</label>
+                        <select class="custom-select">
+                            @foreach (int year in FilterYears)
+                            {
+                                <option value="@year">@year</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                @if (Model.SitecoreModel.FilterSource1 != null)
+                {
+                    <section class="news-list corporate-news col-sm-6" data-category="@Model.SitecoreModel.FilterSource1.Id.ToString("N")">
+                        <h2>@Model.LeftColumnLabel</h2>
+
+                        <!-- Dynamic List Content (rr.newsroom.js)-->
+                        <ul class="news-results"></ul>
+
+                        <div class="loader">
+                            <div class="loader-animation">
+                                <div class="inner"></div>
+                                <div class="inner"></div>
+                                <div class="inner"></div>
+                            </div>
+                        </div>
+                        <a class="button load-more js-load-more mobile-only" href="#">@Editable(Model, x => x.SitecoreModel.LoadMoreLabel)</a>
+                        <ul>
+                            <li class="no-result">@Model.SitecoreModel.NoMoreNewsLabel</li>
+                        </ul>
+                    </section>}
+
+                @if (Model.SitecoreModel.FilterSource2 != null)
+                {
+                    <section class="news-list standard-news col-sm-6 push-left-15" data-category="@Model.SitecoreModel.FilterSource2.Id.ToString("N")">
+                        <h2>@Model.RightColumnLabel</h2>
+
+                        <!-- Dynamic List Content (rr.newsroom.js)-->
+                        <ul class="news-results"></ul>
+
+                        <div class="loader">
+                            <div class="loader-animation">
+                                <div class="inner"></div>
+                                <div class="inner"></div>
+                                <div class="inner"></div>
+                            </div>
+                        </div>
+                        <a class="button load-more js-load-more mobile-only" href="#">@Editable(Model, x => x.SitecoreModel.LoadMoreLabel)</a>
+                        <ul>
+                            <li class="no-result">@Model.SitecoreModel.NoMoreNewsLabel</li>
+                        </ul>
+                    </section>
+                }
+
+            </div>
+            <div class="newsroom-load-more">
+                <a class="button load-more js-load-all tablet-desktop" href="#">@Editable(Model, x => x.SitecoreModel.LoadMoreLabel)</a>
+            </div>
+            <!-- End: Newsroom Newslist -->
+        }
+    </div>
+</div>
+<!-- End: Newsroom -->
+
+<script id="results-template" type="text/x-dot-template">
+    {{~ it.news:item}}
+    <li>
+        <span class="date">{{=item.date}}</span>
+        <h3><a href="{{=item.url}}">{{=item.title}}</a></h3>
+    </li>
+    {{~}}
+</script>

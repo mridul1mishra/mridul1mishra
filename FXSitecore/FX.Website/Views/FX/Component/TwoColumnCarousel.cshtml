@@ -1,0 +1,64 @@
+﻿@using FX.Core.Utils
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Components.TwoColumnCarousel.ITwoColumnCarousel>
+
+@{
+    bool hasContent = Model != null && Model.TwoColumnCarouselItems != null && Model.TwoColumnCarouselItems.Count() > 0
+        || Model != null && this.IsInEditingMode;
+}
+
+@if (this.IsInEditingMode)
+{
+    <h2 style="text-align:center">[Two Column Carousel Component]</h2>
+    if (Model == null)
+    {
+        <p>No component datasource found</p>
+    }
+}
+
+@if (hasContent)
+{
+
+    <section class="section">
+        @if (!string.IsNullOrEmpty(Model.SectionTitle) && Model.ShowInStickyTab)
+        {
+            <a id='content@(Model.Id.ToString("N"))' class="anchor-link" data-label="@Model.SectionTitle.Left(FX.Core.Constants.MaxLength.SectionTitle)"></a>
+        }
+        <div class="two-col-carousel column-row">
+            <div class="two-col-carousel__dots"></div>
+            <div class="two-col-carousel__items">
+                @foreach (var item in Model.TwoColumnCarouselItems)
+                {
+                    string itemUrl = item != null && item.ButtonLink != null && !string.IsNullOrEmpty(item.ButtonLink.Url) ? item.ButtonLink.Url : string.Empty;
+                    string target = item != null && item.ButtonLink != null && !string.IsNullOrEmpty(item.ButtonLink.Target) ? item.ButtonLink.Target : "_self";
+                    <div class="panel-gradient match-height">
+                        <div class="bnr-01 ride-hdg">
+                            <a href="@itemUrl" target="@target">
+                                <span class="image">
+                                    @RenderImage(item, x => x.Image)
+                                </span>
+                                <span class="group">
+                                    @if (!string.IsNullOrEmpty(item.Title))
+                                    {
+                                        <span class="hdg">@item.Title</span>
+                                    }
+                                    @if (!string.IsNullOrEmpty(item.Description))
+                                    {
+                                        <span class="txt">
+                                            @item.Description
+                                        </span>
+                                    }
+                                    @if (!string.IsNullOrEmpty(item.ButtonText))
+                                    {
+                                        <span class="btn"> @item.ButtonText</span>
+                                    }
+                                </span>
+
+                            </a>
+                        </div>
+
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+}

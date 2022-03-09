@@ -1,0 +1,60 @@
+﻿@using Sitecore.Mvc
+@using FX.Core.GlassMapper
+@using FX.Core.Utils
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Page.ILandingPage>
+
+@{
+    bool hasContent = this.IsInEditingMode || (Model != null && Model.ArticlePages.Any());
+}
+<div class="main-content layout-aside">
+    @Html.Sitecore().Rendering(FX.Core.Keys.RenderingItems.Breadcrumb, FX.Core.Utils.Util.DefaultRenderingCacheParameter)
+    <div class="top-banner">
+        @Html.Sitecore().Rendering(FX.Core.Keys.RenderingItems.HeroBanner, FX.Core.Utils.Util.DefaultRenderingCacheParameter)
+    </div>
+
+
+    @if (hasContent)
+    {
+        <article class="layout-main article-content">
+            <section class="section">
+                <div class="landing-wrapper">
+                    <div class="column-row">
+                        @foreach (var page in Model.ArticlePages)
+                        {
+                            <div class="card-tiles col-sm-6 col-md-4 match-height" itemscope itemtype="http://schema.org/Article">
+                                <div class="bnr-01 ride-hdg">
+                                    <a href="@(this.IsInEditingMode ? "javascript:void(0)" : page.Url)" itemprop="url">
+
+                                        <span class="image">
+                                            @RenderImage(page, x => x.TeaserImage, new { MH = 290, MW = 300, itemprop = "thumbnailUrl" }, isEditable: false, outputHeightWidth: false)
+                                        </span>
+                                        <span class="group">
+                                            @if (FXGlassView.IsFieldVisible(this.IsInEditingMode, page.NavigationTitle))
+                                            {
+                                                <span class="hdg" itemprop="name">@page.NavigationTitle</span>
+                                            }
+                                            @if (FXGlassView.IsFieldVisible(this.IsInEditingMode, page.TeaserDescription))
+                                            {
+                                                <span class="txt" itemprop="description">@Html.Raw(page.TeaserDescription)</span>
+                                            }
+                                        </span>
+                                        @if (!string.IsNullOrEmpty(Model.ButtonText))
+                                        {
+                                            <span class="btn">@Model.ButtonText</span>
+                                        }
+                                        </a>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </section>
+            @Html.Sitecore().Placeholder("bottomSectionPlaceholder")
+        </article>
+    }
+    <aside class="layout-side">
+        @Html.Sitecore().Placeholder("rightSidePlaceholder")
+    </aside>
+
+</div>
+

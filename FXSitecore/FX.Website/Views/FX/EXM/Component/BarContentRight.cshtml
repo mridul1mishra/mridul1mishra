@@ -1,0 +1,88 @@
+﻿@using FX.Core.GlassMapper
+@using System.Web.Mvc.Html
+@using Sitecore.Mvc
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.EXM.BarContent>
+
+<!-- START: Right Layout-->
+<!--[if mso | IE]>
+<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="640" align="center" style="width: 640px;">
+<tr>
+<td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
+<![endif]-->
+<div style="margin: 0px auto; max-width: 640px; background-color: #ffffff;">
+    <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-style: none; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; border-collapse: collapse;" align="center" width="100%">
+        <tbody>
+            <tr>
+                <td class="right-layout-padding" bgcolor="#ffffff" width="100%" style="border-style: none; padding-right: 15px; padding-bottom: 15px; padding-top: 15px; padding-left: 15px; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background: #ffffff;">
+                    <table cellpadding="0" cellspacing="0" border="0" direction="rtl" width="100%" style="border-style: none; direction: rtl; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse;">
+                        <tr>
+                            <td class="mobile-fullwidth mobile-fullwidth--right" bgcolor="#ffffff" width="50%" style="border-style: none; padding-top: 0; padding-left: 10px; padding-bottom: 0; width: 50%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;" valign="top">
+                                <table cellpadding="0" cellspacing="0" border="0" width="100%" style="border-style: none; mso-table-lspace: 0pt; mso-table-rspace: 0pt;border-collapse: collapse;">
+                                    <tbody>
+                                        <tr>
+                                            <td class="right-layout-image" bgcolor="#ffffff" width="298" height="179" style="border-style: none; color: #474747; cursor: auto; font-size: 12px; line-height: 20px; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 298px; height: 179px; background: #ffffff;">
+                                                <table cellpadding="0" cellspacing="0" border="0" width="100%" style="border-style: none; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse;">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td width="100%" style="border-style: none; font-family: Arial, sans-serif; mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+                                                                @if (IsInEditingMode)
+                                                                {
+                                                                    @RenderImage(Model, x => x.Image, new { style = "-ms-interpolation-mode: bicubic; border: 0 none; display: block; width: 100%; height: 179px; line-height: 1px; outline: none; text-decoration: none; border-style: none; max-width: 298px;", h = 0, w = 0, border = 0 }, isEditable: true, outputHeightWidth: false)
+                                                                }
+                                                                else if (@Model.Image != null)
+                                                                {
+                                                                    <img src="@Model.Image.Src" alt="@Model.Image.Src" width="298" height="179" border="0" style="-ms-interpolation-mode: bicubic; border: 0 none; display: block; width: 100%; height: 179px; line-height: 1px; outline: none; text-decoration: none; border-style: none; max-width: 298px;">
+                                                                }                                                            
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                            <td class="mobile-fullwidth mobile-fullwidth__rightlayout--left" bgcolor="#ffffff" width="50%" style="border-style: none; padding-top: 0; padding-bottom: 0; padding-right: 10px; width: 50%; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background: #ffffff;border-left: 1px solid #ffffff;" valign="top">
+                                <table cellpadding="0" cellspacing="0" border="0" width="100%" style="border-style: none; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; border-left: 1px solid #ffffff;">
+                                    <tbody>
+                                        <tr>
+                                            <td class="third-padding" bgcolor="#ffffff" style="border-style: none; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background: #ffffff;border-left: 1px solid #ffffff;">
+                                      <table cellpadding="0" cellspacing="0" direction="ltr" border="0" width="100%" style="border-style: none; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; border-left: 1px solid #ffffff; direction: ltr;">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="third-title" width="100%" style="border-style: none; color: #101010; cursor: auto; font-size: 15px; line-height: 20px; mso-table-lspace: 0pt; mso-table-rspace: 0pt;" align="left" valign="top">
+                                                                <h2 style="display: block; margin: 0; text-align: left; color: #101010; font-family: Arial, sans-serif; font-weight: 700; font-size: 15px; line-height: 20px; margin-bottom: 17px;">@Editable(Model, x => x.Title)</h2>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="third-text" width="100%" height="90" style="border-style: none; color: #444444; cursor: auto; font-size: 12px; line-height: 16px; height: 90px; mso-table-lspace: 0pt; mso-table-rspace: 0pt;" align="left" valign="top">
+                                                                <p style="display: block; margin: 0; text-align: left; color: #444444; font-family: Arial, sans-serif; font-weight: 300; font-size: 12px; line-height: 16px; margin-bottom: 13px;">@Editable(Model, x => x.Text)</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="third-link" width="100%" direction="ltr" style="border-style: none; color: #d92231; direction: ltr; cursor: auto; font-size: 12px; line-height: 15px; mso-table-lspace: 0pt; mso-table-rspace: 0pt;" align="left" valign="top">
+                                                                <p style="display: block; margin: 0; text-align: left; color: #d92231; font-family: Arial, sans-serif;">
+                                                                    @RenderLink(Model, m => m.Link, new System.Collections.Specialized.NameValueCollection { { "style", "display: block; margin: 0; text-align: left; color: #d92231; font-size: 12px; line-height: 20px; text-decoration: none;" } }, isEditable: true)
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<!--[if mso | IE]>
+</td>
+</tr>
+</table>
+<![endif]-->
+<!-- END: Right Layout-->

@@ -1,0 +1,263 @@
+﻿@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Base.INavigation>
+@using FX.Core.GlassMapper
+@using FX.Core.Utils
+@using FX.Core.Models.Base
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Settings.ISiteSettings>
+
+@{
+    //var topNavItems = new List<INavigation>();
+    //topNavItems.AddRange(FX.Core.FXContextItems.HomePage.FooterNavItems);
+    var topNavItems = FX.Core.FXContextItems.HomePage.MainNavItems;
+    bool hasTopNavItems = topNavItems.Any();
+    var MainNavigationHeaderLink = FX.Core.FXContextItems.HomePage.SiteSettings.MainNavigationHeaderLink;
+    var logo = FX.Core.FXContextItems.HomePage.SiteSettings.CorporateLogo;
+
+    bool hasHeaderLink1 = FX.Core.Utils.Util.HasValidLink(FX.Core.FXContextItems.HomePage.SiteSettings.HeaderLink1);
+    bool hasHeaderLink2 = FX.Core.Utils.Util.HasValidLink(FX.Core.FXContextItems.HomePage.SiteSettings.HeaderLink2);
+    bool hasHeaderLink3 = FX.Core.Utils.Util.HasValidLink(FX.Core.FXContextItems.HomePage.SiteSettings.HeaderLink3);
+    bool hasHeaderLink4 = FX.Core.Utils.Util.HasValidLink(FX.Core.FXContextItems.HomePage.SiteSettings.HeaderLink4);
+    bool hasHeaderLink5 = FX.Core.Utils.Util.HasValidLink(FX.Core.FXContextItems.HomePage.SiteSettings.HeaderLink5);
+    bool hasHeaderLink6 = FX.Core.Utils.Util.HasValidLink(FX.Core.FXContextItems.HomePage.SiteSettings.HeaderLink6);
+    bool hasHeaderLinks = hasHeaderLink1 || hasHeaderLink2 || hasHeaderLink3 || hasHeaderLink4 || hasHeaderLink5 || hasHeaderLink6;
+
+}
+
+
+@helper ShowStandardNavigation(INavigation navItem)
+{
+    var categories = navItem.GetGroupedMainNavigation();
+
+    <li class="has-children">
+        <a href="@navItem.URL()">@navItem.NavigationTitle<div class="separator"></div></a>
+        <div class="megamenu">
+            <div class="container">
+                <button class="handheld-only" type="button">@navItem.NavigationTitle</button>
+                <div class="megamenu__title"><a href="@navItem.URL()">@navItem.NavigationTitle</a></div>
+
+                <div class="megamenu__nav">
+                    @if (categories.Keys.Any())
+                    {
+                        foreach (var category in categories.Keys)
+                        {
+                            <div class="column col-sm-4">
+                                <div class="nav-level2">
+                                    @if (!string.IsNullOrEmpty(category))
+                                    {
+                                        <div class="nav-level2__link">
+
+                                            <span>@category</span>
+
+                                        </div>
+                                    }
+                                    @{var secondLevel = categories[category]; }
+                                    @if (secondLevel.Any())
+                                    {
+                                        <ul class="nav-level3">
+                                            @foreach (var secondLevelItem in secondLevel)
+                                            {
+                                                <li>
+                                                    <a href="@secondLevelItem.URL()">@secondLevelItem.NavigationTitle</a>
+                                                </li>
+                                            }
+                                        </ul>
+                                    }
+                                </div>
+                            </div>
+                        }
+                    }
+
+                </div>
+            </div>
+        </div>
+    </li>
+}
+
+@helper ShowSnSPage(ISNSNavigation navItem)
+{
+    <li class="has-children">
+        <a href="@navItem.URL()">@navItem.NavigationTitle<div class="separator"></div></a>
+        <div class="megamenu">
+            <div class="container">
+                <button class="handheld-only" type="button">@navItem.NavigationTitle</button>
+                <div class="megamenu__title"><a href="@navItem.URL()">@navItem.NavigationTitle</a></div>
+                @{var firstLevel = navItem.MainNavItems;}
+                <div class="megamenu__nav">
+                    @if (firstLevel.Any())
+                    {
+                        foreach (var firstLevelItem in firstLevel)
+                        {
+                            <div class="column col-sm-4">
+                                <div class="nav-level2">
+                                    <div class="nav-level2__link">
+                                        <a href="@firstLevelItem.URL()">@firstLevelItem.NavigationTitle</a>
+                                    </div>
+                                    @{var secondLevel = firstLevelItem.MainNavItems; }
+                                    @if (secondLevel.Any())
+                                    {
+                                        <ul class="nav-level3">
+                                            @foreach (var secondLevelItem in secondLevel)
+                                            {
+                                                <li>
+                                                    <a href="@secondLevelItem.URL()">@secondLevelItem.NavigationTitle</a>
+                                                </li>
+                                            }
+                                        </ul>
+                                    }
+                                </div>
+                            </div>
+                        }
+                    }
+                    @if (navItem.InquiryLink != null)
+                    {
+                        <div class="column col-sm-4">
+                            <div class="megamenu__inquiry desktop-only">
+                                <p>@navItem.InquiryText</p>
+                                @RenderLink(navItem, x => x.InquiryLink, new { @class = "button btn-red" })
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </li>
+}
+
+
+@helper ShowProductNavigation(IProductListingNavigation navItem)
+{
+    <li class="has-children">
+        <a href="@navItem.URL()">@navItem.NavigationTitle<div class="separator"></div></a>
+        <div class="megamenu megamenu__products">
+            <div class="container">
+                <button class="handheld-only" type="button">@navItem.NavigationTitle</button>
+                <div class="megamenu__title">
+                    <a href="@navItem.URL()">@navItem.NavigationTitle</a>
+                </div>
+                <div class="megamenu__nav">
+                    <div class="column col-sm-6">
+                        <div class="nav-level2">
+                            <div class="nav-level2__link">
+                                <span>@navItem.Column1Title</span>
+                            </div>
+                            <ul class="nav-level3">
+                                @foreach (var item in navItem.Column1Items)
+                                {
+                                    <li class="col-sm-6">
+                                        @RenderImage(item, x => x.MainNavThumbnail)
+                                        <a href="@item.URL()">@item.NavigationTitle</a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="column col-sm-3">
+                        <div class="nav-level2">
+                            <div class="nav-level2__link">
+                                <span>@navItem.Column2Title</span>
+                            </div>
+                            <ul class="nav-level3">
+                                @foreach (var item in navItem.Column2Items)
+                                {
+                                    <li>
+                                        <a href="@item.URL()">@item.NavigationTitle</a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="column col-sm-3">
+                        <div class="nav-level2__link">
+                            <span>@navItem.Column3Title</span>
+                        </div>
+                        <ul class="nav-level3">
+                            @foreach (var item in navItem.Column3Items)
+                            {
+                                <li>
+                                    <a href="@item.URL()">@item.NavigationTitle</a>
+                                </li>
+                            }
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+}
+
+
+@if (hasTopNavItems)
+{
+    <!-- Main Navigation -->
+    <div class="main-nav">
+        <!-- Main Navigation Menu -->
+        <ul class="main nav-level1">
+            <li class="logo-fix desktop-only">
+                <a href="/">
+                    <img src="@logo.Src" alt="">
+                </a>
+            </li>
+
+            @foreach (var navItem in topNavItems)
+            {
+                //if (Util.AreEquals(navItem.TemplateId, FX.Core.Templates.SnSPage.Id))
+                //{
+                if (navItem is ISNSNavigation)
+                {
+                    @ShowSnSPage(navItem as ISNSNavigation)
+                }
+                //else if (Util.AreEquals(navItem.TemplateId, FX.Core.Templates.ProductListingPage.Id))
+                else if (navItem is IProductListingNavigation)
+                {
+                    @ShowProductNavigation(navItem as IProductListingNavigation)
+                }
+                else
+                {
+                    @ShowStandardNavigation(navItem)
+                }
+            }
+        </ul>
+
+        <!-- End: Main Navigation Menu -->
+        @if (MainNavigationHeaderLink != null)
+        {
+            <ul class="share-contact has-children">
+                <li class="small-nav">
+                    <a href="@MainNavigationHeaderLink.Url">@MainNavigationHeaderLink.Text</a>
+                </li>
+            </ul>
+        }
+        @if (hasHeaderLinks)
+        {
+            <ul class="share-header-menu top-nav-mobile">
+
+                @if (hasHeaderLink1)
+                {
+                    <li>@RenderLink(FX.Core.FXContextItems.HomePage.SiteSettings, m => m.HeaderLink1)</li>
+                }
+                @if (hasHeaderLink2)
+                {
+                    <li>@RenderLink(FX.Core.FXContextItems.HomePage.SiteSettings, m => m.HeaderLink2)</li>
+                }
+                @if (hasHeaderLink3)
+                {
+                    <li>@RenderLink(FX.Core.FXContextItems.HomePage.SiteSettings, m => m.HeaderLink3)</li>
+                }
+                @if (hasHeaderLink4)
+                {
+                    <li>@RenderLink(FX.Core.FXContextItems.HomePage.SiteSettings, m => m.HeaderLink4)</li>
+                }
+                @if (hasHeaderLink5)
+                {
+                    <li>@RenderLink(FX.Core.FXContextItems.HomePage.SiteSettings, m => m.HeaderLink5)</li>
+                }
+                @if (hasHeaderLink6)
+                {
+                    <li>@RenderLink(FX.Core.FXContextItems.HomePage.SiteSettings, m => m.HeaderLink6)</li>
+                }
+            </ul>
+        }
+
+    </div>
+    <!-- End: Main Navigation -->
+}

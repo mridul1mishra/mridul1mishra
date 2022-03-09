@@ -1,0 +1,38 @@
+﻿@using Sitecore.Mvc
+@using System.Linq
+@using FX.Core.Utils
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Components.IItemListing>
+
+@{
+	bool hasListingSource = Model.ListingSource != null;
+	IEnumerable<FX.Core.Models.Page.IStandardPage> items = Enumerable.Empty<FX.Core.Models.Page.IStandardPage>();
+	if (hasListingSource)
+	{
+		items = Model.ListingSource.ArticlePages.OrderByDescending(p => p.ArticleDate);
+	}
+}
+
+@if (!string.IsNullOrEmpty(Model.ListingTitle))
+{
+	<h2>@Model.ListingTitle.Left(FX.Core.Constants.MaxLength.AccordionTitle)</h2>
+}
+
+@if (hasListingSource && items.Any())
+{
+	<ul>
+		@foreach (var item in items)
+		{
+		<li>
+			<h3><a href="@item.Url">@item.TeaserTitle.Left(FX.Core.Constants.MaxLength.Title)</a></h3>
+			<span class="date">@item.ArticleDate.ToLocalTime().ToString("MMM dd, yyyy")</span>
+		</li>
+		}
+	</ul>
+}
+
+@if (hasListingSource)
+{
+	<div class="more-link">
+		<a href="@Model.ListingSource.Url">@Model.ListingLinkText</a>
+	</div>
+}

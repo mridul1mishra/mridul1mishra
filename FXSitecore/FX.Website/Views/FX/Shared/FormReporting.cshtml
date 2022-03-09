@@ -1,0 +1,80 @@
+﻿@model FX.Core.Models.Form.FormReporting
+@using System.Linq
+@using System.Collections.Generic
+@using System.Data
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(window).on("load", function () {
+        jQuery('#SelectedForm').on('change', function () {
+            $('#SelectedFormValue').val(this.value);
+            //alert(this.value);
+        });
+
+        jQuery('#FromDateRange').on('input', function () {
+            $('#FromDateRangeValue').val(this.value);
+        });
+        jQuery('#ToDateRange').on('input', function () {
+            $('#ToDateRangeValue').val(this.value);
+        });
+
+        jQuery('#button2').on('click', function () {
+            var url = "/" + window.location.pathname.split('/')[1] + "/api/FormReporting";
+            var selectedFormValue = $('#SelectedFormValue').val().trim();
+            var fromDateRangeValue = $('#FromDateRangeValue').val().trim();
+            var ToDateRangeValue = $('#ToDateRangeValue').val().trim();
+            var obj = { "selectedFormValue": selectedFormValue, "fromDateRangeValue": fromDateRangeValue, "toDateRangeValue": ToDateRangeValue };
+            $.ajax({
+                type: "POST",
+                dataType: 'json',
+                url: url,
+                contentType: 'application/json', // Not to set any content header
+                data: JSON.stringify(obj),
+
+                success: function (data) {
+                    console.log(data);
+                    console.log("This is success");
+                    jQuery('.table-container').html("");
+                    jQuery('.table-container').append(data.responseText);
+                },
+                error: function (data) {
+                    console.log('An error occurred.');
+                    jQuery('.table-container').html("");
+                    jQuery('.table-container').append(data.responseText);
+                },
+            });
+
+            return false;
+        });
+    });
+</script>
+
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        <div class="column-row">
+            <div class="col-sm-3">
+                <label>Forms</label>
+                @Html.DropDownListFor(x => x.SelectedForm, Model.Forms, new { @style = "width: 60%;" })
+                @Html.HiddenFor(x=>x.SelectedFormValue)
+            </div>
+            <div class="col-sm-3">
+                <label>From date (Enter the date in dd/mm/yyyy format)</label>
+                @Html.TextBoxFor(x => x.FromDateRange)
+                @Html.HiddenFor(x=>x.FromDateRangeValue)
+            </div>
+            <div class="col-sm-3">
+                <label>To date (Enter the date in dd/mm/yyyy format)</label>
+                @Html.TextBoxFor(x => x.ToDateRange)
+                @Html.HiddenFor(x => x.ToDateRangeValue)
+            </div>
+            <div class="col-sm-3">
+                <button id="button2">Submit</button>
+            </div>
+        </div>
+
+        <div class="table-container">
+        </div>
+    }
+</div>
+
+

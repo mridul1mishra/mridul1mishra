@@ -1,0 +1,95 @@
+﻿@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<IMicrositeNavigation>
+@using FX.Core.Models.Microsite.Base;
+@using FX.Core.Models.Microsite.Page;
+@using FX.Core.GlassMapper;
+@{
+    var topNavItems = new List<IMicrositeNavigation>();
+    var children = FX.Core.FXContextItems.MicrositeHomePage.Children.Where(i => i.ShowInNavigation);
+    bool hasTopNavItems = children.Count() > 0;
+}
+
+@helper ShowNavigation(IMicrositeNavigation page)
+{
+var grandChildren = page.Children.Where(i => i.ShowInNavigation).ToList();
+int total = grandChildren.Count();
+if (total > 0)
+{
+        <ul class="dropdown-menu dropdown-menu-custom">
+            <li>
+
+                @for (int i = 0; i < total; i++)
+                {
+                    var grandChild = grandChildren[i];
+                    <a href="@grandChild.Url" @Html.Raw(grandChild.Id==Sitecore.Context.Item.ID.ToGuid() ? "class='active'" : "")>@grandChild.NavigationTitle</a>
+                    if (i < total - 1)
+                    {
+                        @Html.Raw("|")
+                    }
+                }
+            </li>
+        </ul>
+}
+}
+
+@helper ShowLandingLinks(IMicrositeNavigation page)
+{
+if (page is IMicrositeSectionFolder)
+{
+        <a class="dropdown-toggle block" data-hover="dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            @page.NavigationTitle
+            @if (page.HasChildPages())
+            {
+                <span class="fa fa-angle-down"></span>
+            }
+        </a>
+}
+else
+{
+        if (page.HasChildPages())
+        {
+            <a href="@page.Url" class=" block" data-hover="dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                @page.NavigationTitle
+                <span class="fa fa-angle-down"></span>
+            </a>
+        }
+        else
+        {
+            <a href="@page.Url" class="block">
+                @page.NavigationTitle
+            </a>
+        }
+}
+
+}
+
+
+
+<!-- SECONDARY MENU -->
+<div class="wrapper-for-fix ">
+    <div class="container full-width-bg">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <nav class="secondary-nav-wrapper">
+                    <ul class="secondary-nav">
+                        @foreach (var child in children)
+                        {
+                            <li class="dropdown dropdown-custom">
+
+                                @ShowLandingLinks(child)
+                                @ShowNavigation(child)
+                            </li>
+                        }
+                        @if (!FX.Core.FXContextItems.MicrositeHomePage.SiteSettings.HideForm)
+                        {
+                            <li>
+                                <a href="#contact" class="block">Contact</a>
+                            </li>
+                        }
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END SECONDARY MENU -->
+<br>

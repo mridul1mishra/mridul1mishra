@@ -1,0 +1,316 @@
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\SitecoreProjectMediaLib.dll.config
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\SitecoreProjectMediaLib.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\SitecoreProjectMediaLib.pdb
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\csc.exe
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\csc.exe.config
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\csc.rsp
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\csi.exe
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\csi.exe.config
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\csi.rsp
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.AppContext.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Console.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.IO.Compression.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Net.Http.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Net.Sockets.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.ValueTuple.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Xml.XPath.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\vbc.exe
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\vbc.exe.config
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\vbc.rsp
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\VBCSCompiler.exe
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Sitecore.Kernel.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Sitecore.Mvc.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Sitecore.Logging.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Sitecore.Nexus.Consumption.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Sitecore.Zip.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Sitecore.Framework.Data.Blobs.Abstractions.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\HtmlAgilityPack.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\ComponentArt.Web.UI.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Mvp.Xml.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Telerik.Web.UI.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\System.Web.Http.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Microsoft.Extensions.Logging.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Sitecore.Framework.Data.Blobs.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Lucene.Net.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Microsoft.Extensions.Options.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Sitecore.Logging.Client.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Microsoft.Practices.EnterpriseLibrary.Common.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.Data.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.Configuration.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\RazorGenerator.Mvc.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\System.Web.WebPages.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Sitecore.Web.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Sitecore.Nexus.Licensing.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Sitecore.Framework.Conditions.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\System.Net.Http.Formatting.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Microsoft.Extensions.Primitives.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.ServiceBus.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.Caching.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.WindowsAzure.Storage.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\System.Web.WebPages.Razor.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\System.Web.Razor.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\System.Web.WebPages.Deployment.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\System.Security.Cryptography.Xml.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Sitecore.Kernel.xml
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Sitecore.Logging.xml
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Sitecore.Zip.xml
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Sitecore.Framework.Data.Blobs.Abstractions.xml
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\HtmlAgilityPack.xml
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Mvp.Xml.xml
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Telerik.Web.UI.xml
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\System.Web.Http.xml
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.xml
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Microsoft.Extensions.DependencyInjection.xml
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Microsoft.Extensions.Logging.xml
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Sitecore.Framework.Data.Blobs.xml
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.xml
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Lucene.Net.xml
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Microsoft.Extensions.Options.xml
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Sitecore.Logging.Client.xml
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Microsoft.Practices.EnterpriseLibrary.Common.xml
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.Data.xml
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.Configuration.xml
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\System.Web.WebPages.xml
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Sitecore.Web.xml
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Sitecore.Framework.Conditions.xml
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\System.Net.Http.Formatting.xml
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Microsoft.Extensions.Primitives.xml
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.ServiceBus.xml
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.Caching.xml
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.WindowsAzure.Storage.xml
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\System.Web.WebPages.Razor.xml
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\System.Web.Razor.xml
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\System.Web.WebPages.Deployment.xml
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\obj\Debug\SitecoreProjectMediaLib.csproj.CoreCompileInputs.cache
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\obj\Debug\SitecoreProjectMediaLib.csproj.CopyComplete
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\obj\Debug\SitecoreProjectMediaLib.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\obj\Debug\SitecoreProjectMediaLib.pdb
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\System.Web.Mvc.dll
+C:\Users\anjali.soni.INCOFORGETECH\source\repos\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\System.Web.Mvc.xml
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\obj\Debug\SitecoreProjectMediaLib.csproj.CoreCompileInputs.cache
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\obj\Debug\SitecoreProjectMediaLib.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\obj\Debug\SitecoreProjectMediaLib.pdb
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\SitecoreProjectMediaLib.dll.config
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\SitecoreProjectMediaLib.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\SitecoreProjectMediaLib.pdb
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\csc.exe
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\csc.exe.config
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\csc.rsp
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\csi.exe
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\csi.exe.config
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\csi.rsp
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.AppContext.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Console.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.IO.Compression.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Net.Http.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Net.Sockets.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.ValueTuple.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Xml.XPath.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\vbc.exe
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\vbc.exe.config
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\vbc.rsp
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\VBCSCompiler.exe
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Sitecore.Kernel.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Sitecore.Mvc.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Newtonsoft.Json.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Lucene.Net.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\ITHit.WebDAV.Server.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Sitecore.Logging.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\HtmlAgilityPack.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Mvp.Xml.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\ComponentArt.Web.UI.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Sitecore.Zip.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Sitecore.NVelocity.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Sitecore.Logging.Client.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\RadEditor.Net2.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\System.Web.WebPages.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\System.Web.WebPages.Razor.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\System.Web.Razor.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\System.Web.WebPages.Deployment.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Sitecore.Kernel.xml
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Newtonsoft.Json.xml
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Lucene.Net.xml
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\HtmlAgilityPack.xml
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\obj\Debug\SitecoreProjectMediaLib.csproj.CopyComplete
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\System.Web.Mvc.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\ExcelDataReader.DataSet.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\ExcelDataReader.dll
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\ExcelDataReader.pdb
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\ExcelDataReader.xml
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\ExcelDataReader.DataSet.pdb
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\ExcelDataReader.DataSet.xml
+C:\Users\rammridul.m\Documents\Downloads\SitecoreProjectMediaLib (1)\SitecoreProjectMediaLib\SitecoreProjectMediaLib\obj\Debug\SitecoreProjectMediaLib.csprojAssemblyReference.cache
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\SitecoreProjectMediaLib.dll.config
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\SitecoreProjectMediaLib.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\SitecoreProjectMediaLib.pdb
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\csc.exe
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\csc.exe.config
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\csc.rsp
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\csi.exe
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\csi.exe.config
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\csi.rsp
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\Microsoft.Managed.Core.targets
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.AppContext.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Collections.Immutable.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Console.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Globalization.Calendars.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.IO.Compression.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.IO.FileSystem.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Net.Http.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Net.Sockets.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Reflection.Metadata.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.ValueTuple.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Xml.XmlDocument.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Xml.XPath.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\vbc.exe
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\vbc.exe.config
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\vbc.rsp
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\VBCSCompiler.exe
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\roslyn\VBCSCompiler.exe.config
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Sitecore.Kernel.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Sitecore.Mvc.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\System.Web.Mvc.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Newtonsoft.Json.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Lucene.Net.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\ITHit.WebDAV.Server.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Sitecore.Logging.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\HtmlAgilityPack.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Mvp.Xml.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\ComponentArt.Web.UI.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Sitecore.Zip.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Sitecore.NVelocity.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Sitecore.Logging.Client.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\RadEditor.Net2.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\System.Web.Razor.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\System.Web.WebPages.Razor.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\System.Web.WebPages.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Microsoft.Web.Infrastructure.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\System.Web.WebPages.Deployment.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Sitecore.Kernel.xml
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Newtonsoft.Json.xml
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Lucene.Net.xml
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\HtmlAgilityPack.xml
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\obj\Debug\SitecoreProjectMediaLib.csproj.CoreCompileInputs.cache
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\obj\Debug\SitecoreProjectMediaLib.csproj.CopyComplete
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\obj\Debug\SitecoreProjectMediaLib.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\obj\Debug\SitecoreProjectMediaLib.pdb
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Sitecore.ContentSearch.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Sitecore.ContentSearch.Linq.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Sitecore.Abstractions.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Sitecore.Analytics.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Sitecore.Analytics.Model.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Sitecore.Analytics.Core.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Sitecore.Analytics.Processing.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Sitecore.Analytics.DataAccess.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Sitecore.Marketing.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Sitecore.Marketing.Core.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Sitecore.Marketing.Taxonomy.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Stimulsoft.Report.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Stimulsoft.Base.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Sitecore.Xdb.Configuration.dll
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\bin\Sitecore.Abstractions.xml
+C:\projects\SitecoreProjectMediaLib\SitecoreProjectMediaLib\obj\Debug\SitecoreProjectMediaLib.csprojAssemblyReference.cache

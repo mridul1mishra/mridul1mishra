@@ -1,0 +1,107 @@
+﻿@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Base.IPage>
+@using Sitecore.Mvc
+@using Sitecore.Mvc.Analytics.Extensions
+@using System.Web.Mvc.Html
+@{ 
+    bool hasSiteSettings = (FX.Core.FXContextItems.HomePage != null && FX.Core.FXContextItems.HomePage.SiteSettings != null);
+    if (HttpContext.Current.Request.QueryString["utm_medium"] != null || HttpContext.Current.Request.QueryString["utm_source"] != null)
+    {
+        HttpCookie userInfo = new HttpCookie("userInfo");
+        userInfo["camapaign_id"] = HttpContext.Current.Request.QueryString["utm_medium"];
+        userInfo["campaign_source"] = HttpContext.Current.Request.QueryString["utm_source"];
+        userInfo.Expires.Add(new TimeSpan(0, 1, 0));
+        Response.Cookies.Add(userInfo);
+
+    }
+}
+<!DOCTYPE html>
+<!--[if IE 8]>      <html class="no-js is-ie lt-ie9 lt-ie10"> <![endif]-->
+<!--[if IE 9]>      <html class="no-js is-ie lt-ie10"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html class="no-js" lang="@Model.Language">
+ <!--<![endif]-->
+<head>
+    @Html.Sitecore().Rendering(FX.Core.Keys.RenderingItems.Head, FX.Core.Utils.Util.DefaultRenderingCacheParameter)
+    @Html.Sitecore().VisitorIdentification()
+    @Html.Sitecore().Placeholder("grecaptcha");
+
+</head>
+<body>
+    <!--[if lt IE 11]>
+    <p class='browsehappy'>You are using an <strong>outdated</strong> browser. Please <a href='http://browsehappy.com/'>upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <script>
+        if (new URLSearchParams(window.location.search).get("utm_medium") != null || new URLSearchParams(window.location.search).get("utm_source") != null) {
+            var auChannel = JSON.stringify({ "campaign_id": new URLSearchParams(window.location.search).get("utm_medium"), "campaign_source": new URLSearchParams(window.location.search).get("utm_source") });
+            console.log(auChannel);
+            localStorage.setItem("auChannel", auChannel);
+        }
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '184896045446077',
+                autoLogAppEvents: true,
+                xfbml: true,
+                version: 'v2.12'
+            });
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) { return; }
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    @if (hasSiteSettings)
+    {
+        try
+        {
+            var siteInfoList = Sitecore.Configuration.Factory.GetSiteInfoList();
+            var url = System.Web.HttpContext.Current.Request.Url;
+            var Hostquery = Sitecore.Configuration.Settings.Sites.Where(n => n.Name.Contains("thailand"));
+            if (Hostquery.Count() == 1)
+            {
+                var s = Hostquery.First();
+                if (s.HostName == url.Host)
+                {
+                    <input type="hidden" id="cookiePoliyHidden" value="1">
+
+                    var disabledClient = string.Empty;
+                    HttpCookie reqCookies = Request.Cookies["__FFtarC__"];
+                    if (reqCookies != null)
+                    {
+                        @Html.Raw(FX.Core.FXContextItems.HomePage.SiteSettings.TagManagerSnippet);
+                    }
+                }
+                else
+                {
+                    @Html.Raw(FX.Core.FXContextItems.HomePage.SiteSettings.TagManagerSnippet);
+                }
+            }
+            else
+            {
+                @Html.Raw(FX.Core.FXContextItems.HomePage.SiteSettings.TagManagerSnippet);
+            }
+        }
+        catch (Exception ex)
+        {
+
+        }
+    }
+
+    @Html.Partial("~/Views/FX/Shared/LinkData.cshtml", Sitecore.Context.Item)
+    @*@Html.Action("LinkData", "Shared")*@
+
+    @Html.Sitecore().Placeholder("headerPlaceholder")
+    @Html.Sitecore().Placeholder("mainPlaceholder")
+    @Html.Sitecore().Placeholder("footerPlaceholder")
+    @Html.Sitecore().Rendering(FX.Core.Keys.RenderingItems.CtaPanel, FX.Core.Utils.Util.DefaultRenderingCacheParameter)
+    @Html.Sitecore().Rendering(FX.Core.Keys.RenderingItems.Bottom, FX.Core.Utils.Util.DefaultRenderingCacheParameter)
+    @if (hasSiteSettings)
+    {
+        @Html.Partial("~/Views/FX/Component/ChatWindow.cshtml", FX.Core.FXContextItems.HomePage.SiteSettings)
+    }
+</body>
+</html>

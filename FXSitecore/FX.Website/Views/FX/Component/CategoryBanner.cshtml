@@ -1,0 +1,75 @@
+﻿@using Sitecore.Mvc
+@using FX.Core.GlassMapper
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Components.ICategoryBanner>
+@if (this.IsInEditingMode)
+{
+    <h2 style="text-align:center">[Category Banner component]</h2>
+    if (Model == null)
+    {
+        <p>No component datasource found</p>
+    }
+}
+@if (Model != null)
+{
+
+    <section class="m-picture-panel -ready js-top-panel-item">
+        @using (BeginRenderLink(Model, m => m.BannerLink, new { @class = "m-picture-panel__anchor" }, isEditable: true))
+        {
+            <div class="m-picture-panel__body">
+                <h2 class="m-picture-panel__headline l-container">
+                    <span class="m-picture-panel__title">@Editable(m => m.BannerTitle)</span>
+                    <span class="m-picture-panel__subtitle">@Editable(m => m.BannerDescription)</span>
+                </h2>
+                <ul class="m-picture-panel__list js-fade-image-root">
+                    @if (Model.ImageMobile1 != null)
+                    {
+
+                        <li class="m-picture-panel__list__element js-fade-image-item">
+                            <picture>
+                                <source media="(max-width: 767px)" srcset="@Model.ImageMobile1.Src">
+                                @RenderImage(Model, m => m.ImageDesktop1, isEditable: true)
+                            </picture>
+                        </li>
+                    }
+                    @if (Model.ImageMobile2 != null)
+                    {
+                        <li class="m-picture-panel__list__element js-fade-image-item">
+                            <picture>
+                                <source media="(max-width: 767px)" srcset="@Model.ImageMobile2.Src">
+                                @RenderImage(Model, m => m.ImageDesktop2, isEditable: true)
+                            </picture>
+                        </li>
+                    }
+                    @if (Model.ImageMobile3 != null)
+                    {
+                        <li class="m-picture-panel__list__element js-fade-image-item">
+                            <picture>
+                                <source media="(max-width: 767px)" srcset="@Model.ImageMobile3.Src">
+                                @RenderImage(Model, m => m.ImageDesktop3, isEditable: true)
+                            </picture>
+                        </li>
+                    }
+                    @if (Model.ImageMobile4 != null)
+                    {
+                        <li class="m-picture-panel__list__element js-fade-image-item">
+                            <picture>
+                                <source media="(max-width: 767px)" srcset="@Model.ImageMobile4.Src">
+                                @RenderImage(Model, m => m.ImageDesktop4, isEditable: true)
+                            </picture>
+                        </li>
+                    }
+                    @if (Model.ImageMobile5 != null)
+                    {
+                        <li class="m-picture-panel__list__element js-fade-image-item">
+                            <picture>
+                                <source media="(max-width: 767px)" srcset="@Model.ImageMobile5.Src">
+                                @RenderImage(Model, m => m.ImageDesktop5, isEditable: true)
+                            </picture>
+                        </li>
+                    }
+                </ul>
+            </div>
+        }
+    </section>
+
+}

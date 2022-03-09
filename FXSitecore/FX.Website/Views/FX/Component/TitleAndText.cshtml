@@ -1,0 +1,41 @@
+﻿@using FX.Core.Utils
+@using FX.Core.GlassMapper
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Components.TitleAndText.ITitleAndText>
+
+@{
+    bool hasContent = Model != null && Model.TextContent != null && Model.TextContent.Any(x => x.HasContent()) || this.IsInEditingMode;
+}
+@if (this.IsInEditingMode)
+{
+    <h2 style="text-align:center">[Title and  Text component]</h2>
+    if (Model == null)
+    {
+        <p>No component datasource found</p>
+    }
+}
+@if (hasContent)
+{
+	<section class="section">
+		@if (!string.IsNullOrEmpty(Model.SectionTitle) && Model.ShowInStickyTab)
+		{
+			<a id='content@(Model.Id.ToString("N"))' class="anchor-link" data-label="@Model.SectionTitle.Left(FX.Core.Constants.MaxLength.SectionTitle)"></a>
+		}
+        <h3>
+            @Editable(Model, x => x.SectionTitle)
+        </h3>
+		<div class="points">
+			<ul>
+				@foreach (var textContent in Model.TextContent)
+				{
+					<li class="match-height">
+						@if (!string.IsNullOrEmpty(textContent.Title))
+						{
+							<h3>@textContent.Title</h3>
+						}
+						@Editable(textContent, x => x.Text)
+					</li>
+				}
+			</ul>
+		</div>
+	</section>
+}

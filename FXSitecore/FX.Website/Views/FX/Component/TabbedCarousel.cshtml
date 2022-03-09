@@ -1,0 +1,116 @@
+﻿@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Components.ITabbedCarousel>
+@using FX.Core.Utils
+@{
+    bool firstTab = true;
+}
+@if (this.IsInEditingMode)
+{
+    <h2 style="text-align:center">[Tabbed Carousel Component]</h2>
+    if (Model == null)
+    {
+        <p>No component datasource found</p>
+    }
+}
+
+
+@if (Model != null)
+{
+<section class="section">
+    @if (!string.IsNullOrEmpty(Model.SectionTitle) && Model.ShowInStickyTab)
+    {
+        <a id='content@(Model.Id.ToString("N"))' class="anchor-link" data-label="@Model.SectionTitle.Left(FX.Core.Constants.MaxLength.SectionTitle)"></a>
+    }
+    <div class="tab-carousel">
+        <div class="tablet-desktop">
+            <div class="tab-wrapper">
+                <div class="tab-wrapper__tabs tab-carousel__tabs">
+                    <ul>
+                        @foreach (var tab in Model.Tabs)
+                        {
+                        <li @Html.Raw(firstTab ? "class='active'" : "")>
+                            @{ firstTab = false;}
+                            <a class="tab-controller" href="#@(new Sitecore.Data.ID(tab.Id).ToShortID())">@tab.Title</a>
+                        </li>
+                        }
+                    </ul>
+                </div>
+                <div class="tab-wrapper__contents tab-carousel__contents">
+                    @{firstTab = true;}
+                        @foreach (var tab in Model.Tabs)
+                        {
+                        <div @Html.Raw(firstTab ? "class='active'" : "") id="@(new Sitecore.Data.ID(tab.Id).ToShortID())">
+                            @{firstTab = false;}
+                            <div class="tabbed-carousel column-row">
+                                <div class="tabbed-carousel__dots"></div>
+                                <div class="tabbed-carousel__items">
+                                    @foreach (var item in tab.Items)
+                                    {
+                                        <div class="tabbed-carousel-item image-text-item">
+                                            @using (BeginRenderLink(item, x => x.Link))
+                                            {
+                                                if (item.Link == null || string.IsNullOrEmpty(item.Link.Url))
+                                                {
+                                                    @Html.Raw("<span>")
+                                                }
+                                                <div class="image-text-item__image">
+                                                    @RenderImage(item, x=> x.Image, isEditable:true, outputHeightWidth:false)
+                                                </div>
+                                                <div class="image-text-item__text">
+                                                    <p>@Editable(item,x=> x.Text)</p>
+                                                </div>
+                                                if (item.Link == null || string.IsNullOrEmpty(item.Link.Url))
+                                                {
+                                                    @Html.Raw("</span>")
+                                                }
+                                            }
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        }
+                </div>
+            </div>
+        </div>
+        <div class="mobile-only">
+        @foreach (var tab in Model.Tabs)
+        {
+            if (tab.Items.Any())
+            {
+            <div class="accordion tab-carousel__accordion">
+                <button class="accordion-controller" type="button">@tab.Title</button>
+                <div class="accordion__content">
+                    <div class="tabbed-carousel column-row">
+                        <div class="tabbed-carousel__dots"></div>
+                        <div class="tabbed-carousel__items">
+                            @foreach (var item in tab.Items)
+                            {
+                            <div class="tabbed-carousel-item image-text-item">
+                                @using (BeginRenderLink(item, x => x.Link))
+                                {
+                                    if (item.Link == null || string.IsNullOrEmpty(item.Link.Url))
+                                    {
+                                        @Html.Raw("<span>")
+                                    }
+                                    <div class="image-text-item__image">@RenderImage(item, x => x.Image, outputHeightWidth: false)</div>
+                                    <div class="image-text-item__text">
+                                        <p>@item.Text</p>
+                                    </div>
+                                    if (item.Link == null || string.IsNullOrEmpty(item.Link.Url))
+                                    {
+                                        @Html.Raw("</span>")
+                                    }
+
+                                }
+                            </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            }
+        }
+        </div>
+    </div>
+</section>
+}

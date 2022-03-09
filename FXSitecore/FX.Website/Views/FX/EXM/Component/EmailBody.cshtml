@@ -1,0 +1,68 @@
+﻿@using FX.Core.GlassMapper
+@using System.Web.Mvc.Html
+@using Sitecore.Mvc
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.EXM.EmailBody>
+
+<!-- START: 1 Column Layout-->
+<!--[if mso | IE]>
+<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="640" align="center" style="width: 640px;">
+<tr>
+<td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
+<![endif]-->
+<div style="margin: 0px auto; max-width: 640px; background-color: #ffffff;">
+    <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" bgcolor="#ffffff" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; background: #ffffff; border-collapse: collapse;" align="center">
+        <tbody>
+            <tr>
+                <td class="one-col-padding" width="100%" style="padding: 15px; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;border-collapse: collapse;">
+                    <table cellpadding="0" cellspacing="0" border="0" width="100%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;border-collapse: collapse;">
+                        <tbody>
+                            <tr>
+                                <th class="one-col-title" width="100%" style="color: #101010; cursor: auto; font-family: Arial, sans-serif; font-size: 18px; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse;" align="left">
+                                    <h1 style="display: block; margin: 0; text-align: left; color: #101010; font-weight: 700; font-size: 18px;">@Editable(Model, x => x.Heading)</h1>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td class="one-col-item-padding" width="100%" style="color: #101010; cursor: auto; font-family: Arial, sans-serif; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; padding-bottom: 15px;" align="left">
+
+                                    @if (IsInEditingMode)
+                                    {
+                                        @Editable(Model, x => x.Content)
+                                    }
+                                    else
+                                    {
+                                        <p>
+                                            @if (Request.QueryString["sc_pd_view"] == "1")
+                                            {
+                                                @Html.Raw(Model.Content.Replace("/sitecore/Unsubscribe.aspx", string.Format("/sitecore/RedirectUrlPage.aspx?ec_contact_id={0}&ec_message_id={1}&ec_url=/sitecore/Unsubscribe.aspx", Request.QueryString["ec_contact_id"], Request.QueryString["ec_message_id"])))
+                                            }
+                                            else
+                                            {
+                                                @Html.Raw(Model.Content)
+                                            }
+                                        </p>
+
+                                    }
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="one-col-item-padding" width="100%" style="color: #101010; cursor: auto; font-family: Arial, sans-serif; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse;" align="left">
+                                    <p class="one-col-item-link" style="display: block; margin: 0; text-align: left; color: #d92231; font-family: Arial, sans-serif;padding:0;">
+                                        @RenderLink(Model, m => m.Link, new System.Collections.Specialized.NameValueCollection { { "style", "color: #d92231; font-size: 12px; line-height: 16px; text-decoration: none;" } }, isEditable: true)
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+<!--[if mso | IE]>
+</td>
+</tr>
+</table>
+<![endif]-->
+<!-- END: 1 Column Layout-->

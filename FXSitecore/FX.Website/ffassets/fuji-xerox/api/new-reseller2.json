@@ -1,0 +1,78 @@
+[
+	{
+		"title": "Premier Partners",
+		"name": "Challenger @ Funan",
+		"address": "<p>109 North Bridge Road,</p><p>#06-00 Funan DigitaLife Mall</p><p>Singapore 179097</p>",
+		"contact": "6339-9008",
+		"fax": "6339-9008",
+		"email": "contact@me.com",
+		"webURL": "https://www.fujixerox.com.sg",
+		"otherInfo": "This is a shop.",
+		"lat": "37.3595704",
+		"long": "127.105399"
+	},
+	{
+		"title": "Premier Partners",
+		"name": "Challenger @ Tiong Bahru",
+		"address": "<p>302 Tiong Bahru Road,</p><p>#03-19 Tiong Bahru Plaza</p><p>Singapore 168732</p>",
+		"contact": "6376-5646",
+		"lat": "37.404",
+		"long": "127.305399"
+	},
+	{
+		"title": "Authorised Partners",
+		"name": "Pearlblue Tech Pte Ltd",
+		"address": "<p>10 Anson Road,</p><p>#18-17 International Plaza</p><p>Singapore 079903</p>",
+		"contact": "+65 90187110",
+		"lat": "37.574",
+		"long": "127.105399"
+	},
+	{
+		"title": "Premier Partners",
+		"name": "retail south Challenger @ Funan",
+		"address": "<p>109 North Bridge Road,</p><p>#06-00 Funan DigitaLife Mall</p><p>Singapore 179097</p>",
+		"contact": "6339-9008",
+		"lat": "37.3504",
+		"long": "127.125399"
+	},
+	{
+		"title": "Premier Partners",
+		"name": "retail south Challenger @ Funan",
+		"address": "<p>109 North Bridge Road,</p><p>#06-00 Funan DigitaLife Mall</p><p>Singapore 179097</p>",
+		"contact": "6339-9008",
+		"lat": "37.104",
+		"long": "127.02"
+	},
+	{
+		"title": "Dummy Text",
+		"name": "Dummy Text",
+		"address": "<p>10 Anson Road,</p><p>#18-17 International Plaza</p><p>Singapore 079903</p>",
+		"contact": "+65 90187110",
+		"lat": "37.315704",
+		"long": "127.135399"
+	},
+	{
+		"title": "Dummy Text",
+		"name": "Dummy Text2",
+		"address": "<p>10 Anson Road,</p><p>#18-17 International Plaza</p><p>Singapore 079903</p>",
+		"contact": "+65 90187110",
+		"lat": "37.295704",
+		"long": "127.05399"
+	},
+	{
+		"title": "Dummy Text",
+		"name": "retail east Dummy Text",
+		"address": "<p>10 Anson Road,</p><p>#18-17 International Plaza</p><p>Singapore 079903</p>",
+		"contact": "+65 90187110",
+		"lat": "37.2595704",
+		"long": "127.2399"
+	},
+	{
+		"title": "Dummy Text",
+		"name": "retail east Dummy Text2",
+		"address": "<p>10 Anson Road,</p><p>#18-17 International Plaza</p><p>Singapore 079903</p>",
+		"contact": "+65 90187110",
+		"lat": "37.3095704",
+		"long": "127.005399"
+	}
+]

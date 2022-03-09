@@ -1,0 +1,52 @@
+﻿@using FX.Core
+@using FX.Core.Utils
+@using Sitecore.Data.Items
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Components.ICareerApplyNow>
+
+@{
+    var item = this.ContextItem;
+    string css = "";
+    
+    if (item.TemplateID.ToString().Equals(Templates.CareerDetailPage.Id))
+    {
+        css = "col-sm-8 center";
+    }
+
+    string applyNowLink = "#";
+    if (Model.ApplyNowLink != null)
+    {
+        applyNowLink = Model.ApplyNowLink.Url;
+    }
+
+    string viewAllJobsLink = "#";
+    if (Model.ViewAllJobsLink != null)
+    {
+        viewAllJobsLink = Model.ViewAllJobsLink.Url;
+    }
+}
+
+@if (this.IsInEditingMode)
+{
+    <h2 style="text-align:center">[Career Apply Now component]</h2>
+    if (Model == null)
+    {
+        <p>No component datasource found</p>
+    }
+}
+<section class="section career-detail-requirement">
+    @if (Model != null && !string.IsNullOrEmpty(Model.SectionTitle))
+    {
+        if (Model.ShowInStickyTab)
+        {
+            <a id='content@(Model.Id.ToString("N"))' class="anchor-link" data-label="@Model.SectionTitle.Left(FX.Core.Constants.MaxLength.SectionTitle)"></a>
+        }
+    }
+    <h2>@Editable(Model, x => x.SectionTitle)</h2>
+    @Editable(Model, i => i.MainContent)
+</section>
+<section class="section career-details-actions">
+    <a class="button button--inverse" href="@viewAllJobsLink">@Editable(Model, x => x.ViewAllJobsLabel)</a>
+    <a class="button" href="@applyNowLink">@Editable(Model, x => x.ApplyNowLabel)</a>
+</section>
+
+

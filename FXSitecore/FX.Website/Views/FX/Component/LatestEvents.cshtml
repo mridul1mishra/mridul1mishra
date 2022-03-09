@@ -1,0 +1,110 @@
+﻿@using Sitecore.Mvc
+@using System.Linq
+@using FX.Core.Utils
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Website.Models.Components.LatestEventsViewModel>
+
+@{
+    bool hasEventLinks = Model.Events.Any();
+}
+
+@functions
+{
+    public bool ShowEvent(DateTime startDate, DateTime endDate)
+    {
+        //if there is an end date
+        if (endDate > DateTime.MinValue.ToLocalTime())
+        {
+            // end date has passed
+            if (endDate < DateTime.Now)
+                return false;
+        }
+        // no end date, use start date to determine
+        else if (startDate < DateTime.Now)
+        {
+            return false;
+        }
+
+        return true;
+    }
+}
+
+@helper RenderDate(DateTime startDate, DateTime endDate)
+{
+if (startDate != DateTime.MinValue.ToUniversalTime())
+{
+    var siteSettings = FX.Core.FXContextItems.HomePage.SiteSettings;
+    string output = "";
+
+    output = startDate.ToString(siteSettings.DayMonthYearFormat);
+    if (endDate != DateTime.MinValue.ToUniversalTime())
+    {
+
+        if (startDate.Month == endDate.Month)
+        {
+            output = startDate.ToString(siteSettings.DateRangeStartFormat) + " - " + endDate.ToString(siteSettings.DateRangeEndFormat);
+        }
+        else if (startDate.Year != endDate.Year)
+        {
+            output = startDate.ToString(siteSettings.DayMonthYearFormat) + " - " + endDate.ToString(siteSettings.DateRangeEndFormat);
+        }
+        else
+        {
+            output = startDate.ToString(siteSettings.DateRangeStartFormat) + " - " + endDate.ToString(siteSettings.DateRangeEndFormat);
+        }
+
+    }
+
+    @Html.Raw(output)
+}
+else
+{
+        <span class="date">
+            TBD
+        </span>
+}
+}
+
+@if (this.IsInEditingMode)
+{
+    <h2 style="text-align:center">[@FXGlassView.GetComponentName()]</h2>
+}
+
+@if (!string.IsNullOrEmpty(Model.SitecoreModel.ListingTitle))
+{
+    <h2>@Editable(Model, x => x.SitecoreModel.ListingTitle, x => x.SitecoreModel.ListingTitle.Left(FX.Core.Constants.MaxLength.AccordionTitle))</h2>
+}
+
+@if (hasEventLinks)
+{
+    <ul>
+        @foreach (var item in Model.Events)
+        {
+            if (ShowEvent(item.EventStartDate, item.EventEndDate))
+            {
+                <li class="list-text">
+                    <span class="list-text date">
+                        @RenderDate(item.EventStartDate, item.EventEndDate)
+                    </span>
+                    <h3 class="list-text">
+                        <a href="@item.EventUrl">@item.EventTitle.Left(FX.Core.Constants.MaxLength.Title)</a>
+                    </h3>
+                </li>
+            }
+        }
+    </ul>
+}
+
+@if (this.IsInEditingMode || !hasEventLinks)
+{
+    <p>@Editable(Model, x => x.SitecoreModel.EmptyListingText)</p>
+}
+
+@if (FXGlassView.IsFieldVisible(this.IsInEditingMode, Model.SitecoreModel.ListingSource))
+{
+    <div class="more-link">
+        @using (BeginRenderLink(Model, x => x.SitecoreModel.ListingSource, isEditable: true))
+        {
+            @Editable(Model, x => x.SitecoreModel.ListingLinkText)
+        }
+    </div>
+}

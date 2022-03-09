@@ -1,0 +1,33 @@
+﻿@using FX.Core.Utils
+@using FX.Core.GlassMapper
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Components.ITestimonyBox>
+
+@if (this.IsInEditingMode)
+{
+    <h2 style="text-align:center">[Testimonial Box component]</h2>
+    if (Model == null)
+    {
+        <p>No component datasource found</p>
+    }
+}
+
+@if (Model != null || this.IsInEditingMode)
+{
+<section class="section">
+    @if (Model.ShowInStickyTab)
+    {
+    <a id='content@(Model.Id.ToString("N"))' class="anchor-link" data-label="@Model.SectionTitle.Left(FX.Core.Constants.MaxLength.SectionTitle)"></a>
+    }
+    <div class="testimonial">
+        <div class="testimonial__image">
+            @Editable(Model, m => m.TestimonyImage)
+            <p>@Editable(Model, m => m.TestimonyFooter)</p>
+        </div>
+        <div class="testimonial__text">
+            <div class="rte">
+                <p>@Editable(Model, m => m.TestimonyContent)</p>
+            </div>
+        </div>
+    </div>
+</section>
+}

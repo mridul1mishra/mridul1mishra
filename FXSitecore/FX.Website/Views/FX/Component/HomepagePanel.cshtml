@@ -1,0 +1,101 @@
+﻿@using Sitecore.Mvc
+@using FX.Core.GlassMapper
+@using FX.Core.Utils
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Components.HomepagePanelModel>
+
+@if (this.IsInEditingMode)
+{
+    <h2 style="text-align:center">[Homepage Panel component]</h2>
+    if (Model == null)
+    {
+        <p>No component datasource found</p>
+    }
+}
+
+<div class="m-heading-3 mt-3">
+    <h3 class="m-heading-3__title w-100 text-center typesquare_option">@Editable(Model, x => x.SectionTitle)</h3>
+</div>
+<div class="m-banner m-banner--style_3column">
+    <div class="m-slider js-slider-root" data-js-slider-col="3">
+        <div class="m-slider__body row js-slider-body d-flex">
+            @if (Util.HasValidImage(Model.ImageOne))
+            {
+                <div class="m-slider__item col col-md-4 col-sm-12 js-slider-item">
+                    @using (BeginRenderLink(Model, x => x.UrlOne, isEditable: true))
+                    {
+                        <span class="image-hdg">@Editable(Model, x => x.TitleOne)</span>
+                        @RenderImage(Model, x => x.ImageOne, isEditable: true)
+                    }
+                </div>
+            }
+            @if (Util.HasValidImage(Model.ImageTwo))
+            {
+                <div class="m-slider__item col col-md-4 col-sm-12 js-slider-item">
+                    @using (BeginRenderLink(Model, x => x.UrlTwo, isEditable: true))
+                    {
+                        <span class="image-hdg">@Editable(Model, x => x.TitleTwo)</span>
+                        @RenderImage(Model, x => x.ImageTwo, isEditable: true)
+                    }
+                </div>
+            }
+            @if (Util.HasValidImage(Model.ImageThree))
+            {
+                <div class="m-slider__item col col-md-4 col-sm-12 js-slider-item">
+                    @using (BeginRenderLink(Model, x => x.UrlThree, isEditable: true))
+                    {
+                        <span class="image-hdg">@Editable(Model, x => x.TitleThree)</span>
+                        @RenderImage(Model, x => x.ImageThree, isEditable: true)
+                    }
+                </div>
+            }
+            @if (Util.HasValidImage(Model.ImageFour))
+            {
+                <div class="m-slider__item col col-md-4 col-sm-12 js-slider-item">
+                    @using (BeginRenderLink(Model, x => x.UrlFour, isEditable: true))
+                    {
+                        <span class="image-hdg">@Editable(Model, x => x.TitleFour)</span>
+                        @RenderImage(Model, x => x.ImageFour, isEditable: true)
+                    }
+                </div>
+            }
+            @if (Util.HasValidImage(Model.ImageFive))
+            {
+                <div class="m-slider__item col col-md-4 col-sm-12 js-slider-item">
+                    @using (BeginRenderLink(Model, x => x.UrlFive, isEditable: true))
+                    {
+                        <span class="image-hdg">@Editable(Model, x => x.TitleFive)</span>
+                        @RenderImage(Model, x => x.ImageFive, isEditable: true)
+                    }
+                </div>
+            }
+            @if (Util.HasValidImage(Model.ImageSix))
+            {
+                <div class="m-slider__item col col-md-4 col-sm-12 js-slider-item">
+                    @using (BeginRenderLink(Model, x => x.UrlSix, isEditable: true))
+                    {
+                        <span class="image-hdg">@Editable(Model, x => x.TitleSix)</span>
+                        @RenderImage(Model, x => x.ImageSix, isEditable: true)
+                    }
+                </div>
+            }
+
+        </div>
+
+        <div class="m-slider__ui js-slider-ui">
+            <button class="m-slider__prev js-slider-prev">
+                <span class="m-slider__prev-text">
+                    Show the previous
+                    slide
+                </span>
+            </button>
+            <div class="m-slider__bullets js-slider-bullets">
+            </div>
+            <button class="m-slider__next js-slider-next">
+                <span class="m-slider__next-text">
+                    Show the next
+                    slide
+                </span>
+            </button>
+        </div>
+    </div>
+</div>

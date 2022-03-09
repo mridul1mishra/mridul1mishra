@@ -1,0 +1,71 @@
+﻿@using Sitecore.Mvc
+@using FX.Core.GlassMapper
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Components.ICarousel>
+
+@{
+    bool hasCarouselItem1 = false;
+    bool hasCarouselItem2 = false;
+    bool hasCarouselItem3 = false;
+    bool hasCarouselItem4 = false;
+
+    if (Model != null) {
+        hasCarouselItem1 = FX.Core.Utils.Util.HasValidCarouselItem(Model.CarouselImage1, Model.CarouselMobileImage1, Model.CarouselLink1);
+        hasCarouselItem2 = FX.Core.Utils.Util.HasValidCarouselItem(Model.CarouselImage2, Model.CarouselMobileImage2, Model.CarouselLink2);
+        hasCarouselItem3 = FX.Core.Utils.Util.HasValidCarouselItem(Model.CarouselImage3, Model.CarouselMobileImage3, Model.CarouselLink3);
+        hasCarouselItem4 = FX.Core.Utils.Util.HasValidCarouselItem(Model.CarouselImage4, Model.CarouselMobileImage4, Model.CarouselLink4);
+    }
+}
+
+@if (hasCarouselItem1 || hasCarouselItem2 || hasCarouselItem3 || hasCarouselItem4 || this.IsInEditingMode)
+{
+	<!-- Homepage Carousel -->
+	<div class="home-carousel wingspan" data-carousel-interval="@Model.GetCarouselTimer()">
+		<div class="slider-widget">
+			<div class="slider">
+				@if (hasCarouselItem1)
+				{
+					<div class="slide" data-mobile-banner="@Model.CarouselMobileImage1.Src">
+						@using (BeginRenderLink(Model, m => m.CarouselLink1))
+						{
+							@RenderImage(Model, m => m.CarouselImage1)
+						}
+					</div>
+				}
+				@if (hasCarouselItem2)
+				{
+					<div class="slide" data-mobile-banner="@Model.CarouselMobileImage2.Src">
+						@using (BeginRenderLink(Model, m => m.CarouselLink2))
+						{
+							@RenderImage(Model, m => m.CarouselImage2)
+						}
+					</div>
+				}
+				@if (hasCarouselItem3)
+				{
+					<div class="slide" data-mobile-banner="@Model.CarouselMobileImage3.Src">
+						@using (BeginRenderLink(Model, m => m.CarouselLink3))
+						{
+							@RenderImage(Model, m => m.CarouselImage3)
+						}
+					</div>
+				}
+				@if (hasCarouselItem4)
+				{
+					<div class="slide" data-mobile-banner="@Model.CarouselMobileImage4.Src">
+						@using (BeginRenderLink(Model, m => m.CarouselLink4))
+						{
+							@RenderImage(Model, m => m.CarouselImage4)
+						}
+					</div>
+				}
+			</div>
+
+			<div class="slider-custom-control visible-md-block visible-lg-block">
+				<div class="slider-custom-control__play-toggle autoplay">
+					<a href="#"><span class="icon icon-controller-paus"></span></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Homepage Carousel -->
+}

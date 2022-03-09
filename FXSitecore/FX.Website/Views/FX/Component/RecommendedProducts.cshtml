@@ -1,0 +1,37 @@
+﻿@using FX.Core.GlassMapper
+@using FX.Core.Utils
+@using Sitecore.Data.Items
+@using FX.Core.Models.Base;
+@using Newtonsoft.Json;
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Components.IRecommendedProducts>
+
+@{
+    bool hasContent = false;
+    string recommendedProducts = string.Empty;
+    if (Model != null && Model.Products!=null)
+    {
+        var products = Model.Products;
+        hasContent = products.Count() > 0;
+        if (products != null && products.Count() > 0)
+        { 
+        var productIDs = from p in products
+                         select new
+                         {
+                             id = new Sitecore.Data.ID(p.Id).ToShortID().ToString()
+                         };
+        recommendedProducts = JsonConvert.SerializeObject(productIDs);
+            }
+    }
+        
+}
+
+@if (this.IsInEditingMode)
+{
+    <h2 style="text-align:center">[@FXGlassView.GetComponentName()]</h2>
+}
+
+
+<script>
+     @Html.Raw(!string.IsNullOrEmpty(recommendedProducts) ? "var recommendedProducts = " + recommendedProducts + ";" : "")
+
+</script>

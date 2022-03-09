@@ -1,0 +1,14 @@
+﻿@using Sitecore.Mvc
+@using System.Web.Mvc.Html
+@model AD.Alipay.Models.AlipaySubmitModel
+
+<div class="main-content" style='position: absolute !important; top: -9999px !important;left: -9999px !important;'>
+    <div class="layout-main">
+        <section class="section">
+            <div class="alipay-form">
+                @Html.Raw(Model.HTML_Snippet)
+            </div>
+        </section>
+    </div>
+</div>
+

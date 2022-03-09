@@ -1,0 +1,40 @@
+﻿@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Microsite.Components.IIntroduction>
+@if (this.IsInEditingMode)
+{
+    <h2 style="text-align:center">[Introduction component]</h2>
+    if (Model == null)
+    {
+        <p>No component datasource found</p>
+    }
+}
+
+@if (Model != null)
+{
+    <section class="padtop75">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    @if (!string.IsNullOrEmpty(Model.Title) || this.IsInEditingMode)
+                {
+                        <h3 class="subheading">@Editable(Model, m => m.Title)</h3>
+                    }
+                    @Editable(Model, m => m.Text)
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END INTRO PAGE -->
+
+    if (!Model.HideBar)
+    {
+        <!-- HORIZONTAL LINE -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <hr>
+                </div>
+            </div>
+        </div>
+        <!-- END HORIZONTAL LINE -->
+    }
+}

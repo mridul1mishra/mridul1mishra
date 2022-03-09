@@ -1,0 +1,19 @@
+﻿@using FX.Core.Models.Base
+@using FX.Core.Utils
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<INavigation>
+
+@{
+    string homeLabel = FX.Core.FXContextItems.HomePage.SiteSettings!=null && !string.IsNullOrEmpty(FX.Core.FXContextItems.HomePage.SiteSettings.HomeBreadcrumbLabel) ? FX.Core.FXContextItems.HomePage.SiteSettings.HomeBreadcrumbLabel : "Home";
+}
+<!-- Breadcrumb -->
+<div class="breadcrumb">
+	<ul>
+		<li><a href="@FX.Core.FXContextItems.HomePage.Url">@homeLabel</a></li>
+		@foreach (var breadcrumb in Model.GetBreadcrumbs())
+		{
+			<li><a href="@breadcrumb.URL()"><span>@breadcrumb.NavigationTitle.Left(FX.Core.Constants.MaxLength.Title)</span></a></li>
+		}
+		<li><span>@Model.NavigationTitle.Left(FX.Core.Constants.MaxLength.Title)</span></li>
+	</ul>
+</div>
+<!-- End: Breadcrumb -->

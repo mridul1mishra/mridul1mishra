@@ -1,0 +1,59 @@
+﻿@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Microsite.Components.Carousel.ICarousel>
+@using FX.Core.GlassMapper
+
+@{
+    bool hasContent = Model != null && Model.CarouselItems != null || Model != null && this.IsInEditingMode;
+}
+
+@if (this.IsInEditingMode)
+{
+    <h2 style="text-align:center">[Microsite Carousel component]</h2>
+    if (Model == null)
+    {
+        <p>No component datasource found</p>
+    }
+}
+
+@if (hasContent) {
+<!-- SLIDER -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+
+                <div class="carousel-inner" role="listbox">
+                    @{bool first = true;}
+                    @foreach (var carousel in Model.CarouselItems)
+                    {
+                        <div class="item @(first ? "active" : "")">
+                            @RenderImage(carousel, m => m.Image, new { @data_object_fit = "cover"}, isEditable: true)
+                            @*@RenderImage(carousel, m => m.Image, isEditable: true)*@
+                            <div class="carousel-caption">
+                                <h3>@Editable(carousel, m => m.Title)</h3>
+                                <p>
+                                    @Editable(carousel, m => m.Description)
+                                </p>
+                                @using (BeginRenderLink(carousel, m => m.Link))
+                                {
+                                    @Editable(carousel, m => m.LinkText)
+                                    <i class="fa fa-angle-right"></i>
+                                }
+                            </div>
+                        </div>
+                        first = false;
+                    }
+                </div>
+
+                <!-- Controls -->
+                <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                    <img src="/assets/microsite/img/arrow-left-icon.svg" class="svg-img svg-slider-control">
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                    <img src="/assets/microsite/img/arrow-right-icon.svg" class="svg-img svg-slider-control">
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END SLIDER -->
+}

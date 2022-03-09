@@ -1,0 +1,206 @@
+{
+	"categories" : [
+		{
+			"thumbnail" : "/images/solutions/box-1.png",
+			"title"     : "Office Solutions",
+			"url"		: "/solutions-and-services/office-solutions",
+			"description" : "Increase the office productivity with all-in-one-go solutions and software",
+			"results": [
+				{
+					"title" : "Print Management Solutions",
+					"url"	: "/solutions-and-services/office-solutions/print-management-solutions/",
+					"new"	: 1
+				},
+				{
+					"title" : "Document Security Solutions",
+					"url"	: "#",
+					"new"	: 0
+				},
+				{
+					"title" : "Office Automation Solutions",
+					"url"	: "/solutions-and-services/office-solutions/office-automation-solutions/",
+					"new"	: 0
+				},
+				{
+					"title" : "Content Management Solutions",
+					"url"	: "#",
+					"new"	: 0
+				},
+				{
+					"title" : "Cloud & Mobility Solutions",
+					"url"	: "#",
+					"new"	: 0
+				},
+				{
+					"title"	: "Device Remote Support Services",
+					"url"	: "#",
+					"new"	: 0
+				}
+			]
+		},
+		{
+			"thumbnail" : "/images/solutions/box-2.png",
+			"title"     : "Production Solutions",
+			"url"		: "/solutions-and-services/production-solutions",
+			"description" : "Automate your daily operations and optimise printing investment",
+			"results": [
+				{
+					"title" : "Customer Communication Management (CCM) Solutions",
+					"url"	: "/solutions-and-services/production-solutions/customer-communication-management",
+					"new"	: 1
+				},
+				{
+					"title" : "Print Workflow Automation",
+					"url"	: "#",
+					"new"	: 0
+				},
+				{
+					"title" : "Color Management Solutions & Services",
+					"url"	: "#",
+					"new"	: 0
+				},
+				{
+					"title" : "Print Management Information Systems (MIS)",
+					"url"	: "/solutions-and-services/production-solutions/print-management-information-systems",
+					"new"	: 0
+				},
+				{
+					"title"	: "Packaging Solutions",
+					"url"	: "#",
+					"new"	: 0
+				},
+				{
+					"title"	: "Business Development Consultancy Services",
+					"url"	: "#",
+					"new"	: 0
+				}
+			]
+		},
+		{
+			"thumbnail" : "/images/solutions/box-3.png",
+			"title"     : "Enterprise Solutions",
+			"url"		: "/solutions-and-services/enterprise-solutions",
+			"description" : "A team of consultants and solution architects help you to accelerate your growth and increase your revenue.",
+			"results": [
+				{
+					"title" : "Business Process Management (BPM)",
+					"url"	: "#",
+					"new"	: 1
+				},
+				{
+					"title" : "Enterprise Content Management (ECM)",
+					"url"	: "#",
+					"new"	: 1
+				},
+				{
+					"title" : "Knowledge Management Solutions",
+					"url"	: "#",
+					"new"	: 0
+				},
+				{
+					"title" : "Enterprise Collaboration Solutions",
+					"url"	: "#",
+					"new"	: 0
+				},
+				{
+					"title" : "Infrastructure Solutions",
+					"url"	: "#",
+					"new"	: 0
+				},
+				{
+					"title" : "System Integration Services",
+					"url"	: "#",
+					"new"	: 0
+				},
+				{
+					"title" : "IT Services",
+					"url"	: "/solutions-and-services/enterprise-solutions/it-services/",
+					"new"	: 0
+				}
+			]
+		},
+		{
+			"thumbnail" : "/images/solutions/box-4.png",
+			"title"     : "Global Services",
+			"url"		: "/solutions-and-services/global-services",
+			"description" : "Your Document Outsourcing Services Partner",
+			"results": [
+				{
+					"title" : "Managed Document/Print Services",
+					"url"	: "#",
+					"new"	: 0
+				},
+				{
+					"title" : "Marketing Communications Services",
+					"url"	: "/solutions-and-services/global-services/marketing-communication-services/",
+					"new"	: 0
+				},
+				{
+					"title" : "Imaging & Document Management Services",
+					"url"	: "#",
+					"new"	: 0
+				},
+				{
+					"title" : "Short-term Rental",
+					"url"	: "#",
+					"new"	: 0
+				}
+			]
+		},
+		{
+			"thumbnail" : "/images/solutions/box-5.png",
+			"title"     : "Commercial Financing Solution Services",
+			"url"		: "/solutions-and-services/commercial-financing-solution-services/",
+			"description" : "Full suite of financial solutions bring convenience and financial support to our corporate customers.",
+			"results": []
+		},
+		{
+			"thumbnail" : "/images/solutions/box-6.png",
+			"title"     : "Industries",
+			"url"		: "#",
+			"description" : "Solutions that are tailor-made to meet individual industry's unique needs and requirements.",
+			"results": [
+				{
+					"title" : "Aerospace",
+					"url"	: "#",
+					"new"	: 1
+				},
+				{
+					"title" : "Architecture, Enginerring, and Construction",
+					"url"	: "#",
+					"new"	: 0
+				},
+				{
+					"title" : "Education",
+					"url"	: "#",
+					"new"	: 0
+				},
+				{
+					"title" : "Finance",
+					"url"	: "#",
+					"new"	: 0
+				},
+				{
+					"title" : "Government",
+					"url"	: "#",
+					"new"	: 0
+				},
+				{
+					"title" : "Healthcare",
+					"url"	: "#",
+					"new"	: 0
+				},
+				{
+					"title" : "Insurance",
+					"url"	: "#",
+					"new"	: 0
+				},
+				{
+					"title" : "Logistics",
+					"url"	: "#",
+					"new"	: 0
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,223 @@
+﻿@using Sitecore.Mvc
+@using System.Web.Mvc.Html
+@using FX.Core.Models.Page
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Page.INewResellerLocator>
+
+<div class="main-content">
+    @Html.Sitecore().Rendering(FX.Core.Keys.RenderingItems.Breadcrumb, FX.Core.Utils.Util.DefaultRenderingCacheParameter)
+    <section class="section">
+        <div class="reseller-locator @Html.Raw(Model.MapClass())" data-endpoint="/api/GetResellers">
+            <h2>@Model.MainTitle</h2>
+            <div class="reseller-locator__filters">
+                <div class="input-group-select" id="province">
+                    <label for="province">@Model.ProvinceLabel</label>
+                    <select id="provinceFilter" name="province">
+                        <option value="">@Model.SelectAProvinceLabel</option>
+                        @foreach (var province in Model.Provinces)
+                        {
+                            <option value="@province.SitecoreID.ToShortID().ToString()">@province.ProvinceName</option>
+                        }
+                    </select>
+                    <div class="error-msg">@Model.SelectAProvinceError</div>
+                </div>
+                <div class="input-group-select" id="city" data-label="@Model.SelectACityLabel">
+                    <label for="city">@Model.CityLabel</label>
+                    <select id="cityFilter" name="city">
+                        <option value="">@Model.SelectACityLabel</option>
+                    </select>
+                    <div class="error-msg">@Model.SelectACityError</div>
+                </div>
+                @if (!Model.HideResellerType)
+                {
+                    <div class="input-group-select" id="reseller">
+                        <label for="reseller">@Model.ResellerTypeLabel</label>
+                        <select id="resellerFilter" name="reseller">
+                            <option value="">@Model.SelectAResellerTypeLabel</option>
+                            @foreach (var resellerType in Model.GetResellerTypes())
+                            {
+                                <option value="@resellerType.SitecoreID.ToShortID().ToString()">@resellerType.ResellerType</option>
+                            }
+                        </select>
+                        <div class="error-msg">@Model.SelectAResellerTypeError</div>
+                    </div>
+                }
+                <div class="input-group-select" id="category">
+                    <label for="category">@Model.ProductCategoryLabel</label>
+                    <select id="categoryFilter" name="category">
+                        <option value="">@Model.SelectAProductCategoryLabel</option>
+                        @foreach (var category in Model.GetProductCategories())
+                        {
+                            <option value="@category.SitecoreID.ToShortID().ToString()">@category.CategoryName</option>
+                        }
+                    </select>
+                    <div class="error-msg">@Model.SelectAProductCategoryError</div>
+                </div>
+                <div class="input-group-select" id="product" data-label="@Model.SelectAProductLabel">
+                    <label for="product">@Model.ProductNameLabel</label>
+                    <select id="productFilter" name="product">
+                        <option value="">@Model.SelectAProductLabel</option>
+                    </select>
+                    <div class="error-msg">@Model.SelectAProductError</div>
+                </div>
+                <div class="input-group-select" id="dealer">
+                    <label for="dealer">@Model.DealerLabel</label>
+                    <input id="dealerSearch" name="dealer">
+                    <div class="error-msg">@Model.DealerError</div>
+                </div>
+                <div class="reseller-locator__filters__controls">
+                    <button class="btn-clear-filter btn-reseller-search">@Model.SearchLabel</button>
+                </div>
+            </div>
+            <div class="reseller-map hide">
+                @Html.Raw(Model.ResultsLabel.Replace("[COUNT]", "<span class=\"resellers-count\"></span>"))
+                <a class="switch-view" href="#">@Model.SwitchViewLabel</a>
+                @if (!Model.HideMap)
+                {
+                    <div id="resellerMap"></div>
+                }
+            </div>
+            <div class="reseller-partners">
+                <div class="reseller-partners--legend">
+                    <p>@Model.MedalLegendLabel</p>
+                    @if (Model.MedalFolder.Any())
+                    {
+                        <ul>
+
+                            @foreach (var medal in Model.MedalFolder.FirstOrDefault().Medals)
+                            {
+                                if (medal.Icon != null)
+                                {
+                                    <li>
+                                        <img src="@medal.Icon.Src" alt=""><span>@medal.Text</span>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    }
+                </div>
+                <div class="reseller-partners--content"></div>
+                <div class="reseller-partners--list hide"></div>
+            </div>
+            <script id="resellerlist-template" type="text/x-dot-template">
+                <table>
+                    <tbody>
+                        <tr>
+                            <th style="width: 235px;">@Model.ResellerNameLabel</th>
+                            <th style="width: 400px;">@Model.AddressLabel</th>
+                            <th style="width: 180px;">@Model.ContactLabel</th>
+                        </tr>
+                        {{~it :locatorlist}}
+                        <tr>
+                            {{? locatorlist.medal}}
+                            <td class="has-medal">
+                                <img class="medal" src="{{!locatorlist.medal}}" alt="">
+                                <span>{{!locatorlist.name}}</span>
+                            </td>
+                            {{??}}
+                            <td>
+                                {{!locatorlist.name}}
+                            </td>
+                            {{?}}
+                            <td>{{=locatorlist.address}}</td>
+                            <td style="text-align: center;">
+                                {{!locatorlist.contact}}
+                                {{? locatorlist.contact && locatorlist.fax}}
+                                /
+                                {{?}}
+                                {{? locatorlist.fax}}
+                                {{!locatorlist.fax}}
+                                {{?}}
+                            </td>
+                        </tr>
+                        {{~}}
+                    </tbody>
+                </table>
+            </script>
+            <script id="reseller-template" type="text/x-dot-template">
+                {{~it :locator}}
+                <div class="partner-item row-col-12">
+                    <div class="partner-item__text col-md-4">
+                        <h3>
+                            {{? locator.medal}}
+                            <img class="medal" src="{{!locator.medal}}" alt="">
+                            {{?}}
+                            {{!locator.name}}
+                        </h3>
+                        {{? locator.address}}
+                        <div class="partner-item__detail address">
+                            <span class="label">@Model.AddressLabel: </span>
+                            <div class="padded partner-item__detail--text">
+                                {{= locator.address}}
+                            </div>
+                        </div>
+                        {{?}}
+                        {{? locator.contact}}
+                        <div class="partner-item__detail contact">
+                            <span class="label">@Model.ContactLabel: </span>
+                            <div class="padded partner-item__detail--text">
+                                <p>{{!locator.contact}}</p>
+                            </div>
+                        </div>
+                        {{?}}
+                        {{? locator.fax}}
+                        <div class="partner-item__detail fax">
+                            <span class="label">@Model.FaxLabel: </span>
+                            <div class="padded-fax partner-item__detail--text">
+                                <p>{{!locator.fax}}</p>
+                            </div>
+                        </div>
+                        {{?}}
+                        {{? locator.email}}
+                        <div class="partner-item__detail email">
+                            <span class="label">@Model.EmailLabel: </span>
+                            <div class="padded partner-item__detail--text">
+                                <p>{{!locator.email}}</p>
+                            </div>
+                        </div>
+                        {{?}}
+                        {{? locator.webURL}}
+                        <div class="partner-item__detail web">
+                            <span class="label">@Model.WebsiteLabel: </span>
+                            <div class="padded partner-item__detail--text">
+                                <p><a href="{{!locator.webURL}}" target="_blank">{{!locator.webURL}}</a></p>
+                            </div>
+                        </div>
+                        {{?}}
+                        {{? locator.otherInfo}}
+                        <div class="partner-item__detail other-info">
+                            <span class="label">@Model.OtherInfoLabel: </span>
+                            <div class="padded partner-item__detail--text">
+                                <p>{{!locator.otherInfo}}</p>
+                            </div>
+                        </div>
+                        {{?}}
+                        <div>
+                            <a class="btn-map-show" data-lat="{{!locator.lat}}" data-long="{{!locator.long}}" href="#">@Model.ShowOnMapLabel</a>
+                        </div>
+                        {{? locator.formURL}}
+                        <div>
+                            <a class="button" href="{{!locator.formURL}}" target="_blank">@Model.RequestAQuoteLabel</a>
+                        </div>
+                        {{?}}
+                    </div>
+                </div>
+                {{~}}
+            </script>
+        </div>
+    </section>
+    @Html.Raw(Model.MapTypeSnippet())
+    <script id="provinceData" type="application/json">
+        {
+        "province":
+        @Html.Raw(Model.GetProvinces())
+
+        }
+    </script>
+    <script id="productData" type="application/json">
+        {
+        "product":
+        @Html.Raw(Model.GetProducts())
+
+        }
+    </script>
+</div>

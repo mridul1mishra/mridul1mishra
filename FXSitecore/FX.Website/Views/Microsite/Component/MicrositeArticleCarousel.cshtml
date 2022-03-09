@@ -1,0 +1,44 @@
+﻿@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Microsite.Components.MicrositeArticleCarousel.IMicrositeArticleCarousel>
+@if (this.IsInEditingMode)
+{
+    <h2 style="text-align:center">[Microsite Article Carousel component]</h2>
+    if (Model == null)
+    {
+        <p>No component datasource found</p>
+    }
+}
+@if (Model != null)
+{
+<section class="padtop0">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-xs-12">
+                <h3 class="pull-left">@Model.Title</h3>
+                @if (Model.Articles.Count() > 4)
+                {
+                    <div class="control-carousel pull-right">
+                        <span class="customPrevBtn custom-btn"><i class="fa fa-angle-left"></i></span>
+                        <span class="customNextBtn custom-btn"><i class="fa fa-angle-right"></i></span>
+                    </div>
+                }
+
+                <span class="clearfix"></span>
+
+                <div class="article-carousel res-carousel">
+                    @foreach (var article in Model.Articles)
+                    {
+                    <div class="item">
+                        @RenderImage(article, m => m.TeaserImage, new { @data_object_fit = "cover", style = "margin-bottom:15px;", @class = "full-width of-image video-thumb" })
+                        <h4 class="article-title">@article.TeaserTitle</h4>
+                        <p class="car-caption">
+                            @article.TeaserDescription
+                        </p>
+                        <a href="@article.Url">Read More</a>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+}

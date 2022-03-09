@@ -1,0 +1,247 @@
+﻿@using FX.Core.GlassMapper
+@using System.Web.Mvc.Html
+@using Sitecore.Mvc
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.EXM.Footer>
+
+<table class="email-table" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#d9d9d6" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse;">
+    <tbody>
+        <tr>
+            <td align="center" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse;">
+                <div class="wrapper">
+                    <!-- START: Email Footer-->
+                    <!--[if mso | IE]>
+                    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="640" align="center" style="width:640px;">
+                    <tr>
+                    <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
+                    <![endif]-->
+                    <div style="margin: 0px auto; max-width: 640px; background-color: #ebebeb;">
+                        <table width="100%" role="presentation" cellpadding="0" cellspacing="0" style="border-collapse: collapse; font-size: 0px; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" align="left" border="0">
+                            <tbody>
+                                <tr>
+                                    <td width="100%" colspan="8" style="width: 100%; border-collapse: collapse; direction: ltr; font-size: 0px; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ebebeb; padding: 15px 15px 0 15px; word-break: break-word; text-align: left;" align="left" valign="top">
+                                        <div style="color: #101010; cursor: auto; font-family: Arial, sans-serif; font-size: 12px; line-height: 20px;">
+                                            <p style="display: block; margin: 0; font-size: 12px; color: #101010; font-weight: 700;">@Editable(Model, m => m.ConnectText)</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="100%" colspan="8" style="width: 100%; border-collapse: collapse; direction: ltr; font-size: 0px; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ebebeb; padding: 15px 15px 15px 15px; word-break: break-word; text-align: left;" align="left" valign="top">
+                                        <table cellpadding="0" cellspacing="0" border="0" width="290" style="width: 290px; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;" bgcolor="#ebebeb">
+                                            <tbody>
+                                                <tr>
+                                                    @if (IsInEditingMode)
+                                                    {
+                                                        <td class="footer-links" width="42" style="width: 42px; border-collapse: collapse; direction: ltr; font-size: 0px; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ebebeb; word-break: break-word; text-align: left;" align="left" valign="middle">
+                                                            @using (BeginRenderLink(Model, x => x.Link1, new System.Collections.Specialized.NameValueCollection { { "style", "display: inline-block; width: 100%; vertical-align: middle;" }, { "target", "_blank" } }, isEditable: true))
+                                                            {
+                                                                @RenderImage(Model, x => x.Icon1, isEditable: true)
+                                                            }
+                                                        </td>
+
+                                                        <td class="footer-links" width="42" style="width: 42px; border-collapse: collapse; direction: ltr; font-size: 0px; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ebebeb; word-break: break-word; text-align: left;" align="left" valign="middle">
+                                                            @using (BeginRenderLink(Model, x => x.Link2, new System.Collections.Specialized.NameValueCollection { { "style", "display: inline-block; width: 100%; vertical-align: middle;" }, { "target", "_blank" } }, isEditable: true))
+                                                            {
+                                                                @RenderImage(Model, x => x.Icon2, isEditable: true)
+                                                            }
+                                                        </td>
+
+                                                        <td class="footer-links" width="42" style="width: 42px; border-collapse: collapse; direction: ltr; font-size: 0px; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ebebeb; word-break: break-word; text-align: left;" align="left" valign="middle">
+                                                            @using (BeginRenderLink(Model, x => x.Link3, new System.Collections.Specialized.NameValueCollection { { "style", "display: inline-block; width: 100%; vertical-align: middle;" }, { "target", "_blank" } }, isEditable: true))
+                                                            {
+                                                                @RenderImage(Model, x => x.Icon3, isEditable: true)
+                                                            }
+                                                        </td>
+
+                                                        <td class="footer-links" width="42" style="width: 42px; border-collapse: collapse; direction: ltr; font-size: 0px; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ebebeb; word-break: break-word; text-align: left;" align="left" valign="middle">
+                                                            @using (BeginRenderLink(Model, x => x.Link4, new System.Collections.Specialized.NameValueCollection { { "style", "display: inline-block; width: 100%; vertical-align: middle;" }, { "target", "_blank" } }, isEditable: true))
+                                                            {
+                                                                @RenderImage(Model, x => x.Icon4, isEditable: true)
+                                                            }
+                                                        </td>
+
+                                                        <td class="footer-links" width="42" style="width: 42px; border-collapse: collapse; direction: ltr; font-size: 0px; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ebebeb; word-break: break-word; text-align: left;" align="left" valign="middle">
+                                                            @using (BeginRenderLink(Model, x => x.Link5, new System.Collections.Specialized.NameValueCollection { { "style", "display: inline-block; width: 100%; vertical-align: middle;" }, { "target", "_blank" } }, isEditable: true))
+                                                            {
+                                                                @RenderImage(Model, x => x.Icon5, isEditable: true)
+                                                            }
+                                                        </td>
+
+                                                        <td class="footer-links" width="42" style="width: 42px; border-collapse: collapse; direction: ltr; font-size: 0px; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ebebeb; word-break: break-word; text-align: left;" align="left" valign="middle">
+                                                            @using (BeginRenderLink(Model, x => x.Link6, new System.Collections.Specialized.NameValueCollection { { "style", "display: inline-block; width: 100%; vertical-align: middle;" }, { "target", "_blank" } }, isEditable: true))
+                                                            {
+                                                                @RenderImage(Model, x => x.Icon6, isEditable: true)
+                                                            }
+                                                        </td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td class="footer-links" width="42" style="width: 42px; border-collapse: collapse; direction: ltr; font-size: 0px; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ebebeb; word-break: break-word; text-align: left;" align="left" valign="middle">
+                                                            @if (Model.Icon1 != null)
+                                                            {
+                                                                using (BeginRenderLink(Model, x => x.Link1, new System.Collections.Specialized.NameValueCollection { { "style", "display: inline-block; width: 100%; vertical-align: middle;" }, { "target", "_blank" } }))
+                                                                {
+                                                                    <img src="@Model.Icon1.Src" alt="@Model.Icon1.Alt">
+                                                                }
+                                                            }
+                                                        </td>
+
+                                                        <td class="footer-links" width="42" style="width: 42px; border-collapse: collapse; direction: ltr; font-size: 0px; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ebebeb; word-break: break-word; text-align: left;" align="left" valign="middle">
+                                                            @if (Model.Icon2 != null)
+                                                            {
+                                                                using (BeginRenderLink(Model, x => x.Link2, new System.Collections.Specialized.NameValueCollection { { "style", "display: inline-block; width: 100%; vertical-align: middle;" }, { "target", "_blank" } }))
+                                                                {
+                                                                    <img src="@Model.Icon2.Src" alt="@Model.Icon2.Alt">
+                                                                }
+                                                            }
+                                                        </td>
+
+                                                        <td class="footer-links" width="42" style="width: 42px; border-collapse: collapse; direction: ltr; font-size: 0px; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ebebeb; word-break: break-word; text-align: left;" align="left" valign="middle">
+                                                            @if (Model.Icon3 != null)
+                                                            {
+                                                                using (BeginRenderLink(Model, x => x.Link3, new System.Collections.Specialized.NameValueCollection { { "style", "display: inline-block; width: 100%; vertical-align: middle;" }, { "target", "_blank" } }))
+                                                                {
+                                                                    <img src="@Model.Icon3.Src" alt="@Model.Icon3.Alt">
+                                                                }
+                                                            }
+                                                        </td>
+
+                                                        <td class="footer-links" width="42" style="width: 42px; border-collapse: collapse; direction: ltr; font-size: 0px; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ebebeb; word-break: break-word; text-align: left;" align="left" valign="middle">
+                                                            @if (Model.Icon4 != null)
+                                                            {
+                                                                using (BeginRenderLink(Model, x => x.Link4, new System.Collections.Specialized.NameValueCollection { { "style", "display: inline-block; width: 100%; vertical-align: middle;" }, { "target", "_blank" } }))
+                                                                {
+                                                                    <img src="@Model.Icon4.Src" alt="@Model.Icon4.Alt">
+                                                                }
+                                                            }
+                                                        </td>
+
+                                                        <td class="footer-links" width="42" style="width: 42px; border-collapse: collapse; direction: ltr; font-size: 0px; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ebebeb; word-break: break-word; text-align: left;" align="left" valign="middle">
+                                                            @if (Model.Icon5 != null)
+                                                            {
+                                                                using (BeginRenderLink(Model, x => x.Link5, new System.Collections.Specialized.NameValueCollection { { "style", "display: inline-block; width: 100%; vertical-align: middle;" }, { "target", "_blank" } }))
+                                                                {
+                                                                    <img src="@Model.Icon5.Src" alt="@Model.Icon5.Alt">
+                                                                }
+                                                            }
+                                                        </td>
+
+                                                        <td class="footer-links" width="42" style="width: 42px; border-collapse: collapse; direction: ltr; font-size: 0px; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #ebebeb; word-break: break-word; text-align: left;" align="left" valign="middle">
+                                                            @if (Model.Icon6 != null)
+                                                            {
+                                                                using (BeginRenderLink(Model, x => x.Link6, new System.Collections.Specialized.NameValueCollection { { "style", "display: inline-block; width: 100%; vertical-align: middle;" }, { "target", "_blank" } }))
+                                                                {
+                                                                    <img src="@Model.Icon6.Src" alt="@Model.Icon6.Alt">
+                                                                }
+                                                            }
+                                                        </td>
+                                                    }
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table role="presentation" cellpadding="0" cellspacing="0" style="border-collapse: collapse; font-size: 0px; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; background-color: #333333;" align="center" border="0" width="100%" bgcolor="#333333">
+                            <tbody>
+                                <tr>
+                                    <td style="padding: 15px 15px 15px 15px;">
+                                        <table cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="mobile-fullwidth mobile-fullwidth--top" width="50%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 50%;">
+                                                        <table cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="footer-links" width="50%" style="border-collapse: collapse; color: #ffffff; cursor: auto; font-family: Arial, sans-serif; font-size: 12px; line-height: 20px; mso-table-lspace: 0pt; mso-table-rspace: 0pt;" align="center" valign="middle">
+                                                                        <p style="display: block; margin: 0; text-align: center; color: #ffffff;">
+                                                                            @RenderLink(Model, m => m.FooterLink1, new System.Collections.Specialized.NameValueCollection { { "style", "color: #ffffff; font-size: 12px; line-height: 20px; text-decoration: none; font-weight: 700;" } }, isEditable: true)
+                                                                        </p>
+                                                                    </td>
+                                                                    <td class="footer-links" width="50%" style="border-collapse: collapse; color: #ffffff; cursor: auto; font-family: Arial, sans-serif; font-size: 12px; line-height: 20px; mso-table-lspace: 0pt; mso-table-rspace: 0pt;" align="center" valign="middle">
+                                                                        <p style="display: block; margin: 0; text-align: center; color: #ffffff;">
+                                                                            @RenderLink(Model, m => m.FooterLink2, new System.Collections.Specialized.NameValueCollection { { "style", "color: #ffffff; font-size: 12px; line-height: 20px; text-decoration: none; font-weight: 700;" } }, isEditable: true)
+                                                                        </p>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                    <td class="mobile-fullwidth mobile-fullwidth--bottom" width="50%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 50%;">
+                                                        <table cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="footer-links" width="50%" style="border-collapse: collapse; color: #ffffff; cursor: auto; font-family: Arial, sans-serif; font-size: 12px; line-height: 20px; mso-table-lspace: 0pt; mso-table-rspace: 0pt;" align="center" valign="middle">
+                                                                        <p style="display: block; margin: 0; text-align: center; color: #ffffff;">
+                                                                            @RenderLink(Model, m => m.FooterLink3, new System.Collections.Specialized.NameValueCollection { { "style", "color: #ffffff; font-size: 12px; line-height: 20px; text-decoration: none; font-weight: 700;" } }, isEditable: true)
+                                                                        </p>
+                                                                    </td>
+                                                                    <td class="footer-links" width="50%" style="border-collapse: collapse; color: #ffffff; cursor: auto; font-family: Arial, sans-serif; font-size: 12px; line-height: 20px; mso-table-lspace: 0pt; mso-table-rspace: 0pt;" align="center" valign="middle">
+                                                                        <p style="display: block; margin: 0; text-align: center; color: #ffffff;">
+                                                                            @RenderLink(Model, m => m.FooterLink4, new System.Collections.Specialized.NameValueCollection { { "style", "color: #ffffff; font-size: 12px; line-height: 20px; text-decoration: none; font-weight: 700;" } }, isEditable: true)
+                                                                        </p>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table width="100%" role="presentation" cellpadding="0" cellspacing="0" style="border-collapse: collapse; font-size: 0px; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" align="center" border="0">
+                            <tbody>
+                                <tr>
+                                    <td class="footer-top" width="100%" style="width: 100%; border-collapse: collapse; direction: ltr; font-size: 0px; mso-table-lspace: 0pt; mso-table-rspace: 0pt; padding: 15px 15px 15px 15px; background-color: #ebebeb; word-break: break-word;" align="left" valign="top">
+                                        <div style="color: #101010; cursor: auto; font-family: Arial, sans-serif; font-size: 12px; line-height: 16px; text-align: center;">
+                                            <p style="display: block; margin: 0; text-align: center; font-size: 12px; color: #101010;">
+                                                @if (IsInEditingMode)
+                                                {
+                                                    @Editable(Model, x => x.FooterText)
+                                                }
+                                                else
+                                                {
+                                                    if (Request.QueryString["sc_pd_view"] == "1")
+                                                    {
+                                                        @Html.Raw(Model.FooterText.Replace("/sitecore/Unsubscribe.aspx", string.Format("/sitecore/RedirectUrlPage.aspx?ec_contact_id={0}&ec_message_id={1}&ec_url=/sitecore/Unsubscribe.aspx", Request.QueryString["ec_contact_id"], Request.QueryString["ec_message_id"])))
+                                                    }
+                                                    else
+                                                    {
+                                                        @Html.Raw(Model.FooterText)
+                                                    }
+                                                }
+                                            </p>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="footer-bottom-copyright" width="100%" style="width: 100%; border-collapse: collapse; direction: ltr; font-size: 0px; mso-table-lspace: 0pt; mso-table-rspace: 0pt; padding: 15px 15px 0px 15px; background-color: #ebebeb; word-break: break-word;" align="left" valign="top">
+                                        <div style="color: #101010; cursor: auto; font-family: Arial, sans-serif; font-size: 11px; line-height: 16px; text-align: left; font-weight: 500;">
+                                            <p style="display: block; margin: 0; text-align: left; font-size: 11px; color: #101010;">@Editable(Model, m => m.CopyrightTextOne)</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="footer-bottom-trademarks" width="100%" style="width: 100%; border-collapse: collapse; direction: ltr; font-size: 0px; mso-table-lspace: 0pt; mso-table-rspace: 0pt; padding: 0 15px 15px 15px; background-color: #ebebeb; word-break: break-word;" align="left" valign="top">
+                                        <div style="color: #101010; cursor: auto; font-family: Arial, sans-serif; font-size: 11px; line-height: 16px; text-align: left; font-weight: 500;">
+                                            <p style="display: block; margin: 0; text-align: left; font-size: 11px; color: #101010;">@Editable(Model, m => m.CopyrightTextTwo)</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!--[if mso | IE]>
+                    </td>
+                    </tr>
+                    </table>
+                    <![endif]-->
+                    <!-- END: Email Footer-->
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,181 @@
+@mixin clearfix() {
+    &:before,
+    &:after {
+      content: '';
+      display: table;
+    }
+
+    &:after { clear: both; }
+}
+
+#contact {
+	padding: 20px;
+}
+
+.benefits-section {
+	.wffm {
+		padding: 0;
+	}
+}
+
+.rte {
+	a {
+		color: #dadf00;
+	}
+}
+
+
+.form-group {
+	position: relative;
+
+	label {
+		font-size: calc-em(18px);
+	}
+
+	textarea,
+	.text-box {
+		padding: 5px;
+	}
+
+	.help-block {
+		font-size: calc-em(14px);
+	}
+}
+
+.ui-datepicker {
+	font-size: 16px!important;
+	z-index: 999!important;
+}
+
+.wffm {
+	// @import 'vendor/bootstrap';
+	padding: 0 20px;
+	position: relative;
+
+	input {
+		&[type=radio],
+		&[type=checkbox] { margin-top: 6px; }
+	}
+
+	.input-group {
+		padding: 0 10px 10px 0;
+	}
+
+	.required-field {
+		.control-label {
+			&:before { font-weight: normal; color: #ff0000; }
+		}
+	}
+
+	textarea,
+	.text-box {
+		-webkit-appearance: none;
+		font-size: 16px!important;
+	}
+
+	textarea {
+		-webkit-appearance: none;
+		font-size: 16px!important;
+
+		&:focus { font-size: 16px!important; }
+	}
+
+	select {
+		font-size: 16px!important;
+
+		&:focus { font-size: 16px!important; }
+	}
+
+	.btn-default {
+		background-color: #dadf00;
+		padding: 10px 80px;
+		max-width: 280px;
+		border: 0;
+		-webkit-transition: all 0.3s ease-in-out;
+		transition: background all 0.3s ease-in-out;
+		margin: auto;
+		display: block;
+
+		&:hover {
+			background-color: #3eb034;
+			color: #fff;
+		}
+	}
+}
+
+
+@media only screen and (max-width: 767px) {
+	.benefits-section {
+		.col-sm-12 {
+			margin-bottom: 50px;
+			width: 100%;
+		}
+	}
+}
+
+@media only screen and (min-width: 768px) {
+
+	.control-label {
+		float: left;
+		width: 100%;
+	}
+
+	.form-group {
+		@include clearfix();
+
+		.text-box, textarea, select, .form-control {
+			width: 100%;
+			margin-right: 2%;
+		}
+	}
+
+	.wffm {
+		.form-group {
+			textarea { width: 100%; }
+
+			margin-bottom: 20px;
+		}
+
+		.checkbox, .radio {
+			margin: 0 0 10px 0;
+		}
+
+		.row {
+			width: 100%;
+			margin: 0;
+			float: left;
+			margin-bottom: 20px;
+		}
+
+		.required-field {
+			.control-label {
+				&:before {
+					position: absolute;
+					left: -8px;
+					top: -5px;
+				}
+			}
+		}
+
+		.btn-default {
+			display: inline-block;
+		}
+	}
+
+	.help-block {
+		padding-left: 30%;
+	}
+
+	.g-recaptcha {
+		margin-left: 0;
+		float: left;
+	}
+
+	.form-submit-border {
+		margin-left: 0;
+	}
+}
+
+
+// Change feedback box to full width from 68%.
+// Margin on submit button, radio and checkbox to 0 from 30%

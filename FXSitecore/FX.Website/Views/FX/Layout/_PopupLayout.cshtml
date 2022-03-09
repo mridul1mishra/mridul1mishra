@@ -1,0 +1,21 @@
+﻿@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Base.IPage>
+@using Sitecore.Mvc
+@using Sitecore.Mvc.Analytics.Extensions
+
+
+<!DOCTYPE html>
+<!--[if IE 8]>      <html class="no-js is-ie lt-ie9 lt-ie10"> <![endif]-->
+<!--[if IE 9]>      <html class="no-js is-ie lt-ie10"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html class="no-js" lang="en">
+ <!--<![endif]-->
+<head>
+	@Html.Sitecore().Rendering(FX.Core.Keys.RenderingItems.Head, FX.Core.Utils.Util.DefaultRenderingCacheParameter)
+	@Html.Sitecore().VisitorIdentification()
+</head>
+<body style="background-color: transparent;">
+    @Html.Raw(FX.Core.FXContextItems.HomePage.SiteSettings.TagManagerSnippet)
+	@Html.Sitecore().Placeholder("mainPlaceholder")
+	@Html.Sitecore().Rendering(FX.Core.Keys.RenderingItems.Bottom, FX.Core.Utils.Util.DefaultRenderingCacheParameter)
+</body>
+</html>

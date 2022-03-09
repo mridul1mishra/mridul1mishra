@@ -1,0 +1,62 @@
+﻿@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Base.IPage>
+@using FX.Core
+@{
+    var opco = FX.Core.Utils.Util.OpcoType();
+}
+
+<script type="application/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="/@opco/ffassets/fuji-xerox/js/fuji-xerox.min.js"></script>
+<script src="/@opco/ffassets/fuji-xerox/js/typesquare.min.js?auto_load_font=true"></script>
+<script src="/@opco/ffassets/fuji-xerox/js/run-fb.js"></script>
+<script src="/@opco/ffassets/fuji-xerox/js/proxychannel7.min.js"></script>
+@{
+
+    //Disable script if user has not selected functional_cookie preference
+    try
+    {
+        var siteInfoList = Sitecore.Configuration.Factory.GetSiteInfoList();
+        var url = System.Web.HttpContext.Current.Request.Url;
+        var Hostquery = Sitecore.Configuration.Settings.Sites.Where(n => n.Name.Contains("thailand"));
+        if (Hostquery.Count() == 1)
+        {
+            var s = Hostquery.First();
+            if (s.HostName == url.Host)
+            {
+                <input type="hidden" id="cookiePoliyHidden" value="1">
+
+                var disabledClient = string.Empty;
+                HttpCookie reqCookies = Request.Cookies["__FFperC__"];
+                if (FXContextItems.HomePage.SiteSettings.AddThisEnabled)
+                {
+                    if (reqCookies != null)
+                    {
+                        @Html.Raw(FXContextItems.HomePage.SiteSettings.AddThisScriptSource)
+                    }
+                    else
+                    {
+                        if (FXContextItems.HomePage.SiteSettings.AddThisEnabled)
+                        {
+                            @Html.Raw(FXContextItems.HomePage.SiteSettings.AddThisScriptSource);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if (FXContextItems.HomePage.SiteSettings.AddThisEnabled)
+                {
+                    @Html.Raw(FXContextItems.HomePage.SiteSettings.AddThisScriptSource);
+                }
+            }
+        }
+        else
+        {
+            if (FXContextItems.HomePage.SiteSettings.AddThisEnabled)
+            {
+                @Html.Raw(FXContextItems.HomePage.SiteSettings.AddThisScriptSource);
+            }
+        }
+    }
+    catch (Exception ex) { }
+}
+

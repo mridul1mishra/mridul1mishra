@@ -1,0 +1,13 @@
+﻿@using Sitecore.Mvc
+@using FX.Core.Utils
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Components.IFormPlaceholder>
+
+@if (this.IsInEditingMode)
+{
+    <h2 style="text-align:center">[Form Placeholder component]</h2>
+}
+<div class="form-horizontal">
+    <div class="scfForm">
+        @Html.Sitecore().Placeholder("formPlaceholder")
+    </div>
+</div>

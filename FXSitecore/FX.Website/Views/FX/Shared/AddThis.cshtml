@@ -1,0 +1,11 @@
+﻿@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Base.IPage>
+    @using FX.Core
+
+@{
+    if (FXContextItems.HomePage.SiteSettings != null && FXContextItems.HomePage.SiteSettings.AddThisEnabled)
+    {
+        @Html.Raw(FXContextItems.HomePage.SiteSettings.AddThisHTMLSnippet);
+    }
+}
+
+

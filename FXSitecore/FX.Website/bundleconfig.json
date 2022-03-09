@@ -1,0 +1,188 @@
+[
+  {
+    "outputFileName": "assets/fuji-xerox/css/local-css/aus/en/local.min.css",
+    "inputFiles": [
+      "assets/fuji-xerox/css/local-css/aus/en/local.css"
+    ]
+  },
+  {
+    "outputFileName": "assets/fuji-xerox/css/local-css/ca/en/local.min.css",
+    "inputFiles": [
+      "assets/fuji-xerox/css/local-css/ca/en/local.css"
+    ]
+  },
+  {
+    "outputFileName": "assets/fuji-xerox/css/local-css/ca/km-KH/local.min.css",
+    "inputFiles": [
+      "assets/fuji-xerox/css/local-css/ca/km-KH/local.css"
+    ]
+  },
+  {
+    "outputFileName": "assets/fuji-xerox/css/local-css/ch/zh-CN/local.min.css",
+    "inputFiles": [
+      "assets/fuji-xerox/css/local-css/ch/zh-CN/local.css"
+    ]
+  },
+  {
+    "outputFileName": "assets/fuji-xerox/css/local-css/hk/en/local.min.css",
+    "inputFiles": [
+      "assets/fuji-xerox/css/local-css/hk/en/local.css"
+    ]
+  },
+  {
+    "outputFileName": "assets/fuji-xerox/css/local-css/hk/zh-HK/local.min.css",
+    "inputFiles": [
+      "assets/fuji-xerox/css/local-css/hk/zh-HK/local.css"
+    ]
+  },
+  {
+    "outputFileName": "assets/fuji-xerox/css/local-css/kor/ja-JP/local.min.css",
+    "inputFiles": [
+      "assets/fuji-xerox/css/local-css/kor/ja-JP/local.css"
+    ]
+  },
+  {
+    "outputFileName": "assets/fuji-xerox/css/local-css/kor/ko-KR/local.min.css",
+    "inputFiles": [
+      "assets/fuji-xerox/css/local-css/kor/ko-KR/local.css"
+    ]
+  },
+  {
+    "outputFileName": "assets/fuji-xerox/css/local-css/mm/en/local.min.css",
+    "inputFiles": [
+      "assets/fuji-xerox/css/local-css/mm/en/local.css"
+    ]
+  },
+  {
+    "outputFileName": "assets/fuji-xerox/css/local-css/mm/my-MM/local.min.css",
+    "inputFiles": [
+      "assets/fuji-xerox/css/local-css/mm/my-MM/local.css"
+    ]
+  },
+  {
+    "outputFileName": "assets/fuji-xerox/css/local-css/my/en/local.min.css",
+    "inputFiles": [
+      "assets/fuji-xerox/css/local-css/my/en/local.css"
+    ]
+  },
+  {
+    "outputFileName": "assets/fuji-xerox/css/local-css/nz/en/local.min.css",
+    "inputFiles": [
+      "assets/fuji-xerox/css/local-css/nz/en/local.css"
+    ]
+  },
+  {
+    "outputFileName": "assets/fuji-xerox/css/local-css/ph/en/local.min.css",
+    "inputFiles": [
+      "assets/fuji-xerox/css/local-css/ph/en/local.css"
+    ]
+  },
+  {
+    "outputFileName": "assets/fuji-xerox/css/local-css/sg/en/local.min.css",
+    "inputFiles": [
+      "assets/fuji-xerox/css/local-css/sg/en/local.css"
+    ]
+  },
+  {
+    "outputFileName": "assets/fuji-xerox/css/local-css/tha/en/local.min.css",
+    "inputFiles": [
+      "assets/fuji-xerox/css/local-css/tha/en/local.css"
+    ]
+  },
+  {
+    "outputFileName": "assets/fuji-xerox/css/local-css/tha/th-TH/local.min.css",
+    "inputFiles": [
+      "assets/fuji-xerox/css/local-css/tha/th-TH/local.css"
+    ]
+  },
+  {
+    "outputFileName": "assets/fuji-xerox/css/local-css/tw/zh-TW/local.min.css",
+    "inputFiles": [
+      "assets/fuji-xerox/css/local-css/tw/zh-TW/local.css"
+    ]
+  },
+  {
+    "outputFileName": "assets/fuji-xerox/css/local-css/vn/en/local.min.css",
+    "inputFiles": [
+      "assets/fuji-xerox/css/local-css/vn/en/local.css"
+    ]
+  },
+  {
+    "outputFileName": "assets/fuji-xerox/css/local-css/vn/vi-VN/local.min.css",
+    "inputFiles": [
+      "assets/fuji-xerox/css/local-css/vn/vi-VN/local.css"
+    ]
+  },
+  {
+    "outputFileName": "assets/fuji-xerox/css/common.min.css",
+    "inputFiles": [
+      "assets/fuji-xerox/css/common.css"
+    ]
+  },
+  {
+    "outputFileName": "assets/fuji-xerox/css/fuji-xerox.min.css",
+    "inputFiles": [
+      "assets/fuji-xerox/css/fuji-xerox.css"
+    ]
+  },
+  {
+    "outputFileName": "assets/fuji-xerox/js/run-fb.min.js",
+    "inputFiles": [
+      "assets/fuji-xerox/js/run-fb.js"
+    ]
+  },
+  {
+    "outputFileName": "assets/fuji-xerox/js/typesquare.min.js",
+    "inputFiles": [
+      "assets/fuji-xerox/js/typesquare.js"
+    ]
+  },
+  {
+    "outputFileName": "assets/fuji-xerox/js/fuji-xerox.min.js",
+    "inputFiles": [
+      "assets/fuji-xerox/js/fuji-xerox.js"
+    ]
+  },
+  {
+    "outputFileName": "assets/fuji-xerox/js/proxychannel7.min.js",
+    "inputFiles": [
+      "assets/fuji-xerox/js/proxychannel7.js"
+    ]
+  },
+  {
+    "outputFileName": "ffassets/fuji-xerox/js/proxychannel7.min.js",
+    "inputFiles": [
+      "ffassets/fuji-xerox/js/proxychannel7.js"
+    ]
+  },
+  {
+    "outputFileName": "ffassets/fuji-xerox/js/fuji-xerox.min.js",
+    "inputFiles": [
+      "ffassets/fuji-xerox/js/fuji-xerox.js"
+    ]
+  },
+  {
+    "outputFileName": "ffassets/fuji-xerox/css/fuji-xerox.min.css",
+    "inputFiles": [
+      "ffassets/fuji-xerox/css/fuji-xerox.css"
+    ]
+  },
+  {
+    "outputFileName": "ffassets/fuji-xerox/sitecore modules/Web/Web Forms for Marketers/mvc/wffm.min.js",
+    "inputFiles": [
+      "ffassets/fuji-xerox/sitecore modules/Web/Web Forms for Marketers/mvc/wffm.js"
+    ]
+  },
+  {
+    "outputFileName": "ffassets/sitecore modules/Web/Web Forms for Marketers/mvc/wffm.min.js",
+    "inputFiles": [
+      "ffassets/sitecore modules/Web/Web Forms for Marketers/mvc/wffm.js"
+    ]
+  },
+  {
+    "outputFileName": "ffassets/sitecore modules/Web/Web Forms for Marketers/mvc/main.min.js",
+    "inputFiles": [
+      "ffassets/sitecore modules/Web/Web Forms for Marketers/mvc/main.js"
+    ]
+  }
+]

@@ -1,0 +1,130 @@
+﻿@using Sitecore.Mvc
+@using FX.Core.GlassMapper
+@using FX.Core.Utils
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Website.Models.Careers.CareersListingViewModel>
+
+@{
+    /*
+    var locationFilters = Model.SitecoreModel.CareersFilterFolder.CareersLocationFilter.CareersFilterItems;
+    var specialisationFilters = Model.SitecoreModel.CareersFilterFolder.CareersSpecialisationFilter.CareersFilterItems;
+    var jobtypeFilters = Model.SitecoreModel.CareersFilterFolder.CareersJobTypeFilter.CareersFilterItems;
+    var titleFilters = Model.SitecoreModel.CareersFilterFolder.CareersTitleFilter.CareersFilterItems;
+    var postingDateFilters = Model.SitecoreModel.CareersFilterFolder.CareersPostingDateFilter.CareersDateFilterItems;
+    */
+    string view1 = "";
+    string view2 = "";
+    if (!string.IsNullOrWhiteSpace(Model.SitecoreModel.ViewJobLabel))
+    {
+        string[] viewLabels = Model.SitecoreModel.ViewJobLabel.Split(new char[0]);
+        List<string> hiddenViewLabel = new List<string>();
+        view1 = viewLabels[0];
+        for (int i = 1; i < viewLabels.Length; i++)
+        {
+            hiddenViewLabel.Add(viewLabels[i]);
+        }
+        view2 = string.Join(" ", hiddenViewLabel);
+    }
+}
+
+<div class="main-content">
+    @Html.Sitecore().Rendering(FX.Core.Keys.RenderingItems.Breadcrumb, FX.Core.Utils.Util.DefaultRenderingCacheParameter)
+    <div class="top-banner">
+        @Html.Sitecore().Rendering(FX.Core.Keys.RenderingItems.HeroBanner, FX.Core.Utils.Util.DefaultRenderingCacheParameter)
+    </div>
+
+    <div class="layout-main">
+            <!--Listing Filters-->
+            <div class="dynamic-listing career-listing">
+                <div class="column-row">
+                    <div class="col-sm-3">
+                        <div class="listing-side-filters">
+                            <!--Filter Panel-->
+                            <form>
+                                <fieldset>
+                                    <legend class="sr-only">Careers Finder Filter</legend>
+                                    <!--<input id="categoryField" type="hidden" name="categoryField" value="jobs">-->
+                                    <div class="filter-panel-header">
+                                        @if (FXGlassView.IsFieldVisible(this.IsInEditingMode, Model.SitecoreModel.FilterLabel))
+                                        {
+                                            <h3>@Editable(Model, x => x.SitecoreModel.FilterLabel)</h3>
+                                        }
+                                        @if (FXGlassView.IsFieldVisible(this.IsInEditingMode, Model.SitecoreModel.FilterResetLabel))
+                                        {
+                                            <a class="clear-filters-selection-btn" href="#">@Editable(Model, x => x.SitecoreModel.FilterResetLabel)</a>
+                                        }
+                                        <div class="filter-group job-filter-group">
+
+                                            <div class="basic-filters">
+
+                                                @foreach (var filter in Model.Filters)
+                                                {
+                                                    <div class="filter-subgroup">
+                                                        <h4>@filter.Title</h4>
+                                                        <div class="filter-subgroup__fields">
+                                                            @foreach (var child in filter.Items)
+                                                            {
+                                                                <div class="checkbox"><label><input name="@filter.Name" type="checkbox" value="@child.Value">@child.Title</label></div>
+                                                            }
+                                                            <div class="checkbox"><label><input type="checkbox" data-scope="all">@filter.AllFiltersLabel</label></div>
+                                                        </div>
+                                                    </div>
+                                                }
+
+
+                                            </div>
+                                        </div>
+                                        <div class="filter-panel-btn-group">
+                                            <button class="submit-btn" type="submit">@Editable(Model, x => x.SitecoreModel.FilterSubmitLabel)</button>
+                                        </div>
+                                    </div>
+                                    <!--End: Filter Panel-->
+                                </fieldset>
+                                <!--End: Listing Filters-->
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-sm-9">
+                        <!--Listing Content-->
+                        <div class="listing-content" data-endpoint="/api/GetCareerListing">
+                            <div class="listing-content-intro">
+                                <p>@Editable(Model, x => x.SitecoreModel.IntroductionText)</p>
+                            </div>
+                            <div class="listing-content__result-status">
+                                <p class="msg success-msg">@Html.Raw(Model.SearchResultsText)</p>
+                                <p class="msg error-msg">@Editable(Model, x => x.SitecoreModel.ZeroResultsText)</p>
+                                <div class="loader-animation">
+                                    <div class="inner"></div>
+                                    <div class="inner"></div>
+                                    <div class="inner"></div>
+                                </div>
+                            </div>
+                            <ul class="listing-content__results"></ul>
+                            <div class="load-more"><a class="js-load-more" href="#">@Editable(Model, x => x.SitecoreModel.LoadMoreLabel)</a></div>
+                            <script id="results-template" type="text/x-dot-template">
+                                {{~ it.results :result}}
+                                <li class="career-item">
+                                    <div class="career-item__details">
+                                        <div class="opening">
+                                            <h3>{{=result.title}}</h3>
+                                            <span class="specialisation">{{=result.specialisation}}</span>
+                                        </div>
+
+                                        <div class="location">{{=result.location}}</div>
+
+                                        <div class="timestamp">{{=result.timestamp}}</div>
+
+                                        <a href={{=result.url}} class="button">@view1 <span class="hidden-xs">@view2</span></a>
+
+                                    </div>
+                                </li>
+                                {{~}}
+
+                            </script>
+                        </div>
+                        <!--End: Listing Content-->
+                    </div>
+                </div>
+            </div>
+                        
+    </div>
+</div>

@@ -1,0 +1,86 @@
+﻿@using Sitecore.Mvc
+@using FX.Core.GlassMapper
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Components.ICarousel>
+
+@{
+    bool hasCarouselItem1 = false;
+    bool hasCarouselItem2 = false;
+    bool hasCarouselItem3 = false;
+
+    if (Model != null)
+    {
+        hasCarouselItem1 = FX.Core.Utils.Util.HasValidCarouselItem(Model.CarouselImage1, Model.CarouselMobileImage1, Model.CarouselLink1);
+        hasCarouselItem2 = FX.Core.Utils.Util.HasValidCarouselItem(Model.CarouselImage2, Model.CarouselMobileImage2, Model.CarouselLink2);
+        hasCarouselItem3 = FX.Core.Utils.Util.HasValidCarouselItem(Model.CarouselImage3, Model.CarouselMobileImage3, Model.CarouselLink3);
+    }
+}
+
+@if (hasCarouselItem1 || hasCarouselItem2 || hasCarouselItem3 || this.IsInEditingMode)
+{
+    <!-- Homepage Carousel -->
+
+    <div class="m-hero mb-2">
+        <div class="m-carousel js-carousel-root" data-js-carousel-auto="true">
+            <ul class="m-carousel__body js-carousel-body">
+                @if (hasCarouselItem1)
+                {
+                    <li class="m-carousel__item js-carousel-item">
+                        @using (BeginRenderLink(Model, m => m.CarouselLink1))
+                        {
+                            <picture>
+                                <source media="(max-width: 767px)" srcset="@Model.CarouselMobileImage1.Src" />
+                                @RenderImage(Model, m => m.CarouselImage1, isEditable: true)
+                            </picture>
+                        }
+                    </li>
+                }
+                @if (hasCarouselItem2)
+                {
+                    <li class="m-carousel__item js-carousel-item">
+                        @using (BeginRenderLink(Model, m => m.CarouselLink2))
+                        {
+                            <picture>
+                                <source media="(max-width: 767px)" srcset="@Model.CarouselMobileImage2.Src" />
+                                @RenderImage(Model, m => m.CarouselImage2, isEditable: true)
+                            </picture>
+                        }
+                    </li>
+                }
+                @if (hasCarouselItem3)
+                {
+                    <li class="m-carousel__item js-carousel-item">
+                        @using (BeginRenderLink(Model, m => m.CarouselLink3))
+                        {
+                            <picture>
+                                <source media="(max-width: 767px)" srcset="@Model.CarouselMobileImage3.Src" />
+                                @RenderImage(Model, m => m.CarouselImage3, isEditable: true)
+                            </picture>
+                        }
+                    </li>
+                }
+
+            </ul>
+            @if (hasCarouselItem1 || hasCarouselItem2 && hasCarouselItem3)
+                {
+                    <button type = "button" class="m-carousel__prev js-carousel-prev">
+                    <span class="m-carousel__prev-text">
+                        Show
+                        previous
+                    </span>
+                    </button>
+                    <button type="button" class="m-carousel__next js-carousel-next">
+                        <span class="m-carousel__next-text">
+                            Show
+                            next
+                        </span>
+                    </button>
+                    <div class="m-carousel__bullets js-carousel-bullets"></div>
+
+                }
+
+                <!-- /.m-carousel -->
+            </div>
+<!-- /.m-hero -->
+</div>
+<!-- Homepage Carousel -->
+                }

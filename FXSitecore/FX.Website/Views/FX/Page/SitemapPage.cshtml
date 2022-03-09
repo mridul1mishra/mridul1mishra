@@ -1,0 +1,148 @@
+﻿@using Sitecore.Mvc
+@using FX.Core.Utils
+@using FX.Core.Models.Base
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Page.IStandardPage>
+
+@{
+    var firstLevel = FX.Core.FXContextItems.HomePage.Children.Where(i => i.ShowInSitemap);
+}
+
+@helper RenderSnS(FX.Core.Models.Base.INavigation navItem)
+{
+    int x = 0;
+    var groups = from s in navItem.Children.Where(i => i.ShowInSitemap)
+                 let num = x++
+                 group s by num / 4 into g
+                 select g.ToList();
+
+    <li>
+        @RenderLink(navItem)
+        @foreach (var group in groups)
+        {
+            <ul class="sitemap__lvl2">
+                @foreach (var child in group)
+                {
+                    <li class="match-height">
+                        @RenderLink(child)
+                        @if (child.Children.Count() > 0)
+                        {
+                            <ul class="sitemap__lvl3">
+                                @foreach (var grandchild in child.Children.Where(i => i.ShowInSitemap))
+                                {
+                                    <li class="match-height">@RenderLink(grandchild)</li>
+                                }
+                            </ul>
+                        }
+                    </li>
+                }
+            </ul>
+        }
+    </li>
+}
+
+@helper RenderProducts(FX.Core.Models.Base.INavigation navItem)
+{
+    var productFolder = SitecoreContext.GetItem<FX.Core.Models.Base.INavigation>(new Guid(FX.Core.Keys.Items.ProductsFolder));
+    if (productFolder != null)
+    {
+        <li>
+            @RenderLink(navItem)
+
+            <ul class="sitemap__lvl2">
+                @{
+                    var products = SitecoreContext.QueryRelative<FX.Core.Models.Products.IProductPage>(FX.Core.Utils.Util.SanitizeSitecorePath(productFolder.Path) + "/*//*[@@templateid='{6CC8C747-F8B0-43DD-A597-090CB9E74594}' OR @@templateid='{BE98547C-0A78-40CB-8CB4-3DA7E69E09D8}' OR @@templateid='{F71E55DB-3BAE-4753-A034-500FA7FF5AC7}']")
+                        .Where(i => i.Countries != null ? i.Countries.Contains(FX.Core.FXContextItems.HomePage.Id) : true);
+                    var productCategories = products.Select(p => p.Parent).GroupBy(i => i.Id).Select(g => g.First());
+                }
+                @foreach (var productCategory in productCategories)
+                {
+                    <li>
+
+                        @productCategory.SitecoreItem.DisplayName
+
+                        @{
+                            int x = 0;
+                            var groups = from s in products.Where(p => p.Parent.Id == productCategory.Id)
+
+                                         let num = x++
+                                         group s by num / 4 into g
+                                         select g.ToList();
+                        }
+                        @foreach (var group in groups)
+                        {
+                            <ul class="sitemap__lvl3">
+                                @foreach (var product in group)
+                                {
+                                    <li><a href="@product.URL()">@product.NavigationTitle</a></li>
+                                }
+                            </ul>
+                        }
+                    </li>
+                }
+            </ul>
+        </li>
+    }
+}
+
+@helper RenderLink(FX.Core.Models.Base.INavigation navItem)
+{
+    <a href="@navItem.URL()">@navItem.NavigationTitle</a>
+}
+
+
+
+<div class="main-content">
+    @Html.Sitecore().Rendering(FX.Core.Keys.RenderingItems.Breadcrumb, FX.Core.Utils.Util.DefaultRenderingCacheParameter)
+    <div class="sitemap">
+        @if (!this.IsInEditingMode && Model != null && !string.IsNullOrEmpty(Model.MainTitle))
+        {
+            <h1>@Html.Raw(Model.MainTitle)</h1>
+        }
+        else if (this.IsInEditingMode)
+        {
+            <h1>@Editable(Model, x => x.MainTitle)</h1>
+        }
+        <ul class="sitemap__lvl1">
+            @foreach (var landing in firstLevel)
+            {
+                if (Util.AreEquals(landing.TemplateId, FX.Core.Templates.SnSPage.Id))
+                {
+                    @RenderSnS(landing)
+                }
+                else if (Util.AreEquals(landing.TemplateId, FX.Core.Templates.ProductListingPage.Id))
+                {
+                    @RenderProducts(landing)
+                }
+                else
+                {
+
+                    <li>
+                        @RenderLink(landing)
+                        @*<a href="@landing.URL()">@landing.NavigationTitle</a>*@
+                        @if (landing.Children.Count() > 0)
+                        {
+                            <ul class="sitemap__lvl2">
+                                @foreach (var child in landing.Children.Where(i => i.ShowInSitemap))
+                                {
+                                    <li>
+                                        @RenderLink(child)
+                                        @if (child.Children.Count() > 0)
+                                        {
+                                            <ul class="sitemap__lvl3">
+                                                @foreach (var grandChild in child.Children.Where(i => i.ShowInSitemap))
+                                                {
+                                                    <li>@RenderLink(grandChild)</li>
+                                                }
+                                            </ul>
+                                        }
+                                    </li>
+                                }
+                            </ul>
+                        }
+                    </li>
+                }
+            }
+        </ul>
+    </div>
+</div>
+

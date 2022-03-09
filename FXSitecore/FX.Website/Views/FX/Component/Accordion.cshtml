@@ -1,0 +1,42 @@
+﻿@using FX.Core.Utils
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Components.Accordion.IAccordion>
+
+@{
+    bool hasContent = Model != null && Model.AccordionItems != null || Model != null && this.IsInEditingMode;
+}
+
+@if (this.IsInEditingMode)
+{
+    <h2 style="text-align:center">[Accordion component]</h2>
+    if (Model == null)
+    {
+        <p>No component datasource found</p>
+    }
+}
+
+@if (hasContent)
+{
+    <section class="section">
+        @if (!string.IsNullOrEmpty(Model.SectionTitle) && Model.ShowInStickyTab)
+        {
+            <a id='content@(Model.Id.ToString("N"))' class="anchor-link" data-label="@Model.SectionTitle.Left(FX.Core.Constants.MaxLength.SectionTitle)"></a>
+        }
+        <div class="accordions">
+
+            <h3>@Editable(Model, x => x.SectionTitle)</h3>
+            @foreach (var item in Model.AccordionItems)
+            {
+                <div class="accordion">
+                    <button class="accordion-controller" type="button">
+                        @Editable(item, x => x.Title)
+                    </button>
+                    <div class="accordion__content">
+                        <div class="rte">
+                            @Editable(item, x => x.MainContent)
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </section>
+}

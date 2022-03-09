@@ -1,0 +1,41 @@
+﻿@using Sitecore.Mvc
+@using FX.Core.GlassMapper
+@using FX.Core.Utils
+@using FX.Core
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Page.ISuccessStoryDetailPage>
+
+<div class="main-content layout-article">
+    @Html.Sitecore().Rendering(FX.Core.Keys.RenderingItems.Breadcrumb, FX.Core.Utils.Util.DefaultRenderingCacheParameter)
+    <div class="top-banner">
+        @Html.Sitecore().Rendering(FX.Core.Keys.RenderingItems.HeroBanner, FX.Core.Utils.Util.DefaultRenderingCacheParameter)
+    </div>
+
+    <aside class="layout-side layout-side--left article-aside">
+        <div class="social-aside">
+            @Html.Partial("~/Views/FX/Shared/AddThis.cshtml")
+        </div>
+    </aside>
+
+    <article class="layout-main article-content ">
+        @Html.Sitecore().Placeholder("sectionPlaceholder")
+    </article>
+    <aside class="layout-side">
+        @if (this.IsInEditingMode)
+        {
+            <h1>[Side Placeholder]</h1>
+        }
+
+        @Html.Sitecore().Placeholder("rightSidePlaceholder")
+    </aside>
+        @*<!-- Article -->
+            <div class="layout-main">
+                <article class="article">
+                    <div class="row-col-12 wingspan">
+                        <div class="article-content wide">
+                            @Html.Sitecore().Placeholder("sectionPlaceholder")
+                        </div>
+                    </div>
+                </article>
+                <!-- End: Article -->
+            </div>*@
+</div>

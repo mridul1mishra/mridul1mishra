@@ -1,0 +1,136 @@
+﻿@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<Sitecore.Data.Items.Item>
+@{
+    var currentTemplate = Model.TemplateID.ToString();
+    var siteSettings = FX.Core.FXContextItems.HomePage.SiteSettings;
+    var page = SitecoreContext.GetCurrentItem<FX.Core.Models.Base.IPage>();
+    string opco = page.OpCo.ToString();
+    string teaserImage = string.Empty;
+    if (page.TeaserImage != null)
+    {
+        teaserImage = page.TeaserImage.Src;
+    }
+
+    string logo = "/ffassets/fuji-xerox/images/FUJIFILM_Slogan.jpg";
+    string metaDescription = Model["MetaDescription"];
+    string title = Model["MainTitle"];
+    string url = Request.Url.ToString();
+
+    string dateModified = Model.Statistics.Updated.ToString("yyyy-MM-dd");
+    string datePublished = Model.Statistics.Created.ToString("yyyy-MM-dd");
+}
+@{
+    <script type="application/ld+json">
+        {
+        "@@context": "http://schema.org",
+        @if (currentTemplate == FX.Core.Templates.HomePage.Id)
+        {
+
+            <text>
+
+                "@@id": "@(Sitecore.Context.Site.HostName)",
+                "@@type": "Website",
+                "mainEntity": {
+                "@@type": "Organization",
+                "@@id": "@(Sitecore.Context.Site.HostName)/#organization",
+                "name": "@title",
+                "description": "@metaDescription",
+                "logo": "@logo",
+                "url": "@url"
+                @*"sameAs": ["https://twitter.com/fujixeroxsg","https://www.linkedin.com/company/fuji-xerox-singapore/","https://www.facebook.com/FujiXeroxSingapore/","https://www.youtube.com/user/FujiXeroxGlobal","https://www.instagram.com/fujixeroxsg/","https://en.wikipedia.org/wiki/Fuji_Xerox"]*@
+
+                }
+            </text>
+
+        }
+        else if (currentTemplate == FX.Core.Templates.StandardPage.Id)
+        {
+            <text>
+
+                "@@type": "WebPage",
+                "name": "@title",
+                "description": "@metaDescription",
+                "url": "@url",
+                "mainEntity": {
+                "@@type": "Article",
+                "author": "Fujixerox",
+                "datePublished": "@datePublished",
+                "dateModified": "@dateModified",
+                "headline": "@title",
+                "image": {
+                "@@type": "imageObject",
+                "url": "@teaserImage"
+                },
+                "publisher": {
+                "@@type": "Organization",
+                "@@id": "https://www.fujixerox.com.sg/#organization",
+                "name": "Fuji Xerox",
+                "logo": {
+                "@@type": "imageObject",
+                "url": "@logo"
+                }
+                },
+                "mainEntityOfPage": {
+                "@@type": "WebPage"
+                }
+                }
+            </text>
+        }
+
+        else if (Model.Fields["ProductImage"] != null)
+        {
+            string productImage = string.Empty;
+            var imageField = (Sitecore.Data.Fields.ImageField)Model.Fields["ProductImage"];
+            if (imageField.MediaItem != null)
+            {
+                var theURL = Sitecore.Resources.Media.MediaManager.GetMediaUrl(imageField.MediaItem);
+                productImage = Sitecore.Resources.Media.HashingUtils.ProtectAssetUrl(theURL);
+            }
+
+            <text>
+            "@@type": "WebPage",
+            "name": "@title",
+            "description": "@metaDescription",
+            "url": "@url",
+            "mainEntity": {
+            "@@type": "Product",
+            "name": "@Model["MainTitle"]",
+            "image": {
+            "@@type": "imageObject",
+            "url": "@productImage"
+            },
+            "review": {
+            "@@type": "Region",
+
+            "Region": {
+            "@@type": "Website",
+            "name": "@opco"
+            }
+            }
+            }
+        </text>
+        }
+        else if (currentTemplate == FX.Core.Templates.SearchPage.Id)
+        {
+            <text>
+                "@@type": "SearchResultsPage",
+                "name": "@title",
+                "description": "@metaDescription",
+                "url": "@url"
+                @*"url": "This page url"*@
+            </text>
+        }
+        else
+        {
+            <text>
+                "@@type": "WebPage",
+                "name": "@title",
+                "description": "@metaDescription",
+                "url": "@url",
+                "thumbnailURL" : "/-/media/fujifilm_corporate_logo.svg?la=en&hash=647A5F5EFAF83B9F01EA83B576FF60D135F363C2",
+                "thumbnail" : "/-/media/fujifilm_corporate_logo.svg?la=en&hash=647A5F5EFAF83B9F01EA83B576FF60D135F363C2"
+            </text>
+        }
+
+        }
+    </script>
+}

@@ -1,0 +1,51 @@
+﻿@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<IMicrositeNavigation>
+@using FX.Core.Models.Microsite.Base;
+@using FX.Core.Models.Microsite.Page;
+@using FX.Core;
+@{
+    var homeItem = FX.Core.FXContextItems.MicrositeHomePage;
+    var homeID = new Guid(MicrositeTemplates.MicrositeHome.ID);
+
+    var results = new List<IMicrositeNavigation>();
+
+    if (Model.TemplateId !=  homeID)
+    {
+        var parentPage = Model.Parent;
+        while (parentPage != null && parentPage.TemplateId != homeID)
+        {
+            if (!string.IsNullOrEmpty(parentPage.NavigationTitle))
+            {
+                results.Add(parentPage);
+            }
+            parentPage = parentPage.Parent;
+        }
+        results.Reverse();
+    }
+}
+
+@if (Model.TemplateId != homeID)
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-xs-12">
+                <p class="breadcrumb-wrapper">
+                    <a href="@homeItem.Url" class="text-uppercase">@homeItem.NavigationTitle</a>
+                    @foreach (var page in results)
+                    {
+                        if(page.TemplateId == new Guid(FX.Core.MicrositeTemplates.MicrositeSectionFolder.ID)) { 
+                            @Html.Raw("/")  <span class="light-text"> @page.NavigationTitle</span>
+                        }
+                        else
+                        {
+                            @Html.Raw("/")
+                            <a href="@page.Url" class="text-uppercase">
+                                <span class="light-text"> @page.NavigationTitle</span
+                            ></a>
+                        }
+                    }
+                    / <span class="light-text"> @Model.NavigationTitle</span>
+                </p>
+            </div>
+        </div>
+    </div>
+}

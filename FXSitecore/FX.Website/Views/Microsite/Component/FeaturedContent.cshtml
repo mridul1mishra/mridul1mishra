@@ -1,0 +1,47 @@
+﻿@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Microsite.Components.IFeaturedContent>
+
+@if (this.IsInEditingMode)
+{
+    <h2 style="text-align:center">[Featured Content component]</h2>
+    if (Model == null)
+    {
+        <p>No component datasource found</p>
+    }
+}
+@if (Model != null)
+{
+<section class="solution">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-12 list-roles">
+                <div class="feature2-desc">
+                        @Editable(Model, m => m.Text1)
+                </div>
+                @using (BeginRenderLink(Model, m => m.Link1, new { @class = "block" }, isEditable: true))
+                {
+                    @Editable(Model, m => m.LinkText1)
+                }
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12 list-roles">
+                <div class="feature2-desc">
+                        @Editable(Model, m => m.Text2)
+                </div>
+                @using (BeginRenderLink(Model, m => m.Link2, new { @class = "block" }, isEditable: true))
+                {
+                    @Editable(Model, m => m.LinkText2)
+                }
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12 list-roles">
+                <div class="feature2-desc">
+                        @Editable(Model, m => m.Text3)
+                </div>
+                @using (BeginRenderLink(Model, m => m.Link3, new { @class = "block" }, isEditable: true))
+                {
+                    @Editable(Model, m => m.LinkText3)
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+}

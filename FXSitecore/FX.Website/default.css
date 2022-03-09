@@ -1,0 +1,159 @@
+﻿html, body {
+    box-sizing: border-box;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    margin: 0px;
+}
+
+a:link {
+    text-decoration: none;
+    color: #01916d;
+    ;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+#CenterColumn {
+    margin: auto;
+    padding-right: 20px;
+    padding-left: 20px;
+    max-width: 1170px;
+    min-height: 402px;
+    background: white url('-/media/Default Website/cover.ashx') no-repeat;
+    background-size: 1170px 402px;
+    text-align: left;
+}
+
+#InnerCenter {
+    margin: auto;
+    position: relative;
+    width: 1150px;
+    height: 700px;
+}
+
+#Header {
+    height: 402px;
+}
+
+#Footer {
+    width: 100%;
+    clear: both;
+    padding-top: 2px;
+}
+
+#LeftContent {
+    width: 750px;
+    text-align: justify;
+}
+
+#scLogo {
+    margin-top: 20px;
+}
+
+.contentTitle {
+    margin-top: 50px;
+    font-weight: 100;
+    font-size: 36px;
+}
+
+.divider {
+    background-color: #DCDCDC;
+    border: 0 none;
+    clear: both;
+    display: block;
+    height: 1px;
+    float: none;
+    margin: 50px auto;
+    width: 100%;
+}
+
+.contentDescription {
+    padding-right: 20px;
+    line-height: 22px;
+}
+
+.even {
+}
+
+.external {
+}
+
+.stackable {
+}
+
+/* 
+.button{     
+	line-height: 1.55;
+    text-decoration: none;
+    color: #fff;
+    background: #d92231;
+    position: relative;
+    display: inline-block;
+    margin: 15px 0 0;
+    border: 1px solid #d92231;
+    padding: 4px 34px 4px 14px;
+}
+
+span.button:after {
+  -webkit-transform: rotate(45deg) translate(0, -50%);
+          transform: rotate(45deg) translate(0, -50%);
+  position: absolute;
+  top: 50%;
+  right: 21px;
+  display: block;
+  width: 10px;
+  height: 10px;
+  margin: -2px 0 0;
+  content: "";
+  border-top: 2px solid #fff;
+  border-right: 2px solid #fff;
+}
+span.button:hover {
+  background: #fff;
+  color: #d92231;
+  border-color: #d92231;
+}
+span.button:hover:after {
+  border-top: 2px solid #d92231;
+  border-right: 2px solid #d92231;
+} */
+
+
+/*Alok css for RTE button green color start*/
+a.button, span.button, .load-more a,
+.btn-group button, .btn-clear-filter {
+    line-height: 1.55;
+    text-decoration: none;
+    color: #fff;
+    background: #01916d;
+    position: relative;
+    display: inline-block;
+    margin: 15px 0 0;
+    border: 1px solid #01916d;
+    padding: 5px 20px 5px 20px;
+}
+
+    a.button:hover, span.button:hover, .load-more a:hover,
+    .btn-group button:hover, .btn-clear-filter:hover {
+        background: #fff;
+        color: #01916d;
+        border-color: #01916d;
+    }
+
+        a.button:hover:after, span.button:hover:after, .load-more a:hover:after,
+        .btn-group button:hover:after, .btn-clear-filter:hover:after {
+            border-top: 2px solid #01916d;
+            border-right: 2px solid #01916d;
+        }
+
+.section a {
+    color: #01916d;
+    text-decoration: none;
+}
+
+    .section a:hover {
+        text-decoration: underline;
+    }

@@ -1,0 +1,279 @@
+﻿@using Sitecore.Mvc
+@using Newtonsoft.Json
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Website.Models.Pages.ProductFinderViewModel>
+
+@{
+    bool hasContent = Model != null;
+}
+
+<div class="main-content">
+    @Html.Sitecore().Rendering(FX.Core.Keys.RenderingItems.Breadcrumb, FX.Core.Utils.Util.DefaultRenderingCacheParameter)
+    <div class="layout-main">
+        @if (hasContent)
+        {
+            <section class="section product-finder-section" data-url="@Model.GetComparePageItemName()">
+                <div class="product-finder">
+                    <div class="product-finder__header">
+                        @if (!this.IsInEditingMode && Model != null && Model.SitecoreModel != null && !string.IsNullOrEmpty(Model.SitecoreModel.ProductFinderTitle))
+                        {
+                            <h1>@Html.Raw(Model.SitecoreModel.ProductFinderTitle)</h1>
+                        }
+                        else if (this.IsInEditingMode)
+                        {
+                            <h1>@Editable(Model, x => x.SitecoreModel.ProductFinderTitle)</h1>
+                        }
+                    </div>
+                    <div class="product-finder__steps" style="">
+                        <ul class="steps-list">
+                            @{
+                                var counter = 1;
+                                foreach (var item in Model.SitecoreModel.ProductFinderQuestions)
+                                {
+                                    if (counter == 1)
+                                    {
+                                        <li class="is-active" data-step=@item.QuestionType data-stepno=@counter>
+                                            <span class="num"><span>@Editable(item, x => x.StepNumber)</span></span><span class="txt">@Editable(item, x => x.StepLabel)</span>
+                                        </li>
+                                    }
+                                    else if (!(counter >= 5))
+                                    {
+                                        <li data-step=@item.QuestionType data-stepno=@counter>
+                                            <span class="num"><span>@Editable(item, x => x.StepNumber)</span></span><span class="txt">@Editable(item, x => x.StepLabel)</span>
+                                        </li>
+                                    }
+                                    else if (counter > 5)
+                                    {
+                                        <li data-step=@item.QuestionType data-stepno=@(counter-1)>
+                                            <span class="num"><span>@Editable(item, x => x.StepNumber)</span></span><span class="txt">@Editable(item, x => x.StepLabel)</span>
+                                        </li>
+                                    }
+
+                                    counter++;
+                                }
+                            }
+                        </ul>
+                    </div>
+                    <div class="product-finder__question question1 is-active" data-stepno="1" style="display: block;">
+                        <div class="question-item">
+                            <div class="question__desc">
+                                <p>@Editable(Model, x => x.SitecoreModel.ProductFinderQuestions.ToList()[0].Question)</p>
+                            </div>
+                            <div class="question__input row">
+                                @{
+                                    var counter1 = 1;
+                                    foreach (var option in @Model.SitecoreModel.ProductFinderQuestions.ToList()[0].ProductFinderOptions)
+                                    {
+                                        <span class="input-radio col-sm-6">
+                                            <input id="@("radio" + @counter1)" type="radio" name="@Model.SitecoreModel.ProductFinderQuestions.ToList()[0].QuestionType" value=@option.OptionName>
+                                            <label for="@("radio" + @counter1)">
+                                                <span style="height: 25.6px;">@Editable(option, x => x.OptionLabel)</span>
+                                                <div class="input-radio__img"><img src="@(option.OptionImage != null ? option.OptionImage.Src : "")" alt="@option.OptionImage.Alt"></div>
+                                            </label>
+                                        </span>
+                                        counter1++;
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-finder__question question2" data-stepno="2" style="display: none;">
+                        <div class="question-item">
+                            <div class="question__desc">
+                                <p>@Editable(Model, x => x.SitecoreModel.ProductFinderQuestions.ToList()[1].Question)</p>
+                            </div>
+                            <div class="question__input row">
+                                @{
+                                    var counter2 = 3;
+                                    foreach (var option in @Model.SitecoreModel.ProductFinderQuestions.ToList()[1].ProductFinderOptions)
+                                    {
+                                        <span class="input-radio col-sm-6">
+                                            <input id="@("radio" + @counter2)" type="radio" name="@Model.SitecoreModel.ProductFinderQuestions.ToList()[1].QuestionType" value=@option.OptionName>
+                                            <label for="@("radio" + @counter2)">
+                                                <span style="height: 25.6px;">@Editable(option, x => x.OptionLabel)</span>
+                                                <div class="input-radio__img"><img src="@(option.OptionImage != null ? option.OptionImage.Src : "")" alt="@option.OptionImage.Alt"></div>
+                                            </label>
+                                        </span>
+                                        counter2++;
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-finder__question question3" data-stepno="3" style="display: none;">
+                        <div class="question-item">
+                            <div class="question__desc">
+                                <p>@Editable(Model, x => x.SitecoreModel.ProductFinderQuestions.ToList()[2].Question)</p>
+                            </div>
+                            <div class="question__input row">
+                                @{
+                                    var counter3 = 5;
+                                    foreach (var option in @Model.SitecoreModel.ProductFinderQuestions.ToList()[2].ProductFinderOptions)
+                                    {
+                                        <span class="input-radio col-sm-6">
+                                            <input id="@("radio" + @counter3)" type="radio" name="@Model.SitecoreModel.ProductFinderQuestions.ToList()[2].QuestionType" value=@option.OptionName>
+                                            <label for="@("radio" + @counter3)">
+                                                <span style="height: 25.6px;">@Editable(option, x => x.OptionLabel)</span>
+                                                <div class="input-radio__img"><img src="@(option.OptionImage != null ? option.OptionImage.Src : "")" alt="@option.OptionImage.Alt"></div>
+                                            </label>
+                                        </span>
+                                        counter3++;
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-finder__question question4" data-stepno="4" style="display: none;">
+                        <div class="question-item q4 q4a">
+                            <div class="question__desc">
+                                <p>@Editable(Model, x => x.SitecoreModel.ProductFinderQuestions.ToList()[3].Question)</p>
+                            </div>
+                            <ul class="question__input-list">
+                                @{
+                                    var counter4a = 7;
+                                    foreach (var option in @Model.SitecoreModel.ProductFinderQuestions.ToList()[3].ProductFinderOptions)
+                                    {
+                                        <li class="input-radio input-radio__item">
+                                            <input id=@("radio" + @counter4a + "a") type="radio" name="@Model.SitecoreModel.ProductFinderQuestions.ToList()[3].QuestionType" value=@option.OptionName>
+                                            <label for=@("radio" + @counter4a + "a")><span style="">@Editable(option, x => x.OptionLabel)</span></label>
+                                        </li>
+                                        counter4a++;
+                                    }
+                                }
+                            </ul>
+                        </div>
+                        <div class="question-item q4 q4b">
+                            <div class="question__desc">
+                                <p>@Editable(Model, x => x.SitecoreModel.ProductFinderQuestions.ToList()[4].Question)</p>
+                            </div>
+                            <ul class="question__input-list">
+                                @{
+                                    var counter4b = 7;
+                                    foreach (var option in @Model.SitecoreModel.ProductFinderQuestions.ToList()[4].ProductFinderOptions)
+                                    {
+                                        <li class="input-radio input-radio__item">
+                                            <input id=@("radio" + @counter4b + "b") type="radio" name="@Model.SitecoreModel.ProductFinderQuestions.ToList()[4].QuestionType" value=@option.Name>
+                                            <label for=@("radio" + @counter4b + "b")><span style="">@Editable(option, x => x.OptionLabel)</span></label>
+                                        </li>
+                                        counter4b++;
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="product-finder__question question5" data-stepno="5" style="display: none;">
+                        <div class="question-item" style="">
+                            <div class="question__desc">
+                                <p>@Editable(Model, x => x.SitecoreModel.ProductFinderQuestions.ToList()[5].Question)</p>
+                                <span>@Editable(Model, x => x.SitecoreModel.ProductFinderQuestions.ToList()[5].QuestionDescription)</span>
+                            </div>
+                            <div class="question__input question__input-checkbox row" style="">
+                                @{
+                                    var counter5 = 1;
+                                    foreach (var option in @Model.SitecoreModel.ProductFinderQuestions.ToList()[5].ProductFinderOptions)
+                                    {
+                                        <span class="input-checkbox col-sm-3" style="">
+                                            <input id=@("checkbox" + @counter5) type="checkbox" name="@Model.SitecoreModel.ProductFinderQuestions.ToList()[5].QuestionType" value=@option.Name>
+                                            <label for=@("checkbox" + @counter5) style="">
+                                                <span style="">@Editable(option, x => x.OptionLabel)</span>
+                                                <div class="input-checkbox__img"><img src="@(option.OptionImage != null ? option.OptionImage.Src : "")" alt="@option.OptionImage.Alt"></div>
+                                            </label>
+                                        </span>
+                                        counter5++;
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-finder__empty" style="display: none;">
+                        <div class="empty-results__desc">
+                            <h2>@Editable(Model, x => x.SitecoreModel.ApologyMessage)</h2><a class="button" href="@Editable(Model, x=> x.SitecoreModel.ContactUsLink)"><span>@Editable(Model, x => x.SitecoreModel.ContactUsLabel)</span></a>
+                        </div>
+                    </div>
+                    <div class="product-finder-results" style="display: none;">
+                        <div class="finder-results__desc">
+                            <h2> <span class="num">0</span><span class="txt" data-results="@(" " + Model.SitecoreModel.PrinterCountLabel)"> @Editable(Model, x => x.SitecoreModel.PrinterCountLabel)</span></h2><span>@Editable(Model, x => x.SitecoreModel.MaxPrinterCompareText)</span>
+                            <p class="alert-compare hidden" data-text="@(Model.SitecoreModel.MaxPrinterCompareAlert)"></p>
+                        </div>
+                        <ul class="product-item__list">
+                            <li class="product-item">
+                                <div class="product-item--wrap match-height" style="height: 218.512px;">
+                                    <label for="8993275a-eae2-4592-a93d-a69412f311fe">
+                                        <div class="product-item__checkbox">
+                                            <input id="8993275a-eae2-4592-a93d-a69412f311fe" type="checkbox" name="ApeosPort-V C4575" value="8993275a-eae2-4592-a93d-a69412f311fe">
+                                            <span>Add to compare</span>
+                                        </div>
+                                        <div class="product-item__img">
+                                            <img src="/ffassets/fuji-xerox/images/product-finder/product-img-02.png">
+                                        </div>
+                                        <h5>ApeosPort-V C4575</h5>
+                                        <p>
+                                            <span>commodo in consectetur</span>
+                                            <span>commodo in consectetur</span>
+                                        </p>
+                                        <a class="button" href="#">
+                                            <span>Learn more</span>
+                                        </a>
+                                    </label>
+                                </div>
+                            </li>
+                            <li class="product-item">
+                                <div class="product-item--wrap match-height" style="height: 218.512px;">
+                                    <label for="99f4028b-d80c-418a-90ed-3f1c44b7382b">
+                                        <div class="product-item__checkbox">
+                                            <input id="99f4028b-d80c-418a-90ed-3f1c44b7382b" type="checkbox" name="DocuPrint M3940" value="99f4028b-d80c-418a-90ed-3f1c44b7382b">
+                                            <span>Add to compare</span>
+                                        </div>
+                                        <div class="product-item__img">
+                                            <img src="/ffassets/fuji-xerox/images/product-finder/product-img-02.png">
+                                        </div>
+                                        <h5>DocuPrint M3940</h5>
+                                        <p>
+                                            <span>reprehenderit aliquip esse consequat</span>
+                                            <span>reprehenderit aliquip esse consequat</span>
+                                        </p>
+                                        <a class="button" href="#">
+                                            <span>Learn more</span>
+                                        </a>
+                                    </label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <script id="listingPrinterContainer" type="text/x-dot-template">
+                        {{~it :item:index}}
+                        <li class="product-item">
+                            <div class="product-item--wrap match-height">
+                                <label for="{{=item.id}}">
+                                    <div class="product-item__checkbox">
+                                        <input id="{{=item.id}}" type="checkbox" name="{{=item.name}}" value="{{=item.id}}" /><span>@Editable(Model, x => x.SitecoreModel.AddToCompareLabel)</span>
+                                    </div>
+                                    <div class="product-item__img"><img src="{{=item.thumbnail}}" /></div>
+                                    <h5>{{=item.name}}</h5>
+                                    <p><span>{{=item.desc}}</span><span>{{=item.desc2}}</span></p><a class="button" href="{{=item.url}}"><span>@Editable(Model, x => x.SitecoreModel.LearnMoreLabel)</span></a>
+                                </label>
+                            </div>
+                        </li>
+                        {{~}}
+                    </script>
+                    <div class="product-finder__footer">
+                        <div class="product-finder__footer--results">
+                            <p><span class="num">0</span><span class="txt" data-results="@(" " + @Model.SitecoreModel.PrinterCountLabel)"> @Editable(Model, x => x.SitecoreModel.PrinterCountLabel)</span></p>
+                        </div>
+                        <div class="product-finder__footer--back" style="display:none;">
+                            <button class="button btn-white" href="#"><span class="icon icon-arrow-left"></span><span>@Editable(Model, x => x.SitecoreModel.BackLabel)</span></button>
+                        </div>
+                        <div class="product-finder__footer--right" style="display:none;">
+                            <button class="button btn-startover btn-white" href="#"><span>@Editable(Model, x => x.SitecoreModel.StartOverLabel)</span><span class="icon icon-return"></span></button>
+                            <button class="button btn-findprinter"><span>@Editable(Model, x => x.SitecoreModel.FindPrintersLabel)</span><span class="icon icon-arrow-right"></span></button>
+                            <button class="button btn-compareprinter" style="display:none;"><span>@Editable(Model, x => x.SitecoreModel.CompareLabel)</span><span class="icon icon-arrow-right"></span></button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        }
+    </div>
+</div>
+<script id="printerData" type="application/json">
+    @Html.Raw(Model.GetJson())
+</script>

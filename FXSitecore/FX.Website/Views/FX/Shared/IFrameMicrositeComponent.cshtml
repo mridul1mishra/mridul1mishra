@@ -1,0 +1,16 @@
+﻿@using Sitecore.Mvc
+@using FX.Core.Utils
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Microsite.Components.IIFrameMicrositeComponent>
+
+@if (this.IsInEditingMode)
+{
+    <h2 style="text-align:center">[iFrame microsite component]</h2>
+}
+<section class="section">
+    @if (Model != null)
+    {
+        <div class="iframe-container">
+            <iframe src="@Model.IFrameMicrositeURL" width="@Model.IFrameMicrositeWidth" height="@Model.IFrameMicrositeHeight" frameborder="0"></iframe>
+        </div>
+    }
+</section>

@@ -1,0 +1,72 @@
+﻿@using Sitecore.Mvc
+@using FX.Core.GlassMapper
+@using FX.Core.Utils
+@using FX.Core
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Page.ICareerDetailPage>
+
+<div class="main-content layout-article">
+    @Html.Sitecore().Rendering(FX.Core.Keys.RenderingItems.Breadcrumb, FX.Core.Utils.Util.DefaultRenderingCacheParameter)
+    <div class="top-banner">
+        @Html.Sitecore().Rendering(FX.Core.Keys.RenderingItems.HeroBanner, FX.Core.Utils.Util.DefaultRenderingCacheParameter)
+    </div>
+    <aside class="layout-side layout-side--left tablet-desktop">
+            <div class="social-aside">
+                @Html.Partial("~/Views/FX/Shared/AddThis.cshtml")
+            </div>
+        </aside>
+       
+        <article class="layout-main">
+                <section class="section career-detail-overview">
+                    @if (this.IsInEditingMode)
+                    {
+                        <a id='content@(Model.Id.ToString("N"))' class="anchor-link" data-label="@Model.OverviewLabel">@Editable(Model, x => x.OverviewLabel)</a>
+                    }
+                    else
+                    {
+                        <a id='content@(Model.Id.ToString("N"))' class="anchor-link" data-label="@Model.OverviewLabel"></a>
+                    }
+                    <h2>@Editable(Model, x => x.MainTitle)</h2>
+                    @if (Model.JobPostingDate.Year > 1900)
+                    {
+                        if (!this.IsInEditingMode)
+                        {
+                            <span class="job-listing-dates">@Editable(Model, x => x.PostingDateLabel) @Editable(Model, x => x.LocalisedJobPostingDate.DayMonthYearString)</span>
+                        }
+                    }
+                    @if (Model.JobClosingDate.Year > 1900)
+                    {
+                        if (!this.IsInEditingMode)
+                        {
+                            <span class="job-listing-dates">@Editable(Model, x => x.CloseDateLabel) @Editable(Model, x => x.LocalisedJobClosingDate.DayMonthYearString)</span>
+                        }
+                    }
+                    <p>@Editable(Model, x => x.CareerText)</p>
+                    <table class="job-at-a-glance">
+                        <thead>
+                            <tr>
+                                <th colspan="2"><strong>@Editable(Model, x => x.TableLabel)</strong></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>@Editable(Model, x => x.SpecializationLabel)</strong></td>
+                                <td>@Editable(Model, x => x.Specialization)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>@Editable(Model, x => x.JobTypeLabel)</strong></td>
+                                <td>@Editable(Model, x => x.JobType)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>@Editable(Model, x => x.MinimumExperienceLabel)</strong></td>
+                                <td>@Editable(Model, x => x.MinimumExperience)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>@Editable(Model, x => x.LocationLabel)</strong></td>
+                                <td>@Editable(Model, x => x.CareerLocation)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
+                @Html.Sitecore().Placeholder("sectionPlaceholder")
+        </article>
+    </div>

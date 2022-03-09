@@ -1,0 +1,44 @@
+﻿@using System.Configuration;
+@{
+    ViewBag.Title = "Index";
+    var sitekey = System.Configuration.ConfigurationManager.AppSettings["RecaptchaSiteKey"].ToString();
+
+}
+
+<script src="https://www.google.com/recaptcha/api.js?render=@sitekey"></script>
+<script>
+    grecaptcha.ready(function () {
+        grecaptcha.execute(@sitekey, { action: 'Index' }).then(function (token) {
+            console.log(token);
+            localStorage.setItem("tokenvalue", token);
+        });
+
+
+        jQuery(".sitecore-form form").submit(function () {
+            jQuery(".captcha_text").text("");
+            var tokenVal = localStorage.getItem("tokenvalue");
+            jQuery("<span>" + result + '</span>').insertAfter(".sitecore-form form");
+            jQuery.ajax({
+                url: '/api/validateToken?token=' + tokenVal,
+                type: "POST",
+                contentType: false, // Not to set any content header
+                processData: false, // Not to process data
+                data: "",
+                success: function (result) {
+                    if (result == "Captcha is not valid ! Please refresh Page") {
+                        jQuery(".sitecore-form form").append("span").addClass("captcha_text").text(result);
+                        window.stop();
+                    }
+                    else {
+                        return true;
+                    }
+
+                },
+                error: function (err) {
+                    jQuery("<span>" + err.statusText + '</span>').insertAfter(".sitecore-form form");
+                }
+            });
+        });
+
+    });
+</script>

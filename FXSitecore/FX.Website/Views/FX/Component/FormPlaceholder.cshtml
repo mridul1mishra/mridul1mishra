@@ -1,0 +1,23 @@
+﻿@using Sitecore.Mvc
+@using FX.Core.Utils
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Components.IFormPlaceholder>
+
+@if (this.IsInEditingMode)
+{
+    <h2 style="text-align:center">[Form Placeholder component]</h2>
+}
+<section class="section">
+    @if (Model != null && !string.IsNullOrEmpty(Model.SectionTitle))
+    {
+        if (Model.ShowInStickyTab)
+        {
+            <a id='content@(Model.Id.ToString("N"))' class="anchor-link" data-label="@Model.SectionTitle.Left(FX.Core.Constants.MaxLength.SectionTitle)"></a>
+        }
+        <h2>
+            @Editable(Model, x => x.SectionTitle)
+        </h2>
+    }
+    <div class="sitecore-form">
+        @Html.Sitecore().Placeholder("formPlaceholder")
+    </div>
+</section>

@@ -1,0 +1,27 @@
+﻿@using Sitecore.Mvc
+@using System.Web.Mvc.Html
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Products.IProductPage>
+
+<div class="main-content">
+    @Html.Sitecore().Rendering(FX.Core.Keys.RenderingItems.Breadcrumb, FX.Core.Utils.Util.DefaultRenderingCacheParameter)
+    <div class="top-banner">
+        @Html.Sitecore().Rendering(FX.Core.Keys.RenderingItems.ProductHeroBanner, FX.Core.Utils.Util.DefaultRenderingCacheParameter)
+        @if (!string.IsNullOrEmpty(Model.CopyrightText))
+        {
+            <p class="box-04"> @Html.Raw(Model.CopyrightText)</p>
+        }
+
+    </div>
+
+
+    <div class="layout-main">
+
+        @Html.Sitecore().Placeholder("sectionProductPlaceholder")
+    </div>
+
+
+    @{
+        Html.RenderPartial("~/Views/FX/Component/_ProductForm.cshtml");
+    }
+</div>
+

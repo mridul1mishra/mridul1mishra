@@ -1,0 +1,145 @@
+﻿@using Sitecore.Mvc
+@using FX.Core.Utils
+@using System.Text.RegularExpressions
+@using System.Web.Mvc.Html
+@using System.Web;
+@using FX.Core.Search.Models;
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Page.ISearchPage>
+
+@{
+    string query = HttpUtility.UrlDecode(Request.QueryString[FX.Core.Keys.Querystrings.Search]);
+    string encodedTitle = HttpUtility.HtmlEncode(query);
+    var opco = FX.Core.Utils.Util.OpcoType();
+    int pageSize = 10;
+    int page = 0;
+    int.TryParse(Request.QueryString[FX.Core.Keys.Querystrings.Page], out page);
+    page = page == 0 ? 1 : page;
+
+    int count = 0;
+    var results = new KeywordSearchHelper(this.SitecoreContext).Search(query, page, pageSize, out count);
+    int totalPages = (count / pageSize) + (count % pageSize > 0 ? 1 : 0);
+
+    string paginationFormat = string.Format("?{0}={1}&{2}={3}", FX.Core.Keys.Querystrings.Search, HttpUtility.UrlEncode(query), FX.Core.Keys.Querystrings.Page, "{0}");
+    var paginationList = SetupPaginationList(page, totalPages);
+}
+
+@functions{
+    private List<string> SetupPaginationList(int CurrentPage, int TotalPages)
+    {
+        List<string> list = new List<string>();
+
+        // setup the first set of numbers before break
+        for (int i = 1; i < Math.Min(CurrentPage, 2 + 1); ++i)
+        {
+            list.Add(i.ToString());
+        }
+
+        // setup the first break
+        if (CurrentPage - 2 > 2 + 1)
+            list.Add("...");
+
+        // setup between the breaks
+        for (int i = Math.Max(2 + 1, CurrentPage - 2); i < CurrentPage; ++i)
+        {
+            list.Add(i.ToString());
+        }
+
+        // add the current page
+        list.Add(CurrentPage.ToString());
+
+        // setup after the current page
+        for (int i = CurrentPage + 1; i <= Math.Min(CurrentPage + 2, TotalPages); ++i)
+        {
+            list.Add(i.ToString());
+        }
+
+        // setup the second break
+        if (TotalPages - 2 + 1 > CurrentPage + 2 + 1)
+            list.Add("...");
+
+        // setup the last set of numbers
+        for (int i = Math.Max(CurrentPage + 2 + 1, TotalPages - 2 + 1); i <= TotalPages; ++i)
+        {
+            list.Add(i.ToString());
+        }
+
+        return list;
+    }
+}
+
+<div class="main-content">
+    @Html.Sitecore().Rendering(FX.Core.Keys.RenderingItems.Breadcrumb, FX.Core.Utils.Util.DefaultRenderingCacheParameter)
+    @if (!this.IsInEditingMode && Model != null && !string.IsNullOrEmpty(Model.MainTitle))
+    {
+        <h1>@Html.Raw(Model.MainTitle)</h1>
+    }
+    else if (this.IsInEditingMode)
+    {
+        <h1>@Editable(Model, x => x.MainTitle)</h1>
+    }
+
+    <div class="layout-main">
+        @if (count > 0)
+        {
+            <div class="result-status">
+                <p class="msg success-msg" style="display: block;">Total: <span class="total-results">@count</span> results found.</p>
+            </div>
+            <ul class="search-results">
+                @foreach (var result in results)
+                {
+                    <li>
+                        <h2><a href="/@opco@result.Url">@result.TeaserTitle</a></h2>
+                        <span class="url">@result.Url</span>
+                        <p class="excerpt">@result.MetaDescription</p>
+                    </li>
+                }
+            </ul>
+            if (totalPages > 1)
+            {
+                <div class="pagination">
+                    <ul>
+                        @if (page > 1)
+                        {
+                            <li class="pagination-prev">
+                                <a title="Prev" href="@string.Format(paginationFormat, (page-1))">
+                                    <span class="pagenav">Prev</span>
+                                </a>
+                            </li>
+                        }
+                        @foreach (string i in paginationList)
+                        {
+                            <li>
+                                @if (i == "..." ? true : false)
+                                {
+                                    <a @(i == page.ToString() ? "class= \"active\"" : "") href="javascript:void(0);">
+                                        <span class="pagenav">@i</span>
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a @(i == page.ToString() ? "class= active" : "") href="@string.Format(paginationFormat, i)">
+                                        <span class="pagenav">@i</span>
+                                    </a>
+                                }
+                            </li>
+                        }
+                        @if (page < totalPages)
+                        {
+                            <li class="pagination-next">
+                                <a title="Next" href="@string.Format(paginationFormat, (page+1))">
+                                    <span class="pagenav">Next</span>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="listing-content__result-status">
+                <p class="msg success-msg" style="display: block;">No results found.</p>
+            </div>
+        }
+    </div>
+</div>

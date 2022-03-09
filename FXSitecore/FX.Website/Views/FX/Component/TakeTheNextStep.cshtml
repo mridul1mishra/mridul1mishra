@@ -1,0 +1,152 @@
+﻿@using FX.Core.Utils
+@using FX.Core.GlassMapper
+@using Sitecore.Mvc
+@using FX.Core.Models.Base
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Components.TakeTheNextStep.ITakeTheNextStep>
+@{
+    IEnumerable<INextStepFields> nextSteps = null;
+    FX.Core.Models.Components.TakeTheNextStep.IYoutubeLinkStep tempYoutubeLink = null;
+    DateTime currentDate = DateTime.Now;
+    string formID = string.Empty;
+
+    if (Model != null)
+    {
+        nextSteps = Model.GetNextSteps();
+    }
+}
+
+@helper ShowNextStepFields(FX.Core.Models.Base.INextStepFields item)
+{
+    
+    if (!string.IsNullOrEmpty(item.Text))
+    {
+        <p>@Editable(item, x => x.Text)</p>
+}
+    <div class="image-holder">
+        @Editable(item, x => x.Image)
+    </div>
+}
+
+@helper ShowYoutubeLink(FX.Core.Models.Components.TakeTheNextStep.IYoutubeLinkStep item)
+{
+    <div class="link-image">
+        @if (!string.IsNullOrEmpty(item.VideoUrl))
+        {
+            <a data-fancybox="data-fancybox" data-type="iframe" data-src="@item.VideoUrl" class="fancybox video">
+                @ShowNextStepFields(item)
+            </a>
+        }
+        else
+        {
+            <a data-fancybox="data-fancybox" data-type="iframe" data-src="https://www.youtube.com/embed/@item.YoutubeId" class="fancybox video">
+                @ShowNextStepFields(item)
+            </a>
+        }
+    </div>
+}
+
+@helper ShowEnquiryLink(FX.Core.Models.Components.TakeTheNextStep.IEnquiryLinkStep item)
+{
+    <div class="link-image">
+        @using (BeginRenderLink(item, x => x.Link, isEditable: true))
+        {
+            @ShowNextStepFields(item)
+        }
+    </div>
+}
+
+@helper ShowTimeFrameLink(FX.Core.Models.Components.TakeTheNextStep.ITimeFrameLinkStep item, DateTime currentDate)
+{
+    <div class="link-image">
+        @if (item.TimeSlot.IsAvailable(currentDate))
+        {
+            <a href="#" onclick="@item.PopupScript">
+                @ShowNextStepFields(item)
+            </a>
+        }
+        else
+        {
+            <a href="javascript:void(0)">
+                <p>@Html.Raw(item.ClosedSignText)</p>
+            </a>
+        }
+    </div>
+
+}
+
+@helper ShowFormEmbed(FX.Core.Models.Components.TakeTheNextStep.IFormEmbedStep item)
+{
+bool hasForm = !string.IsNullOrEmpty(item.Form);
+
+    <div class="link-image">
+        <a class="modalbox" href="@Html.Raw(hasForm?"#"+item.Id.ToString("N"):"")">
+            @ShowNextStepFields(item)
+        </a>
+        @if (hasForm)
+        {
+            <div class="modal sitecore-form" id="@item.Id.ToString("N")" style="display:none;">
+                <div class="modal-wrapper">
+                    <div class="modal-close-button">
+                        <a href="#"><i class="icon-cross"></i></a>
+                    </div>
+                    <div class="modal-form">
+                        @Html.Sitecore().Rendering(FX.Core.Keys.RenderingItems.WFFMMVCForm, new { DataSource = item.Form, UniqueId = Guid.NewGuid().ToString() })
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+}
+
+@if (this.IsInEditingMode)
+{
+    <h2 style="text-align:center">[Take the next step component]</h2>
+    if (Model == null)
+    {
+        <p>No component datasource found</p>
+    }
+}
+
+<!-- Featured Linkboxs -->
+<section class="section">
+    <div class="more">
+        @if (Model != null && !string.IsNullOrEmpty(Model.SectionTitle))
+        {
+            if (Model.ShowInStickyTab)
+            {
+                <a id='content@(Model.Id.ToString("N"))' class="anchor-link" data-label="@Model.SectionTitle.Left(FX.Core.Constants.MaxLength.SectionTitle)"></a>
+            }
+            <h3>
+                @Editable(Model, x => x.SectionTitle)
+            </h3>
+        }
+
+        <div class="image-links-wrapper">
+            @if (nextSteps != null)
+            {
+                foreach (var nextStep in nextSteps)
+                {
+                    if (nextStep is FX.Core.Models.Components.TakeTheNextStep.IYoutubeLinkStep)
+                    {
+                        tempYoutubeLink = nextStep as FX.Core.Models.Components.TakeTheNextStep.IYoutubeLinkStep;
+                        @ShowYoutubeLink(tempYoutubeLink);
+                    }
+                    else if (nextStep is FX.Core.Models.Components.TakeTheNextStep.IEnquiryLinkStep)
+                    {
+                        @ShowEnquiryLink(nextStep as FX.Core.Models.Components.TakeTheNextStep.IEnquiryLinkStep);
+                    }
+                    else if (nextStep is FX.Core.Models.Components.TakeTheNextStep.ITimeFrameLinkStep)
+                    {
+                        @ShowTimeFrameLink(nextStep as FX.Core.Models.Components.TakeTheNextStep.ITimeFrameLinkStep, currentDate);
+                    }
+                    else if (nextStep is FX.Core.Models.Components.TakeTheNextStep.IFormEmbedStep)
+                    {
+                        @ShowFormEmbed(nextStep as FX.Core.Models.Components.TakeTheNextStep.IFormEmbedStep)
+                    }
+                }
+            }
+        </div>
+    </div>
+</section>
+<!-- End: Featured Linkboxs -->

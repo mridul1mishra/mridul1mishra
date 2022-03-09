@@ -1,0 +1,196 @@
+﻿@using FX.Core.GlassMapper
+@using FX.Core.Utils
+@using System.Web.Mvc.Html
+@using Glass.Mapper.Sc.Web.Mvc
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Settings.ISiteSettings>
+
+@{
+    bool hasFooterLink1 = FX.Core.Utils.Util.HasValidLink(Model.FooterLink1);
+    bool hasFooterLink2 = FX.Core.Utils.Util.HasValidLink(Model.FooterLink2);
+    bool hasFooterLink3 = FX.Core.Utils.Util.HasValidLink(Model.FooterLink3);
+    bool hasFooterLink4 = FX.Core.Utils.Util.HasValidLink(Model.FooterLink4);
+    bool hasFooterLink5 = FX.Core.Utils.Util.HasValidLink(Model.FooterLink5);
+    bool hasFooterLinks = hasFooterLink1 || hasFooterLink2 || hasFooterLink3 || hasFooterLink4 || hasFooterLink5;
+
+}
+<footer class="m-global-footer__wrap">
+    <div class="l-container">
+        <div class="m-container">
+
+            <div class="bg-black m-paragraph">
+                <div class="m-paragraph__body">
+                    <p class="text-center">
+                        <small>
+                            @if (!string.IsNullOrEmpty(Model.CommonNote))
+                            {
+                                @Html.Raw(Model.CommonNote)
+                            }
+                        </small>
+                    </p>
+                </div>
+            </div>
+
+            <div class="m-footer-links">
+                @if (!string.IsNullOrEmpty(Model.AffiliatedCompanyTitle))
+                {
+                    <p class="m-footer-links__title">@Model.AffiliatedCompanyTitle</p>
+                }
+                <div class="m-column">
+                    <div class="m-column__body">
+                        <ul class="row">
+                            @if (Util.HasValidLink(Model.AffiliatedCompanyLink1) && Util.HasValidImage(Model.AffiliatedCompanyLogo1))
+                            {
+                                <li class="col col-xs-6 col-sm-3 col-md-3 pl-0">
+                                    <a class="m-footer-links__link" href="@Model.AffiliatedCompanyLink1.Url"
+                                       target="_blank">
+                                        @RenderImage(m => m.AffiliatedCompanyLogo1)
+                                        <p class="m-footer-links__label">@Model.AffiliatedCompanyLink1.Text</p>
+                                    </a>
+                                </li>
+                            }
+
+                            @if (Util.HasValidLink(Model.AffiliatedCompanyLink2) && Util.HasValidImage(Model.AffiliatedCompanyLogo2))
+                            {
+                                <li class="col col-xs-6 col-sm-3 col-md-3 pr-0">
+                                    <a class="m-footer-links__link" href="@Model.AffiliatedCompanyLink2.Url"
+                                       target="_blank">
+
+                                        @RenderImage(m => m.AffiliatedCompanyLogo2, isEditable: true)
+                                        <p class="m-footer-links__label">@RenderLink(Model, m => m.AffiliatedCompanyLink2)</p>
+                                    </a>
+
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="m-sns-links text-center m-sns-links--size-small">
+                @if (Util.HasValidImage(Model.SNSLogo1))
+                {
+                    if (Util.HasValidLink(Model.SNSLink1))
+                    {
+                        <a class="m-sns-links__item" href="@Model.SNSLink1.Url" target="_blank" rel="noopener">@RenderImage(m => m.SNSLogo1)</a>
+                    }
+                    else
+                    {
+                        <a class="addthis_button_facebook m-sns-links__item" href="#" target="_blank">@RenderImage(m => m.SNSLogo1)</a>
+                    }
+                }
+                @if (Util.HasValidImage(Model.SNSLogo2))
+                {
+                    if (Util.HasValidLink(Model.SNSLink2))
+                    {
+                        <a class="m-sns-links__item" href="@Model.SNSLink2.Url" target="_blank" rel="noopener"> @RenderImage(m => m.SNSLogo2) </a>
+                    }
+                    else
+                    {
+                        <a class="addthis_button_twitter m-sns-links__item" rel="noopener" href="#" target="_blank"> @RenderImage(m => m.SNSLogo2) </a>
+                    }
+                }
+                @if (Util.HasValidImage(Model.SNSLogo3))
+                {
+                    if (Util.HasValidLink(Model.SNSLink3))
+                    {
+                        <a class="m-sns-links__item" href="@Model.SNSLink3.Url" target="_blank" rel="noopener">@RenderImage(m => m.SNSLogo3)</a>
+                    }
+                    else
+                    {
+                        <a class="addthis_button_linkedin m-sns-links__item" rel="noopener" href="#" target="_blank">@RenderImage(m => m.SNSLogo3)</a>
+                    }
+                }
+                @if (Util.HasValidLink(Model.SNSLink4) && Util.HasValidImage(Model.SNSLogo4))
+                {
+                    <a class="m-sns-links__item" href="@Model.SNSLink4.Url" target="_blank"
+                       rel="noopener">
+                        @RenderImage(m => m.SNSLogo4)
+                    </a>
+                }
+                @if (Util.HasValidLink(Model.SNSLink5) && Util.HasValidImage(Model.SNSLogo5))
+                {
+                    <a class="m-sns-links__item" href="@Model.SNSLink5.Url" target="_blank"
+                       rel="noopener">
+                        @RenderImage(m => m.SNSLogo5)
+                    </a>
+                }
+                @if (Util.HasValidLink(Model.SNSLink6) && Util.HasValidImage(Model.SNSLogo6))
+                {
+                    <a class="m-sns-links__item" href="@Model.SNSLink6.Url" target="_blank"
+                       rel="noopener">
+                        @RenderImage(m => m.SNSLogo6)
+                    </a>
+                }
+            </div>
+
+            @Html.Partial("~/Views/FX/Component/LinkToMainPage.cshtml")
+
+
+
+
+        </div>
+    </div>
+
+    <nav class="m-global-footer">
+        <div class="l-container">
+            <div class="m-global-footer__body">
+                <div class="m-global-footer__body__inner">
+                    <ul>
+                        @if (Util.HasValidLink(Model.FooterLink1))
+                        {
+                            <li class="m-global-footer__item">
+                                @RenderLink(Model, m => m.FooterLink1, new { @class = "m-global-footer__anchor" })
+                            </li>
+                        }
+
+                        @if (Util.HasValidLink(Model.FooterLink2))
+                        {
+                            <li class="m-global-footer__item">
+                                @RenderLink(Model, m => m.FooterLink2, new { @class = "m-global-footer__anchor" })
+                            </li>
+                        }
+                        @if (Util.HasValidLink(Model.FooterLink3))
+                        {
+                            <li class="m-global-footer__item">
+                                @RenderLink(Model, m => m.FooterLink3, new { @class = "m-global-footer__anchor" })
+                            </li>
+                        }
+                        @if (Util.HasValidLink(Model.FooterLink4))
+                        {
+                            <li class="m-global-footer__item">
+                                @RenderLink(Model, m => m.FooterLink4, new { @class = "m-global-footer__anchor" })
+                            </li>
+                        }
+                        @if (Util.HasValidLink(Model.FooterLink5))
+                        {
+                            <li class="m-global-footer__item">
+                                @RenderLink(Model, m => m.FooterLink5, new { @class = "m-global-footer__anchor" })
+                            </li>
+                        }
+                    </ul>
+                    <div class="m-global-footer__lang">
+                        @Html.Partial("~/Views/FX/Component/LanguageSelector.cshtml")
+                    </div>
+                </div>
+                @if (!string.IsNullOrEmpty(Model.CopyrightText))
+                {
+                    if (Sitecore.Context.Item != null && Sitecore.Context.Site != null && Sitecore.Context.Site.StartItem != null && !string.IsNullOrEmpty(Sitecore.Context.Site.StartItem) && Sitecore.Context.Item.Name.Equals(Sitecore.Context.Site.StartItem.Replace("/", ""), StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        <small class="m-global-footer__copyright"><h1 class="m-global-footer-copyright-homepage">@Html.Raw(Model.CopyrightText)</h1></small>
+                    }
+                    else
+                    {
+                        <small class="m-global-footer__copyright">@Html.Raw(Model.CopyrightText)</small>
+                    }
+                }
+            </div>
+        </div>
+    </nav>
+</footer><!-- /footer -->
+<div id="back-to-top" data-text="@Model.BackToTopLabel"></div>
+<script id="collapsibleFormLabels" type="application/json">
+    {
+    "addField" : "@Html.Raw(Model.AddField)",
+    "removeField" : "@Html.Raw(Model.RemoveField)"
+    }
+</script>

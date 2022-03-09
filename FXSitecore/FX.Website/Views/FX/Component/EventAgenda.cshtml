@@ -1,0 +1,91 @@
+﻿@using FX.Core.Utils
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Components.Events.IEventAgenda>
+
+@{
+    var eventAgendaFolders = Model.EventAgendaFolders;
+    int folderCountTop = 1;
+    int folderCountBottom = 1;
+    string activeTop = "active";
+    string activeBottom = "active";
+}
+
+@if (this.IsInEditingMode)
+{
+    <h2 style="text-align:center">[Event Agenda component]</h2>
+    if (Model == null)
+    {
+        <p>No component datasource found</p>
+    }
+}
+<section class="section event-agenda">
+    @if (Model != null && !string.IsNullOrEmpty(Model.SectionTitle))
+    {
+        if (Model.ShowInStickyTab)
+        {
+            <a id='content@(Model.Id.ToString("N"))' class="anchor-link" data-label="@Model.SectionTitle.Left(FX.Core.Constants.MaxLength.SectionTitle)"></a>
+        }
+    }
+    <h2>@Editable(Model, x => x.MainTitle)</h2>
+    <div class="event-agenda__header">
+        <div class="day-toggle">
+            @foreach (var eventAgendaFolder in eventAgendaFolders)
+            {
+                if (folderCountTop != 1)
+                { activeTop = ""; }
+                <a class="day-@folderCountTop @activeTop" href="#">@eventAgendaFolder.EventAgendaTabLabel</a>
+                folderCountTop++;
+            }
+        </div>
+        @if(Model.DownloadAgendaLink != null)
+        {
+            <a class="btn-orange" href="@Model.DownloadAgendaLink.Url" download="download">@Model.DownloadAgendaLabel <i class="icon-file-pdf-o"></i></a>
+        }
+    </div>
+    <div class="event-agenda__tables">
+        <!-- TODO: agenda items populate -->
+        @foreach (var eventAgendaFolder in eventAgendaFolders)
+        {
+            var eventItems = eventAgendaFolder.IEventAgendaItems;
+                    
+            <div class="event-agenda__day-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>@Editable(Model, x => x.TimeLabel)</th>
+                        <th>@Editable(Model, x => x.SessionLabel)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var eventItem in eventItems)
+                    {
+                        <tr>
+                            <td>@Editable(eventItem, x => x.Time, x => x.Time.ToString(FX.Core.Constants.DateTimeFormat.TimeOnly))</td>
+                            <td>
+                                @Editable(eventItem, x => x.Description)
+                                @if(!string.IsNullOrWhiteSpace(eventItem.Synopsis))
+                                {
+                                    <a class="js-synopsis-toggle" href="#">@Editable(Model, x => x.SynopsisLabel)</a>
+                                    <div class="synopsis">
+                                        @Editable(eventItem, x => x.Synopsis)
+                                    </div>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            </div>
+        }
+    </div>
+    <div class="event-agenda__header">
+        <div class="day-toggle">
+        @foreach (var eventAgendaFolder in eventAgendaFolders)
+        {
+            if (folderCountBottom != 1)
+            { activeBottom = ""; }
+            <a class="day-@folderCountBottom @activeBottom" href="#">@eventAgendaFolder.EventAgendaTabLabel</a>
+            folderCountBottom++;
+        }
+        </div>
+    </div>
+</section>

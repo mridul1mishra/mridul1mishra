@@ -1,0 +1,42 @@
+﻿@using FX.Core.Utils
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Components.ITopCarousel>
+
+
+@if (this.IsInEditingMode)
+{
+    <h2 style="text-align:center">[Top Carousel component]</h2>
+    if (Model == null)
+    {
+        <p>No component datasource found</p>
+    }
+}
+
+@if (Model != null)
+{
+    if (!string.IsNullOrEmpty(Model.SectionTitle) && Model.ShowInStickyTab)
+    {
+        <a id='content@(Model.Id.ToString("N"))' class="anchor-link" data-label="@Model.SectionTitle.Left(FX.Core.Constants.MaxLength.SectionTitle)"></a>
+    }
+
+<div class="carousel">
+    <h3>@Editable(Model, x => x.SectionTitle)</h3>
+    <div class="carousel__dots"></div>
+    <div class="carousel__items">
+        @foreach (var carousel in Model.CarouselItems)
+        {
+            <div class="carousel-item match-height">
+                <div class="carousel-item__image">
+                    @RenderImage(carousel, m => m.FeaturedImage, isEditable: true)
+                </div>
+                <div class="carousel-item__text">
+                    <h4>@Editable(carousel, m => m.FeaturedTitle)</h4>
+                    <p>@Editable(carousel, m => m.FeaturedDescription)</p>
+                    @RenderLink(carousel, m=> m.FeaturedLink, new {@class="button" }, isEditable: true)
+
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+}

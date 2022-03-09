@@ -1,0 +1,20 @@
+﻿@using FX.Core.Utils
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Components.Events.IEventOverview>
+@if (this.IsInEditingMode)
+{
+    <h2 style="text-align:center">[Event Overview component]</h2>
+    if (Model == null)
+    {
+        <p>No component datasource found</p>
+    }
+}
+<section class="section event-overview">
+    @if (Model != null && !string.IsNullOrEmpty(Model.SectionTitle))
+    {
+        if (Model.ShowInStickyTab)
+        {
+            <a id='content@(Model.Id.ToString("N"))' class="anchor-link" data-label="@Model.SectionTitle.Left(FX.Core.Constants.MaxLength.SectionTitle)"></a>
+        }
+    }
+    @Editable(Model, i => i.MainContent)
+</section>

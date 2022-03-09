@@ -1,0 +1,13 @@
+﻿@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Microsite.Page.IMicrositePage>
+ <!-- MAIN CONTENT -->
+<section class="padtop75 articles-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-xs-12 col-md-push-1">
+                <h3>@Editable(Model, m=> m.MainTitle)</h3>
+                @Editable(Model, m=> m.MainContent)
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END MAIN CONTENT -->

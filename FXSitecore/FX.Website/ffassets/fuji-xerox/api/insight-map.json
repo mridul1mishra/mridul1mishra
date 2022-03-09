@@ -1,0 +1,508 @@
+{
+  "categories": [
+    {
+      "id": "8f99e1a634c1495e80e797bbc204ab4a",
+      "name": "AEC",
+      "types": [
+        {
+          "id": "02d94e2227ff47f5ac37d954e246d3e1",
+          "name": "Administrative"
+        },
+        {
+          "id": "8d0ee5c89b0d46ebb807ccb27ce11227",
+          "name": "Creative Design"
+        },
+        {
+          "id": "5ae1ae65773d40649e8c7e5515aaca92",
+          "name": "Finance"
+        },
+        {
+          "id": "272c415416814ba796a76197f015364e",
+          "name": "IT"
+        },
+        {
+          "id": "c2393cb766794badb788bf579d228df3",
+          "name": "Management"
+        },
+        {
+          "id": "73d5d062fc1e4cad91e157f36502d632",
+          "name": "Marketing"
+        },
+        {
+          "id": "c8e0d8125c1f4ff0923f9f142421ca4c",
+          "name": "Operations"
+        },
+        {
+          "id": "c83668c1b049405d8a52e7dddae6aa46",
+          "name": "Others"
+        },
+        {
+          "id": "823a829df4964def980d95da9f55f85f",
+          "name": "Sales"
+        }
+      ]
+    },
+    {
+      "id": "80144091999a49d7837ae1f3f3c9d016",
+      "name": "Aerospace",
+      "types": [
+        {
+          "id": "02d94e2227ff47f5ac37d954e246d3e2",
+          "name": "Administrative"
+        },
+        {
+          "id": "8d0ee5c89b0d46ebb807ccb27ce11227",
+          "name": "Creative Design"
+        },
+        {
+          "id": "5ae1ae65773d40649e8c7e5515aaca92",
+          "name": "Finance"
+        },
+        {
+          "id": "272c415416814ba796a76197f015364e",
+          "name": "IT"
+        },
+        {
+          "id": "c2393cb766794badb788bf579d228df3",
+          "name": "Management"
+        },
+        {
+          "id": "73d5d062fc1e4cad91e157f36502d632",
+          "name": "Marketing"
+        },
+        {
+          "id": "c8e0d8125c1f4ff0923f9f142421ca4c",
+          "name": "Operations"
+        },
+        {
+          "id": "c83668c1b049405d8a52e7dddae6aa46",
+          "name": "Others"
+        },
+        {
+          "id": "823a829df4964def980d95da9f55f85f",
+          "name": "Sales"
+        }
+      ]
+    },
+    {
+      "id": "4a88e5f1f3cd48a2b04be9f3701eec1f",
+      "name": "Education",
+      "types": [
+        {
+          "id": "02d94e2227ff47f5ac37d954e246d3e3",
+          "name": "Administrative"
+        },
+        {
+          "id": "8d0ee5c89b0d46ebb807ccb27ce11227",
+          "name": "Creative Design"
+        },
+        {
+          "id": "5ae1ae65773d40649e8c7e5515aaca92",
+          "name": "Finance"
+        },
+        {
+          "id": "272c415416814ba796a76197f015364e",
+          "name": "IT"
+        },
+        {
+          "id": "c2393cb766794badb788bf579d228df3",
+          "name": "Management"
+        },
+        {
+          "id": "73d5d062fc1e4cad91e157f36502d632",
+          "name": "Marketing"
+        },
+        {
+          "id": "c8e0d8125c1f4ff0923f9f142421ca4c",
+          "name": "Operations"
+        },
+        {
+          "id": "c83668c1b049405d8a52e7dddae6aa46",
+          "name": "Others"
+        },
+        {
+          "id": "823a829df4964def980d95da9f55f85f",
+          "name": "Sales"
+        }
+      ]
+    },
+    {
+      "id": "0fe361e7b6644a718920c85808fda630",
+      "name": "Finance",
+      "types": [
+        {
+          "id": "02d94e2227ff47f5ac37d954e246d3e4",
+          "name": "Administrative"
+        },
+        {
+          "id": "8d0ee5c89b0d46ebb807ccb27ce11227",
+          "name": "Creative Design"
+        },
+        {
+          "id": "5ae1ae65773d40649e8c7e5515aaca92",
+          "name": "Finance"
+        },
+        {
+          "id": "272c415416814ba796a76197f015364e",
+          "name": "IT"
+        },
+        {
+          "id": "c2393cb766794badb788bf579d228df3",
+          "name": "Management"
+        },
+        {
+          "id": "73d5d062fc1e4cad91e157f36502d632",
+          "name": "Marketing"
+        },
+        {
+          "id": "c8e0d8125c1f4ff0923f9f142421ca4c",
+          "name": "Operations"
+        },
+        {
+          "id": "c83668c1b049405d8a52e7dddae6aa46",
+          "name": "Others"
+        },
+        {
+          "id": "823a829df4964def980d95da9f55f85f",
+          "name": "Sales"
+        }
+      ]
+    },
+    {
+      "id": "df3db9f50fa144d2be5455bf1db01f8a",
+      "name": "Government",
+      "types": [
+        {
+          "id": "02d94e2227ff47f5ac37d954e246d3e6",
+          "name": "Administrative"
+        },
+        {
+          "id": "8d0ee5c89b0d46ebb807ccb27ce11227",
+          "name": "Creative Design"
+        },
+        {
+          "id": "5ae1ae65773d40649e8c7e5515aaca92",
+          "name": "Finance"
+        },
+        {
+          "id": "272c415416814ba796a76197f015364e",
+          "name": "IT"
+        },
+        {
+          "id": "c2393cb766794badb788bf579d228df3",
+          "name": "Management"
+        },
+        {
+          "id": "73d5d062fc1e4cad91e157f36502d632",
+          "name": "Marketing"
+        },
+        {
+          "id": "c8e0d8125c1f4ff0923f9f142421ca4c",
+          "name": "Operations"
+        },
+        {
+          "id": "c83668c1b049405d8a52e7dddae6aa46",
+          "name": "Others"
+        },
+        {
+          "id": "823a829df4964def980d95da9f55f85f",
+          "name": "Sales"
+        }
+      ]
+    },
+    {
+      "id": "b8b6eb2c563a42a09dd102c402be3174",
+      "name": "Healthcare",
+      "types": [
+        {
+          "id": "02d94e2227ff47f5ac37d954e246d3e5",
+          "name": "Administrative"
+        },
+        {
+          "id": "8d0ee5c89b0d46ebb807ccb27ce11227",
+          "name": "Creative Design"
+        },
+        {
+          "id": "5ae1ae65773d40649e8c7e5515aaca92",
+          "name": "Finance"
+        },
+        {
+          "id": "272c415416814ba796a76197f015364e",
+          "name": "IT"
+        },
+        {
+          "id": "c2393cb766794badb788bf579d228df3",
+          "name": "Management"
+        },
+        {
+          "id": "73d5d062fc1e4cad91e157f36502d632",
+          "name": "Marketing"
+        },
+        {
+          "id": "c8e0d8125c1f4ff0923f9f142421ca4c",
+          "name": "Operations"
+        },
+        {
+          "id": "c83668c1b049405d8a52e7dddae6aa46",
+          "name": "Others"
+        },
+        {
+          "id": "823a829df4964def980d95da9f55f85f",
+          "name": "Sales"
+        }
+      ]
+    },
+    {
+      "id": "5a338d59bc684e42a6eb7111169625af",
+      "name": "Hospitality",
+      "types": [
+        {
+          "id": "02d94e2227ff47f5ac37d954e246d3e6",
+          "name": "Administrative"
+        },
+        {
+          "id": "8d0ee5c89b0d46ebb807ccb27ce11227",
+          "name": "Creative Design"
+        },
+        {
+          "id": "5ae1ae65773d40649e8c7e5515aaca92",
+          "name": "Finance"
+        },
+        {
+          "id": "272c415416814ba796a76197f015364e",
+          "name": "IT"
+        },
+        {
+          "id": "c2393cb766794badb788bf579d228df3",
+          "name": "Management"
+        },
+        {
+          "id": "73d5d062fc1e4cad91e157f36502d632",
+          "name": "Marketing"
+        },
+        {
+          "id": "c8e0d8125c1f4ff0923f9f142421ca4c",
+          "name": "Operations"
+        },
+        {
+          "id": "c83668c1b049405d8a52e7dddae6aa46",
+          "name": "Others"
+        },
+        {
+          "id": "823a829df4964def980d95da9f55f85f",
+          "name": "Sales"
+        }
+      ]
+    },
+    {
+      "id": "5dee5e10bbfc4aafa071a81b2e44126d",
+      "name": "Insurance",
+      "types": [
+        {
+          "id": "02d94e2227ff47f5ac37d954e246d3e7",
+          "name": "Administrative"
+        },
+        {
+          "id": "8d0ee5c89b0d46ebb807ccb27ce11227",
+          "name": "Creative Design"
+        },
+        {
+          "id": "5ae1ae65773d40649e8c7e5515aaca92",
+          "name": "Finance"
+        },
+        {
+          "id": "272c415416814ba796a76197f015364e",
+          "name": "IT"
+        },
+        {
+          "id": "c2393cb766794badb788bf579d228df3",
+          "name": "Management"
+        },
+        {
+          "id": "73d5d062fc1e4cad91e157f36502d632",
+          "name": "Marketing"
+        },
+        {
+          "id": "c8e0d8125c1f4ff0923f9f142421ca4c",
+          "name": "Operations"
+        },
+        {
+          "id": "c83668c1b049405d8a52e7dddae6aa46",
+          "name": "Others"
+        },
+        {
+          "id": "823a829df4964def980d95da9f55f85f",
+          "name": "Sales"
+        }
+      ]
+    },
+    {
+      "id": "acf608a88ede4c288ce4fa13357673d3",
+      "name": "Legal",
+      "types": [
+        {
+          "id": "02d94e2227ff47f5ac37d954e246d3e8",
+          "name": "Administrative"
+        },
+        {
+          "id": "8d0ee5c89b0d46ebb807ccb27ce11227",
+          "name": "Creative Design"
+        },
+        {
+          "id": "5ae1ae65773d40649e8c7e5515aaca92",
+          "name": "Finance"
+        },
+        {
+          "id": "272c415416814ba796a76197f015364e",
+          "name": "IT"
+        },
+        {
+          "id": "c2393cb766794badb788bf579d228df3",
+          "name": "Management"
+        },
+        {
+          "id": "73d5d062fc1e4cad91e157f36502d632",
+          "name": "Marketing"
+        },
+        {
+          "id": "c8e0d8125c1f4ff0923f9f142421ca4c",
+          "name": "Operations"
+        },
+        {
+          "id": "c83668c1b049405d8a52e7dddae6aa46",
+          "name": "Others"
+        },
+        {
+          "id": "823a829df4964def980d95da9f55f85f",
+          "name": "Sales"
+        }
+      ]
+    },
+    {
+      "id": "fab9f1eef189435bb62de079f4857026",
+      "name": "Logistics",
+      "types": [
+        {
+          "id": "02d94e2227ff47f5ac37d954e246d3e9",
+          "name": "Administrative"
+        },
+        {
+          "id": "8d0ee5c89b0d46ebb807ccb27ce11227",
+          "name": "Creative Design"
+        },
+        {
+          "id": "5ae1ae65773d40649e8c7e5515aaca92",
+          "name": "Finance"
+        },
+        {
+          "id": "272c415416814ba796a76197f015364e",
+          "name": "IT"
+        },
+        {
+          "id": "c2393cb766794badb788bf579d228df3",
+          "name": "Management"
+        },
+        {
+          "id": "73d5d062fc1e4cad91e157f36502d632",
+          "name": "Marketing"
+        },
+        {
+          "id": "c8e0d8125c1f4ff0923f9f142421ca4c",
+          "name": "Operations"
+        },
+        {
+          "id": "c83668c1b049405d8a52e7dddae6aa46",
+          "name": "Others"
+        },
+        {
+          "id": "823a829df4964def980d95da9f55f85f",
+          "name": "Sales"
+        }
+      ]
+    },
+    {
+      "id": "a8e09627e6dd4a5697e5caa08b48082a",
+      "name": "Manufacturing",
+      "types": [
+        {
+          "id": "02d94e2227ff47f5ac37d954e246d1e6",
+          "name": "Administrative"
+        },
+        {
+          "id": "8d0ee5c89b0d46ebb807ccb27ce11227",
+          "name": "Creative Design"
+        },
+        {
+          "id": "5ae1ae65773d40649e8c7e5515aaca92",
+          "name": "Finance"
+        },
+        {
+          "id": "272c415416814ba796a76197f015364e",
+          "name": "IT"
+        },
+        {
+          "id": "c2393cb766794badb788bf579d228df3",
+          "name": "Management"
+        },
+        {
+          "id": "73d5d062fc1e4cad91e157f36502d632",
+          "name": "Marketing"
+        },
+        {
+          "id": "c8e0d8125c1f4ff0923f9f142421ca4c",
+          "name": "Operations"
+        },
+        {
+          "id": "c83668c1b049405d8a52e7dddae6aa46",
+          "name": "Others"
+        },
+        {
+          "id": "823a829df4964def980d95da9f55f85f",
+          "name": "Sales"
+        }
+      ]
+    },
+    {
+      "id": "f97e49facb8e4f59987de745c2f47c0a",
+      "name": "Others",
+      "types": [
+        {
+          "id": "02d94e2227ff47f5ac37d954e246d2e6",
+          "name": "Administrative"
+        },
+        {
+          "id": "8d0ee5c89b0d46ebb807ccb27ce11227",
+          "name": "Creative Design"
+        },
+        {
+          "id": "5ae1ae65773d40649e8c7e5515aaca92",
+          "name": "Finance"
+        },
+        {
+          "id": "272c415416814ba796a76197f015364e",
+          "name": "IT"
+        },
+        {
+          "id": "c2393cb766794badb788bf579d228df3",
+          "name": "Management"
+        },
+        {
+          "id": "73d5d062fc1e4cad91e157f36502d632",
+          "name": "Marketing"
+        },
+        {
+          "id": "c8e0d8125c1f4ff0923f9f142421ca4c",
+          "name": "Operations"
+        },
+        {
+          "id": "c83668c1b049405d8a52e7dddae6aa46",
+          "name": "Others"
+        },
+        {
+          "id": "823a829df4964def980d95da9f55f85f",
+          "name": "Sales"
+        }
+      ]
+    }
+  ]
+}

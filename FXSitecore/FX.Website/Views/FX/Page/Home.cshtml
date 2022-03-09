@@ -1,0 +1,13 @@
+﻿@using Sitecore.Mvc
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Website.Models.Pages.HomeViewModel>
+<div class="main-content_full-width">
+    @Html.Sitecore().Placeholder("mainbanner")
+
+    <div class="m-picture-panel__wrap">
+        @Html.Sitecore().Placeholder("categorybanner")
+    </div>
+</div>
+
+<div class="main-container">
+    @Html.Sitecore().Placeholder("homePlaceholder")
+</div>

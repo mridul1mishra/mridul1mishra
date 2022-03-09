@@ -1,0 +1,139 @@
+﻿@using Sitecore.Mvc
+@using FX.Core.GlassMapper
+@using FX.Core.Utils
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Page.ISnSPage>
+
+@{
+    var solutionCategories = Model.Pages.Where(p => p.HasTeaserTitle());
+    var opco = FX.Core.Utils.Util.OpcoType();
+
+}
+
+<div class="main-content">
+    @Html.Sitecore().Rendering(FX.Core.Keys.RenderingItems.Breadcrumb, FX.Core.Utils.Util.DefaultRenderingCacheParameter)
+    <div class="top-banner">
+        @Html.Sitecore().Rendering(FX.Core.Keys.RenderingItems.HeroBanner, FX.Core.Utils.Util.DefaultRenderingCacheParameter)
+    </div>
+    <div class="layout-main">
+        <!-- Solution Mapper -->
+        <section class="section ">
+
+            <div class="mapper solution-services">
+                <div class="solution-services__header">
+                    <div class="solution-services__header--text">
+                        @if (!this.IsInEditingMode && Model != null && !string.IsNullOrEmpty(Model.MainTitle))
+                        {
+                            <div class="solution-service-main-title-text">@Html.Raw(Model.MainTitle)</div>
+                        }
+                        else if (this.IsInEditingMode)
+                        {
+                            <div class="solution-service-main-title-text">@Editable(Model, x => x.MainTitle)</div>
+                        }
+                        @Editable(Model, x => x.MainContent)
+                    </div>
+                </div>
+                <div class="solution-services__filter">
+                    <div class="solutions-filter" data-endpoint="/@opco/api/getFilterOptions">
+
+                        <div class="filter-item">
+                            <select id="industryFilter" name="industry" data-label="@Model.IndustryFilterLabel">
+                                <option>@Model.IndustryFilterLabel</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-item">
+                            <select id="departmentFilter" name="department" data-label="@Model.DepartmentFilterLabel">
+                                <option>@Model.DepartmentFilterLabel</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-item">
+                            <select id="serviceFilter" name="service" data-label="@Model.ServiceFilterLabel">
+                                <option>@Model.ServiceFilterLabel</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-item">
+                            <select id="businessFilter" name="business" data-label="@Model.BusinessFilterLabel">
+                                <option>@Model.BusinessFilterLabel</option>
+                            </select>
+                        </div>
+
+                        <div class="filter-item filter-item--reset">
+                            <button class="btn-reset" type="button" value=""><span>@Model.ResetLabel</span></button>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="solution-services__content" data-endpoint="/@opco/api/GetFilterResults">
+                    <div class="column-row"></div>
+                    <button class="show-more"><span>@Model.LoadMoreLabel</span></button>
+                </div>
+                <script type="text/x-dot-template" id="dotSolutionsTemplate">
+                    {{~it :solutions:index}}
+                    <div class="card-tiles result col-sm-6 col-md-4 match-height" itemscope itemtype="http://schema.org/Article">
+
+
+                        <div class="bnr-01 ride-hdg">
+                            <a href="{{!solutions.url}}" itemprop="url">
+                                {{? solutions.image}}
+                                <span class="image">
+                                    <img src="{{!solutions.image}}" alt="" itemprop="thumbnailUrl">
+                                </span>
+                                {{?}}
+                                <span class="group">
+                                    <span class="hdg" itemprop="name">{{!solutions.title}}</span>
+                                    <span class="txt" itemprop="description">{{!solutions.text}}</span>
+                                    <div class="meta">
+                                        <span class="category">{{!solutions.category}}</span>
+                                    </div>
+                                </span>
+                                @if (!string.IsNullOrEmpty(Model.ButtonText))
+                                {
+                                    <span class="btn">@Model.ButtonText</span>
+                                }
+                            </a>
+                        </div>
+
+                    </div>
+                    {{~}}
+                </script>
+            </div>
+
+        </section>
+
+        @*<script id="results-template" type="text/x-dot-template">
+                {{~it.categories :category}}
+                <div class="solution-mapper__results--group row-col-12">
+                    <div class="col-sm-3 col-md-4 push-right-20">
+                        <div class="solution-mapper__intro-block">
+                            <a href="{{=category.url}}">
+                                <img src="{{=category.thumbnail}}" alt="" />
+                                <h2>{{=category.title}}</h2>
+                                <p>{{=category.description}}</p>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="section related-pages col-sm-9 col-md-8">
+                        <div class="blocks">
+                            {{~category.results :result}}
+                            <div class="related-pages__block">
+                                <a href="{{=result.url}}">
+                                    <h4>{{=result.title}}</h4>
+                                    <span class="category">
+                                        {{=category.title}}
+                                        {{? result.new }}
+                                        {{?}}
+                                    </span>
+                                </a>
+                            </div>
+                            {{~}}
+                        </div>
+                    </div>
+                </div>
+                {{~}}
+            </script>*@
+    </div>
+    @Html.Sitecore().Placeholder("bottomSectionPlaceholder")
+</div>

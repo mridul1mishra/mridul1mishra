@@ -1,0 +1,90 @@
+﻿@using Sitecore.Mvc
+@using FX.Core.GlassMapper
+@using FX.Core.Utils
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Page.IPromotionListingPage>
+
+@{
+    TimeSpan endDateTime = new TimeSpan(23, 59, 59);
+    List<string> hiddenViewLabel = null;
+    var children = Model.PromotionDetailPages.ToList();
+}
+
+<div class="main-content layout-aside">
+    @Html.Sitecore().Rendering(FX.Core.Keys.RenderingItems.Breadcrumb, FX.Core.Utils.Util.DefaultRenderingCacheParameter)
+    <div class="top-banner">
+        @Html.Sitecore().Rendering(FX.Core.Keys.RenderingItems.HeroBanner, FX.Core.Utils.Util.DefaultRenderingCacheParameter)
+    </div>
+    <article class="layout-main">
+        <section class="section promotion-listing">
+            <div class="promotion-list">
+                @foreach (var child in children)
+                {
+
+                    string view1 = "";
+                    string view2 = "";
+                    if (!string.IsNullOrWhiteSpace(Model.ViewDetailLabel))
+                    {
+                        string[] viewLabels = Model.ViewDetailLabel.Split(new char[0]);
+                        hiddenViewLabel = new List<string>();
+                        view1 = viewLabels[0];
+                        for (int i = 1; i < viewLabels.Length; i++)
+                        {
+                            hiddenViewLabel.Add(viewLabels[i]);
+                        }
+                        view2 = string.Join(" ", hiddenViewLabel);
+                    }
+
+                    <div class="promotion-list__block">
+                        <div class="thumbnail">
+                            <a href="@child.Url">
+                                @RenderImage(child, x => x.TeaserImage, isEditable: false, outputHeightWidth: false)
+                            </a>
+                        </div>
+                        <div class="content">
+                            <h3>@child.TeaserTitle</h3>
+                            <span class="duration">
+                                @child.LocalisedPromotionsStartDate.DateRange(child.LocalisedPromotionsStartDate.DateTime, child.LocalisedPromotionsEndDate.DateTime)
+                            </span>
+                            @if (Model.ShowViewDetailExpiredButtonCheckbox)
+                            {
+                                if (child.PromotionsEndDate != null && child.PromotionsEndDate.Year > 1900)
+                                {
+                                    if (FX.Core.Utils.Util.isDateExpired(DateTime.UtcNow, child.PromotionsEndDate.ToUniversalTime().Add(endDateTime)))
+                                    {
+                                        <span class="button expired">@Model.ExpiredButtonLabel</span>
+                                    }
+                                    else
+                                    {
+                                        <a class="button" href="@child.Url">@view1 <span class="hidden-xs"> @view2</span></a>
+                                    }
+                                }
+                                else
+                                {
+                                    <a class="button" href="@child.Url">@view1 <span class="hidden-xs"> @view2</span></a>
+                                }
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+        </section>
+    </article>
+    <aside class="layout-side">
+        <section class="section promotion-form">
+            @if (!this.IsInEditingMode && Model != null && !string.IsNullOrEmpty(Model.PromotionTitle))
+            {
+                <h1>@Html.Raw(Model.PromotionTitle)</h1>
+            }
+            else if (this.IsInEditingMode)
+            {
+                <h1>@Editable(Model, x => x.PromotionTitle)</h1>
+            }
+            <div class="introduction">
+                <p>@Editable(Model, x => x.PromotionTitleDescription)</p>
+            </div>
+            <div class="scfForm">
+                @Html.Sitecore().Placeholder("formPlaceholder")
+            </div>
+        </section>
+    </aside>
+</div>

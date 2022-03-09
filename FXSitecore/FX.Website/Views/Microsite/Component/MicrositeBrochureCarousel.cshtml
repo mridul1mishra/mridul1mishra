@@ -1,0 +1,52 @@
+﻿@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Microsite.Components.MicrositeBrochureCarousel.IMicrositeBrochureCarousel>
+@using FX.Core.Models.Microsite.Components.MicrositeBrochureCarousel;
+@if (this.IsInEditingMode)
+{
+    <h2 style="text-align:center">[Microsite Brochure Carousel component]</h2>
+    if (Model == null)
+    {
+        <p>No component datasource found</p>
+    }
+}
+
+@helper BrochureSlide(IMicrositeBrochureResource brochure)
+{
+    <div class="item">
+        <div class="video-wrapper">
+            @using (BeginRenderLink(brochure, m => m.Link, new { @class = "iframe" }, isEditable: true)) { 
+                @RenderImage(brochure, m => m.Image, new { @class = "full-width of-image video-thumb", @data_object_fit = "cover" }, isEditable: true)
+            }
+        </div>
+        <p class="car-caption">
+            @brochure.Description
+        </p>
+    </div>
+}
+
+@if (Model != null)
+{
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-xs-12">
+                <h3 class="pull-left">@Model.Title</h3>
+                @if (Model.Brochures.Count() > 4)
+                {
+                    <div class="control-carousel pull-right">
+                        <span class="customPrevBtn custom-btn"><i class="fa fa-angle-left"></i></span>
+                        <span class="customNextBtn custom-btn"><i class="fa fa-angle-right"></i></span>
+                    </div>
+                }
+                <span class="clearfix"></span>
+
+                <div class="paper-carousel res-carousel">
+                    @foreach (var child in Model.Brochures)
+                    {
+                        @BrochureSlide(child)
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+}

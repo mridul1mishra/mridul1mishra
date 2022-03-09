@@ -1,0 +1,32 @@
+﻿@using FX.Core.Utils
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Components.IQuickLinks>
+
+@{
+    bool hasContent = Model != null && Model.QuickLinkItems != null || Model != null && IsInEditingMode;
+}
+
+@if (IsInEditingMode)
+{
+    <h2 style="text-align:center">[QuickLinks Component]</h2>
+    if (Model == null)
+    {
+        <p>No component datasource found</p>
+    }
+}
+
+@if (hasContent)
+{
+    
+        <div class="quick-links">
+            <h3>Quick Links</h3>
+            <ul>
+                @foreach (var link in Model.QuickLinkItems)
+                {
+                    <li>
+                        @RenderLink(link, x=> x.Link)
+                    </li>
+                }
+            </ul>
+        </div>
+    
+}

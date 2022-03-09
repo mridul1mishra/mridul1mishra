@@ -1,0 +1,24 @@
+﻿@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<INavigation>
+@using FX.Core.Utils
+@using FX.Core.Models.Base
+@{
+    var parent = Model.GetSectionParent();
+
+    IEnumerable<INavigation> siblings = new List<INavigation>();
+    if (parent != null) {
+        siblings = parent.SideNavItems;
+    }
+}
+@if (siblings.Any())
+{
+    <div class="aside">
+        <h3><a href="@parent.URL()">@parent.NavigationTitle</a></h3>
+        <ul>
+            @foreach (var sibling in siblings)
+            {
+                <li><a href="@sibling.URL()">@sibling.NavigationTitle</a></li>
+            }
+        </ul>
+
+    </div>
+}

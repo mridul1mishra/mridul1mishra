@@ -1,0 +1,130 @@
+﻿@using Sitecore.Mvc
+@using System.Web.Mvc.Html
+
+<div class="main-content">
+    <div class="layout-main">
+        <section class="section">
+            <div class="alipay-form">
+                <h1>支付宝</h1>
+                @using (Html.BeginForm("AlipaySubmit", "Alipay", FormMethod.Post, new { id="form1" }))
+                {
+                    <table width="890px" cellspacing="0" cellpadding="0" border="0" align="center">
+                        <tbody>
+                            <tr>
+                                <td class="left-column"><span class="required">*</span>公司名称：</td>
+                                <td>
+                                    <p>
+                                        <input class="has-outline" id="CompanyName1" type="radio" name="CompanyName" value="FX_Industrial" checked>
+                                        <label for="CompanyName1">富士施乐实业发展（中国）有限公司</label><a href="https://www1.fujixerox.com.cn/pay/helpfiles/fxid_how_get.htm" target="_blank" style="padding-left:30px;">如何获取订单\合同号、发票号</a><br>			              （alipay-fxid@chn.fujixerox.com）<br>
+                                    </p>
+                                    <p>
+                                        <input class="has-outline" id="CompanyName2" type="radio" name="CompanyName" value="FX_Shanghai">
+                                        <label for="CompanyName2">富士施乐（中国）有限公司上海分公司</label><a href="https://www1.fujixerox.com.cn/pay/helpfiles/fxcl_sh_how_get.htm" target="_blank" style="padding-left:15px;">如何获取订单\合同号、发票号</a><br>			              （alipay-fxcl@chn.fujixerox.com）<br>
+                                    </p>
+                                    <p>
+                                        <input class="has-outline" id="CompanyName3" type="radio" name="CompanyName" value="FX_Leasing">
+                                        <label for="CompanyName3">富士施乐租赁（中国）有限公司</label><a href="https://www1.fujixerox.com.cn/pay/helpfiles/fxlcl_how_get.htm" target="_blank" style="padding-left:57px;">如何获取订单\合同号、发票号</a><br>			              （alipay-fxlcl@chn.fujixerox.com）<br>
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="left-column">
+                                    <label class="required" for="price">*<span> 付总价：</span></label>
+                                </td>
+                                <td>
+                                    <input class="has-outline" id="price" style="width:400px;" name="price" hint="应付总价" allownull="false" size="36" ><span class="help-text">金额格式例如: 52.2或3</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="left-column" rowspan="2">
+                                    <label class="required" for="product1">*<span> 富士施乐订单\合同号、发票号：</span></label>
+                                </td>
+                                <td>
+                                    <input class="has-outline" id="product1" style="width:400px;" name="product1" hint="富士施乐订单合同号、发票号" allownull="false" size="36" ><br>
+                                    <input class="has-outline" id="raproduct1_2" type="radio" name="raproduct1" value="Invoice No." checked>
+                                    <label for="raproduct1_2">发票号</label>
+                                    <input class="has-outline" id="raproduct1_1" type="radio" name="raproduct1" value="PO No.">
+                                    <label for="raproduct1_1">订单\合同号</label>
+                                    <div id="newInvoice"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button class="addNewInvoice" type="button">增加</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="left-column">
+                                    <label class="required" for="customerName">*<span> 客户姓名：</span></label>
+                                </td>
+                                <td>
+                                    <input class="has-outline" id="customerName" style="width:400px;" name="customername" hint="客户姓名" allownull="false" size="36" >
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="left-column">
+                                    <label class="required" for="txtPhone">*<span> 客户联系电话：</span></label>
+                                </td>
+                                <td>
+                                    <input class="has-outline" id="txtPhone" style="width:400px;" name="customertel" hint="客户联系电话" allownull="false" size="36" ><span class="help-text">格式为：057126880000</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="left-column">
+                                    <label class="required" for="customercompany">*<span> 客户公司名称：</span></label>
+                                </td>
+                                <td>
+                                    <input class="has-outline" id="customercompany" style="width:400px;" name="customercompany" hint="客户公司名称" allownull="false" size="36" >
+                                </td>
+                            </tr>
+                            <tr>
+                                <td> </td>
+                                <td>
+                                    <button class="submitForm" type="submit">支付宝支付</button>
+                                    <button class="reset" type="button">重置</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="font14" height="3" colspan="2">
+                                    <div class="payment">
+                                        <h3>目前支持四种付款方式：</h3><strong>支付宝余额付款：</strong> 当支付宝账户中有余额时，直接输入支付密码即可完成付款，支持大额商品购买，可以先多次充值再付款。<br><strong>网上银行付款：</strong> 只要您拥有一张支付宝合作银行的银行卡，并开通了网上支付功能，即可顺利支付。支付时无需填写支付宝账户，且如果您尚未注册支付宝账户，将免费获得账户。<a target="_blank" href="http://abc.alipay.com">了解详情</a><br><strong>"支付宝卡通"付款：</strong> 开通"支付宝卡通"就可直接进行网上付款，不再需要开通网上银行。<br><strong>网点付款：</strong> 只需到与支付宝合作的营业网点，用现金或刷卡即可完成网上订单付款和支付宝账户充值。
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <input id="hidCountInvoice" type="hidden" name="hidCountInvoice" value="1">
+                    <input id="hidproduct" type="hidden" name="hidproduct">
+                    <input id="hidbody" type="hidden" name="hidbody">
+                    <input id="out_trade_no" type="hidden" name="out_trade_no">
+                }
+                <script>
+
+                    var out_trade_no = document.getElementById("out_trade_no");
+                    //Set the time formating function
+                    Date.prototype.format = function (format) {
+                        var args = {
+                            "M+": this.getMonth() + 1,
+                            "d+": this.getDate(),
+                            "h+": this.getHours(),
+                            "m+": this.getMinutes(),
+                            "s+": this.getSeconds(),
+                        };
+                        if (/(y+)/.test(format))
+                            format = format.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+                        for (var i in args) {
+                            var n = args[i];
+                            if (new RegExp("(" + i + ")").test(format))
+                                format = format.replace(RegExp.$1, RegExp.$1.length == 1 ? n : ("00" + n).substr(("" + n).length));
+                        }
+                        return format;
+                    };
+
+                    out_trade_no.value = new Date().format("yyyyMMddhhmmss");
+
+                </script>
+
+            </div>
+        </section>
+    </div>
+</div>

@@ -1,0 +1,130 @@
+{
+	"commercial": {
+		"region": {
+			"south": [
+				{
+					"title": "Premier Partners",
+					"name": "Challenger @ Funan",
+					"address1": "109 North Bridge Road,",
+					"address2": "#06-00 Funan DigitaLife Mall",
+					"address3": "Singapore 179097",
+					"contact": "6339-9008",
+					"lat": "1.2910662",
+					"long": "103.8577843"
+				},
+				{
+					"title": "Premier Partners",
+					"name": "Challenger @ Tiong Bahru",
+					"address1": "302 Tiong Bahru Road,",
+					"address2": "#03-19 Tiong Bahru Plaza",
+					"address3": "Singapore 168732",
+					"contact": "6376-5646",
+					"lat": "1.286145",
+					"long": "103.8271998"
+				},
+				{
+					"title": "Authorised Partners",
+					"name": "Pearlblue Tech Pte Ltd",
+					"address1": "10 Anson Road,",
+					"address2": "#18-17 International Plaza",
+					"address3": "Singapore 079903",
+					"contact": "+65 90187110",
+					"lat": "1.276109",
+					"long": "103.84373"
+				}
+			],
+			"east": [
+				{
+					"title": "Dummy Text",
+					"name": "Dummy Text",
+					"address1": "10 Anson Road,",
+					"address2": "#18-17 International Plaza",
+					"address3": "Singapore 079903",
+					"contact": "+65 90187110",
+					"lat": "1.353588",
+					"long": "103.969979"
+				},
+				{
+					"title": "Dummy Text",
+					"name": "Dummy Text2",
+					"address1": "10 Anson Road,",
+					"address2": "#18-17 International Plaza",
+					"address3": "Singapore 079903",
+					"contact": "+65 90187110",
+					"lat": "1.351872",
+					"long": "103.981481"
+				}
+			],
+			"central": [
+				{
+					"title": "Premier Partners",
+					"name": "Challenger @ United Square",
+					"address1": "101 Thompson Road,",
+					"address2": "#02-26 United Square",
+					"address3": "Singapore 307591",
+					"contact": "6478-6255",
+					"lat": "1.317711",
+					"long": "103.841297"
+				},
+				{
+					"title": "Authorised Partners",
+					"name": "Reflection Solutions Pte Ltd",
+					"address1": "47 Jalan Pemimpin,",
+					"address2": "#02-05 Halcyon 2",
+					"address3": "Singapore 577200",
+					"contact": "6499-8850",
+					"lat": "1.349979",
+					"long": "103.838965"
+				}
+			]
+		}
+	},
+	"retail": {
+		"region": {
+			"south": [
+				{
+					"title": "Premier Partners",
+					"name": "retail south Challenger @ Funan",
+					"address1": "109 North Bridge Road,",
+					"address2": "#06-00 Funan DigitaLife Mall",
+					"address3": "Singapore 179097",
+					"contact": "6339-9008",
+					"lat": "1.2910662",
+					"long": "103.8577843"
+				},
+				{
+					"title": "Premier Partners",
+					"name": "retail south Challenger @ Funan",
+					"address1": "109 North Bridge Road,",
+					"address2": "#06-00 Funan DigitaLife Mall",
+					"address3": "Singapore 179097",
+					"contact": "6339-9008",
+					"lat": "1.2900662",
+					"long": "103.8577843"
+				}
+			],
+			"east": [
+				{
+					"title": "Dummy Text",
+					"name": "retail east Dummy Text",
+					"address1": "10 Anson Road,",
+					"address2": "#18-17 International Plaza",
+					"address3": "Singapore 079903",
+					"contact": "+65 90187110",
+					"lat": "1.353588",
+					"long": "103.969979"
+				},
+				{
+					"title": "Dummy Text",
+					"name": "retail east Dummy Text2",
+					"address1": "10 Anson Road,",
+					"address2": "#18-17 International Plaza",
+					"address3": "Singapore 079903",
+					"contact": "+65 90187110",
+					"lat": "1.352872",
+					"long": "103.981481"
+				}
+			]
+		}
+	}
+}

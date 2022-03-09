@@ -1,0 +1,112 @@
+﻿@using Sitecore.Mvc
+@using System.Web.Mvc.Html
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Page.IInsightPage>
+
+@{
+    
+    var opco = FX.Core.Utils.Util.OpcoType();
+    var lang = HttpContext.Current.Request.Path.Split('/')[1];
+}
+
+<div class="main-content">
+    @Html.Sitecore().Rendering(FX.Core.Keys.RenderingItems.Breadcrumb,
+        FX.Core.Utils.Util.DefaultRenderingCacheParameter)
+
+    <div class="layout-main">
+        <section class="section">
+            <a class="anchor-link" id="insight" data-label="Insight"></a>
+            <div class="insight">
+                <div class="insight__header">
+                    <div class="insight__header--text">
+                        @if (!this.IsInEditingMode && Model != null && !string.IsNullOrEmpty(Model.MainTitle))
+                        {
+                            <h1>@Html.Raw(Model.MainTitle)</h1>
+                        }
+                        else if (this.IsInEditingMode)
+                        {
+                            <h1>@Editable(Model, x => x.MainTitle)</h1>
+                        }
+                        @Editable(Model, x => x.MainContent)
+                    </div>
+                </div>
+                <div class="insight__filter">
+                    <div class="insights-filter">
+                        <div class="filter-item">
+                            <select id="categoryFilter" name="category" data-label="Select Category">
+                                <option>@Model.CategoryLabel</option>
+                                @foreach (var tag in Model.FirstFilter.Tags)
+                                {
+                                    <option value="@(new Sitecore.Data.ShortID(tag.Id).ToString())">
+                                        @tag.TaxonomyItemName
+                                    </option>
+                                }
+                            </select>
+                        </div>
+                        <div class="filter-item">
+                            <select id="typeFilter" name="type" data-label="Select Type">
+                                <option>@Model.TypeLabel</option>
+
+                                @foreach (var tag in Model.SecondFilter.Tags)
+                                {
+                                    <option value="@(new Sitecore.Data.ShortID(tag.Id).ToString())">
+                                        @tag.TaxonomyItemName
+                                    </option>
+                                }
+                            </select>
+                        </div>
+                        <div class="filter-item filter-item--reset">
+                            <button class="btn-reset" type="button"
+                                    value="">
+                                <span>@Model.ResetButtonLabel</span>
+                            </button>
+                        </div>
+                        <div class="filter-item filter-item--view">
+                            <button class="btn-grid active" type="button" value=""
+                                    data-view="grid">
+                                <span>@Model.GridViewLabel</span>
+                            </button>
+                            <button class="btn-list" type="button" value=""
+                                    data-view="list">
+                                <span>@Model.ListViewLabel</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="insight__content content-holder"
+                     data-endpoint="/@opco/@lang/api/GetInsights?path=@(new  Sitecore.Data.ShortID(Model.Id).ToString())">
+                    <div class="column-row"></div>
+                    <button class="show-more">
+                        <span>@Model.ShowMoreLabel</span>
+                    </button>
+                </div>
+                <script type="text/x-dot-template" id="dotInsightTemplate">
+                    {{~it :insights:index}}
+                    <div class="card-tiles result col-sm-6 col-md-4 match-height">
+                        <div class="bnr-01 ride-hdg">
+                            <a href="{{!insights.url}}">
+                                {{? insights.image}}
+                                <span class="image">
+                                    <img src="{{!insights.image}}" alt="">
+                                </span>
+                                {{?}}
+                                <span class="group">
+                                    <span class="hdg" itemprop="name">{{!insights.title}}</span>
+                                    <span class="txt" itemprop="description">{{!insights.text}}</span>
+                                    <div class="meta">
+                                        <span class="category">{{!insights.category}}</span>
+                                        <span class="date">{{!insights.date}}</span>
+                                    </div>
+                                </span>
+                                @if (!string.IsNullOrEmpty(Model.ButtonText))
+                                {
+                                    <span class="btn">@Model.ButtonText</span>
+                                }
+                            </a>
+                        </div>
+                    </div>
+                    {{~}}
+                </script>
+            </div>
+        </section>
+    </div>
+</div>

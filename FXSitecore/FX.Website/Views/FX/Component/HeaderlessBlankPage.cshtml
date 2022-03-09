@@ -1,0 +1,15 @@
+﻿@using Sitecore.Mvc
+@using System.Web.Mvc.Html
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Components.IHeaderlessBlankPageComponent>
+
+@if (this.IsInEditingMode)
+{
+    <h2 style="text-align:center">[Blank Page Component]</h2>
+    if (Model == null)
+    {
+        <p>No component datasource found</p>
+    }
+}
+
+@Html.Raw(Model.Body)
+        

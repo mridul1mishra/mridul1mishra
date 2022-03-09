@@ -1,0 +1,45 @@
+﻿@using Sitecore.Mvc
+@using FX.Core;
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Website.Models.PopupForm>
+@*@if (Model.IsValid)
+    {
+        var currentRendering = Sitecore.Mvc.Presentation.RenderingContext.CurrentOrNull.Rendering;
+        currentRendering.Parameters["FormId"] = Model.FormId.ToString();
+        currentRendering.Parameters["ReadQueryString"] = "1";
+        currentRendering.Parameters["UniqueId"] = Guid.NewGuid().ToString();
+    }*@
+
+@if (Model.IsValid)
+{
+    <article class="article">
+        <div class="row-col-12 wingspan">
+            <!-- Article Content -->
+            <div class="article-content col-sm-10 offset-sm-1 col-md-8 offset-md-2">
+                    @if (Model.IsCaptchaView)
+                    {
+                        @Html.Sitecore().Rendering(Constants.CaptchaConstant.captchaViewItem)
+                    }
+                <div class="sitecore-form">
+                    @if (Model.IsEnquiryForm)
+                    {
+                        @Html.Raw(Model.SiteSettings.EnquiryMessage)
+                        @Html.Raw(Model.SiteSettings.EnquiryRequiredFieldsText)
+                    }
+                    @Html.Sitecore().Rendering(FX.Core.Keys.RenderingItems.WFFMMVCForm, new { DataSource = Model.FormId.ToString(), UniqueId = Guid.NewGuid().ToString(), Parameters = "ReadQueryString=1" })
+                </div>
+            </div>
+        </div>
+    </article>
+}
+else
+{<article class="article">
+        <div class="row-col-12 wingspan">
+            <!-- Article Content -->
+            <div class="article-content col-sm-10 offset-sm-1 col-md-8 offset-md-2">
+                <div class="sitecore-form">
+                    <p>Form not found.</p>
+                </div>
+            </div>
+        </div>
+    </article>
+}

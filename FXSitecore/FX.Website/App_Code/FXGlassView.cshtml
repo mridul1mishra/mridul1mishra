@@ -1,0 +1,101 @@
+﻿@using FX.Core.Utils
+@using FX.Core.GlassMapper
+
+@functions
+{
+	public static bool IsFieldVisible(bool isInEditingMode, string fieldValue)
+	{
+		return isInEditingMode || !string.IsNullOrEmpty(fieldValue);
+	}
+
+	public static bool IsFieldVisible(bool isInEditingMode, Glass.Mapper.Sc.Fields.Image image)
+	{
+		return isInEditingMode || image.IsValidImage();
+	}
+
+	public static bool IsFieldVisible(bool isInEditingMode, Glass.Mapper.Sc.Fields.Link link)
+	{
+		return isInEditingMode || Util.HasValidLink(link, false);
+	}
+
+	public static bool IsFieldVisible(bool isInEditingMode, Glass.Mapper.Sc.Fields.Link link, bool checkLinkText)
+	{
+		return isInEditingMode || Util.HasValidLink(link, checkLinkText);
+	}
+
+	public static string GetCategoryValue(FX.Core.Models.Products.IProductCategory category)
+	{
+		return category.Name.ToLowerInvariant().Replace(" ", "-");
+	}
+
+	public static int GetMinArticleAge()
+	{
+		var settings = FX.Core.FXContextItems.HomePage.SiteSettings;
+		if (settings != null)
+		{
+			return Math.Max(0, settings.NewArticleAge);
+		}
+		return 0;
+	}
+
+	public static bool IsNew(DateTime articleDate)
+	{
+		return Util.IsNewArticle(GetMinArticleAge(), articleDate, DateTime.Now);
+	}
+
+	public static string GetComponentName(string suffix = "Component")
+	{
+		try
+		{
+			var rc = Sitecore.Mvc.Presentation.RenderingContext.CurrentOrNull;
+			return string.Format("{0} {1}", rc.Rendering.RenderingItem.DisplayName, suffix);
+		}
+		catch
+		{
+			return suffix;
+		}
+	}
+
+	public static string RenderBackgroundImageSrc<TModel>(Glass.Mapper.Sc.Web.Mvc.GlassView<TModel> view,
+														  TModel model,
+														  System.Linq.Expressions.Expression<Func<TModel, object>> field,
+														  object parameters = null) where TModel : class
+	{
+		string result = string.Empty;
+
+		if (view == null || model == null)
+		{
+			return result;
+		}
+
+		var htmlString = view.RenderImage<TModel>(model, field, parameters, false, false);
+		var tokens = htmlString.ToString().Split(new string[] { Glass.Mapper.Sc.GlassHtml.QuotationMark }, StringSplitOptions.None);
+		if (tokens.Count() > 1)
+		{
+			result = tokens[1];
+		}
+		return result;
+	}
+
+	public static string GetButtonUrl(FX.Core.Models.Page.IProductListingPage listingPage, FX.Core.Models.Products.EnquiryLink enquiryLink, string productName)
+	{
+		string result = "javascript:void(0)";
+		if (enquiryLink != null)
+		{
+			result = enquiryLink.Url;
+			if (enquiryLink.IsEnquiryForm)
+			{
+				if (listingPage != null && listingPage.EnquiryPage != null)
+				{
+					var nvc = new Sitecore.Collections.SafeDictionary<string>();
+					nvc.Add(Sitecore.Web.WebUtil.UrlEncode("product Name"), productName);
+					nvc.Add("formId", result);
+					result = string.Format("{0}?{1}", listingPage.EnquiryPage.Url, Sitecore.Web.WebUtil.BuildQueryString(nvc, true, true));
+				}
+			}
+		}
+		return result;
+	}
+
+
+}

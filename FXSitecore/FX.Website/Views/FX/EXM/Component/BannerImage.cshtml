@@ -1,0 +1,51 @@
+﻿@using FX.Core.GlassMapper
+@using System.Web.Mvc.Html
+@using Sitecore.Mvc
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.EXM.BannerImage>
+
+<!-- START: Hero Banner-->
+<!--[if mso | IE]>
+<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="640" align="center" style="width: 640px;">
+<tr>
+<td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
+<![endif]-->
+<div style="background: #ffffff; margin: 0px auto; max-width: 640px;">
+    <table role="presentation" cellpadding="0" cellspacing="0" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;" align="center" width="100%" border="0" bgcolor="#ffffff">
+        <tbody>
+            <tr>
+                <td width="auto" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word; width: auto; padding: 15px;" valign="top">
+                    <table cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;" bgcolor="#ffffff">
+                        <tbody>
+                            <tr>
+                                <td class="hero-image" width="100%" height="224" style="border-collapse: collapse; color: #474747; cursor: auto; font-family: Arial, sans-serif; font-size: 12px; line-height: 20px; mso-table-lspace: 0pt; mso-table-rspace: 0pt; height: 224px;">
+                                    <table cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+                                        <tbody>
+                                            <tr>
+                                                <td width="100%" style="border-style: none; font-family: Arial, sans-serif; mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+                                                    @if (IsInEditingMode)
+                                                    {
+                                                        @RenderImage(Model, x => x.Image, new { style = "-ms-interpolation-mode: bicubic;border: 0 none;display: block;max-width: 610px; height: 224px;line-height: 100%;outline: none;text-decoration: none;", h = 0, w = 0 }, isEditable: true, outputHeightWidth: false)
+                                                    }
+                                                    else if (@Model.Image != null)
+                                                    {
+                                                        <img src="@Model.Image.Src" alt="@Model.Image.Alt" width="610" height="224" style="-ms-interpolation-mode: bicubic;border: 0 none;display: block;width: 610px; height: 224px;line-height: 100%;outline: none;text-decoration: none;">
+                                                    }
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<!--[if mso | IE]>
+</td>
+</tr>
+</table>
+<![endif]-->
+<!-- END: Hero Banner-->

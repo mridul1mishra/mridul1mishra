@@ -1,0 +1,83 @@
+﻿@using Sitecore.Mvc
+@using FX.Core.Utils
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Components.IFeaturedContent>
+
+@{
+    bool hasValidFeatured1 = false;
+    bool hasValidFeatured2 = false;
+    bool hasValidFeatured3 = false;
+
+    if (Model != null)
+    {
+        hasValidFeatured1 = FX.Core.Utils.Util.HasValidFeaturedItem(Model.FeaturedTitle1, Model.FeaturedLink1);
+        hasValidFeatured2 = FX.Core.Utils.Util.HasValidFeaturedItem(Model.FeaturedTitle2, Model.FeaturedLink2);
+        hasValidFeatured3 = FX.Core.Utils.Util.HasValidFeaturedItem(Model.FeaturedTitle3, Model.FeaturedLink3);
+    }
+}
+
+@if (this.IsInEditingMode)
+{
+    <h2 style="text-align:center">[Featured Content component]</h2>
+    if (Model == null)
+    {
+        <p>No component datasource found</p>
+    }
+}
+
+@if (hasValidFeatured1 || hasValidFeatured2 || hasValidFeatured3)
+{
+<div class="carousel">
+    <h3>@Editable(Model, x=> x.SectionTitle)</h3>
+    <div class="carousel__dots"></div>
+    <div class="carousel__items">
+        @if (hasValidFeatured1)
+        {
+        <div class="carousel-item match-height" >
+            <div class="carousel-item__image">
+                @RenderImage(Model, m => m.FeaturedImage1, isEditable: true)
+            </div>
+            <div class="carousel-item__text">
+                <h4>@Editable(Model, m=> m.FeaturedTitle1)</h4>
+                <p>@Editable(Model, m=>m.FeaturedDescription1)</p>
+                @using (BeginRenderLink(Model, m => m.FeaturedLink1,new { @class="button" } ,isEditable:true))
+                {
+                    @Editable(Model, m=> m.FeaturedLinkText1)
+                }
+            </div>
+        </div>
+        }
+        @if (hasValidFeatured2)
+        {
+            <div class="carousel-item match-height">
+                <div class="carousel-item__image">
+                    @RenderImage(Model, m => m.FeaturedImage2, isEditable: true)
+                </div>
+                <div class="carousel-item__text">
+                    <h4>@Editable(Model, m => m.FeaturedTitle2)</h4>
+                    <p>@Editable(Model, m => m.FeaturedDescription2)</p>
+                    @using (BeginRenderLink(Model, m => m.FeaturedLink2, new { @class = "button" }, isEditable: true))
+                    {
+                        @Editable(Model, m => m.FeaturedLinkText2)
+                    }
+                </div>
+            </div>
+        }
+        @if (hasValidFeatured3)
+        {
+            <div class="carousel-item match-height">
+                <div class="carousel-item__image">
+                    @RenderImage(Model, m => m.FeaturedImage3, isEditable: true)
+                </div>
+                <div class="carousel-item__text">
+                    <h4>@Editable(Model, m => m.FeaturedTitle3)</h4>
+                    <p>@Editable(Model, m => m.FeaturedDescription3)</p>
+                    @using (BeginRenderLink(Model, m => m.FeaturedLink3, new { @class = "button" }, isEditable: true))
+                    {
+                        @Editable(Model, m => m.FeaturedLinkText3)
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>
+}

@@ -1,0 +1,55 @@
+﻿@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Microsite.Settings.IMicrositeSettings>
+@using FX.Core.GlassMapper
+
+@{
+    bool hasLink1 = Model.FooterLink1 != null && !string.IsNullOrEmpty(Model.FooterLink1.Url);
+    bool hasLink2 = Model.FooterLink2 != null && !string.IsNullOrEmpty(Model.FooterLink2.Url);
+    bool hasLink3 = Model.FooterLink3 != null && !string.IsNullOrEmpty(Model.FooterLink3.Url);
+    bool hasLink4 = Model.FooterLink4 != null && !string.IsNullOrEmpty(Model.FooterLink4.Url);
+
+}
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                @if (hasLink1)
+                {
+                    @RenderLink(Model, m=> m.FooterLink1)
+                }
+                @if (hasLink2)
+                {
+                    @Html.Raw(" | ")
+                    @RenderLink(Model, m => m.FooterLink2);
+                }
+                @if (hasLink3)
+                {
+                    @Html.Raw(" | ")
+                    @RenderLink(Model, m => m.FooterLink3);
+                }
+                @if (hasLink4)
+                {
+                    @Html.Raw(" | ")
+                    @RenderLink(Model, m => m.FooterLink4);
+                }
+                <p class="martop25">
+                    @Model.FooterText1
+                </p>
+                <p>
+                    @Model.FooterText2
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- JAVASCRIPT -->
+<script src="/assets/microsite/js/jquery.min.js"></script>
+<script src="/assets/microsite/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="/assets/microsite/js/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+<script src="/assets/microsite/js/svg-injector.min.js" type="text/javascript"></script>
+<script src="/assets/microsite/js/jquery.smooth-scroll.js" type="text/javascript"></script>
+<script src="/assets/microsite/js/owl.carousel.min.js" type="text/javascript"></script>
+<script src="/assets/microsite/js/jquery.magnific-popup.min.js" type="text/javascript"></script>
+<script src="/assets/microsite/js/object-fit-polyfill.js" type="text/javascript"></script>
+<script src="/assets/microsite/js/main.js" type="text/javascript"></script>
+<!-- END JAVASCRIPT -->

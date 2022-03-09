@@ -1,0 +1,10 @@
+﻿@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Components.IAsidePanel>
+<div class="aside-banner">
+    
+    @using (BeginRenderLink(Model, x => x.Link, isEditable: true))
+    {
+        @RenderImage(Model,x=> x.Image, isEditable: true)
+        <h3>@Editable(Model, x=> x.Title)</h3>
+        <p>@Editable(Model, x => x.Description)</p>
+    }
+</div>

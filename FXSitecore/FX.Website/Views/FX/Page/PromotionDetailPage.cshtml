@@ -1,0 +1,41 @@
+﻿@using Sitecore.Mvc
+@using FX.Core.GlassMapper
+@using FX.Core.Utils
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Page.IPromotionDetailPage>
+
+<div class="main-content layout-aside">
+    @Html.Sitecore().Rendering(FX.Core.Keys.RenderingItems.Breadcrumb, FX.Core.Utils.Util.DefaultRenderingCacheParameter)
+    <div class="top-banner">
+        @Html.Sitecore().Rendering(FX.Core.Keys.RenderingItems.HeroBanner, FX.Core.Utils.Util.DefaultRenderingCacheParameter)
+    </div>
+    <article class="layout-main">
+        <section class="section promotion-details">
+            <div class="rte">
+                @if (!this.IsInEditingMode && Model != null && !string.IsNullOrEmpty(Model.MainTitle))
+                {
+                    <h1>@Html.Raw(Model.MainTitle)</h1>
+                }
+                else if (this.IsInEditingMode)
+                {
+                    <h1>@Editable(Model, x => x.MainTitle)</h1>
+                }
+                @Editable(Model, x => x.MainContent)
+                @if (Model.ShowAllPromotionsButtonCheckbox)
+                {
+                    <a class="button" href="@Model.Parent.Url">@Editable(Model, x => x.ViewAllPromotionsLabel)</a>
+                }
+
+            </div>
+        </section>
+    </article>
+    <aside class="layout-side">
+        <h3>@Editable(Model, x => x.PromotionTitle)</h3>
+        <div class="introduction">
+            <p>@Editable(Model, x => x.PromotionTitleDescription)</p>
+        </div>
+        <section class="section promotion-form">
+            @Html.Sitecore().Placeholder("formPlaceholder")
+        </section>
+    </aside>
+</div>
+

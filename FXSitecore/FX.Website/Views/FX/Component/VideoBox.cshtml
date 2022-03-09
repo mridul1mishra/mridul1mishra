@@ -1,0 +1,41 @@
+﻿@using FX.Core.Utils
+@using FX.Core.GlassMapper
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Components.IVideoBox>
+
+@if (this.IsInEditingMode)
+{
+    <h2 style="text-align:center">[Video Box component]</h2>
+    if (Model == null)
+    {
+        <p>No component datasource found</p>
+    }
+}
+@if (Model != null)
+{
+<section class="section video-box">
+    @if (!string.IsNullOrEmpty(Model.SectionTitle))
+    {
+        if (Model.ShowInStickyTab)
+        {
+            <a id='content@(Model.Id.ToString("N"))' class="anchor-link" data-label="@Model.SectionTitle.Left(FX.Core.Constants.MaxLength.SectionTitle)"></a>
+        }
+    }
+    <div class="video-box__yt-wrapper">
+        <div class="video-box__yt-embed">
+            @if (!string.IsNullOrEmpty(Model.VideoEmbedCode))
+            {
+                @Html.Raw(Model.VideoEmbedCode)
+            }
+            else if (!string.IsNullOrEmpty(Model.YoutubeID))
+            {
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/@Model.YoutubeID?rel=0" frameborder="0" allowfullscreen=""></iframe>
+            }
+
+        </div>
+    </div>
+    <div class="video-box__desc">
+        <h3>@RenderImage(Model, x => x.CompanyLogo, isEditable:true)</h3>
+        <p>@Editable(Model, x => x.CompanyDescriptionText)</p>
+    </div>
+</section>
+}

@@ -1,0 +1,215 @@
+﻿@using Sitecore.Mvc
+@using FX.Core.Models.Base
+@using FX.Core.Utils
+@using System.Text.RegularExpressions
+@using System.Web.Mvc.Html
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Products.IProductCategory>
+
+@{
+    bool isFirstItem = false;
+    int hitCount = 0;
+
+    var ProductListingPage = Model.ProductListingPage;
+
+    string enquiryUrl = string.Empty;
+
+    if (ProductListingPage != null)
+    {
+        enquiryUrl = ProductListingPage.EnquiryPage == null ? string.Empty : ProductListingPage.EnquiryPage.Url;
+        if(enquiryUrl.ToLower().Contains("/ko-kr"))
+        {
+            enquiryUrl.Replace("/ko-kr", "");
+        }
+        if(enquiryUrl.ToLower().Contains("/zh-tw"))
+        {
+            enquiryUrl.Replace("/zh-tw", "");
+        }
+    }
+    var opco = FX.Core.Utils.Util.OpcoType();
+    var lang = System.Web.HttpContext.Current.Request.Path.Split('/')[1];
+    var opcolang = FX.Core.Utils.Util.OpcoLang();
+
+}
+
+@helper ShowHitCount(string message, int hitCount)
+{
+    @Html.Raw(
+        Regex.Replace(message,
+            @"\$hitCount\b",
+            string.Format("<span class='total-results'>{0}</span>", hitCount)));
+}
+
+@helper ShowRecommended()
+{
+    if (Sitecore.Analytics.Tracker.Current != null)
+    {
+        var interaction = Sitecore.Analytics.Tracker.Current.Interaction;
+        var profile = interaction.Profiles["FujiXerox"];
+
+        if (profile != null && profile.PatternId != null)
+        {
+            if (string.IsNullOrWhiteSpace(Model.ProductListingPage.RecommendedFilterLabel))
+            {
+                @Html.Raw("<option value=\"recommended\">Recommended</option>");
+            }
+            else
+            {
+                @Html.Raw("<option value=\"recommended\">" + Model.ProductListingPage.RecommendedFilterLabel + "</option>");
+            }
+        }
+    }
+}
+
+
+
+<!-- Listing -->
+<div class="main-content">
+    @Html.Sitecore().Rendering(FX.Core.Keys.RenderingItems.Breadcrumb, FX.Core.Utils.Util.DefaultRenderingCacheParameter)
+    <div class="top-banner">
+        @Html.Sitecore().Rendering(FX.Core.Keys.RenderingItems.HeroBanner, FX.Core.Utils.Util.DefaultRenderingCacheParameter)
+        <div class="nav-tabs">
+            <ul>
+            @foreach (var category in ProductListingPage.Children)
+            {
+                <li class="match-height">
+                    <a href="@category.URL()" @(this.Request.RawUrl.Contains(category.Url) ? "@class='active'" : "") >@category.NavigationTitle</a>
+                </li>
+            }
+            </ul>
+        </div>
+    </div>
+    <div class="layout-main">
+        <div class="dynamic-listing product-listing">
+            <div class="column-row">
+                <div class="col-sm-3">
+                    @Html.Sitecore().Placeholder("productsPlaceholder")
+                    <!-- Listing Filters -->
+                    <div class="listing-side-filters">
+                        <form>
+                            <fieldset>
+                                <legend class="sr-only">Product Finder Filter</legend>
+
+                                <input type="hidden" name="categoryField" id="categoryField" value="@Util.GetNormalizedId(Model.CategorySource)" />
+
+                                <div class="filter-panel-header">
+                                    @if (FXGlassView.IsFieldVisible(this.IsInEditingMode, ProductListingPage.FilterLabel))
+                                    {
+                                    <h3>@Editable(ProductListingPage, x => x.FilterLabel)</h3>
+                                    }
+
+                                    @if (FXGlassView.IsFieldVisible(this.IsInEditingMode, ProductListingPage.FilterResetLabel))
+                                    {
+                                    <a href="#" class="clear-filters-selection-btn">@Editable(ProductListingPage, x => x.FilterResetLabel)</a>
+                                    }
+                                </div>
+                                @{isFirstItem = true;}
+                                @Html.Partial("~/Views/FX/Page/ProductCategoryFilter.cshtml", Model, new System.Web.Mvc.ViewDataDictionary { { "isFirstItem", isFirstItem ? "1" : "0" } })
+                                @{isFirstItem = false; }
+
+                            </fieldset>
+
+                            <div class="filter-panel-btn-group">
+                                <button type="submit" class="submit-btn">@Editable(ProductListingPage, x => x.FilterSubmitLabel)</button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- End: Listing Filters -->
+                </div>
+                <!-- Listing Content -->
+                <div class="col-sm-9">
+                    <div class="listing-description">
+                        <div class="rte">
+                            <p>@Editable(Model, x=> x.CategoryDescription)</p>
+                        </div>
+                    </div>
+                    <div class="listing-content" data-endpoint="/@opco/@lang/api/getproductlisting">
+                        <div class="listing-content__sort-result">
+                            <div class="pull-right">
+                                @*<label>@Editable(ProductListingPage, x => x.SortbyLabel)</label>*@
+                                <select class="custom-select">
+                                    <option value="latest">@ProductListingPage.LatestFilterLabel</option>
+                                    <option value="promotion">@ProductListingPage.PromotionFilterLabel</option>
+
+                                    @ShowRecommended()
+                                    <option value="best seller">@ProductListingPage.BestSellerFilterLabel</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        @if (this.IsInEditingMode)
+                        {
+                            <p class="msg">
+                                @Editable(ProductListingPage, x => x.SearchResultsText)
+                                <br />
+                                @Editable(ProductListingPage, x => x.ZeroResultsText)
+                            </p>
+                        }
+                        <div class="listing-content__result-status">
+                            <p class="msg success-msg">@ShowHitCount(ProductListingPage.SearchResultsText, hitCount)</p>
+                            <p class="msg error-msg">@ProductListingPage.ZeroResultsText</p>
+                            <div class="loader-animation">
+                                <div class="inner"></div>
+                                <div class="inner"></div>
+                                <div class="inner"></div>
+                            </div>
+                        </div>
+
+                        <ul class="listing-content__results row-col-12"></ul>
+
+                        <div class="load-more">
+                            <a href="#" class="js-load-more">@Editable(ProductListingPage, x => x.LoadMoreLabel)</a>
+                        </div>
+
+                        <script id="results-template" type="text/x-dot-template">
+                            {{~ it.results :result}}
+                            <li class="col-sm-12 col-md-6"  itemscope itemtype="http://schema.org/Product">
+                                <div class="desc">
+                                    <h5 itemprop="name"><a href="{{=result.url}}" itemprop="url">{{=result.name}}</a></h5>
+
+                                    <div itemprop="description">{{=result.desc}}</div>
+                                    {{? result.buttonlink}}
+                                        <p>
+                                            {{? result.buttontype === 'modalbox'}}
+                                            <a href="#productForm" class="button contact-link {{=result.buttontype}}" data-iframe="@enquiryUrl?formId={{=result.buttonlink}}&amp;product%20Name={{=result.name}}" data-productid="{{=result.productid}}">{{=result.buttonlabel}}</a>
+                                            {{??}}
+                                            <a href="{{=result.buttonlink}}" class="button contact-link {{=result.buttontype}}" target="_blank" data-productid="{{=result.productid}}">{{=result.buttonlabel}}</a>
+                                            {{?}}
+                                        </p>
+                                    {{?}}
+                                </div>
+
+                                <div class="thumbnail">
+                                    {{? result.recommended}}
+                                        <span class="label recommended">@ProductListingPage.RecommendedLabel</span>
+                                        {{??}}
+                                            {{? result.promoted}}
+                                                <span class="label promoted">@ProductListingPage.PromotedLabel</span>
+                                        {{??}}
+                                            {{? result.newitem}}
+                                                <span class="label new-item">@ProductListingPage.NewLabel</span>
+                                        {{??}}
+                                            {{? result.bestseller}}
+                                                <span class="label best-seller">@ProductListingPage.BestSellerLabel</span>
+                                            {{?}}
+                                        {{?}}
+                                    {{?}}
+                                {{?}}
+
+                                    <a href="{{=result.url}}"><img src="{{=result.thumbnail}}" alt="" /></a>
+                                </div>
+                            </li>
+                            {{~}}
+
+                        </script>
+                    </div>
+                    <!-- End: Listing Content -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End: Listing -->
+
+@{
+    Html.RenderPartial("~/Views/FX/Component/_ProductForm.cshtml");
+}

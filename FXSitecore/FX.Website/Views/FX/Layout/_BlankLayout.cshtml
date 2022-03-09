@@ -1,0 +1,27 @@
+﻿@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Page.IHeaderlessBlankPage>
+@using Sitecore.Mvc
+@using Sitecore.Mvc.Analytics.Extensions
+
+<!DOCTYPE html>
+<html lang="@Model.Language" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+
+    <head>
+        <title>Fuji Xerox |  @(!string.IsNullOrEmpty(Model.MainTitle) ? Model.MainTitle : Model.MetaTitle)</title>
+        @if (!string.IsNullOrEmpty(Model.MetaDescription)) {
+            <meta name="description" content="@Model.MetaDescription">
+        }
+        @if (!string.IsNullOrEmpty(Model.MetaKeywords)) {
+            <meta name="keywords" content="@Model.MetaKeywords">
+        }
+        <link rel="icon" type="image/ico" href="/favicon.ico" />
+        @Html.Raw(Model.Head)
+        @Html.Sitecore().VisitorIdentification()
+    </head>
+    <body @Html.Raw(Model.BodyClass)>
+        @*@Html.Raw(FX.Core.FXContextItems.HomePage.SiteSettings.TagManagerSnippet)*@
+        @Html.Sitecore().Placeholder("headerPlaceholder")
+        @Html.Sitecore().Placeholder("blankPlaceholder")
+        @Html.Sitecore().Placeholder("footerPlaceholder")
+        @Html.Raw(Model.Footer)
+    </body>
+</html>

@@ -1,0 +1,9 @@
+﻿@using Sitecore.Mvc
+@using System.Web.Mvc.Html
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Page.IStandardPage>
+<div class="main-content">
+    @Html.Sitecore().Rendering(FX.Core.Keys.RenderingItems.Breadcrumb, FX.Core.Utils.Util.DefaultRenderingCacheParameter)
+    <div class="layout-main">
+        @Html.Sitecore().Placeholder("sectionPlaceholder")
+    </div>
+</div>

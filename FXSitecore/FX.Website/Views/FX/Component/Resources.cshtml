@@ -1,0 +1,133 @@
+﻿@using FX.Core
+@using FX.Core.Utils
+@using FX.Core.GlassMapper
+@using Sitecore.Mvc
+@using FX.Core.Models.Base
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Components.IResources>
+
+@{
+    var item = this.ContextItem;
+
+    var siteSettings = FX.Core.FXContextItems.HomePage.SiteSettings;
+}
+
+@helper GetFileFormatName(IMediaFile media)
+{
+    if (media != null)
+    {
+        string format = "";
+
+
+        var siteSettings = FX.Core.FXContextItems.HomePage.SiteSettings;
+        Sitecore.Data.Items.MediaItem mediaItem = media.SitecoreItem;
+        switch (mediaItem.Extension.ToLower())
+        {
+            case "pdf": format = siteSettings.PdfLabel; break;
+            case "doc":
+            case "docx": format = siteSettings.DocLabel; break;
+            case "xls":
+            case "xlsx": format = siteSettings.XlsLabel; break;
+            case "zip": format = siteSettings.ZipLabel; break;
+        }
+
+        @Html.Raw(format);
+    }
+}
+
+
+@if (this.IsInEditingMode)
+{
+    <h2 style="text-align:center">[Resources component]</h2>
+    if (Model == null)
+    {
+        <p>No component datasource found</p>
+    }
+}
+@if (Model != null && Model.MediaLink != null && Model.MediaLink.Any())
+{
+    <!-- Resources Section -->
+    <section class="section resources">
+
+        @if (!string.IsNullOrEmpty(Model.SectionTitle))
+        {
+            if (Model.ShowInStickyTab)
+            {
+                <a id='content@(Model.Id.ToString("N"))' class="anchor-link" data-label="@Model.SectionTitle"></a>
+            }
+            <h3>@Model.SectionTitle</h3>
+        }
+
+
+        @foreach (var media in Model.MediaLink)
+        {
+            string fileName = media.GetDisplayName();
+
+
+            <div class="resources__block">
+                <h4>@fileName</h4>
+                <dl>
+                    <dt>@siteSettings.FileSizeLabel:</dt>
+                    <dd>@media.FileSize.FormatInBytes()</dd>
+                    <dt>@siteSettings.DocumentTypeLabel:</dt>
+                    <dd>@GetFileFormatName(media)</dd>
+                </dl>
+
+                <!-- DEV NOTE:  -->
+                <!-- IF Email Subscription is switched off -->
+                <!-- <a href = "#" class = "resources__block__download-btn" title = "Download Colour Management Brochure"><i class = "icon-download"></i><span class = "sr-only">Download Resource</span></a> -->
+                <!-- ELSE -->
+                <a class="resources__block__download-btn" data-fancybox="data-fancybox" data-src="#@media.Id.ToString()" href="javascript:;" title="Download @fileName">
+                    <i class="icon-download"></i><span class="sr-only">Download Resource</span>
+                </a>
+                <!-- END -->
+            </div>
+
+            <!-- Subscription Call -->
+            <div class="subscribe" id="@media.Id.ToString()">
+                <div class="row-col-12">
+                    <div class="col-sm-6 col-md-6 col match-height">
+                        <h3>@Model.DownloadTitle.Left(FX.Core.Constants.MaxLength.AccordionTitle)</h3>
+                        <a href="@media.MediaUrl" target="_blank" class="btn-download">@fileName<i class="icon-download"></i></a>
+                    </div>
+                    @if (this.IsInEditingMode || Model.SubscribeForm != null)
+                    {
+                        <div class="col-sm-6 col-md-6 col match-height">
+                            <h3>@Model.SubscribeTitle.Left(FX.Core.Constants.MaxLength.AccordionTitle)</h3>
+                            <!-- <p>Keep yourself update to Fuji Xerox latest product!</p> -->
+                            @if (Model.SubscribeForm != null)
+                            {
+                                <div class="sitecore-form">
+                                    @Html.Sitecore().Rendering(FX.Core.Keys.RenderingItems.WFFMMVCForm, new { DataSource = Model.SubscribeForm.Id, UniqueId = Guid.NewGuid().ToString() })
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="form-row row-col-12">
+                                    <div class="col-sm-6">
+                                        <div class="input-group-text">
+                                            <label for="subscribeName">Name<span class="required">*</span></label>
+                                            <input type="text" id="subscribeName" placeholder="Name">
+                                        </div>
+                                        <div class="input-group-text">
+                                            <label for="subscribeEmail">Email<span class="required">*</span></label>
+                                            <input type="email" id="subscribeEmail" placeholder="abc@example.com">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="btn-group">
+                                    <button type="submit">Submit<i class="icon-chevron-with-circle-right"></i></button>
+                                </div>
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+            <!-- End: Subscription Call -->
+        }
+        @if (Model != null && !string.IsNullOrEmpty(Model.HiddenField))
+        {
+            @Html.Raw(Model.HiddenField)
+        }
+    </section>
+    <!-- End: Resources Section -->
+}

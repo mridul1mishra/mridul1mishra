@@ -1,0 +1,147 @@
+﻿@using FX.Core
+@using FX.Core.Utils
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Components.IChildCards>
+
+@{
+    var css = "";
+    var opco = FX.Core.Utils.Util.OpcoType();
+    var teaserTitle = "";
+    var children = Enumerable.Empty<FX.Core.Models.Page.IStandardPage>();
+    var relatedCareers = Enumerable.Empty<FX.Core.Models.Page.ICareerDetailPage>();
+    var relatedSuccessStories = Enumerable.Empty<FX.Core.Models.Page.ISuccessStoryDetailPage>();
+    if (this.ContextItem.TemplateID.ToString().Equals(Templates.CareerDetailPage.Id))
+    {
+        var currentPage = this.SitecoreContext.Cast<FX.Core.Models.Page.ICareerDetailPage>(this.ContextItem);
+        relatedCareers = currentPage.RelatedPages.Where(x => !x.Id.ToString().Equals(currentPage.Id.ToString()));
+        teaserTitle = currentPage.TeaserTitle;
+        css = "col-sm-8 center";
+    }
+
+    else if (this.ContextItem.TemplateID.ToString().Equals(Templates.SuccessStoryDetailPage.Id))
+    {
+        var currentPage = this.SitecoreContext.Cast<FX.Core.Models.Page.ISuccessStoryDetailPage>(this.ContextItem);
+        relatedSuccessStories = currentPage.RelatedPages.Where(x => !x.Id.ToString().Equals(currentPage.Id.ToString()));
+        teaserTitle = currentPage.TeaserTitle;
+        css = "col-sm-8 center";
+    }
+    else
+    {
+        var currentPage = this.SitecoreContext.Cast<FX.Core.Models.Page.IStandardPage>(this.ContextItem);
+        children = currentPage.ArticlePages;
+        teaserTitle = currentPage.TeaserTitle;
+    }
+    //var currentPage2 = this.SitecoreContext.Cast<FX.Core.Models.Page.IStandardPage>(this.ContextItem);
+    //var children = currentPage2.ArticlePages;
+}
+
+@if (this.IsInEditingMode)
+{
+    <h2 style="text-align:center">[Child Cards component]</h2>
+    if (Model == null)
+    {
+        <p>No component datasource found</p>
+    }
+}
+
+
+@functions
+{
+    public bool IsNew(FX.Core.Models.Page.IStandardPage page)
+    {
+        if (page.LocalisedArticleDate != null)
+        {
+            int articleAge = FX.Core.FXContextItems.HomePage.SiteSettings.NewArticleAge;
+            if (articleAge < 1)
+                return false;
+            var now = DateTime.UtcNow;
+            var articleDate = page.LocalisedArticleDate.DateTime;
+            return articleDate.AddDays(articleAge) > now;
+        }
+        return false;
+
+    }
+}
+
+<section class="section">
+    @if (Model != null && !string.IsNullOrEmpty(Model.SectionTitle))
+    {
+        if (Model.ShowInStickyTab)
+        {
+            <a id='content@(Model.Id.ToString("N"))' class="anchor-link" data-label="@Model.SectionTitle.Left(FX.Core.Constants.MaxLength.SectionTitle)"></a>
+        }
+        if (!this.IsInEditingMode && Model != null && !string.IsNullOrEmpty(Model.SectionTitle))
+        {
+            <h2>@Html.Raw(Model.SectionTitle)</h2>
+        }
+        else if (this.IsInEditingMode)
+        {
+            <h2>@Editable(Model, x => x.SectionTitle)</h2>
+        }
+    }
+
+    <div class="topics">
+        <div class="topic-panels-wrapper">
+            @foreach (var child in children)
+            {
+
+                <div class="panel-item match-height">
+                    <div class="bnr-01 ride-hdg">
+                        <a href="@opco@child.Url">
+                            <span class="image">
+                                @RenderImage(child, x => x.TeaserImage)
+                            </span>
+                            <span class="group">
+                                <span class="hdg">@child.TeaserTitle</span>
+                            </span>
+
+                            @if (!string.IsNullOrEmpty(child.ButtonText))
+                            {
+                                <span class="btn">@child.ButtonText</span>
+                            }
+                        </a>
+                    </div>
+                </div>
+            }
+            @foreach (var child in relatedCareers)
+            {
+
+                <div class="panel-item match-height">
+                    <div class="bnr-01 ride-hdg">
+                        <a href="@child.Url">
+                            <span class="image">
+                                @RenderImage(child, x => x.TeaserImage)
+                            </span>
+                            <span class="group">
+                                <span class="hdg">@child.TeaserTitle</span>
+                            </span>
+                            @if (!string.IsNullOrEmpty(child.ButtonText))
+                            {
+                                <span class="btn">@child.ButtonText</span>
+                            }
+                        </a>
+                    </div>
+                </div>
+            }
+            @foreach (var child in relatedSuccessStories)
+            {
+
+                <div class="panel-item match-height">
+                    <div class="bnr-01 ride-hdg">
+                        <a href="@child.Url">
+                            <span class="image">
+                                @RenderImage(child, x => x.TeaserImage)
+                            </span>
+                            <span class="group">
+                                <span class="hdg">@child.TeaserTitle</span>
+                            </span>
+                            @if (!string.IsNullOrEmpty(child.ButtonText))
+                            {
+                                <span class="btn">@child.ButtonText</span>
+                            }
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

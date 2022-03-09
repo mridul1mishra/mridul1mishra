@@ -1,0 +1,45 @@
+﻿@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Microsite.Components.MicrositeListing.IMicrositeListingComponent>
+@using FX.Core.Models.Microsite.Components.MicrositeListing;
+@if (this.IsInEditingMode)
+{
+    <h2 style="text-align:center">[Listing Component]</h2>
+    if (Model == null)
+    {
+        <p>No component datasource found</p>
+    }
+}
+@if (Model != null)
+{
+for (int i = 0; i < Model.ListingItems.Count(); i++)
+{
+    var listingItem = Model.ListingItems.ToList()[i];
+    if (listingItem is IMicrositeListingRow)
+    {
+        var listingRow = listingItem as IMicrositeListingRow;
+        <section @Html.Raw(i % 2 == 0 ?  "class='padtop75'" : "class='bg-grey'")>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="block circle-block circle-block2 circle-block-solution center-block" data-toggle="swapcolor" data-hover-color="@listingRow.HoverColour" data-static-color="@listingRow.StaticColour">
+                            <div class="table-display">
+                                <div class="table-cell">
+                                    @RenderImage(listingRow, m => m.Icon, new { @class = "img-responsive center-block" }, isEditable: true)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-9">
+                        <h3>@Editable(listingRow, m => m.Title)</h3>
+                        @Editable(listingRow, m => m.Text)
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+    else if (listingItem is IMicrositeListingImage)
+    {
+        var listingImage = listingItem as IMicrositeListingImage;
+        @RenderImage(listingImage, m => m.Image, new { @class = "img-responsive full-width" }, isEditable: true)
+    }
+}
+}

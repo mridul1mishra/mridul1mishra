@@ -1,0 +1,59 @@
+﻿@using FX.Core.Utils
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Components.Events.IEventFeaturedSpeaker>
+
+@{
+    var featuredSpeakers = Model.FeaturedSpeakerItems;
+}
+
+@if (this.IsInEditingMode)
+{
+    <h2 style="text-align:center">[Event Featured Speaker component]</h2>
+    if (Model == null)
+    {
+        <p>No component datasource found</p>
+    }
+}
+
+<section class="section event-featured-speakers">
+    @if (Model != null && !string.IsNullOrEmpty(Model.SectionTitle))
+    {
+        if (Model.ShowInStickyTab)
+        {
+            <a id='content@(Model.Id.ToString("N"))' class="anchor-link" data-label="@Model.SectionTitle.Left(FX.Core.Constants.MaxLength.SectionTitle)"></a>
+        }
+    }
+    <h3>@Editable(Model, x => x.MainTitle)</h3>
+    <div class="event-featured-speakers-wrapper">
+        
+        @foreach (var featuredSpeaker in featuredSpeakers)
+        {
+            <div class="event-featured-speakers__speaker">
+                <a class="bio-popup" href="#">
+                    <p class="match-height">@Editable(featuredSpeaker, x => x.SpeakerName)</p>
+                    <div class="image-holder">
+                        @RenderImage(featuredSpeaker, x => x.SpeakerImage, @*new { MH = 145, MW = 145 },*@ isEditable: false, outputHeightWidth: false)
+                        <span class="label">@Editable(Model, x => x.ViewProfileLabel)</span>
+                    </div>
+                    <div class="description">
+                        <p>@Editable(featuredSpeaker, x=> x.Designation)</p>
+                        <p>@Editable(featuredSpeaker, x => x.Company)</p>
+                    </div>
+                </a>
+                <div class="event-speakers__bio hidden">
+                    <div class="bio__header">
+                        <div class="bio__thumbnail">
+                            @RenderImage(featuredSpeaker, x => x.SpeakerImage, @*new { MH = 145, MW = 145 },*@ isEditable: false, outputHeightWidth: false)
+                        </div>
+                        <h3>@Editable(featuredSpeaker, x => x.SpeakerName)</h3>
+                        <span class="title">@Editable(featuredSpeaker, x => x.Designation)</span>
+                        <span class="company"> @Editable(featuredSpeaker, x => x.Company)</span>
+                    </div>
+                    <div class="bio__body">
+                        @Editable(featuredSpeaker, x => x.Summary)
+                    </div>
+                </div>
+            </div>
+                
+        }
+    </div>
+</section>

@@ -1,0 +1,44 @@
+﻿@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Microsite.Components.ITwoColumnTextFormComponent>
+@using Sitecore.Mvc
+@if (this.IsInEditingMode)
+{
+    <h2 style="text-align:center">[Two Column Text and Form Component]</h2>
+    if (Model == null)
+    {
+        <p>No component datasource found</p>
+    }
+}
+@if (Model != null)
+{
+    <section class="bg-dark-turqoise benefits-section">
+        <div class="container">
+            <div class="row">
+                @if (Model.FormOnLeft)
+                {
+                    <div class="col-md-5 col-sm-12">
+                        <div class="wffm">
+                            @Html.Sitecore().Placeholder("twoColumnTextFormPlaceholder")
+                        </div>
+                        
+                    </div>
+                    <div class="col-md-7 col-sm-12">
+                        <h3>@Editable(Model, m => m.Title)</h3>
+                        @Editable(Model, m => m.Text)
+                    </div>
+                }
+                else
+                {
+                    <div class="col-md-5 col-sm-12">
+                        <h3>@Editable(Model, m => m.Title)</h3>
+                        @Editable(Model, m => m.Text)
+                    </div>
+                    <div class="col-md-7 col-sm-12">
+                        <div class="wffm">
+                            @Html.Sitecore().Placeholder("twoColumnTextFormPlaceholder")
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+}

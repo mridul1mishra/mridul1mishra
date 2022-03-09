@@ -1,0 +1,30 @@
+﻿@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Microsite.Page.IMicrositePage>
+@using FX.Core.GlassMapper
+
+@{ 
+
+    var bannerPage = Model;
+    if (!this.IsInEditingMode) {
+        bannerPage =  Model.GetBanner();
+        if (bannerPage == null) {
+            bannerPage = Model;
+        }
+    }
+}
+<!-- HERO -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="hero">
+                @RenderImage(bannerPage, m => m.Banner, new {@class="img-responsive full-width" }, isEditable:true)
+                <div class="caption-hero">
+                    <h1>@Editable(Model, m => m.BannerTitle)</h1>
+                    <p>
+                        @Editable(Model, m => m.BannerDescription)
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END HERO -->

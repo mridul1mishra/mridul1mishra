@@ -1,0 +1,87 @@
+﻿@using Sitecore.Mvc
+@using FX.Core.GlassMapper
+@using FX.Core.Utils
+@using FX.Core
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Page.IEventRegistrationPage>
+
+@{
+    bool hasFacebookLink = FX.Core.Utils.Util.HasValidLink(Model.FacebookLink, false);
+    bool hasLinkedInLink = FX.Core.Utils.Util.HasValidLink(Model.LinkedInLink, false);
+    bool hasTwitterLink = FX.Core.Utils.Util.HasValidLink(Model.TwitterLink, false);
+    bool hasInstagramLink = FX.Core.Utils.Util.HasValidLink(Model.InstagramLink, false);
+    var opco = FX.Core.Utils.Util.OpcoType();
+}
+
+<div class="main-content layout-article">
+    @Html.Sitecore().Rendering(FX.Core.Keys.RenderingItems.Breadcrumb, FX.Core.Utils.Util.DefaultRenderingCacheParameter)
+    <div class="top-banner">
+        @Html.Sitecore().Rendering(FX.Core.Keys.RenderingItems.HeroBanner, FX.Core.Utils.Util.DefaultRenderingCacheParameter)
+    </div>
+    <aside class="layout-side layout-side--left article-aside">
+        <div class="social-aside">
+            @Html.Partial("~/Views/FX/Shared/AddThis.cshtml")
+        </div>
+    </aside>
+    <article class="layout-main article-content ">
+        <section class="section event-registration">
+            @if (!this.IsInEditingMode && Model != null && !string.IsNullOrEmpty(Model.MainTitle))
+            {
+                <h1>@Html.Raw(Model.MainTitle)</h1>
+            }
+            else if(this.IsInEditingMode)
+            {
+                <h1>@Editable(Model, m => m.MainTitle)</h1>
+            }
+            <div class="sitecore-form">
+                @Html.Sitecore().Placeholder("formPlaceholder")
+            </div>
+        </section>
+
+    </article>
+    <aside class="layout-side article-aside">
+        @if (Model.ShowEventDetailsCheckbox)
+        {
+            <div class="article-aside__block event-aside__details">
+                <h3>@Model.EDSectionTitle</h3>
+                <div class="details">
+                    <span class="location">@Html.Raw(Model.Location)</span>
+                    <span class="date">@Model.LocalisedStartDate.DateRange(Model.LocalisedStartDate.DateTime, Model.LocalisedEndDate.DateTime)</span>
+                    <span class="time">@Model.StartEndTime </span>
+                </div>
+                <a class="button" href="/@opco/api/AddToICalendar?downloadFileName=events.ics&eventId=@Model.Id">@Model.AddToCalendarLabel</a>
+                <a class="button button--inverse" href="@Model.Parent.Url">@Model.ViewDetailsLabel</a>
+            </div>
+        }
+        @if (Model.ShowMapCheckbox)
+        {
+            <div class="article-aside__block event-aside__map">
+                <h3>@Model.MapSectionTitle</h3>@Html.Raw(Model.GoogleMapsEmbedCode)
+            </div>
+        }
+        @if (Model.ShowSocialMediaCheckbox)
+        {
+            <div class="article-aside__block event-aside__share">
+                <h3>@Model.SMSectionTitle</h3>
+                <ul>
+                    @if (hasFacebookLink)
+                    {
+                        <li><a href="@Model.FacebookLink.Url" title="Facebook"><i class="icon-facebook"></i><span class="sr-only">Facebook</span></a></li>
+                    }
+                    @if (hasLinkedInLink)
+                    {
+                        <li><a href="@Model.LinkedInLink.Url" title="Linkedin"><i class="icon-linkedin"></i><span class="sr-only">Linkedin</span></a></li>
+                    }
+                    @if (hasTwitterLink)
+                    {
+                        <li><a href="@Model.TwitterLink.Url" title="Twitter"><i class="icon-twitter"></i><span class="sr-only">Twitter</span></a></li>
+                    }
+                    @if (hasInstagramLink)
+                    {
+                        <li><a href="@Model.InstagramLink.Url" title="Instagram"><i class="icon-instagram"></i><span class="sr-only">Instagram</span></a></li>
+                    }
+                </ul>
+            </div>
+        }
+    </aside>
+
+</div>

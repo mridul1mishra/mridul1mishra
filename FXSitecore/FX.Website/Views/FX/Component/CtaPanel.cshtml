@@ -1,0 +1,206 @@
+﻿@*@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Settings.ISiteSettings>*@
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Website.Models.Components.CtaPanelViewModel>
+@using FX.Core.GlassMapper
+@using System.Web.Mvc.Html
+@using Sitecore.Mvc
+@using FX.Core.Models.Base;
+
+@*@{
+        var Cta1IsLink = (Model.SiteSettings.Cta1Link != null && !string.IsNullOrEmpty(Model.SiteSettings.Cta1Link.Url));
+
+        var Cta2IsLink = (Model.SiteSettings.Cta2Link != null && !string.IsNullOrEmpty(Model.SiteSettings.Cta2Link.Url));
+
+        var Cta3IsLink = (Model.SiteSettings.Cta3Link != null && !string.IsNullOrEmpty(Model.SiteSettings.Cta3Link.Url));
+    }
+    <!-- START: Call to Action-->
+    @if (Model.Page.EnableCtaPanel)
+    {
+        <div class="sticky-buttons visible">
+            <div class="container">
+                <!-- START: Call to Action 1-->
+                @if (Cta1IsLink)
+                {
+                    using (BeginRenderLink(Model, m => m.SiteSettings.Cta1Link, new { @class = "button" }))
+                    {
+                        <div>
+                            @RenderImage(m => m.SiteSettings.Cta1Image, new { @class = "default" })
+                            @RenderImage(m => m.SiteSettings.Cta1HoverImage, new { @class = "hover" })
+                            <span>@Model.SiteSettings.Cta1Link.Text</span>
+                        </div>
+                    }
+                }
+                else
+                {
+                    bool hasForm = !string.IsNullOrEmpty(Model.SiteSettings.Cta1Form);
+
+                    if (hasForm)
+                    {
+                        <a class="button form modalbox" href="@Html.Raw(hasForm ? "#cta1" : "")">
+                            <div>
+                                @RenderImage(m => m.SiteSettings.Cta1Image, new { @class = "default" })
+                                @RenderImage(m => m.SiteSettings.Cta1HoverImage, new { @class = "hover" })
+                                <span>@Html.Raw(hasForm ? Model.SiteSettings.Cta1DisplayText : "")</span>
+                            </div>
+                        </a>
+                        <div class="modal sitecore-form" id="cta1" style="display:none;">
+                            <div class="modal-wrapper">
+                                <div class="modal-close-button">
+                                    <a href="#"><i class="icon-cross"></i></a>
+                                </div>
+                                <div class="modal-form">
+                                    @Html.Sitecore().Rendering(FX.Core.Keys.RenderingItems.WFFMMVCForm, new { DataSource = Model.SiteSettings.Cta1Form, UniqueId = Guid.NewGuid().ToString() })
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                <!-- END: Call to Action 1-->
+                <!-- START: Call to Action 2-->
+                @if (Cta2IsLink)
+                {
+                    using (BeginRenderLink(Model, m => m.SiteSettings.Cta2Link, new { @class = "button" }))
+                    {
+                        <div>
+                            @RenderImage(m => m.SiteSettings.Cta2Image, new { @class = "default" })
+                            @RenderImage(m => m.SiteSettings.Cta2HoverImage, new { @class = "hover" })
+                            <span>@Model.SiteSettings.Cta2Link.Text</span>
+                        </div>
+                    }
+                }
+                else
+                {
+                    bool hasForm = !string.IsNullOrEmpty(Model.SiteSettings.Cta2Form);
+
+                    if (hasForm)
+                    {
+                        <a class="button form modalbox" href="@Html.Raw(hasForm ? "#cta2" : "")">
+                            <div>
+                                @RenderImage(m => m.SiteSettings.Cta2Image, new { @class = "default" })
+                                @RenderImage(m => m.SiteSettings.Cta2HoverImage, new { @class = "hover" })
+                                <span>@Html.Raw(hasForm ? Model.SiteSettings.Cta2DisplayText : "")</span>
+                            </div>
+                        </a>
+                        <div class="modal sitecore-form" id="cta2" style="display:none;">
+                            <div class="modal-wrapper">
+                                <div class="modal-close-button">
+                                    <a href="#"><i class="icon-cross"></i></a>
+                                </div>
+                                <div class="modal-form">
+                                    @Html.Sitecore().Rendering(FX.Core.Keys.RenderingItems.WFFMMVCForm, new { DataSource = Model.SiteSettings.Cta2Form, UniqueId = Guid.NewGuid().ToString() })
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                <!-- END: Call to Action 2-->
+                <!-- START: Call to Action 3-->
+                @if (Cta3IsLink)
+                {
+                    using (BeginRenderLink(Model, m => m.SiteSettings.Cta3Link, new { @class = "button" }))
+                    {
+                        <div>
+                            @RenderImage(m => m.SiteSettings.Cta3Image, new { @class = "default" })
+                            @RenderImage(m => m.SiteSettings.Cta3HoverImage, new { @class = "hover" })
+                            <span>@Model.SiteSettings.Cta3Link.Text</span>
+                        </div>
+                    }
+                }
+                else
+                {
+                    if (!string.IsNullOrEmpty(Model.SiteSettings.Cta3ContactNumber))
+                    {
+                        <a class="button" href="tel:@Model.SiteSettings.Cta3ContactNumber">
+                            <div>
+                                @RenderImage(m => m.SiteSettings.Cta3Image, new { @class = "default" })
+                                @RenderImage(m => m.SiteSettings.Cta3HoverImage, new { @class = "hover" })
+                                <span>@Model.SiteSettings.Cta3DisplayText</span>
+                            </div>
+                        </a>
+                    }
+                }
+                <!-- END: Call to Action 3-->
+            </div>
+        </div>
+    }
+    <!-- END: Call to Action-->*@
+@helper PopupForm(FX.Core.Models.Settings.CTA.ICtaPopupAction item)
+{
+    <a class="button form modalbox" href="#@item.Id.ToString("N")">
+        <div>
+            @RenderImage(item, x => x.Image, new { @class = "default" })
+            @RenderImage(item, x => x.HoverImage, new { @class = "hover" })
+            <span>@item.DisplayText</span>
+        </div>
+    </a>
+    <div class="modal sitecore-form" id="@item.Id.ToString("N")" style="display:none;">
+        <div class="modal-wrapper">
+            <div class="modal-close-button">
+                <a href="#"><i class="icon-cross"></i></a>
+            </div>
+            <div class="modal-form">
+                @Html.Sitecore().Rendering(FX.Core.Keys.RenderingItems.WFFMMVCForm, new { DataSource = item.Form, UniqueId = Guid.NewGuid().ToString() })
+            </div>
+        </div>
+    </div>
+}
+
+@helper PhoneContact(FX.Core.Models.Settings.CTA.ICtaPhoneContactAction item)
+{
+    if (!string.IsNullOrEmpty(item.ContactNumber))
+    {
+        <a class="button" href="tel:@item.ContactNumber">
+            <div>
+                @RenderImage(item, x => x.Image, new { @class = "default" })
+                @RenderImage(item, x => x.HoverImage, new { @class = "hover" })
+                <span>@item.DisplayText</span>
+            </div>
+        </a>
+    }
+}
+
+@if (Model.Page.EnableCtaPanel)
+{
+    <div class="sticky-buttons visible">
+        <div class="container">
+            @foreach (var ctaAction in Model.CtaActions)
+            {
+                bool IsLink = (ctaAction.Link != null && !string.IsNullOrEmpty(ctaAction.Link.Url));
+
+                if (IsLink)
+                {
+                    using (BeginRenderLink(ctaAction, m => m.Link, new { @class = "button" }))
+                    {
+                        <div>
+                            @RenderImage(ctaAction, x => x.Image, new { @class = "default" })
+                            @RenderImage(ctaAction, x => x.HoverImage, new { @class = "hover" })
+                            <span>@ctaAction.Link.Text</span>
+                        </div>
+                    }
+                }
+                else
+                {
+                    if (ctaAction is FX.Core.Models.Settings.CTA.ICtaPopupAction)
+                    {
+                        var popupAction = ctaAction as FX.Core.Models.Settings.CTA.ICtaPopupAction;
+
+
+                        bool hasForm = !string.IsNullOrEmpty(popupAction.Form);
+
+                        if (hasForm)
+                        {
+                            @PopupForm(popupAction)
+                        }
+                    }
+                    else if (ctaAction is FX.Core.Models.Settings.CTA.ICtaPhoneContactAction)
+                    {
+                        var phoneContactAction = ctaAction as FX.Core.Models.Settings.CTA.ICtaPhoneContactAction;
+                        if (!string.IsNullOrEmpty(phoneContactAction.ContactNumber))
+                        {
+                            @PhoneContact(phoneContactAction)
+                        }
+                    }
+                }
+            }
+        </div>
+    </div>
+}

@@ -1,0 +1,52 @@
+﻿@using FX.Core.GlassMapper
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Microsite.Settings.IMicrositeSettings>
+<!-- Site Header -->
+<header class="site-header">
+    <div class="header-top wingspan">
+        <div class="site-logo">
+
+            <a href="/">
+                @RenderImage(m => m.Logo)
+            </a>
+
+        </div>
+
+        <div class="header-utilites">
+
+            <div class="header-utilities__search">
+
+
+            </div>
+
+            <ul class="header-utilites__links">
+                @if (Model.HeaderLink1 != null || this.IsInEditingMode)
+                {
+                    <li>
+                        @Editable(Model, m=> m.HeaderLink1)
+                    </li>
+                }
+                @if (Model.HeaderLink2 != null || this.IsInEditingMode)
+                {
+                    <li>
+                        @Editable(Model, m => m.HeaderLink2)
+                    </li>
+                }
+                @if (Model.HeaderLink3 != null || this.IsInEditingMode)
+                {
+                    <li>
+                        @Editable(Model, m => m.HeaderLink3)
+                    </li>
+                }
+                @if (Model.HeaderLink4 != null || this.IsInEditingMode)
+                {
+                    <li>
+                        @Editable(Model, m => m.HeaderLink4)
+                    </li>
+                }
+
+            </ul>
+        </div>
+    </div>
+
+</header>
+<!-- End: Site Header -->

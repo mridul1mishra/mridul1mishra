@@ -1,0 +1,152 @@
+﻿@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Components.SocialMedia.ISocialFeed>
+
+@if (!Model.NarrowMode)
+{
+<div class="social-feed">
+    <h3>@Editable(Model, x => x.Title)</h3>
+    <div class="column-row">
+        @if (Model.FBShow)
+        {
+        <div class="social-feed-item col-sm-6 col-md-3">
+            <div class="social-feed-item__icon">
+                @RenderImage(Model, x => x.FBIcon, isEditable: true, outputHeightWidth: false)
+            </div>
+            <div class="social-feed-item__text">
+                <p>@Editable(Model, x=> x.FBText)</p>
+                @RenderLink(x => x.FBLink)
+            </div>
+        </div>
+        }
+        @if (Model.YTShow)
+        {
+        <div class="social-feed-item col-sm-6 col-md-3" id="youtube" data-id="@Model.YTVideoID" data-key="">
+            <div class="social-feed-item__icon">
+                @RenderImage(Model, x => x.YTIcon, isEditable: true, outputHeightWidth: false)
+            </div>
+            <div class="social-feed-item__text">
+                @Html.Raw(Model.YTText)
+                @RenderLink(x => x.YTLink)
+            </div>
+        </div>
+        }
+        @if (Model.LIShow)
+        {
+        <div class="social-feed-item col-sm-6 col-md-3">
+            <div class="social-feed-item__icon">
+                @RenderImage(Model, x => x.LIIcon, isEditable: true, outputHeightWidth: false)
+            </div>
+            <div class="social-feed-item__text">
+                @Editable(Model, x => x.LIText)
+                @RenderLink(x => x.LILink)
+            </div>
+        </div>
+        }
+        @if (Model.TWShow)
+        {
+        <div class="social-feed-item col-sm-6 col-md-3">
+            <div class="social-feed-item__icon">
+                @RenderImage(Model, x => x.TWIcon, isEditable: true, outputHeightWidth: false)
+            </div>
+            <div class="social-feed-item__text">
+                <p>@Editable(Model, x => x.TWText)</p>
+                @RenderLink(x => x.TWLink)
+            </div>
+            <div class="social-feed-item__actions">
+                <a class="reply" href="https://twitter.com/intent/tweet?in_reply_to=@Model.TweetID">Reply</a>
+                <a class="retweet" href="https://twitter.com/intent/retweet?tweet_id=@Model.TweetID">Retweet</a>
+                <a class="favorite" href="https://twitter.com/intent/favorite?tweet_id=@Model.TweetID">Favorite</a>
+            </div>
+                @*<div class="social-feed-item__icon">
+                    @RenderImage(Model, x => x.TWIcon, isEditable: true, outputHeightWidth: false)
+                </div>
+                <div class="social-feed-item__text">
+                    <a class="twitter-timeline" href="https://twitter.com/@Model.TWScreenName" data-tweet-limit="1" data-chrome="noheaders nofooter noborders noscrollbar transparent">Tweets by FujiXeroxSG</a>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>*@
+            </div>
+            }
+        </div>
+    </div>
+    }
+    else
+    {
+        <section class="section">
+            <a class="anchor-link" id="connectsubpage" data-label="@Model.Title"></a>
+            <div class="social-feed-subpage col-sm-6 col-md-4">
+                <h3>@Editable(Model, x=> x.Title)</h3>
+                <div class="social-feed-subpage__icons">
+                    @if (Model.FBShow)
+                    {
+                        using (BeginRenderLink(Model, x => x.FBLink))
+                        {
+                            @RenderImage(Model, x => x.FBIcon)
+                        }
+                    }
+                    @if (Model.YTShow)
+                    {
+                        using (BeginRenderLink(Model, x => x.YTLink))
+                        {
+                        @RenderImage(Model, x => x.YTIcon)
+                        }
+                    }
+                    @if (Model.LIShow)
+                    {
+                        using (BeginRenderLink(Model, x => x.LILink))
+                        {
+                        @RenderImage(Model, x => x.LIIcon)
+                        }
+                    }
+                    @if (Model.TWShow)
+                    {
+                        using (BeginRenderLink(Model, x => x.TWLink))
+                        {
+                        @RenderImage(Model, x => x.TWIcon)
+                        }
+                    }
+                </div>
+                <div class="social-feed-subpage__posts">
+                    @if (Model.FBShow)
+                    {
+                    <div class="social-sub-item" id="facebook-sub">
+                        <div class="social-sub-item__text">
+                            <p>@Editable(Model, x=> x.FBText)</p>
+                        </div>
+                        <div class="social-sub-item__more">
+                            @RenderLink(Model, x=> x.FBLink)
+                        </div>
+                    </div>
+                    }
+                    @if (Model.LIShow)
+                    {
+                    <div class="social-sub-item" id="linkedin-sub">
+                        <div class="social-sub-item__text">
+                            @Editable(Model, x=>x.LIText)
+                        </div>
+                        <div class="social-sub-item__more">
+                            @RenderLink(Model, x=> x.LILink)
+                        </div>
+                    </div>
+                    }
+                    @if (Model.TWShow)
+                    {
+                    <div class="social-sub-item" id="twitter-sub">
+                        <div class="social-sub-item__text">
+                            <p>@Editable(Model, x => x.TWText) </p>
+                        </div>
+                        <div class="social-sub-item__actions">
+                            @RenderLink(Model, x => x.TWLink)
+                        </div>
+                    </div>
+                    }
+                    @if (Model.YTShow)
+                    {
+                        <div class="social-sub-item" id="youtube-sub">
+                            <div class="social-sub-item__text">
+                                @Html.Raw(Model.YTText)
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </section>
+    }

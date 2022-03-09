@@ -1,0 +1,156 @@
+﻿@using FX.Core.GlassMapper
+@using System.Web.Mvc.Html
+@using Sitecore.Mvc
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.EXM.TwoCol>
+
+<!-- START: 2 Column Layout Title-->
+<!--[if mso | IE]>
+<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="640" align="center" style="width:640px;">
+<tr>
+<td style="line-height:0px;mso-line-height-rule:exactly;">
+<![endif]-->
+<div style="margin: 0px auto; max-width: 640px; background-color: #ffffff;">
+    <table role="presentation" cellpadding="0" cellspacing="0" border="0" bgcolor="#ffffff" style="border-style: none; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; background: #ffffff; border-collapse: collapse;" align="center" width="100%">
+        <tbody>
+            <tr>
+                <th class="two-first-title" width="100%" bgcolor="#ffffff" style="border:none; color: #101010; cursor: auto; font-family: Arial, sans-serif; padding-left: 15px; padding-bottom: 15px; padding-right: 15px; padding-top: 15px; font-size: 18px; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background: #ffffff;" align="left">
+                    <h1 style="display: block; margin: 0; text-align: left; color: #101010; font-weight: 700; font-size: 18px;">@Editable(Model, x => x.MainTitle)</h1>
+                </th>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<!--[if mso | IE]>
+</td>
+</tr>
+</table>
+<![endif]-->
+<!-- END: 2 Column Layout Title-->
+<!-- START: 2 Column Layout-->
+<!--[if mso | IE]>
+<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="640" align="center" style="width:640px;">
+<tr>
+<td style="line-height:0px;mso-line-height-rule:exactly;">
+<![endif]-->
+<div style="margin: 0px auto; max-width: 640px; background-color: #ffffff;">
+    <table role="presentation" cellpadding="0" cellspacing="0" bgcolor="#ffffff" border="0" style="border-style: none; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; background: #ffffff; border-collapse: collapse;" align="center" width="100%">
+        <tbody>
+            <tr>
+                <td class="two-second-padding" width="100%" style="padding-right: 15px; padding-bottom: 15px; padding-left: 15px; mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+                    <table cellpadding="0" cellspacing="0" direction="ltr" border="0" bgcolor="#ffffff" width="100%" style="border-style: none; direction: ltr;  mso-table-lspace: 0pt; mso-table-rspace: 0pt; background: #ffffff; border-collapse: collapse;">
+                        <tr>
+                            <td class="mobile-fullwidth mobile-fullwidth--left" direction="ltr" align="left" width="50%" style="padding-top: 0; padding-right: 10px; padding-bottom: 0; width: 50%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;" valign="top">
+                                <table cellpadding="0" cellspacing="0" border="0" width="100%" style="border-style: none; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse;">
+                                    <tbody>
+                                        <tr>
+                                            <td class="two-second-image" width="295" height="177" style="color: #101010; cursor: auto; font-family: Arial, sans-serif; font-size: 12px; line-height: 20px; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 295px; height: 177px;">
+                                                <table cellpadding="0" cellspacing="0" border="0" bgcolor="#ffffff" width="100%" style="border-style: none; mso-table-lspace: 0pt; mso-table-rspace: 0pt; background: #ffffff; border-collapse: collapse;">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td width="100%" style="border-style: none; font-family: Arial, sans-serif; mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+                                                                @if (IsInEditingMode)
+                                                                {
+                                                                    @RenderImage(Model, x => x.Image1, new { style = "-ms-interpolation-mode: bicubic; border: 0 none; display: block; width: 295px; height: 177px; line-height: 100%; outline: none; text-decoration: none; max-width: 295px;", h = 0, w = 0 }, isEditable: true, outputHeightWidth: false)
+                                                                }
+                                                                else if (@Model.Image1 != null)
+                                                                {
+                                                                    <img src="@Model.Image1.Src" alt="@Model.Image1.Alt" height="177" width="295" style="-ms-interpolation-mode: bicubic; border: 0 none; display: block; width: 295px; height: 177px; line-height: 100%; outline: none; text-decoration: none; max-width: 295px;">
+                                                                }
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="two-second-padding" bgcolor="#ebebeb" height="195" style="background-color: #ebebeb; padding-top: 18px; padding-right: 15px; padding-bottom: 18px; padding-left: 15px; mso-table-lspace: 0pt; mso-table-rspace: 0pt; height: 195px;" valign="top">
+                                                <table cellpadding="0" cellspacing="0" border="0" width="100%" style="border-style: none; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse;">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="two-second-title" width="100%" style="color: #101010; cursor: auto; font-family: Arial, sans-serif; font-size: 15px; line-height: 20px; mso-table-lspace: 0pt; mso-table-rspace: 0pt;" align="left" valign="top">
+                                                                <h2 style="display: block; margin: 0; text-align: left; color: #101010; font-weight: 700; font-size: 15px; line-height: 26px; margin-bottom: 15px;">@Editable(Model, x => x.Title1)</h2>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="two-second-text" width="100%" style="color: #444444; cursor: auto; font-family: Arial, sans-serif; font-size: 12px; line-height: 16px; mso-table-lspace: 0pt; mso-table-rspace: 0pt;" align="left" valign="top">
+                                                                <p style="display: block; margin: 0; text-align: left; color: #444444; font-weight: 300; font-size: 12px; line-height: 16px; margin-bottom: 12px;">@Editable(Model, x => x.Text1)</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="two-second-link" width="100%" style="color: #d92231; cursor: auto; font-family: Arial, sans-serif; font-size: 12px; line-height: 20px; mso-table-lspace: 0pt; mso-table-rspace: 0pt;" align="left" valign="top">
+                                                                <p style="display: block; margin: 0; text-align: left; color: #d92231; font-family: Arial, sans-serif;">
+                                                                    @RenderLink(Model, m => m.Link1, new System.Collections.Specialized.NameValueCollection { { "style", "display: block; margin: 0; text-align: left; color: #d92231; font-size: 12px; line-height: 20px; text-decoration: none;" } }, isEditable: true)
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                            <td class="mobile-fullwidth mobile-fullwidth--right" direction="ltr" align="left" width="50%" style="padding-top: 0; padding-bottom: 0; padding-left: 10px; width: 50%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;" valign="top">
+                                <table cellpadding="0" cellspacing="0" border="0" width="100%" style="border-style: none; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse;">
+                                    <tbody>
+                                        <tr>
+                                            <td class="third-second-image" width="295" height="177" style="border-collapse: collapse; color: #101010; cursor: auto; font-family: Arial, sans-serif; font-size: 12px; line-height: 20px; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 295px; height: 177px;">
+                                                <table cellpadding="0" cellspacing="0" border="0" width="100%" style="border-style: none; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse;">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td width="100%" style="border-style: none; font-family: Arial, sans-serif; mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+                                                                @if (IsInEditingMode)
+                                                                {
+                                                                    @RenderImage(Model, x => x.Image2, new { style = "-ms-interpolation-mode: bicubic; border: 0 none; display: block; width: 295px; height: 177px; line-height: 100%; outline: none; text-decoration: none; max-width: 295px;", h = 0, w = 0 }, isEditable: true, outputHeightWidth: false)
+                                                                }
+                                                                else if (@Model.Image2 != null)
+                                                                {
+                                                                    <img src="@Model.Image2.Src" alt="@Model.Image2.Alt" height="177" width="295" style="-ms-interpolation-mode: bicubic; border: 0 none; display: block; width: 295px; height: 177px; line-height: 100%; outline: none; text-decoration: none; max-width: 295px;">
+                                                                }
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="three-second-padding" bgcolor="#ebebeb" height="195" style="background-color: #ebebeb; padding-top: 18px; padding-right: 15px; padding-bottom: 18px; padding-left: 15px; mso-table-lspace: 0pt; mso-table-rspace: 0pt; height: 195px;" valign="top">
+                                                <table cellpadding="0" cellspacing="0" border="0" width="100%" style="border-style: none; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse;">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="third-title" width="100%" style="color: #101010; cursor: auto; font-family: Arial, sans-serif; font-size: 15px; line-height: 20px; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse;" align="left" valign="top">
+                                                                <h2 style="display: block; margin: 0; text-align: left; color: #101010; font-weight: 700; font-size: 15px; line-height: 26px; margin-bottom: 15px;">@Editable(Model, x => x.Title2)</h2>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="third-text" width="100%" style="color: #444444; cursor: auto; font-family: Arial, sans-serif; font-size: 12px; line-height: 16px; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse;" align="left" valign="top">
+                                                                <p style="display: block; margin: 0; text-align: left; color: #444444; font-weight: 300; font-size: 12px; line-height: 16px; margin-bottom: 12px;">@Editable(Model, x => x.Text2)</p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="third-link" width="100%" style="color: #d92231; cursor: auto; font-family: Arial, sans-serif; font-size: 12px; line-height: 20px; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse;" align="left" valign="top">
+                                                                <p style="display: block; margin: 0; text-align: left; color: #d92231; font-family: Arial, sans-serif;">
+                                                                    @RenderLink(Model, m => m.Link2, new System.Collections.Specialized.NameValueCollection { { "style", "display: block; margin: 0; text-align: left; color: #d92231; font-size: 12px; line-height: 20px; text-decoration: none;" } }, isEditable: true)
+                                                                </p>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<!--[if mso | IE]>
+</td>
+</tr>
+</table>
+<![endif]-->
+<!-- END: 2 Column Layout-->

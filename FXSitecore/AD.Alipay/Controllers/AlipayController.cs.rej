@@ -1,0 +1,76 @@
+diff a/Solution/AD.Alipay/Controllers/AlipayController.cs b/Solution/AD.Alipay/Controllers/AlipayController.cs	(rejected hunks)
+@@ -137,68 +137,73 @@
+             }
+ 
+             string total_amout = doubleFee.ToString();
+ 
+ 
+             if (string.IsNullOrEmpty(out_trade_no))
+             {
+                 out_trade_no = DateTime.Now.ToString("yyyyMMddhhmmss");
+             }
+ 
+             string fullOutTradeNo = customerName + out_trade_no;
+ 
+ 
+             string notifyUrl = Config.notify_url1;
+ 
+             switch (companyName)
+             {
+                 case "FX_Industrial":
+                     notifyUrl = Config.notify_url1;
+                     break;
+                 case "FX_Shanghai":
+                     notifyUrl = Config.notify_url2;
+                     break;
+                 case "FX_Leasing":
+                     notifyUrl = Config.notify_url3;
+                     break;
+                 default:
+                     notifyUrl = Config.notify_url1;
+                     break;
+             }
+ 
+ 
+             // 组装业务参数model
+             AlipayTradePagePayModel model = new AlipayTradePagePayModel();
+             model.Subject = subject;
+             model.TotalAmount = total_amout;
+             model.OutTradeNo = fullOutTradeNo;
+             model.ProductCode = "FAST_INSTANT_TRADE_PAY";
+ 
+             AlipayTradePagePayRequest request = new AlipayTradePagePayRequest();
+             // 设置同步回调地址
+             request.SetReturnUrl(Config.return_url);
+             // 设置异步通知接收地址
+             request.SetNotifyUrl(notifyUrl);
+             // 将业务model载入到request
+             request.SetBizModel(model);
+ 
+             AlipayTradePagePayResponse response = null;
+             try
+             {
++                Diagnostics.AlipayLogger.Log.Info("SUBMISSION: " + model.Subject + "/" + model.TotalAmount + "/" + model.OutTradeNo);
++
+                 response = client.pageExecute(request, null, "post");
+ 
+                 var viewModel = new AlipaySubmitModel();
+                 viewModel.HTML_Snippet = response.Body;
+ 
++                Diagnostics.AlipayLogger.Log.Info("RESPONSE: " + response.Body);
++
+                 return View("~/Views/Alipay/AlipaySubmit.cshtml", viewModel);
+             }
+             catch (Exception exp)
+             {
++                Diagnostics.AlipayLogger.Log.Error(exp.ToString());
+                 throw exp;
+             }
+ 
+ 
+         }
+ 
+ 
+     }
+ }
+\ No newline at end of file

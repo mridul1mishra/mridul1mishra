@@ -1,0 +1,129 @@
+﻿@using Sitecore.Mvc
+@using FX.Core.GlassMapper
+@using FX.Core.Utils
+@using FX.Core
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Page.IEventDetailPage>
+
+@{
+    bool hasFacebookLink = FX.Core.Utils.Util.HasValidLink(Model.FacebookLink, false);
+    bool hasLinkedInLink = FX.Core.Utils.Util.HasValidLink(Model.LinkedInLink, false);
+    bool hasTwitterLink = FX.Core.Utils.Util.HasValidLink(Model.TwitterLink, false);
+    bool hasInstagramLink = FX.Core.Utils.Util.HasValidLink(Model.InstagramLink, false);
+
+    var sponsorFolders = Model.SponsorFolders;
+    var opco = FX.Core.Utils.Util.OpcoType();
+    string registerNowLink = "#";
+    if (Model.RegisterNowLink != null)
+    {
+        registerNowLink = Model.RegisterNowLink.Url;
+    }
+}
+
+<div class="main-content layout-article">
+    @Html.Sitecore().Rendering(FX.Core.Keys.RenderingItems.Breadcrumb, FX.Core.Utils.Util.DefaultRenderingCacheParameter)
+    <div class="top-banner">
+        @Html.Sitecore().Rendering(FX.Core.Keys.RenderingItems.HeroBanner, FX.Core.Utils.Util.DefaultRenderingCacheParameter)
+    </div>
+    <aside class="layout-side layout-side--left tablet-desktop">
+        <div class="social-aside">
+            @Html.Partial("~/Views/FX/Shared/AddThis.cshtml")
+        </div>
+    </aside>
+    <article  class="layout-main">
+        @Html.Sitecore().Placeholder("eventPlaceholder")
+
+        <section class="section event-details-actions">
+            <a class="anchor-link" id="register" data-label="@Model.RegisterNowLabel"/>
+            <a class="button button--inverse" href="@Model.Parent.Url">@Editable(Model, x => x.ViewAllEventsLabel)</a>
+            <a class="button button-nohover" href="@registerNowLink">@Editable(Model, x => x.RegisterNowLabel)</a>
+</section>
+    </article>
+    <aside class="layout-side">
+        <div class="event-aside">
+            @if (Model.ShowEventDetailsCheckbox)
+            {
+                <div class="event-aside__details">
+                    <h3>@Editable(Model, x => x.EDSectionTitle)</h3>
+                    <div class="details">
+                        <span class="location">@Editable(Model, x => x.EventLocation)</span>
+                        <span class="date">
+                            @Model.LocalisedEventStartDate.DateRange(Model.LocalisedEventStartDate.DateTime, Model.LocalisedEventEndDate.DateTime)
+                        </span>
+                        <span class="time">@Model.StartEndTime</span>
+                    </div>
+                    <a class="button" href="/@opco/api/AddToICalendar?downloadFileName=events.ics&eventId=@Model.Id">@Editable(Model, x => x.AddToCalendarLabel)</a>
+                </div>
+            }
+            @if (Model.ShowMapCheckbox)
+            {
+                <div class="event-aside__map">
+                    <h3>@Editable(Model, x => x.MapSectionTitle)</h3>@Html.Raw(Model.GoogleMapsEmbedCode)
+                </div>
+            }
+            @if (Model.ShowSocialMediaCheckbox)
+            {
+                <div class="event-aside__share">
+                    <h3>@Editable(Model, x => x.SMSectionTitle)</h3>
+                    <ul>
+                        @if (hasFacebookLink)
+                    {
+                    <li>
+                        @using (BeginRenderLink(Model, x => x.FacebookLink))
+                            {
+                            <i class="icon-facebook"></i><span class="sr-only">Facebook</span>
+                            }
+                    </li>
+                    }
+                        @if (hasLinkedInLink)
+                    {
+                    <li>
+                        @using (BeginRenderLink(Model, x => x.LinkedInLink))
+                            {
+                            <i class="icon-linkedin"></i><span class="sr-only">Linkedin</span>
+                            }
+                    </li>
+                    }
+                        @if (hasTwitterLink)
+                    {
+                    <li>
+                        @using (BeginRenderLink(Model, x => x.TwitterLink))
+                            {
+                            <i class="icon-twitter"></i><span class="sr-only">Twitter</span>
+                            }
+                    </li>
+                    }
+                        @if (hasInstagramLink)
+                    {
+                    <li>
+                        @using (BeginRenderLink(Model, x => x.InstagramLink))
+                            {
+                            <i class="icon-instagram"></i><span class="sr-only">Instagram</span>
+                            }
+                    </li>
+                    }
+                    </ul>
+                </div>
+            }
+            @if (Model.ShowSponsorsCheckbox)
+            {
+                <div class="event-aside__sponsors">
+                    <h3>@Model.SponsorSectionTitle</h3>
+                    @foreach (var sponsorFolder in sponsorFolders)
+                {
+                        <div class="sponsors__group">
+                            <h4>@sponsorFolder.SponsorCategoryTitle</h4>
+                            <ul>
+                                @foreach (var sponsorItem in sponsorFolder.SponsorItems)
+                                {
+                                    <li>@RenderImage(sponsorItem, x => x.SponsorLogo)</li>
+                                }
+                            </ul>
+                        </div>
+                    }
+                </div>
+            }
+            </div>
+        </aside>
+
+</div>
+  

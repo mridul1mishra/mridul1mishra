@@ -1,0 +1,103 @@
+﻿@using FX.Core.GlassMapper
+@using System.Web.Mvc.Html
+@using Sitecore.Mvc
+@using Sitecore.Globalization
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Settings.ISiteSettings>
+
+@{
+    /**/
+	var opco = FX.Core.Utils.Util.OpcoType();
+    var opcolang = FX.Core.Utils.Util.OpcoLang();
+    var localelang = opco + "/" + opcolang;
+    string query = HttpUtility.UrlDecode(Request.QueryString[FX.Core.Keys.Querystrings.Search]);
+	
+    
+
+    bool hasHeaderLink1 = FX.Core.Utils.Util.HasValidLink(Model.HeaderLink1);
+    bool hasHeaderLink2 = FX.Core.Utils.Util.HasValidLink(Model.HeaderLink2);
+    bool hasHeaderLink3 = FX.Core.Utils.Util.HasValidLink(Model.HeaderLink3);
+    bool hasHeaderLink4 = FX.Core.Utils.Util.HasValidLink(Model.HeaderLink4);
+    bool hasHeaderLink5 = FX.Core.Utils.Util.HasValidLink(Model.HeaderLink5);
+    bool hasHeaderLink6 = FX.Core.Utils.Util.HasValidLink(Model.HeaderLink6);
+    bool hasHeaderLinks = hasHeaderLink1 || hasHeaderLink2 || hasHeaderLink3 || hasHeaderLink4 || hasHeaderLink5 || hasHeaderLink6;
+}
+<script>
+
+function myFunction(event) {
+	event.preventDefault();
+	var opco = window.location.href.split('/').slice(3, 4).join('/');
+	
+	var lang = "/"+window.location.href.split('/').slice(4, 5).join('/');
+	if(lang=="/" && opco!="fbtw")
+	{
+		lang = "/en";
+	}
+	if(opco=="fbtw")
+	{
+		lang = "/zh-TW";
+	}
+	 
+	var searchtext = document.getElementById("search").value;
+	window.location.href = "/"+opco+lang+"/search?q="+searchtext;
+}
+
+</script>
+<header class="site-header">
+    <div class="top-header">
+        <div class="site-header__wrapper container">
+            <div class="site-logo">
+                
+                    <a href="/@opco/@Sitecore.Context.Language.Name">
+                        @RenderImage(m => m.CorporateLogo)
+						 
+                    </a>
+                
+                <span class="m-global-header__region">@Editable(m => m.CompanyName)</span>
+            </div>
+            <form method="post" onsubmit="myFunction(event)" class="search-bar">
+                <label for="site-search" class="visuallyHidden">@query</label>
+                <input name="searchbar" id="search" type="text" placeholder="@Model.SearchLabel" value="@Html.Raw(query)">
+                <button id="search-site" type="submit" class="btn-search"></button>
+				@Html.Partial("~/Views/FX/Component/LanguageSelector.cshtml")
+            </form>
+
+            <button class="btn-nav-menu">
+                <span>Menu</span>
+            </button>
+            <div class="top-nav">
+                <ul>
+                    @*@Html.Partial("~/Views/FX/Component/LanguageSelector.cshtml")*@
+                    @if (hasHeaderLink1)
+                    {
+                        <li>@RenderLink(Model, m => m.HeaderLink1)</li>
+                    }
+                    @if (hasHeaderLink2)
+                    {
+                        <li>@RenderLink(Model, m => m.HeaderLink2)</li>
+                    }
+                    @if (hasHeaderLink3)
+                    {
+                        <li>@RenderLink(Model, m => m.HeaderLink3)</li>
+                    }
+                    @if (hasHeaderLink4)
+                    {
+                        <li>@RenderLink(Model, m => m.HeaderLink4)</li>
+                    }
+                    @if (hasHeaderLink5)
+                    {
+                        <li>@RenderLink(Model, m => m.HeaderLink5)</li>
+                    }
+                    @if (hasHeaderLink6)
+                    {
+                        <li>@RenderLink(Model, m => m.HeaderLink6)</li>
+                    }
+                </ul>
+            </div>
+            <button class="btn-mobile-search" type="button"><span>@Model.SearchLabel</span></button>
+        </div>
+    </div>
+    <div class="site-header__wrapper_nav container">
+        @Html.Sitecore().Rendering(FX.Core.Keys.RenderingItems.MainNavigation, FX.Core.Utils.Util.DefaultRenderingCacheParameter)
+    </div>
+
+</header>

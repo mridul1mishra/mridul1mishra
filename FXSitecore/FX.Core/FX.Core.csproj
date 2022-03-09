@@ -1,0 +1,564 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{24C8A184-5DA3-4E2D-81A7-2DA20BD04EC9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FX.Core</RootNamespace>
+    <AssemblyName>FX.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Local|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Local\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'FX Staging|AnyCPU'">
+    <OutputPath>bin\FX Staging\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'FX Production|AnyCPU'">
+    <OutputPath>bin\FX Production\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'UAT|AnyCPU'">
+    <OutputPath>bin\UAT\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'FX Production CM|AnyCPU'">
+    <OutputPath>bin\FX Production CM\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'UAT Content|AnyCPU'">
+    <OutputPath>bin\UAT Content\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\packages\Castle.Core.3.3.3\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Glass.Mapper">
+      <HintPath>..\packages\Glass.Mapper.Sc.4.0.11.63\lib\net45\Glass.Mapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Glass.Mapper.Sc, Version=4.0.11.63, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Glass.Mapper.Sc.4.0.11.63\lib\81\Glass.Mapper.Sc.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Dependencies\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Analytics">
+      <HintPath>..\Lib\Sitecore.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Analytics.Aggregation">
+      <HintPath>..\Lib\Sitecore.Analytics.Aggregation.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Analytics.Automation">
+      <HintPath>..\Lib\Sitecore.Analytics.Automation.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Analytics.Core">
+      <HintPath>..\Lib\Sitecore.Analytics.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Analytics.DataAccess">
+      <HintPath>..\Lib\Sitecore.Analytics.DataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Analytics.Model">
+      <HintPath>..\Lib\Sitecore.Analytics.Model.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Analytics.Processing">
+      <HintPath>..\Lib\Sitecore.Analytics.Processing.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Buckets">
+      <HintPath>..\Lib\Sitecore.Buckets.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Client">
+      <HintPath>..\Lib\Sitecore.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.ContentSearch">
+      <HintPath>..\Lib\Sitecore.ContentSearch.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.ContentSearch.Analytics">
+      <HintPath>..\Lib\Sitecore.ContentSearch.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.ContentSearch.Linq">
+      <HintPath>..\Lib\Sitecore.ContentSearch.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.ExperienceEditor">
+      <HintPath>..\Lib\Sitecore.ExperienceEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Forms.Core">
+      <HintPath>..\Lib\Sitecore.Forms.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Forms.Custom">
+      <HintPath>..\Lib\Sitecore.Forms.Custom.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Forms.Mvc">
+      <HintPath>..\Lib\Sitecore.Forms.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Kernel">
+      <HintPath>..\Lib\Sitecore.Kernel.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.ListManagement">
+      <HintPath>..\Lib\Sitecore.ListManagement.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.ListManagement.ContentSearch">
+      <HintPath>..\Lib\Sitecore.ListManagement.ContentSearch.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Logging">
+      <HintPath>..\Lib\Sitecore.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Logging.Client">
+      <HintPath>..\Lib\Sitecore.Logging.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Marketing">
+      <HintPath>..\Lib\Sitecore.Marketing.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Marketing.Core">
+      <HintPath>..\Lib\Sitecore.Marketing.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Marketing.Taxonomy">
+      <HintPath>..\Lib\Sitecore.Marketing.Taxonomy.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Mvc">
+      <HintPath>..\Lib\Sitecore.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.NVelocity">
+      <HintPath>..\Lib\Sitecore.NVelocity.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.SegmentBuilder">
+      <HintPath>..\Lib\Sitecore.SegmentBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.WFFM">
+      <HintPath>..\Lib\Sitecore.WFFM.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.WFFM.Abstractions">
+      <HintPath>..\Lib\Sitecore.WFFM.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.WFFM.Actions">
+      <HintPath>..\Lib\Sitecore.WFFM.Actions.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Zip">
+      <HintPath>..\Lib\Sitecore.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Cors, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.0\lib\net45\System.Web.Http.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\Lib\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Constants.cs" />
+    <Compile Include="Handler\SitemapHandler.cs" />
+    <Compile Include="Events\PrePopulateItemHandler.cs" />
+    <Compile Include="Events\AutoSortItemHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GlassMapper\DataHandler\LocalisedDateTimeDataMapper.cs" />
+    <Compile Include="GlassMapper\DataHandler\LocalisedDateTimeValue.cs" />
+    <Compile Include="GlassMapper\DataHandler\TimeSlotValueDataMapper.cs" />
+    <Compile Include="GlassMapper\DataHandler\TimeSlotValue.cs" />
+    <Compile Include="GlassMapper\DataHandler\EncodedStringValue.cs" />
+    <Compile Include="GlassMapper\DataHandler\EncodedStringValueDataMapper.cs" />
+    <Compile Include="GlassMapper\DataHandler\MultiLineText.cs" />
+    <Compile Include="GlassMapper\DataHandler\MultiLineTextDataMapper.cs" />
+    <Compile Include="GlassMapper\GlassContextExtension.cs" />
+    <Compile Include="GlassMapper\LangaugeItemMapConfiguration\LanguageItemMap.cs" />
+    <Compile Include="GlassMapper\ProductCategoryMapConfiguration\ProductCategoryMap.cs" />
+    <Compile Include="Keys\EditorItems.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EditorItems.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Keys\Items.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Items.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Keys\Querystrings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Querystrings.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Keys\RenderingItems.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RenderingItems.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Keys\Templates1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Templates.resx</DependentUpon>
+    </Compile>
+    <Compile Include="MicrositeTemplates.cs" />
+    <Compile Include="Models\Base\IBanner.cs" />
+    <Compile Include="Models\Base\IArticleDate.cs" />
+    <Compile Include="Models\Base\ICta.cs" />
+    <Compile Include="Models\Base\IInsightTagFields.cs" />
+    <Compile Include="Models\Components\IAsidePanel.cs" />
+    <Compile Include="Models\Components\ICategoryBanner.cs" />
+    <Compile Include="Models\Components\IFullWidthVideo.cs" />
+    <Compile Include="Models\Components\IInquiry.cs" />
+    <Compile Include="Models\Footer\Navigable.cs" />
+    <Compile Include="Models\Form\FormMigration.cs" />
+    <Compile Include="Models\Form\FormReporting.cs" />
+    <Compile Include="Models\Form\RPWFFM.cs" />
+    <Compile Include="Models\Page\IProductComparePage.cs" />
+    <Compile Include="Models\Page\IProductFinderPage.cs" />
+    <Compile Include="Models\Components\ITabbedCarousel.cs" />
+    <Compile Include="Models\Components\ITopCarousel.cs" />
+    <Compile Include="Models\Components\ThreeQuarterCarousel\IThreeQuarterCarousel.cs" />
+    <Compile Include="Models\Components\ThreeQuarterCarousel\IThreeQuarterCarouselItem.cs" />
+    <Compile Include="Models\Components\TwoColumnCarousel\ITwoColumnCarousel.cs" />
+    <Compile Include="Models\Components\TwoColumnCarousel\ITwoColumnCarouselItem.cs" />
+    <Compile Include="Models\EXM\BarContent.cs" />
+    <Compile Include="Models\EXM\TwoCol.cs" />
+    <Compile Include="Models\EXM\StripImage.cs" />
+    <Compile Include="Models\EXM\CtaButton.cs" />
+    <Compile Include="Models\EXM\EmailBody.cs" />
+    <Compile Include="Models\EXM\Footer.cs" />
+    <Compile Include="Models\EXM\BannerImage.cs" />
+    <Compile Include="Models\EXM\Header.cs" />
+    <Compile Include="Models\Page\IHeaderlessBlankPage.cs" />
+    <Compile Include="Models\Base\ILanguage.cs" />
+    <Compile Include="Models\Base\IMainContent.cs" />
+    <Compile Include="Models\Base\IMediaFile.cs" />
+    <Compile Include="Models\Base\ITeaser.cs" />
+    <Compile Include="Models\Base\INextStepFields.cs" />
+    <Compile Include="Models\Base\IMeta.cs" />
+    <Compile Include="Models\Base\INavigation.cs" />
+    <Compile Include="Models\Base\IPage.cs" />
+    <Compile Include="Models\Base\ISitecoreItem.cs" />
+    <Compile Include="Models\Components\Accordion\IAccordionItem.cs" />
+    <Compile Include="Models\Components\Accordion\IAccordion.cs" />
+    <Compile Include="Models\Components\Announcements\IAnnouncement.cs" />
+    <Compile Include="Models\Components\Announcements\IAnnouncementFolder.cs" />
+    <Compile Include="Models\Components\HomepagePanelModel.cs" />
+    <Compile Include="Models\Components\ICareerApplyNow.cs" />
+    <Compile Include="Models\Components\Events\IEventSponsorItem.cs" />
+    <Compile Include="Models\Components\Events\IEventSponsorFolder.cs" />
+    <Compile Include="Models\Components\Events\IEventFeaturedSpeakerItem.cs" />
+    <Compile Include="Models\Components\Events\IEventFeaturedSpeaker.cs" />
+    <Compile Include="Models\Components\Events\IEventAgendaItem.cs" />
+    <Compile Include="Models\Components\Events\IEventAgendaFolder.cs" />
+    <Compile Include="Models\Components\Events\IEventAgenda.cs" />
+    <Compile Include="Models\Components\IFormPlaceholder.cs" />
+    <Compile Include="Models\Components\IIFrame.cs" />
+    <Compile Include="Models\Components\IItemListing.cs" />
+    <Compile Include="Models\Components\ILanguageSelector.cs" />
+    <Compile Include="Models\Components\ILinkItem.cs" />
+    <Compile Include="Models\Components\IProductIntro.cs" />
+    <Compile Include="Models\Components\IQuickLinks.cs" />
+    <Compile Include="Models\Components\IRecommendedProducts.cs" />
+    <Compile Include="Models\Components\ILatestNews.cs" />
+    <Compile Include="Models\Components\IRelatedProductsAndServices.cs" />
+    <Compile Include="Models\Components\IResources.cs" />
+    <Compile Include="Models\Components\IGeneralLinks.cs" />
+    <Compile Include="Models\Components\Events\IEventOverview.cs" />
+    <Compile Include="Models\Components\IVideoBox.cs" />
+    <Compile Include="Models\Components\ITestimonyBox.cs" />
+    <Compile Include="Models\Components\Notifications\INotification.cs" />
+    <Compile Include="Models\Components\Notifications\INotificationFolder.cs" />
+    <Compile Include="Models\Components\SocialMedia\ISocialFeed.cs" />
+    <Compile Include="Models\Components\TakeTheNextStep\IFormEmbedStep.cs" />
+    <Compile Include="Models\Components\TakeTheNextStep\ITimeFrameLinkStep.cs" />
+    <Compile Include="Models\Components\IFeaturedContent.cs" />
+    <Compile Include="Models\Components\ILatestEvents.cs" />
+    <Compile Include="Models\Components\ICarousel.cs" />
+    <Compile Include="Models\Components\IChildCards.cs" />
+    <Compile Include="Models\Components\TakeTheNextStep\IEnquiryLinkStep.cs" />
+    <Compile Include="Models\Components\TakeTheNextStep\IYoutubeLinkStep.cs" />
+    <Compile Include="Models\Components\TakeTheNextStep\ITakeTheNextStep.cs" />
+    <Compile Include="Models\Components\IRelatedPages.cs" />
+    <Compile Include="Models\Base\IBasePageComponentFields.cs" />
+    <Compile Include="Models\Components\TitleAndText\ITitleAndTextItem.cs" />
+    <Compile Include="Models\Components\TitleAndText\ITitleAndText.cs" />
+    <Compile Include="Models\Components\IRichText.cs" />
+    <Compile Include="Models\DTO\EventList.cs" />
+    <Compile Include="Models\DTO\CareerSearch.cs" />
+    <Compile Include="Models\Microsite\Base\IMicrositeBaseComponentFields.cs" />
+    <Compile Include="Models\Microsite\Base\IMicrositeHoverColoursField.cs" />
+    <Compile Include="Models\Microsite\Base\IMicrositeNavigation.cs" />
+    <Compile Include="Models\Microsite\Components\Carousel\ICarousel.cs" />
+    <Compile Include="Models\Microsite\Components\Carousel\ICarouselItem.cs" />
+    <Compile Include="Models\Microsite\Components\IFeaturedContent.cs" />
+    <Compile Include="Models\Microsite\Components\FeaturedLinks\IFeaturedLink.cs" />
+    <Compile Include="Models\Microsite\Components\FeaturedLinks\IFeaturedRow.cs" />
+    <Compile Include="Models\Microsite\Components\IDiscover.cs" />
+    <Compile Include="Models\Microsite\Components\IIFrameMicrositeComponent.cs" />
+    <Compile Include="Models\Microsite\Components\ITwoColumnImageFormComponent.cs" />
+    <Compile Include="Models\Microsite\Components\ITwoColumnTextFormComponent.cs" />
+    <Compile Include="Models\Microsite\Components\MicrositeArticleCarousel\IMicrositeArticleCarousel.cs" />
+    <Compile Include="Models\Microsite\Components\MicrositeBrochureCarousel\IMicrositeBrochureCarousel.cs" />
+    <Compile Include="Models\Microsite\Components\MicrositeListing\IMicrositeListingImage.cs" />
+    <Compile Include="Models\Microsite\Components\IIntroduction.cs" />
+    <Compile Include="Models\Microsite\Components\IPowerfulFeatures.cs" />
+    <Compile Include="Models\Microsite\Components\ITwoColumnContentBlock.cs" />
+    <Compile Include="Models\Microsite\Components\ITwoColumnImageTextContentBlock.cs" />
+    <Compile Include="Models\Microsite\Components\MicrositeListing\IMicrositeListingComponent.cs" />
+    <Compile Include="Models\Microsite\Components\MicrositeListing\IMicrositeListingItem.cs" />
+    <Compile Include="Models\Microsite\Components\MicrositeListing\IMicrositeListingRow.cs" />
+    <Compile Include="Models\Microsite\Components\MicrositeBrochureCarousel\IMicrositeBrochureResource.cs" />
+    <Compile Include="Models\Microsite\Components\MicrositeVideoCarousel\IMicrositeVideoCarousel.cs" />
+    <Compile Include="Models\Microsite\Components\MicrositeVideoCarousel\IMicrositeVideoResource.cs" />
+    <Compile Include="Models\Microsite\Page\IMicrositeHomePage.cs" />
+    <Compile Include="Models\Microsite\Page\IMicrositePage.cs" />
+    <Compile Include="Models\Microsite\Page\IMicrositeSectionFolder.cs" />
+    <Compile Include="Models\Microsite\Settings\IMicrositeSettings.cs" />
+    <Compile Include="Models\News\INewsroomPage.cs" />
+    <Compile Include="Models\News\INewsCategory.cs" />
+    <Compile Include="Models\Page\ICareerDetailPage.cs" />
+    <Compile Include="Models\Page\ICareerListingPage.cs" />
+    <Compile Include="Models\Page\IEventRegistrationPage.cs" />
+    <Compile Include="Models\Page\IEventListingPage.cs" />
+    <Compile Include="Models\Page\IInsightPage.cs" />
+    <Compile Include="Models\Page\INewResellerLocator.cs" />
+    <Compile Include="Models\Page\IPromotionListingPage.cs" />
+    <Compile Include="Models\Page\IPromotionDetailPage.cs" />
+    <Compile Include="Models\Page\IEventDetailPage.cs" />
+    <Compile Include="Models\Page\IResellerLocatorPage.cs" />
+    <Compile Include="Models\Page\ISuccessStoryDetailPage.cs" />
+    <Compile Include="Models\Page\ISuccessStoriesLandingPage.cs" />
+    <Compile Include="Models\Page\IRedirectPage.cs" />
+    <Compile Include="Models\Page\IHomePage.cs" />
+    <Compile Include="Models\Page\IPopupForm.cs" />
+    <Compile Include="Models\Page\ILandingPage.cs" />
+    <Compile Include="Models\Page\ISearchPage.cs" />
+    <Compile Include="Models\Page\ISnSPage.cs" />
+    <Compile Include="Models\Page\ISnSStandardPage.cs" />
+    <Compile Include="Models\Page\IProductListingPage.cs" />
+    <Compile Include="Models\Components\IHeaderlessBlankPageBodyComponent.cs" />
+    <Compile Include="Models\Products\EnquiryLink.cs" />
+    <Compile Include="Models\Products\IProductCategory.cs" />
+    <Compile Include="Models\Products\ISupplyCategory.cs" />
+    <Compile Include="Models\Page\IStandardPage.cs" />
+    <Compile Include="Models\Products\IPrinterCategory.cs" />
+    <Compile Include="Models\Products\ISoftwareCategory.cs" />
+    <Compile Include="Models\Products\ISoftwarePage.cs" />
+    <Compile Include="Models\Products\ISupplyPage.cs" />
+    <Compile Include="Models\Products\IPrinterPage.cs" />
+    <Compile Include="Models\Products\IProductPage.cs" />
+    <Compile Include="Models\Reseller\Resellers.cs" />
+    <Compile Include="Models\SalesForce\SalesForceEntry.cs" />
+    <Compile Include="Models\Settings\Careers\ICareersFilter.cs" />
+    <Compile Include="Models\Settings\Careers\ICareersFilterFolder.cs" />
+    <Compile Include="Models\Settings\Careers\ICareersDateFilterItem.cs" />
+    <Compile Include="Models\Settings\Careers\ICareersFilterItem.cs" />
+    <Compile Include="Models\Settings\Careers\ICareersPostingDateFilter.cs" />
+    <Compile Include="Models\Settings\Careers\ICareersTitleFilter.cs" />
+    <Compile Include="Models\Settings\Careers\ICareersJobTypeFilter.cs" />
+    <Compile Include="Models\Settings\Careers\ICareersSpecialisationFilter.cs" />
+    <Compile Include="Models\Settings\Careers\ICareersLocationFilter.cs" />
+    <Compile Include="Models\Settings\CTA\ICtaAction.cs" />
+    <Compile Include="Models\Settings\CTA\ICtaPhoneContactAction.cs" />
+    <Compile Include="Models\Settings\CTA\ICtaPopupAction.cs" />
+    <Compile Include="Models\Settings\SuccessStories\ISuccessStoriesYearFilter.cs" />
+    <Compile Include="Models\Settings\SuccessStories\ISuccessStoriesIndustryFilter.cs" />
+    <Compile Include="Models\Settings\SuccessStories\ISuccessStoriesProductFilter.cs" />
+    <Compile Include="Models\Settings\SuccessStories\ISuccessStoriesSolutionFilter.cs" />
+    <Compile Include="Models\Settings\SuccessStories\ISuccessStoriesCountryFilter.cs" />
+    <Compile Include="Models\Settings\SuccessStories\ISuccessStoriesFilterItem.cs" />
+    <Compile Include="Models\Settings\SuccessStories\ISuccessStoriesFilterFolder.cs" />
+    <Compile Include="Models\Settings\Events\IEventsMonthFilter.cs" />
+    <Compile Include="Models\Settings\Events\IEventsFilterItem.cs" />
+    <Compile Include="Models\Settings\Events\IEventsYearFilter.cs" />
+    <Compile Include="Models\Settings\Events\IEventsIndustryFilter.cs" />
+    <Compile Include="Models\Settings\Events\IEventsLocationFilter.cs" />
+    <Compile Include="Models\Settings\Events\IEventsFilterFolder.cs" />
+    <Compile Include="Models\Settings\IProductFilter.cs" />
+    <Compile Include="Models\Settings\ISiteSettings.cs" />
+    <Compile Include="Models\Settings\ITaxonomyFolder.cs" />
+    <Compile Include="Models\Settings\ITaxonomyItem.cs" />
+    <Compile Include="Pipelines\AddFromTemplate.cs" />
+    <Compile Include="Pipelines\CopyOrCloneItem.cs" />
+    <Compile Include="Pipelines\DuplicateItem.cs" />
+    <Compile Include="Pipelines\EnableCors.cs" />
+    <Compile Include="Pipelines\ExecuteRequest.cs" />
+    <Compile Include="Pipelines\ItemPathTranslator.cs" />
+    <Compile Include="Pipelines\ItemReferenceReplacer.cs" />
+    <Compile Include="Pipelines\PageRedirectOption.cs" />
+    <Compile Include="Pipelines\ProductListingPageResolver.cs" />
+    <Compile Include="Pipelines\ReferenceReplacementJob.cs" />
+    <Compile Include="Pipelines\RegisterCustomRoute.cs" />
+    <Compile Include="Pipelines\RPlanguageurlredirect.cs" />
+    <Compile Include="Pipelines\CustomLinkProvider.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="FXContextItems.cs" />
+    <Compile Include="Search\ComputedFields\ComponentContentSearch.cs" />
+    <Compile Include="Search\ComputedFields\ComputeItemUrl.cs" />
+    <Compile Include="Search\ComputedFields\GrandParentID.cs" />
+    <Compile Include="Search\ComputedFields\ParentCategoryField.cs" />
+    <Compile Include="Search\ComputedFields\RawTextIndexField.cs" />
+    <Compile Include="Search\ComputedFields\ImageIndexField.cs" />
+    <Compile Include="Search\ComputedFields\ButtonLinkIndexField.cs" />
+    <Compile Include="Search\ComputedFields\TagIndexField.cs" />
+    <Compile Include="Search\Converters\ButtonLinkFieldValueConverter.cs" />
+    <Compile Include="Search\Converters\ImageFieldValueConverter.cs" />
+    <Compile Include="Search\Converters\LocalisedDateTimeFieldValueConverter.cs" />
+    <Compile Include="Search\Fields\ButtonLinkField.cs" />
+    <Compile Include="Search\Fields\ImageField.cs" />
+    <Compile Include="Search\Models\FacetItem.cs" />
+    <Compile Include="Search\Models\FacetItemGroup.cs" />
+    <Compile Include="Search\Models\FXResultItem.cs" />
+    <Compile Include="Search\Models\SearchParam.cs" />
+    <Compile Include="Search\Models\Taxonomy\ITaxonomyNode.cs" />
+    <Compile Include="Search\Models\Taxonomy\TaxonomyNode.cs" />
+    <Compile Include="Search\Models\Taxonomy\TreeNode.cs" />
+    <Compile Include="Serialization\SerializableItem.cs" />
+    <Compile Include="Services\SalesForceService.cs" />
+    <Compile Include="Services\ItemWebAPIService.cs" />
+    <Compile Include="Services\SitecoreItemCreationService.cs" />
+    <Compile Include="Shell\Commands\SyncItem.cs" />
+    <Compile Include="Shell\Controls\InsertVideo\InsertVideoDialog.cs" />
+    <Compile Include="Tasks\DataSynchronizationTask.cs" />
+    <Compile Include="Tasks\Models\DataSyncResult.cs" />
+    <Compile Include="Tasks\SocialMediaGetLatestPosts.cs" />
+    <Compile Include="Templates.cs" />
+    <Compile Include="Utils\CaptchaService.cs" />
+    <Compile Include="Utils\CareerService.cs" />
+    <Compile Include="Utils\DateTimeFormatConverter.cs" />
+    <Compile Include="Utils\EventService.cs" />
+    <Compile Include="Utils\GoalService.cs" />
+    <Compile Include="Utils\ItemExtension.cs" />
+    <Compile Include="Utils\KeywordSearchHelper.cs" />
+    <Compile Include="Utils\NewsroomService.cs" />
+    <Compile Include="Utils\PageEventService.cs" />
+    <Compile Include="Utils\ResellerService.cs" />
+    <Compile Include="Utils\SearchHelper.cs" />
+    <Compile Include="Utils\StringExtension.cs" />
+    <Compile Include="Utils\SuccessStoryService.cs" />
+    <Compile Include="Utils\TaxonomyService.cs" />
+    <Compile Include="Utils\Util.cs" />
+    <Compile Include="Validators\ImageDimensionValidator.cs" />
+    <Compile Include="Validators\RichTextLengthValidator.cs" />
+    <Compile Include="WFFM\Fields\HiddenUrlField.cs" />
+    <Compile Include="WFFM\SaveActions\SalesForceSaveAction.cs" />
+    <Compile Include="Workflow\SendEmailAction.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Keys\EditorItems.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>EditorItems.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Keys\Items.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Items.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Keys\Querystrings.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Querystrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Keys\RenderingItems.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>RenderingItems.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Keys\Templates.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Templates1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AD.FacebookTools\AD.FacebookTools.csproj">
+      <Project>{d761912b-3054-48df-aeba-c91cd7b99dc1}</Project>
+      <Name>AD.FacebookTools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AD.LinkedIn\AD.LinkedIn.csproj">
+      <Project>{162030fe-e76c-439f-8a25-a32862d96e1e}</Project>
+      <Name>AD.LinkedIn</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AD.TwitterTools\AD.TwitterTools.csproj">
+      <Project>{b5a8c3fa-a5a8-43ec-8ea9-86985da2819c}</Project>
+      <Name>AD.TwitterTools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AD.Youtube\AD.Youtube.csproj">
+      <Project>{a539c75b-e6d7-4d46-a359-92f2806c6a39}</Project>
+      <Name>AD.Youtube</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

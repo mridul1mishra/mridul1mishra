@@ -1,0 +1,51 @@
+﻿@using FX.Core.GlassMapper
+@using System.Web.Mvc.Html
+@using Sitecore.Mvc
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.EXM.StripImage>
+
+<!-- START: Image Strip-->
+<!--[if mso | IE]>
+<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="640" align="center" style="width: 640px;">
+<tr>
+<td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
+<![endif]-->
+<div style="background: #ffffff; margin: 0px auto; max-width: 640px;">
+    <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-style: none; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; border-collapse: collapse;" align="center" width="100%">
+        <tbody>
+            <tr>
+                <td width="100%" bgcolor="#ffffff" style="border-style: none; mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word; width: 100%; padding: 15px; background: #ffffff;" valign="top">
+                    <table cellpadding="0" cellspacing="0" border="0" width="100%" style="border-style: none; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse;">
+                        <tbody>
+                            <tr>
+                                <td class="image-strip" width="100%" height="162" bgcolor="#ffffff" style="border-style: none; color: #474747; cursor: auto; font-family: Arial, sans-serif; background: #ffffff; mso-table-lspace: 0pt; mso-table-rspace: 0pt; height: 162px;" valign="top">
+                                    <table cellpadding="0" cellspacing="0" border="0" width="100%" style="border-style: none; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse;">
+                                        <tbody>
+                                            <tr>
+                                                <td width="100%" style="border-style: none; font-family: Arial, sans-serif; mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+                                                    @if (IsInEditingMode)
+                                                    {
+                                                        @RenderImage(Model, x => x.Image, new { style = "-ms-interpolation-mode: bicubic;border: 0 none; display: block;width: 610px;height: 162px; outline: none;text-decoration: none; border-style: none; max-width: 610px;", h = 0, w = 0, border = 0 }, isEditable: true, outputHeightWidth: false)
+                                                    }
+                                                    else if (@Model.Image != null)
+                                                    {
+                                                        <img src="@Model.Image.Src" alt="@Model.Image.Alt" width="610" height="162" border="0" style="-ms-interpolation-mode: bicubic;border: 0 none; display: block;width: 610px;height: 162px; outline: none;text-decoration: none; border-style: none; max-width: 610px;">
+                                                    }
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<!--[if mso | IE]>
+</td>
+</tr>
+</table>
+<![endif]-->
+<!-- END: Image Strip-->

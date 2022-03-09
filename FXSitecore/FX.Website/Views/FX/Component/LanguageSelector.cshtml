@@ -1,0 +1,48 @@
+﻿@using FX.Core.Utils
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Settings.ISiteSettings>
+<script>
+    function showData(event) {
+        window.location.href = event;
+    }
+</script>
+
+
+@* <p>@Model.SelectedLanguages.Count()</p>
+    @using (BeginRenderLink(Model, x => x.AllSitesLink, new { @class = "m-global-footer__anchor" }))
+    {
+        @Model.SiteName
+    } *@
+@if (Model.SelectedLanguages != null && Model.SelectedLanguages.Count() > 1)
+{
+    <div class="m-global-header__links"  style="display: block;">
+        <div class="m-global-header__langs">
+            <label>
+                Language:
+                <select name="language-selecter" onchange="showData(this.value)" tabindex="20">
+                    @{ string selected = string.Empty;
+                        foreach (var lang in Model.SelectedLanguages)
+                        {
+                            var regionlang = Sitecore.Globalization.Language.Parse(!string.IsNullOrEmpty(lang.RegionalIsoCode) ? lang.RegionalIsoCode : lang.Iso);
+                            if (Sitecore.Context.Language == regionlang)
+                            {
+                                //if language matches the current context language then the item exists.  There is no further check required if the item exists in that language.
+                                selected = "selected";
+                            }
+                            else
+                            {
+                                //if current context language is not equal to language, then a check is necessary to determine if the item exists in that language
+                                //because if the item does not exist in that language, we do not even want to show that language in the dropdown, if you are not using language fallback
+                                if (Sitecore.Context.Database.GetItem(Sitecore.Context.Item.ID, regionlang).Versions.Count <= 0)
+                                {
+                                    continue;
+                                }
+                                selected = string.Empty;
+                            }
+                            <option @selected value="@Sitecore.Context.Item.Url(!string.IsNullOrEmpty(lang.RegionalIsoCode) ? lang.RegionalIsoCode : lang.Iso)">@lang.DisplayName</option>
+                        }}
+                </select>
+            </label>
+        </div>
+    </div>
+}
+

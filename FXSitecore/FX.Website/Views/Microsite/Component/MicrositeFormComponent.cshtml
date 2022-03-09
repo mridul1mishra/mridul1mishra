@@ -1,0 +1,25 @@
+﻿@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Microsite.Page.IMicrositePage>
+@using Sitecore.Mvc
+
+@if (this.IsInEditingMode)
+{
+    <h2 style="text-align:center">[Form Placeholder component]</h2>
+}
+<section class="bg-dark-turqoise benefits-section">
+    <div class="container">
+        <div class="row">
+            @*<div class="col-md-7 col-sm-12">*@
+                <!-- <span class='zoom' id='ex1'>
+                    <img src='/assets/microsite/img/solution-img2.jpg' width='518' height='340' alt='Solution' class="img-responsive benefit-graphic"/>
+                </span> -->
+                <!-- <a href="/assets/microsite/img/solution-img2.jpg" class="popup">
+                    <img src="/assets/microsite/img/solution-img2.jpg" alt="Solution" class="img-responsive benefit-graphic">
+                </a> -->
+
+                <div class="wffm">
+                    @Html.Sitecore().Placeholder("micrositeFormPlaceholder")
+                </div>
+            @*</div>*@
+        </div>
+    </div>
+</section>

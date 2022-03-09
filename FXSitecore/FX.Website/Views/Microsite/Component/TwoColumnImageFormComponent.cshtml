@@ -1,0 +1,35 @@
+﻿
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Microsite.Components.ITwoColumnImageFormComponent>
+@using Sitecore.Mvc
+@{
+    string imageSrc = (Model != null && Model.Image != null) ? Model.Image.Src : "";
+}
+
+@if (this.IsInEditingMode)
+{
+    <h2 style="text-align:center">[Two Column Image and Form Component]</h2>
+    if (Model == null)
+    {
+        <p>No component datasource found</p>
+    }
+}
+@if (Model != null)
+{
+    <section class="bg-dark-turqoise benefits-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7 col-sm-12">
+                    <a href="@imageSrc" class="popup">
+                        @RenderImage(Model, m => m.Image, new { @class = "img-responsive benefit-graphic" }, isEditable: true)
+                    </a>
+                </div>
+                <div class="col-md-5 col-sm-12">
+                    <div class="wffm">
+                        @Html.Sitecore().Placeholder("twoColumnImageFormPlaceholder")
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+}

@@ -1,0 +1,198 @@
+html {
+  font-weight: normal;
+  font-family: "Clarimo UD PE Regular", "UD Shin Go Conde90 R JIS2004", sans-serif;
+}
+@media print, screen and (min-width: 768px) {
+  html {
+    font-family: "Clarimo UD PE Regular", "UD Shin Go Regular JIS2004", sans-serif;
+  }
+}
+
+h1,
+h5,
+h6,
+b,
+strong {
+  font-family: "Clarimo UD PE DemiBold", "UD Shin Go Conde90 DB JIS2004", sans-serif;
+  font-weight: bold;
+}
+
+h2,
+h3,
+h4 {
+  font-weight: normal;
+  font-family: "Clarimo UD PE Light", "UD Shin Go Conde90 L JIS2004", sans-serif;
+}
+
+.m-heading-1__title, .m-heading-5__title, .m-heading-6__title {
+  font-family: "Clarimo UD PE DemiBold", "UD Shin Go Conde90 DB JIS2004", sans-serif;
+  font-weight: bold;
+}
+.m-heading-2__title, .m-heading-3__title, .m-heading-4__title {
+  font-weight: normal;
+  font-family: "Clarimo UD PE Light", "UD Shin Go Conde90 L JIS2004", sans-serif;
+}
+.m-heading-1__title-sub {
+  font-weight: normal;
+  font-family: "Clarimo UD PE Regular", "UD Shin Go Conde90 R JIS2004", sans-serif;
+}
+@media print, screen and (min-width: 768px) {
+  .m-heading-1__title-sub {
+    font-family: "Clarimo UD PE Regular", "UD Shin Go Regular JIS2004", sans-serif;
+  }
+}
+
+.font-weight-bold {
+  font-family: "Clarimo UD PE DemiBold", "UD Shin Go Conde90 DB JIS2004", sans-serif;
+  font-weight: bold;
+}
+.font-weight-regular {
+  font-weight: normal;
+  font-family: "Clarimo UD PE Regular", "UD Shin Go Conde90 R JIS2004", sans-serif;
+}
+@media print, screen and (min-width: 768px) {
+  .font-weight-regular {
+    font-family: "Clarimo UD PE Regular", "UD Shin Go Regular JIS2004", sans-serif;
+  }
+}
+
+.m-attention-box__title {
+  font-family: "Clarimo UD PE DemiBold", "UD Shin Go Conde90 DB JIS2004", sans-serif;
+  font-weight: bold;
+}
+
+.m-vertical-card .m-card__title {
+  font-family: "Clarimo UD PE DemiBold", "UD Shin Go Conde90 DB JIS2004", sans-serif;
+  font-weight: bold;
+}
+
+.m-phone-number__number {
+  font-family: "Clarimo UD PE DemiBold", "UD Shin Go Conde90 DB JIS2004", sans-serif;
+  font-weight: bold;
+}
+
+.m-contact__title {
+  font-family: "Clarimo UD PE DemiBold", "UD Shin Go Conde90 DB JIS2004", sans-serif;
+  font-weight: bold;
+}
+
+.m-context-menu__heading > [class*=__title] {
+  font-weight: normal;
+  font-family: "Clarimo UD PE Regular", "UD Shin Go Conde90 R JIS2004", sans-serif;
+}
+@media print, screen and (min-width: 768px) {
+  .m-context-menu__heading > [class*=__title] {
+    font-family: "Clarimo UD PE Regular", "UD Shin Go Regular JIS2004", sans-serif;
+  }
+}
+
+.m-related-content .m-card__title {
+  font-family: "Clarimo UD PE DemiBold", "UD Shin Go Conde90 DB JIS2004", sans-serif;
+  font-weight: bold;
+}
+@media print, screen and (min-width: 768px) {
+  .m-related-content .m-card__description {
+    font-family: "Clarimo UD PE DemiBold", "UD Shin Go Conde90 DB JIS2004", sans-serif;
+    font-weight: bold;
+  }
+}
+
+.m-vertical-container .m-card__title {
+  font-family: "Clarimo UD PE DemiBold", "UD Shin Go Conde90 DB JIS2004", sans-serif;
+  font-weight: bold;
+}
+
+.m-panel-feature__title {
+  font-weight: normal;
+  font-family: "Clarimo UD PE Regular", "UD Shin Go Conde90 R JIS2004", sans-serif;
+}
+@media print, screen and (min-width: 768px) {
+  .m-panel-feature__title {
+    font-family: "Clarimo UD PE Regular", "UD Shin Go Regular JIS2004", sans-serif;
+  }
+}
+
+.m-panel-links__item-label {
+  font-weight: normal;
+  font-family: "Clarimo UD PE Regular", "UD Shin Go Conde90 R JIS2004", sans-serif;
+}
+@media print, screen and (min-width: 768px) {
+  .m-panel-links__item-label {
+    font-family: "Clarimo UD PE Regular", "UD Shin Go Regular JIS2004", sans-serif;
+  }
+}
+
+.m-feature-large__title {
+  font-weight: normal;
+  font-family: "Clarimo UD PE Regular", "UD Shin Go Conde90 R JIS2004", sans-serif;
+}
+@media print, screen and (min-width: 768px) {
+  .m-feature-large__title {
+    font-family: "Clarimo UD PE Regular", "UD Shin Go Regular JIS2004", sans-serif;
+  }
+}
+
+.m-feature-small__label {
+  font-weight: normal;
+  font-family: "Clarimo UD PE Regular", "UD Shin Go Conde90 R JIS2004", sans-serif;
+}
+@media print, screen and (min-width: 768px) {
+  .m-feature-small__label {
+    font-family: "Clarimo UD PE Regular", "UD Shin Go Regular JIS2004", sans-serif;
+  }
+}
+
+.m-feature-story__title {
+  font-weight: normal;
+  font-family: "Clarimo UD PE Regular", "UD Shin Go Conde90 R JIS2004", sans-serif;
+}
+@media print, screen and (min-width: 768px) {
+  .m-feature-story__title {
+    font-family: "Clarimo UD PE Regular", "UD Shin Go Regular JIS2004", sans-serif;
+  }
+}
+
+.m-content-header__title {
+  font-family: "Clarimo UD PE DemiBold", "UD Shin Go Conde90 DB JIS2004", sans-serif;
+  font-weight: bold;
+}
+
+.m-picture-panel__subtitle {
+  font-weight: normal;
+  font-family: "Clarimo UD PE Regular", "UD Shin Go Conde90 R JIS2004", sans-serif;
+}
+@media print, screen and (min-width: 768px) {
+  .m-picture-panel__subtitle {
+    font-family: "Clarimo UD PE Regular", "UD Shin Go Regular JIS2004", sans-serif;
+  }
+}
+
+.m-footer-links__title {
+  font-family: "Clarimo UD PE DemiBold", "UD Shin Go Conde90 DB JIS2004", sans-serif;
+  font-weight: bold;
+}
+
+.m-footer-sitemap__head {
+  font-family: "Clarimo UD PE DemiBold", "UD Shin Go Conde90 DB JIS2004", sans-serif;
+  font-weight: bold;
+}
+
+.m-global-menu__sub-menu__contents__item__title {
+  font-family: "Clarimo UD PE DemiBold", "UD Shin Go Conde90 DB JIS2004", sans-serif;
+  font-weight: bold;
+}
+
+.m-global-menu__sub-menu .m-link-list.-image .m-link-list__item__title {
+  font-family: "Clarimo UD PE DemiBold", "UD Shin Go Conde90 DB JIS2004", sans-serif;
+  font-weight: bold;
+}
+
+.m-filter__result__title {
+  font-family: "Clarimo UD PE DemiBold", "UD Shin Go Conde90 DB JIS2004", sans-serif;
+  font-weight: bold;
+}
+
+.m-filter__related__title {
+  font-family: "Clarimo UD PE DemiBold", "UD Shin Go Conde90 DB JIS2004", sans-serif;
+  font-weight: bold;
+}

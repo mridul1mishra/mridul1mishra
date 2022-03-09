@@ -1,0 +1,73 @@
+﻿@using FX.Core.Utils
+@using FX.Core.Models.Page
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Components.IRelatedPages>
+
+@{
+	var currentPage = this.SitecoreContext.Cast<IStandardPage>(this.ContextItem);
+	var service = new TaxonomyService(this.SitecoreContext);
+	var results = service.GetRelatedProducts(currentPage, FX.Core.Constants.RelatedComponent.NumberOfItems);
+	bool hasContent = this.IsInEditingMode || (Model != null && results.Any());
+}
+
+@functions
+{
+    public bool IsNew(FX.Core.Search.Models.FXResultItem result)
+    {
+        int articleAge = FX.Core.FXContextItems.HomePage.SiteSettings.NewArticleAge;
+        if (articleAge < 1)
+            return false;
+        var now = DateTime.Now;
+        var articleDate = result.ArticleDate;
+
+        return articleDate.AddDays(articleAge) > now;
+    }
+}
+
+@if (this.IsInEditingMode)
+{
+	<h2 style="text-align:center">[@FXGlassView.GetComponentName()]</h2>
+}
+
+@if (hasContent)
+{
+    <section class="section">
+        @if (!string.IsNullOrEmpty(Model.SectionTitle))
+        {
+            if (Model.ShowInStickyTab)
+            {
+                <a id='content@(Model.Id.ToString("N"))' class="anchor-link" data-label="@Model.SectionTitle.Left(FX.Core.Constants.MaxLength.SectionTitle)"></a>
+            }
+            <h2>
+                @Editable(Model, x => x.SectionTitle)
+            </h2> 
+        }
+        <div class="topics products">
+            <div class="topic-panels-wrapper">
+                @foreach (var item in results)
+                {
+                    <div class="panel-item match-height col-sm-4">
+                        <a href="@item.Url">
+                            @if (item.TeaserImage != null && item.TeaserImage.IsValid)
+                            {
+                                <div class="panel-item__image">
+
+                                    <img src="@item.TeaserImage.Url" alt="@item.TeaserImage.Alt">
+
+                                </div>
+                            }
+                            <div class="panel-item__text">
+                                @if (IsNew(item))
+                                {
+                                    <p class="sub">NEW</p>
+                                }
+                                
+                                <h3>@item.TeaserTitle</h3>
+                                <p>@item.TeaserDescription</p>
+                            </div>
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+}

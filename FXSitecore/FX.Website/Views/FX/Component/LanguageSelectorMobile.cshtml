@@ -1,0 +1,21 @@
+﻿@using FX.Core.Utils
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Settings.ISiteSettings>
+
+
+<div class="language-selector mobile-only">
+    @using (BeginRenderLink(Model, x => x.AllSitesLink))
+    {
+        @Model.SiteName
+    }
+    @if (Model.SelectedLanguages != null && Model.SelectedLanguages.Count() > 1)
+    {
+        foreach (var lang in Model.SelectedLanguages)
+        {
+            <span>
+                <a href="@Sitecore.Context.Item.Url(!string.IsNullOrEmpty(lang.RegionalIsoCode) ? lang.RegionalIsoCode : lang.Iso)">
+                    [@lang.DisplayName]
+                </a>
+            </span>
+        }
+    }
+</div>

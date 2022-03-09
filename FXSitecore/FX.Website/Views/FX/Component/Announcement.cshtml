@@ -1,0 +1,37 @@
+﻿@using Sitecore.Mvc
+@using FX.Core.GlassMapper
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Website.Models.Components.AnnouncementViewModel>
+
+@if (this.IsInEditingMode)
+{
+    <h2 style="text-align:center">[Announcement component]</h2>
+    if (Model == null)
+    {
+        <p>No component datasource found</p>
+    }
+}
+@if (Model != null && Model.AnnouncementFolder != null && Model.AnnouncementFolder.Announcement != null &&
+Model.AnnouncementFolder.Announcement.Any())
+{
+    <div class="announcement-list1">
+        <div class="m-heading-3 mb-0">
+            <h3 class="m-heading-3__title page-header  typesquare_option">@Model.AnnouncementFolder.HeadingTitle</h3>
+        </div>
+
+        <ul class="m-news-list mt-0">
+            @foreach (var item in Model.AnnouncementFolder.Announcement.Take(Model.AnnouncementItemCount))
+            {
+                <li class="m-news-list__item">
+                    <div class="m-news-list__date"><span>@item.StartEndDate</span></div>
+                    <div class="m-news-list__body">
+                        <p class="m-news-list__text">
+                            <a class="btn btn-link" href="@item.Url">
+                                <span>@item.Title</span>
+                            </a>
+                        </p>
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+}

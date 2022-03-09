@@ -1,0 +1,47 @@
+{
+	"count": 23,
+	"endIndex": 6,
+	"totalPage": 5,
+	"results": [
+		{
+			"title": "DocuWorld Conference 2017",
+			"link": "/company/events/event-details",
+			"banner": "/fbsg/assets/fuji-xerox/images/content/events/thumbnail_1.jpg",
+			"industry": "All Industry",
+			"location": "Fuji Xerox Towers, 80 Anson Road #01-01 Singapore 079907",
+			"duration": "22 Mar 2017 - 23 Mar 2017"
+		},
+		{
+			"title": "Solutions that matter",
+			"link": "/company/events/event-details",
+			"banner": "/fbsg/assets/fuji-xerox/images/content/events/thumbnail_2.jpg",
+			"industry": "All Industry",
+			"location": "Fuji Xerox Towers, 80 Anson Road #01-01 Singapore 079907",
+			"duration": "22 Nov 2016 - 23 Nov 2016"
+		},
+		{
+			"title": "Driving the New Digital Workplace - DocuWorld 2016",
+			"link": "/company/events/event-details",
+			"banner": "/fbsg/assets/fuji-xerox/images/content/events/thumbnail_3.jpg",
+			"industry": "All Industry",
+			"location": "Fuji Xerox Towers, 80 Anson Road #01-01 Singapore 079907",
+			"duration": "24 Aug 2016 - 25 Aug 20176"
+		},
+		{
+			"title": "Next Stop, Innovation - DocuWorld 2016",
+			"link": "/company/events/event-details",
+			"banner": "/fbsg/assets/fuji-xerox/images/content/events/thumbnail_4.jpg",
+			"industry": "All Industry",
+			"location": "Fuji Xerox Towers, 80 Anson Road #01-01 Singapore 079907",
+			"duration": "24 Aug 2016 - 25 Aug 20176"
+		},
+		{
+			"title": "Driving the New Digital Workplace - DocuWorld 2016",
+			"link": "/company/events/event-details",
+			"banner": "/fbsg/assets/fuji-xerox/images/content/events/thumbnail_5.jpg",
+			"industry": "All Industry",
+			"location": "Fuji Xerox Towers, 80 Anson Road #01-01 Singapore 079907",
+			"duration": "24 Aug 2016 - 25 Aug 20176"
+		}
+	]
+}

@@ -1,0 +1,49 @@
+﻿@using FX.Core.GlassMapper
+@using FX.Core.Utils
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Base.IBanner>
+
+@{
+    var banner = Model;
+    if (!this.IsInEditingMode)
+    {
+        while (banner.BannerImage == null)
+        {
+            banner = banner.ParentBanner;
+            if (banner == null)
+            {
+                banner = Model;
+                break;
+            }
+        }
+    }
+}
+<!-- Top Banner -->
+<div class="top-banner wingspan">
+    <div class="row-col-12">
+        <div class="top-banner__image">
+            @Editable(banner, m => m.BannerImage)
+        </div>
+
+        <div class="top-banner__content @(Model.ShowBannerBlueBox ? "top-banner__content__background" : "") col-sm-4 col-md-3">
+            @if (!this.IsInEditingMode && Model != null)
+            {
+                string bannertitle = Model.BannerTitle.Left(FX.Core.Constants.MaxLength.Title);
+                if (!string.IsNullOrEmpty(bannertitle))
+                {
+                    <h1>@Html.Raw(bannertitle)</h1>
+                }
+                if (!string.IsNullOrEmpty(Model.BannerDescription))
+                {
+                    <p>@Html.Raw(Model.BannerDescription)</p>
+                }
+            }
+            else if (this.IsInEditingMode)
+            {
+                <h1>@Editable(Model, m => m.BannerTitle)</h1>
+                <p>@Editable(Model, m => m.BannerDescription)</p>
+            }
+
+        </div>
+    </div>
+</div>
+<!-- End: Top Banner -->

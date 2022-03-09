@@ -1,0 +1,69 @@
+﻿@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<IMicrositeVideoCarousel>
+@using FX.Core.Models.Microsite.Components.MicrositeVideoCarousel;
+@if (this.IsInEditingMode)
+{
+    <h2 style="text-align:center">[Microsite Video Carousel component]</h2>
+    if (Model == null)
+    {
+        <p>No component datasource found</p>
+    }
+}
+
+
+@helper VideoSlide(IMicrositeVideoResource video)
+{
+var uri = new Uri(video.YoutubeUrl);
+if (uri != null)
+{
+    var parsedQuery = System.Web.HttpUtility.ParseQueryString(uri.Query);
+
+    if (parsedQuery != null && !string.IsNullOrEmpty(parsedQuery["v"]))
+    {
+        string youtubeID = parsedQuery["v"];
+
+            <div class="item">
+                <div class="video-wrapper">
+                    <a class="popup-youtube" href="@video.YoutubeUrl">
+                        <div class="overlay overlay-video"></div>
+                        <i class="fa fa-play btn-play"></i>
+                        <img src="http://img.youtube.com/vi/@youtubeID/maxresdefault.jpg" class="full-width of-image video-thumb" data-object-fit="cover"/>
+                    </a>
+                </div>
+                <h4 class="article-title">@video.Title</h4>
+                <p class="car-caption">
+                    @video.Description
+                </p>
+            </div>
+    }
+}
+}
+@if (Model != null)
+{
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-xs-12">
+                <h3 class="pull-left">@Model.Title</h3>
+                @if (Model.Videos.Count() > 4)
+                {
+                    <div class="control-carousel pull-right">
+                        <span class="customPrevBtn custom-btn"><i class="fa fa-angle-left"></i></span>
+                        <span class="customNextBtn custom-btn"><i class="fa fa-angle-right"></i></span>
+                    </div>
+                }
+                <span class="clearfix"></span>
+
+                <div class="video-carousel res-carousel">
+                    @foreach (var child in Model.Videos)
+                    {
+                        if (child is IMicrositeVideoResource)
+                        {
+                            @VideoSlide(child as IMicrositeVideoResource);
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+}

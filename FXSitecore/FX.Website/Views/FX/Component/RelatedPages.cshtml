@@ -1,0 +1,89 @@
+﻿@using FX.Core.Utils
+@using FX.Core.Models.Page
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Components.IRelatedPages>
+
+@{
+    var css = "";
+    var opco = FX.Core.Utils.Util.OpcoType();
+    var opcolang = FX.Core.Utils.Util.OpcoLang();
+    var localelang = opco + opcolang;
+    var service = new TaxonomyService(this.SitecoreContext);
+    var results = Enumerable.Empty<FX.Core.Search.Models.FXResultItem>();
+    if (this.ContextItem.TemplateID.ToString().Equals(FX.Core.Templates.CareerDetailPage.Id))
+    {
+        var currentPage = this.SitecoreContext.Cast<ICareerDetailPage>(this.ContextItem);
+        results = service.GetRelatedCareerPages(currentPage, FX.Core.Constants.RelatedComponent.NumberOfItems);
+        css = "col-sm-8 center";
+    }
+    else
+    {
+        var currentPage = this.SitecoreContext.Cast<IStandardPage>(this.ContextItem);
+        results = service.GetRelatedPages(currentPage, FX.Core.Constants.RelatedComponent.NumberOfItems);
+    }
+    results = results.Count() > 4 ? results.Take(4) : results;
+    bool hasContent = results.Count() > 0 || this.IsInEditingMode;
+    string sectionTitle = !string.IsNullOrEmpty(Model.SectionTitle) ? Model.SectionTitle : FX.Core.FXContextItems.HomePage.SiteSettings.RelatedPagesTitle;
+}
+
+@functions
+{
+    public bool IsNew(FX.Core.Search.Models.FXResultItem result)
+    {
+        int articleAge = FX.Core.FXContextItems.HomePage.SiteSettings.NewArticleAge;
+        if (articleAge < 1)
+            return false;
+        var now = DateTime.Now;
+        var articleDate = result.ArticleDate.ToLocalTime();
+
+        return articleDate.AddDays(articleAge) > now;
+    }
+}
+
+@if (this.IsInEditingMode)
+{
+    <h2 style="text-align:center">[Related Pages component]</h2>
+}
+
+@if (hasContent)
+{
+    <section class="section">
+        @if (!string.IsNullOrEmpty(Model.SectionTitle))
+        {
+            if (Model.ShowInStickyTab)
+            {
+                <a id='content@(Model.Id.ToString("N"))' class="anchor-link" data-label="@sectionTitle.Left(FX.Core.Constants.MaxLength.SectionTitle)"></a>
+            }
+            <h2>
+                @Editable(Model, x => x.SectionTitle)
+            </h2>
+        }
+        else
+        {
+            <h2>Related Pages</h2>
+        }
+        <div class="topics">
+            <div class="topic-panels-wrapper">
+                @foreach (var child in results)
+                {
+                    <div class="panel-item match-height col-sm-4">
+                        <div class="bnr-01 ride-hdg">
+                            <a href="/@opco@child.Url">
+                                @if (child.TeaserImage != null)
+                                {
+                                    <span class="image">
+                                        <img src="@child.TeaserImage.Url" alt="">
+                                    </span>
+                                }
+                                <span class="group">
+                                    <span class="hdg">@child.TeaserTitle</span>
+                                    <span class="txt">@child.TeaserDescription</span>
+                                </span>                               
+                                    <span class="btn">More Details</span>
+                            </a>
+                        </div>
+                    </div>
+                }
+                </div>
+            </div>
+    </section>
+}

@@ -1,0 +1,138 @@
+﻿@using Sitecore.Mvc
+@using FX.Core.GlassMapper
+@using FX.Core.Utils
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Website.Models.SuccessStories.SuccessStoriesLandingViewModel>
+@{
+    var opco = FX.Core.Utils.Util.OpcoType();
+    var lang = System.Web.HttpContext.Current.Request.Path.Split('/')[1];
+    var opcolang = FX.Core.Utils.Util.OpcoLang();
+}
+<div class="main-content">
+    @Html.Sitecore().Rendering(FX.Core.Keys.RenderingItems.Breadcrumb, FX.Core.Utils.Util.DefaultRenderingCacheParameter)
+    <div class="top-banner">
+        @Html.Sitecore().Rendering(FX.Core.Keys.RenderingItems.HeroBanner, FX.Core.Utils.Util.DefaultRenderingCacheParameter)
+    </div>
+    <div class="layout-main">
+        <section class="section success-stories-introduction">
+            <div class="rte">
+                @Editable(Model, i => i.SitecoreModel.IntroductionText)
+            </div>
+        </section>
+        <!--Story Mapper-->
+        <section class="section">
+            <div class="success-stories-mapper">
+                <div class="success-stories-mapper__filters row">
+                    @if (Model.CountryFilter.Items.Any())
+                    {
+                        <div class="input-group-select col-sm-2">
+                            <select id="countryFilter">
+                                <option value="">@Model.SitecoreModel.CountryFilterLabel</option>
+                                @foreach (var country in Model.CountryFilter.Items)
+                                {
+                                    <option value="@country.Value" @country.SelectedAttribute>@country.Title</option>
+                                }
+                            </select>
+                        </div>
+                    }
+                    @if (Model.SolutionFilter.Items.Any())
+                    {
+                        <div class="input-group-select col-sm-2">
+                            <select id="solutionFilter">
+                                <option value="">@Model.SitecoreModel.SolutionFilterLabel</option>
+                                @foreach (var solution in Model.SolutionFilter.Items)
+                                {
+                                    <option value="@solution.Value">@solution.Title</option>
+                                }
+                            </select>
+                        </div>
+                    }
+                    @if (Model.ProductFilter.Items.Any())
+                    {
+                        <div class="input-group-select col-sm-2">
+                            <select id="productFilter">
+                                <option value="">@Model.SitecoreModel.ProductFilterLabel</option>
+                                @foreach (var product in Model.ProductFilter.Items)
+                                {
+                                    <option value="@product.Value">@product.Title</option>
+                                }
+                            </select>
+                        </div>
+                    }
+                    @if (Model.IndustryFilter.Items.Any())
+                    {
+                        <div class="input-group-select col-sm-2">
+                            <select id="industryFilter">
+                                <option value="">@Model.SitecoreModel.IndustryFilterLabel</option>
+                                @foreach (var industry in Model.IndustryFilter.Items)
+                                {
+                                    <option value="@industry.Value">@industry.Title</option>
+                                }
+                            </select>
+                        </div>
+                    }
+                    @if (Model.YearFilter.Items.Any())
+                    {
+                        <div class="input-group-select col-sm-2">
+                            <select id="yearFilter">
+                                <option value="">@Model.SitecoreModel.YearFilterLabel</option>
+                                @foreach (var year in Model.YearFilter.Items)
+                                {
+                                    <option value="@year.Value">@year.Title</option>
+                                }
+                            </select>
+                        </div>
+                    }
+                    <div class="success-stories-mapper__filters__controls">
+                        <button class="btn-reset col-sm-2">@Editable(Model, x => x.SitecoreModel.FilterResetLabel)</button>
+                    </div>
+                </div>
+
+                <!--Solution Mapper Results-->
+                <div class="success-stories-mapper__results" data-endpoint="/@opco/@lang/api/GetStoryListing" data-pageSize="9">
+                    <div class="column-row"></div>
+                    <div class="result-status">
+                        <p class="msg error-msg">@Model.SitecoreModel.ZeroResultsText</p>
+                        <div class="loader-animation">
+                            <div class="inner"></div>
+                            <div class="inner"></div>
+                            <div class="inner"></div>
+                        </div>
+                    </div>
+                    <button class="show-more js-load-more">
+                        <span>
+                            @Editable(Model, x =>
+
+x.SitecoreModel.LoadMoreLabel)
+                    </span>
+                </button>
+            </div>
+            <!--End: Solution Mapper Results-->
+            <script id="results-template" type="text/x-dot-template">
+                {{~it.snippets :snippet}}
+                <div class="card-tiles result col-sm-6 col-md-4 match-height" itemscope itemtype="http://schema.org/Article">
+                    <div class="bnr-01 ride-hdg">
+                        <a href="{{=snippet.link}}" itemprop="url">
+                            {{? snippet.thumbnail}}
+                            <span class="image">
+                                <img src="{{=snippet.thumbnail}}" alt="" itemprop="thumbnailUrl">
+                            </span>
+                            {{?}}
+                            <span class="group">
+                                <p class="location">{{=snippet.location}}</p>
+                                <span class="hdg" itemprop="name">{{=snippet.title}}</span>
+                                <span class="txt" itemprop="description">{{=snippet.text}}</span>
+                                <div class="meta">
+                                    <span class="category">{{=snippet.industry}}</span>
+                                </div>
+                            </span>
+                            <span class="btn">{{=snippet.buttontext}}</span>
+                        </a>
+                    </div>
+                </div>
+                {{~}}
+            </script>
+        </div>
+    </section>
+    <!--End: Story Mapper-->
+</div>
+</div>

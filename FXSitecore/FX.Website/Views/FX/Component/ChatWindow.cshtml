@@ -1,0 +1,5 @@
+﻿@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Settings.ISiteSettings>
+@if (Model != null && Model.EnableChat && Model.TimeSlot.IsAvailable(DateTime.Now))
+{
+    @Html.Raw(Model.ChatEmbedCode);
+}

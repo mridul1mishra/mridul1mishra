@@ -1,0 +1,71 @@
+﻿@using Sitecore.Mvc
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Website.Models.Shared.HeadViewModel>
+
+@{
+    var opco = FX.Core.Utils.Util.OpcoType();
+    var localcsspath = string.Empty;
+    if (FX.Core.FXContextItems.HomePage.SiteSettings.SiteName != null)
+    {
+        localcsspath =  "/" + opco + "/ffassets/fuji-xerox/css/local-css/" + FX.Core.FXContextItems.HomePage.SiteSettings.SiteName + "/" +
+                Model.Language + "/local.min.css";
+    }
+
+    int minLength = 35;
+    int MaxLength = 66;
+    string metaTitle = !string.IsNullOrEmpty(Model.MetaTitle) ? Model.MetaTitle : Model.MainTitle;
+    bool isMetaTitleCountUnderLimit = !string.IsNullOrEmpty(metaTitle) && metaTitle.Length < minLength;
+    bool isMetaTitleCountExceedLimit = !string.IsNullOrEmpty(metaTitle) && metaTitle.Length > MaxLength;
+    string newMetaTitle = FX.Core.FXContextItems.HomePage.SiteSettings.MetaTitleSuffixText;
+    if (!string.IsNullOrEmpty(newMetaTitle) && isMetaTitleCountUnderLimit)
+    {
+        metaTitle = string.Format("{0}{1}", metaTitle, newMetaTitle);
+    }
+    if (isMetaTitleCountExceedLimit)
+    {
+        metaTitle = metaTitle.Substring(0, MaxLength);
+        metaTitle = metaTitle.Substring(0, metaTitle.LastIndexOf(' ')) + "...";
+    }
+
+    string metaDescriptionSuffix = Sitecore.Context.Item != null ?  Sitecore.Context.Item.Name : string.Empty;
+    string finalMetaDescription = !string.IsNullOrEmpty(Model.MetaDescription) && !string.IsNullOrEmpty(metaDescriptionSuffix) ? string.Format("{0}, {1}", Model.MetaDescription, metaDescriptionSuffix): metaDescriptionSuffix;
+}
+
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>@metaTitle</title>
+
+@if (!string.IsNullOrEmpty(finalMetaDescription))
+{
+    <meta name="description" content="@finalMetaDescription">
+}
+@if (!string.IsNullOrEmpty(Model.MetaKeywords))
+{
+    <meta name="keywords" content="@Model.MetaKeywords">
+}
+
+
+@foreach (var socialMeta in Model.SocialMediaTags)
+{
+    if (!string.IsNullOrEmpty(socialMeta.Content))
+    {
+        <meta property="@socialMeta.Property" content="@socialMeta.Content">
+    }
+}
+
+<link rel="canonical" href="@Model.CanonicalUrl" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/ico" href="/favicon.ico" />
+<link rel="stylesheet" rel="preload" href="/@opco/ffassets/fuji-xerox/css/fuji-xerox.min.css" />
+<link rel="stylesheet" rel="preload" href="/@opco/ffassets/fuji-xerox/css/common.min.css" />
+<link rel="stylesheet" rel="preload" href="@localcsspath" />
+
+@if (FX.Core.FXContextItems.HomePage != null && FX.Core.FXContextItems.HomePage.SiteSettings != null)
+{
+    @Html.Raw(FX.Core.FXContextItems.HomePage.SiteSettings.AnalyticsSnippet)
+}
+
+<link rel="alternate" href="@Model.CanonicalUrl" hreflang="@Model.Language" />
+
+@RenderPage("~/Views/FX/Shared/_CookiePolicy.cshtml")

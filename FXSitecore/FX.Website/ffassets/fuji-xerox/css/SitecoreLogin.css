@@ -1,0 +1,53 @@
+.container {
+	max-width: 960px;
+	position: relative;
+	margin: auto;
+}
+
+.login-banner {
+	height: 300px;
+	width: 100%;
+	background-size: cover;
+}
+
+.login-global-wrap {
+	color: #fff;
+}
+
+.login-global-wrap aside {
+	text-align: right;
+}
+
+.login-global-wrap aside .top-right-msg {
+	display: inline-block;
+	text-align: left;
+}
+
+.login-global-wrap aside .top-right-msg h3 {
+	text-transform: uppercase;
+}
+
+.login-global-wrap aside.staging {
+	background: #fefae6;
+	color: #e0b406;
+	padding: 0 10px;
+}
+
+.login-global-wrap .contents {
+	display: table;
+	background: rgba(0, 0, 0, 0.3);
+	padding: 20px;
+	box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);
+}
+
+.login-main-wrap {
+	display: table-row;
+}
+
+.login-box {
+	background: none;
+	box-shadow: none;
+}
+
+/*# sourceMappingURL=SitecoreLogin.css.map */
+

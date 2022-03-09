@@ -1,0 +1,16 @@
+﻿@using Sitecore.Mvc
+@using FX.Core.Utils
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Components.IIFrame>
+
+@if (this.IsInEditingMode)
+{
+    <h2 style="text-align:center">[iFrame component]</h2>
+}
+<section class="section">
+    @if (Model != null)
+    {
+        <div class="iframe-container">
+            <iframe src="@Model.IFrameURL" width="@Model.IFrameWidth" height="@Model.IFrameHeight" frameborder="0"></iframe>
+        </div>
+    }
+</section>

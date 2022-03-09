@@ -1,0 +1,49 @@
+﻿@using Sitecore.Mvc
+@using System.Linq
+@using FX.Core.Utils
+@using FX.Core.GlassMapper
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Components.ILatestNews>
+
+@{
+	var items = new List<FX.Core.Search.Models.FXResultItem>();
+	bool hasListingSource = Model!=null && Model.ListingSource != null;
+	if (hasListingSource)
+	{
+		var service = new FX.Core.Utils.NewsroomService(this.SitecoreContext);
+		items.AddRange(service.GetLatestNews(Model.ListingSource.GetNewsCategories().Select(category => category.Id).ToArray(), FX.Core.Constants.LatestNewsComponent.NumberOfItems));
+	}
+}
+
+@if (this.IsInEditingMode)
+{
+	<h2 style="text-align:center">[@FXGlassView.GetComponentName()]</h2>
+    if (Model == null)
+    {
+        <p>No component datasource found</p>
+    }
+}
+
+@if (!string.IsNullOrEmpty(Model.ListingTitle))
+{
+	<h2>@Editable(Model, x => x.ListingTitle, x => x.ListingTitle.Left(FX.Core.Constants.MaxLength.AccordionTitle))</h2>
+}
+
+@if (hasListingSource && items.Any())
+{
+	<ul>
+		@foreach (var item in items)
+		{
+		<li class="list-item">
+            <span class="list-text date">@item.LocalisedArticleDate.DayMonthYearString</span>
+            <h3 class="list-text"><a href="@item.Url">@item.TeaserTitle.Left(FX.Core.Constants.MaxLength.Title)</a></h3>
+		</li>
+		}
+	</ul>
+}
+
+@if (hasListingSource)
+{
+	<div class="more-link">
+		<a href="@Model.ListingSource.Url">@Editable(Model, x => x.ListingLinkText)</a>
+	</div>
+}

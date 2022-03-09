@@ -1,0 +1,106 @@
+﻿@using FX.Core
+@using FX.Core.Utils
+@using FX.Core.Models.Page
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Components.IRelatedProductsAndServices>
+
+@{
+    var results = Enumerable.Empty<FX.Core.Search.Models.FXResultItem>();
+    var service = new TaxonomyService(this.SitecoreContext);
+    var css = "";
+    if (this.ContextItem.TemplateID.ToString().Equals(Templates.SuccessStoryDetailPage.Id))
+    {
+        var currentPage = this.SitecoreContext.Cast<FX.Core.Models.Page.ISuccessStoryDetailPage>(this.ContextItem);
+        results = service.GetRelatedProductsAndServices(currentPage.Id, currentPage.Related, FX.Core.Constants.RelatedComponent.NumberOfItemsForProductsAndServices);
+        results = results.Count() > 2 ? results.Take(2) : results;
+        css = "col-sm-8 center";
+    }
+    else
+    {
+        var currentPage = this.SitecoreContext.Cast<IStandardPage>(this.ContextItem);
+        results = service.GetRelatedProductsAndServices(currentPage.Id, currentPage.Related, FX.Core.Constants.RelatedComponent.NumberOfItems);
+        results = results.Count() > 4 ? results.Take(4) : results;
+    }
+
+    bool hasContent = results.Count() > 0 || this.IsInEditingMode;
+    string sectionTitle = !string.IsNullOrEmpty(Model.SectionTitle) ? Model.SectionTitle : FX.Core.FXContextItems.HomePage.SiteSettings.RelatedPagesTitle;
+}
+
+@functions
+{
+    public bool IsNew(FX.Core.Search.Models.FXResultItem result)
+    {
+        int articleAge = FX.Core.FXContextItems.HomePage.SiteSettings.NewArticleAge;
+        if (articleAge < 1)
+            return false;
+        var now = DateTime.Now;
+        var articleDate = result.ArticleDate;
+
+        return articleDate.AddDays(articleAge) > now;
+    }
+}
+
+@if (this.IsInEditingMode)
+{
+    <h2 style="text-align:center">[Related Products and Solutions component]</h2>
+}
+
+@if (hasContent)
+{
+    <section class="section">
+        @if (!string.IsNullOrEmpty(Model.SectionTitle))
+        {
+            if (Model.ShowInStickyTab)
+            {
+                <a id='content@(Model.Id.ToString("N"))' class="anchor-link" data-label="@sectionTitle.Left(FX.Core.Constants.MaxLength.SectionTitle)"></a>
+            }
+            <h2>
+                @Editable(Model, x => x.SectionTitle)
+            </h2>
+        }
+        else
+        {
+            <h2>Related Products and Solutions</h2>
+        }
+        <div class="topics products">
+            <div class="topic-panels-wrapper">
+                @foreach (var item in results)
+                {
+                    <div class="panel-item match-height col-sm-4">
+                        <div class="bnr-01 ride-hdg">
+                            <a href="@item.Url">
+                                @if (item.TeaserImage != null && item.TeaserImage.IsValid)
+                                {
+                                    <span class="image">
+                                        <img src="@item.TeaserImage.Url" alt="@item.TeaserImage.Alt">
+                                    </span>
+                                }
+                                <span class="group">
+                                    @if (!string.IsNullOrEmpty(item.ParentCategory))
+                                    {
+                                        <p class="sub">
+                                            @item.ParentCategory
+                                        @if (IsNew(item))
+                                        {
+                                            @Html.Raw(" (New)")
+                                        }
+                                    </p>
+                                }
+                                    <span class="hdg">@item.TeaserTitle</span>
+                                    <span class="txt">@item.TeaserDescription</span>
+                                </span>
+                                @if (!string.IsNullOrEmpty(item.ButtonText))
+                                {
+                                    <span class="btn">@item.ButtonText</span>
+                                }
+                                else
+                                {
+                                    <span class="btn">More Details</span>
+                                }
+                            </a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+}

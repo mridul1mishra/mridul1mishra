@@ -1,0 +1,34 @@
+﻿@using FX.Core
+@using FX.Core.Utils
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Components.IRichText>
+
+@{
+    bool hasContent = Model != null;
+}
+
+@if (this.IsInEditingMode)
+{
+    <h2 style="text-align:center">[Rich Text component]</h2>
+    if (Model == null)
+    {
+        <p>No component datasource found</p>
+    }
+}
+@if (hasContent)
+{
+<section class="section">
+    @if (Model != null && !string.IsNullOrEmpty(Model.SectionTitle))
+    {
+        if (Model.ShowInStickyTab)
+        {
+            <a id='content@(Model.Id.ToString("N"))' class="anchor-link" data-label="@Model.SectionTitle.Left(FX.Core.Constants.MaxLength.SectionTitle)"></a>
+        }
+        <h3>
+            @Editable(Model, x => x.SectionTitle)
+        </h3>
+    }
+    @Editable(Model, i => i.MainContent)
+
+
+</section>
+}

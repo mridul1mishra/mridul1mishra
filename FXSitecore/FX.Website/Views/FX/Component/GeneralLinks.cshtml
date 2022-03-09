@@ -1,0 +1,57 @@
+﻿@using Sitecore.Mvc
+@using System.Linq
+@using FX.Core.Utils
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Components.IGeneralLinks>
+
+@{
+    bool hasLink1 = false;
+    bool hasLink2 = false;
+    bool hasLink3 = false;
+    bool hasLink4 = false;
+    bool hasLink5 = false;
+    bool hasLink6 = false;
+
+    if (Model != null)
+    {
+        hasLink1 = FXGlassView.IsFieldVisible(this.IsInEditingMode, Model.Link1);
+        hasLink2 = FXGlassView.IsFieldVisible(this.IsInEditingMode, Model.Link2);
+        hasLink3 = FXGlassView.IsFieldVisible(this.IsInEditingMode, Model.Link3);
+        hasLink4 = FXGlassView.IsFieldVisible(this.IsInEditingMode, Model.Link4);
+        hasLink5 = FXGlassView.IsFieldVisible(this.IsInEditingMode, Model.Link5);
+        hasLink6 = FXGlassView.IsFieldVisible(this.IsInEditingMode, Model.Link6);
+    }
+    bool hasLinks = hasLink1 || hasLink2 || hasLink3 || hasLink4 || hasLink5 || hasLink6;
+}
+
+@if (this.IsInEditingMode)
+{
+    <h2 style="text-align:center">[@FXGlassView.GetComponentName()]</h2>
+}
+
+@if (hasLinks)
+{
+    if (FXGlassView.IsFieldVisible(this.IsInEditingMode, Model.Title))
+    {
+        <h3>@Editable(Model, x => x.Title)</h3>
+    }
+    <ul>
+        @if (hasLink1)
+        {
+            <li>@RenderLink(Model, x => x.Link1, isEditable: true)</li> }
+        @if (hasLink2)
+        {
+            <li>@RenderLink(Model, x => x.Link2, isEditable: true)</li> }
+        @if (hasLink3)
+        {
+            <li>@RenderLink(Model, x => x.Link3, isEditable: true)</li> }
+        @if (hasLink4)
+        {
+            <li>@RenderLink(Model, x => x.Link4, isEditable: true)</li> }
+        @if (hasLink5)
+        {
+            <li>@RenderLink(Model, x => x.Link5, isEditable: true)</li> }
+        @if (hasLink6)
+        {
+            <li>@RenderLink(Model, x => x.Link6, isEditable: true)</li> }
+    </ul>
+}

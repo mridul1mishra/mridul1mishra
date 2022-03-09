@@ -1,0 +1,312 @@
+﻿@using Sitecore.Mvc
+@using Newtonsoft.Json
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Website.Models.Pages.ProductCompareViewModel>
+@using FX.Core.GlassMapper
+@using FX.Core.Models.Products
+
+@using System.Web.Mvc.Html
+
+@{
+    bool hasContent = Model != null;
+}
+
+<div class="main-content">
+    <div class="layout-main">
+        @if (hasContent)
+        {
+            <section class="section product-finder-section">
+                <div class="product-finder-compare">
+                    <div class="product-finder-compare__header">
+                        @if (!this.IsInEditingMode && Model != null && Model.SitecoreModel != null && !string.IsNullOrEmpty(Model.SitecoreModel.ProductFinderTitle))
+                        {
+                            <h1>@Html.Raw(Model.SitecoreModel.ProductFinderTitle)</h1>
+                        }
+                        else if (this.IsInEditingMode)
+                        {
+                            <h1>@Editable(Model, x => x.SitecoreModel.ProductFinderTitle)</h1>
+                        }
+                    </div>
+                    <div class="product-finder-compare__spec desktop-only">
+                        <ul class="spec-list">
+                            <li class="spec-item specrow-1"></li>
+                            @{
+                                var specRowCount = 2;
+                                foreach (var featureFolder in Model.SitecoreModel.FeatureFoldersSelection)
+                                {
+                                    var featureFolderName = !string.IsNullOrWhiteSpace(featureFolder.DisplayName) ? featureFolder.DisplayName : featureFolder.Name;
+                                    <li class="@("spec-item specrow-" + specRowCount)"><span>@featureFolderName</span></li>
+                                    specRowCount++;
+                                }
+                            }
+                            <li class="spec-item specrow-last"></li>
+                        </ul>
+                    </div>
+                    <ul class="compare-list">
+                        @foreach (var item in Model.QueryItems)
+                        {
+                            var enquiryLink = item.GetEnquiryLink();
+                            var productListingPage = item.GetListingPage(this.SitecoreContext);
+                            string enquiryLinkUrl = FXGlassView.GetButtonUrl(productListingPage, enquiryLink, item.MainTitle);
+
+                            <li class="compare-item">
+                                <div class="compare-item__header specrow-1">
+                                    <div><img src=@item.ProductImage.Src></div>
+                                    <h3>@Editable(item, x => x.MainTitle)</h3>
+                                    <p><span></span><span>@Editable(item, x => x.PrinterShortDescription1)</span><span>@Editable(item, x => x.PrinterShortDescription2)</span></p><a class="button" href=@item.Url><span>@Editable(Model, x => x.SitecoreModel.LearnMoreLabel)</span></a>
+                                </div>
+                                <div class="compare-item__content">
+                                    @{
+                                        var featureFolderNames = Model.SitecoreModel.FeatureFoldersSelection.Select(x => new
+                                        {
+                                            Name = string.IsNullOrWhiteSpace(x.DisplayName) ? x.Name : x.DisplayName,
+                                            ItemPath = x.Path
+
+                                        }).ToList();
+
+                                        var featureNames = new List<string>();
+
+                                        var listOfFeatureFolders = Model.SitecoreModel.FeatureFoldersSelection.ToList();
+
+                                        var listOfPrinterFeatures = item.PrinterFeatures.ToList();
+
+                                        for (var i = 0; i < listOfFeatureFolders.Count(); i++)
+                                        {
+                                            //tagged printer features
+                                            if (i == 0 || i == 6)
+                                            {
+                                                var count = 0;
+                                                for (var k = 0; k < listOfPrinterFeatures.Count(); k++)
+                                                {
+
+                                                    if (listOfPrinterFeatures[k].Path.Contains(listOfFeatureFolders[i].Path) && count == 0)
+                                                    {
+                                                        if (string.IsNullOrWhiteSpace(listOfPrinterFeatures[k].Description1))
+                                                        {
+                                                            featureNames.Add(listOfPrinterFeatures[k].TaxonomyItemName + '\t' + "");
+                                                        }
+                                                        else
+                                                        {
+                                                            featureNames.Add(listOfPrinterFeatures[k].Description1 + '\t' + "");
+                                                        }
+
+                                                        count += 1;
+                                                    }
+                                                }
+
+                                                if (count == 0)
+                                                {
+                                                    featureNames.Add("-" + '\t' + "");
+                                                }
+                                            }
+
+                                            //tagged printer features
+                                            else if (i == 11 || i == 12 || i == 13)
+                                            {
+                                                var count = 0;
+
+                                                for (var k = 0; k < listOfPrinterFeatures.Count(); k++)
+                                                {
+
+                                                    if (listOfPrinterFeatures[k].Path.Contains(listOfFeatureFolders[i].Path) && count == 0)
+                                                    {
+                                                        if (string.IsNullOrWhiteSpace(listOfPrinterFeatures[k].Description1))
+                                                        {
+                                                            featureNames.Add("&#10003;" + '\t' + "");
+                                                        }
+                                                        else
+                                                        {
+                                                            featureNames.Add(listOfPrinterFeatures[k].TaxonomyItemName + '\t' + "");
+                                                        }
+
+                                                        count += 1;
+                                                    }
+                                                }
+
+                                                if (count == 0)
+                                                {
+                                                    featureNames.Add("-" + '\t' + "");
+                                                }
+                                            }
+
+                                            //tagged printer features
+                                            else if (i == 5)
+                                            {
+                                                var multiplePrintVolume = "";
+                                                var count = 0;
+
+                                                for (var k = 0; k < listOfPrinterFeatures.Count(); k++)
+                                                {
+                                                    if (listOfPrinterFeatures[k].Path.Contains(listOfFeatureFolders[i].Path))
+                                                    {
+                                                        if (string.IsNullOrWhiteSpace(listOfPrinterFeatures[k].Description1))
+                                                        {
+                                                            if (count >= 1)
+                                                            {
+                                                                multiplePrintVolume += "<br/>";
+                                                                multiplePrintVolume += listOfPrinterFeatures[k].TaxonomyItemName;
+                                                            }
+                                                            else
+                                                            {
+                                                                multiplePrintVolume += listOfPrinterFeatures[k].TaxonomyItemName;
+                                                            }
+                                                        }
+                                                        else
+                                                        {
+                                                            if (count >= 1)
+                                                            {
+                                                                multiplePrintVolume += "<br/>";
+                                                                multiplePrintVolume += listOfPrinterFeatures[k].Description1;
+                                                            }
+                                                            else
+                                                            {
+                                                                multiplePrintVolume += listOfPrinterFeatures[k].Description1;
+                                                            }
+                                                        }
+
+                                                        count += 1;
+                                                    }
+                                                }
+
+                                                if (count >= 1)
+                                                {
+                                                    multiplePrintVolume += '\t' + "";
+                                                    featureNames.Add(multiplePrintVolume);
+                                                }
+                                                else
+                                                {
+                                                    multiplePrintVolume += "-" + '\t' + "";
+                                                    featureNames.Add(multiplePrintVolume);
+                                                }
+
+                                            }
+
+                                            //non-tagged printer features
+                                            else if (i == 1)
+                                            {
+                                                featureNames.Add
+                                                    ((string.IsNullOrWhiteSpace(item.PrintSpeedMonochromeText)? "-" : item.PrintSpeedMonochromeText) + '\t' + "");
+                                            }
+
+                                            else if (i == 2)
+                                            {
+                                                featureNames.Add
+                                                    ((string.IsNullOrWhiteSpace(item.PrintSpeedColourText)? "-" : item.PrintSpeedColourText) + '\t' + "");
+                                            }
+
+                                            else if (i == 3)
+                                            {
+                                                featureNames.Add
+                                                    ((string.IsNullOrWhiteSpace(item.FirstPageOutputTimeText1) && string.IsNullOrWhiteSpace(item.FirstPageOutputTimeText2)) ? "-" + '\t' + "" 
+                                                    : ((string.IsNullOrWhiteSpace(item.FirstPageOutputTimeText1) && !string.IsNullOrWhiteSpace(item.FirstPageOutputTimeText2)) ? "" + '\t' + item.FirstPageOutputTimeText2
+                                                    : (!string.IsNullOrWhiteSpace(item.FirstPageOutputTimeText1) && string.IsNullOrWhiteSpace(item.FirstPageOutputTimeText2)) ? item.FirstPageOutputTimeText1 + '\t' + "" 
+                                                    : item.FirstPageOutputTimeText1 + '\t' + item.FirstPageOutputTimeText2));
+                                            }
+
+                                            else if (i == 4)
+                                            {
+                                                featureNames.Add((string.IsNullOrWhiteSpace(item.ScanSpeedText)? "-" : item.ScanSpeedText) + '\t' + "");
+                                            }
+
+                                            else if (i == 7)
+                                            {
+                                                featureNames.Add((string.IsNullOrWhiteSpace(item.PrintingResolutionText)? "-" : item.PrintingResolutionText) + '\t' + "");
+                                            }
+
+                                            else if (i == 8)
+                                            {
+                                                featureNames.Add
+                                                    ((string.IsNullOrWhiteSpace(item.PrintingInputCapacityText1) && string.IsNullOrWhiteSpace(item.PrintingInputCapacityText2)) ? "-" + '\t' + ""
+                                                    : ((string.IsNullOrWhiteSpace(item.PrintingInputCapacityText1) && !string.IsNullOrWhiteSpace(item.PrintingInputCapacityText2)) ? "" + '\t' + item.PrintingInputCapacityText2
+                                                    : (!string.IsNullOrWhiteSpace(item.PrintingInputCapacityText1) && string.IsNullOrWhiteSpace(item.PrintingInputCapacityText2)) ? item.PrintingInputCapacityText1 + '\t' + "" 
+                                                    : item.PrintingInputCapacityText1 + '\t' + item.PrintingInputCapacityText2));
+                                            }
+
+                                            else if (i == 9)
+                                            {
+                                                featureNames.Add((string.IsNullOrWhiteSpace(item.MaxPaperSizeText)? "-" : item.MaxPaperSizeText) + '\t' + "");
+                                            }
+
+                                            else if (i == 10)
+                                            {
+                                                featureNames.Add((string.IsNullOrWhiteSpace(item.UserInterfaceText)? "-" : item.UserInterfaceText) + '\t' + "");
+                                            }
+
+                                            else if (i == 14)
+                                            {
+                                                if (item.NetworkConnectivity)
+                                                {
+                                                    featureNames.Add("&#10003;" + '\t' + "");
+                                                }
+                                                else
+                                                {
+                                                    featureNames.Add("-" + '\t' + "");
+                                                }
+                                            }
+                                        }
+
+                                        var featureFoldersAndFeatures = featureFolderNames.Zip(featureNames, (x, y) => x.Name + '\t' + y).ToList();
+                                        var specRowCount2 = 2;
+                                        for (var k = 0; k < featureFoldersAndFeatures.Count(); k++)
+                                        {
+
+                                            //var specHeight = !(feature.Split('\t')[1].Length + feature.Split('\t')[2].Length > 35) && feature.Split('\t')[2].Length == 0 ? "height: 45.6px;" : "height: 71.2px;";
+
+                                                <div class="@("spec specrow-" + specRowCount2)">
+                                                    <span class="title mobile-only">@featureFoldersAndFeatures[k].Split('\t').First()</span>
+                                                    <span>
+                                                        @{
+                                                            var firstLineDescription = featureFoldersAndFeatures[k].Split('\t')[1] == "&#10003" ? "&#10003;" : featureFoldersAndFeatures[k].Split('\t')[1];
+                                                        }
+                                                        @Html.Raw(firstLineDescription)
+                                                        <br />
+                                                        @featureFoldersAndFeatures[k].Split('\t')[2]
+                                                    </span>
+                                                    <span></span>
+                                                </div>
+                                                specRowCount2++;
+                                        }
+                                        
+                                    }
+                                </div>
+                                <div class="compare-item__footer specrow-last">
+                                        <a class="button--inverse" href=@item.SectionFolders.FirstOrDefault().Specifications.FirstOrDefault().MediaLink.FirstOrDefault().MediaUrl target="_blank"><span>@Model.SitecoreModel.DownloadBrochureLabel</span><span class="icon icon-save"></span></a>
+                                        @if (enquiryLink != null && !string.IsNullOrEmpty(enquiryLinkUrl))
+                                        {
+                                            if (enquiryLink.IsEnquiryForm)
+                                            {
+                                                <a href="#productForm" class="button contact-link @enquiryLink.ButtonType" data-iframe="@enquiryLinkUrl" data-productid="@(new Sitecore.Data.ShortID(item.Id).ToString())"><span>@Editable(Model, x => x.SitecoreModel.ContactSalesTeamLabel)</span></a>
+                                            }
+                                            else
+                                            {
+                                                <a href="@enquiryLinkUrl" class="button contact-link @enquiryLink.ButtonType" target="_blank" data-productid="@(new Sitecore.Data.ShortID(item.Id).ToString())"><span>@Editable(Model, x => x.SitecoreModel.ContactSalesTeamLabel)</span></a>
+                                            }
+                                        }
+                                    </div>
+                             </li>
+                                    }
+                                </ul>
+                                <div class="product-finder-compare__footer">
+                                    @if (Model.QueryItems.Count() > 1)
+                                    {
+                                        <div class="compare__footer--back">
+                                            <button class="button btn-white" href="@Model.GetProductFinderPageItemName()"><span class="icon icon-arrow-left"></span><span>@Editable(Model, x => x.SitecoreModel.BackLabel)</span></button>
+                                        </div>
+                                    }
+                                    <div class="compare__footer--startover">
+                                        <button class="button btn-startover btn-white" href="@Model.GetProductFinderPageItemName()"><span>@Editable(Model, x => x.SitecoreModel.StartOverLabel)</span><span class="icon icon-return"></span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    }
+                    </div>
+                    <div class="modal" id="productForm">
+                        <div class="wingspan">
+                            <div class="modal-close-button">
+                                <a href="#"><i class="icon-cross"></i></a>
+                            </div>
+                            <div class="modal-form">
+                            </div>
+                        </div>
+                    </div>
+                </div>

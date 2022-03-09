@@ -1,0 +1,6 @@
+﻿@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Microsite.Settings.IMicrositeSettings>
+@if (!Model.HideForm) { 
+<section id="contact" class="contact">
+    @Html.Raw(Model.ContactFormSnippet)
+</section>
+}

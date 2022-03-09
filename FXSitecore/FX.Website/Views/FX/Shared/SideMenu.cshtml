@@ -1,0 +1,61 @@
+﻿@*@using FX.Core.GlassMapper
+@using FX.Core.Utils
+@using Sitecore.Mvc
+@using System.Web.Mvc.Html
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Settings.ISiteSettings>
+
+
+@Html.Raw(Model.ShareEmbedCode)
+<!-- Side Menu -->
+<div class="side-menu">
+    <ul>
+        <li>
+            <a href="#notifications" class="fancybox gtm-sticky-notification" data-goalid="@Model.NotificationGoal">
+                <i class="icon-notification gtm-sticky-notification"></i>
+                <span class="label gtm-sticky-notification">@Model.NotificationsTitle</span>
+            </a>
+        </li>
+        @{  if (!string.IsNullOrEmpty(Model.EnquiryForm))
+            {
+                <li>
+                    <a href="#enquiryForm" class="modalbox gtm-sticky-enquiry" data-iframe="/enquiry-form?formId=@Model.EnquiryForm&url=@Sitecore.Context.Item.Url()" data-goalid="@Model.ContactUsGoal">
+                        <i class="icon-enquiry gtm-sticky-enquiry"></i>
+                        <span class="label gtm-sticky-enquiry">@Model.EnquiryTitle</span>
+                    </a>
+                </li>
+            }
+        }
+        @{if (Model.EnableChat)
+            {
+                if (Model.TimeSlot.IsAvailable(DateTime.Now))
+                {
+                    <li>
+                        @Html.Raw(Model.ChatEmbedCode)
+                    </li>
+                }
+                else
+                {
+                    <li>
+                        <a class="gtm-sticky-chat" data-goalid="@Model.ChatGoal">
+                            <i class="icon-chat gtm-sticky-chat"></i>
+                            <span class="label gtm-sticky-chat">@Html.Raw(Model.ChatOfflineMessage)</span>
+                        </a>
+                    </li>
+                }
+            }
+        }
+        @{if (Model.EnableShare)
+            {
+                <li>
+                    <a href="#" class="addthis_button_compact gtm-sticky-share" data-goalid="@Model.ShareThisPageGoal">
+                        <i class="icon-share gtm-sticky-share"></i>
+                        <span class="label gtm-sticky-share">@Model.ShareTitle</span>
+                    </a>
+                </li>
+            }
+        }
+    </ul>
+</div>
+<!-- End: Side Menu -->
+@Html.Partial("~/Views/FX/Shared/SideBarNotification.cshtml")
+@Html.Partial("~/Views/FX/Shared/EnquiryForm.cshtml")*@

@@ -1,0 +1,134 @@
+﻿@using Sitecore.Mvc
+@using FX.Core.GlassMapper
+@using FX.Core.Utils
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Website.Models.Events.EventsListingViewModel>
+
+@{
+    string view1 = "";
+    string view2 = "";
+    var opco = FX.Core.Utils.Util.OpcoType();
+    var lang = System.Web.HttpContext.Current.Request.Path.Split('/')[1];
+    var opcolang = FX.Core.Utils.Util.OpcoLang();
+    if (!string.IsNullOrWhiteSpace(Model.SitecoreModel.ViewDetailsLabel))
+    {
+        string[] viewLabels = Model.SitecoreModel.ViewDetailsLabel.Split(new char[0]);
+        List<string> hiddenViewLabel = new List<string>();
+        view1 = viewLabels[0];
+        for (int i = 1; i < viewLabels.Length; i++)
+        {
+            hiddenViewLabel.Add(viewLabels[i]);
+        }
+        view2 = string.Join(" ", hiddenViewLabel);
+    }
+}
+
+
+<div class="main-content">
+    @Html.Sitecore().Rendering(FX.Core.Keys.RenderingItems.Breadcrumb, FX.Core.Utils.Util.DefaultRenderingCacheParameter)
+    @if (Model.SitecoreModel.ShowBannerCheckbox)
+    {
+        <div class="top-banner">
+            @Html.Sitecore().Rendering(FX.Core.Keys.RenderingItems.HeroBanner, FX.Core.Utils.Util.DefaultRenderingCacheParameter)
+        </div>
+    }
+    <div class="layout-main">
+        <!--Event Mapper-->
+        <section class="section">
+            <div class="event-mapper">
+                <div class="event-mapper__filters row">
+                    @if (Model.LocationFilter.Items.Any())
+                    {
+                        <div class="input-group-select col-sm-2">
+                            <select class="custom-select" id="countryFilter">
+                                <option value="">@Model.SitecoreModel.LocationFilterLabel</option>
+                                @foreach (var location in Model.LocationFilter.Items)
+                                {
+                                    <option value="@location.Value">@location.Title</option>
+                                }
+                            </select>
+                        </div>
+                    }
+                    @if (Model.IndustryFilter.Items.Any())
+                    {
+                        <div class="input-group-select col-sm-2">
+                            <select class="custom-select" id="industryFilter">
+                                <option value="">@Model.SitecoreModel.IndustryFilterLabel</option>
+                                @foreach (var industry in Model.IndustryFilter.Items)
+                                {
+                                    <option value="@industry.Value">@industry.Title</option>
+                                }
+                            </select>
+                        </div>
+                    }
+                    @if (Model.YearFilter.Items.Any())
+                    {
+                        <div class="input-group-select col-sm-2">
+                            <select class="custom-select" id="yearFilter">
+                                <option value="">@Model.SitecoreModel.YearFilterLabel</option>
+                                @foreach (var year in Model.YearFilter.Items)
+                                {
+                                    <option value="@year.Value">@year.Title</option>
+                                }
+                            </select>
+                        </div>
+                    }
+                    @if (Model.MonthFilter.Items.Any())
+                    {
+                        <div class="input-group-select col-sm-2">
+                            <select class="custom-select" id="monthFilter">
+                                <option value="">@Model.SitecoreModel.MonthFilterLabel</option>
+                                @foreach (var month in Model.MonthFilter.Items)
+                                {
+                                    <option value="@month.Value">@month.Title</option>
+                                }
+                            </select>
+                        </div>
+                    }
+
+                    <div class="event-mapper__filters__controls">
+                        <button class="btn-reset col-sm-2">@Editable(Model, x => x.SitecoreModel.ResetButtonLabel)</button>
+                    </div>
+                </div>
+
+
+                <!--Event Mapper Results-->
+                <div class="event-mapper__results" data-endpoint="/@opco/@lang/api/GetEventsListing" data-pageSize="10">
+                    <!--Results-->
+                    <div></div>
+                    <div class="result-status">
+                        <p class="msg error-msg">@Model.SitecoreModel.ZeroResultsText</p>
+                        <div class="loader-animation">
+                            <div class="inner"></div>
+                            <div class="inner"></div>
+                            <div class="inner"></div>
+                        </div>
+                    </div>
+                    <!--End: Results--><a class="button load-more js-load-more" href="#">
+                        @Editable(Model, x =>
+
+x.SitecoreModel.LoadMoreLabel)
+                </a>
+            </div>
+            <!--End: Event Mapper Results-->
+            <script id="results-template" type="text/x-dot-template">
+                {{~it.snippets :snippet}}
+                <div class="event-mapper__item result">
+                    <div class="event-mapper__item__image">
+                        <img src="{{=snippet.banner}}" alt="">
+                    </div>
+                    <div class="event-mapper__item__text">
+                        <h1>{{=snippet.industry}}</h1>
+                        <h2>{{=snippet.title}}</h2>
+                        <p>
+                            <span class="location">{{=snippet.location}}</span>
+                            <span class="duration">{{=snippet.duration}}</span>
+                        </p>
+                        <a class="button" href="{{=snippet.link}}">View Details</a>
+                    </div>
+                </div>
+                {{~}}
+            </script>
+        </div>
+    </section>
+</div>
+</div>

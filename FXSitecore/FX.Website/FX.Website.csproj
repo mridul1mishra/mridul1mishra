@@ -1,0 +1,1418 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E240C2A2-790E-42AA-BEBA-7848A72220C0}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FX.Website</RootNamespace>
+    <AssemblyName>FX.Website</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\packages\Castle.Core.3.3.3\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor, Version=3.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Windsor.3.1.0\lib\net40\Castle.Windsor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Glass.Mapper, Version=4.0.11.63, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Glass.Mapper.Sc.4.0.11.63\lib\net45\Glass.Mapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Glass.Mapper.Sc, Version=4.0.11.63, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Glass.Mapper.Sc.4.0.11.63\lib\81\Glass.Mapper.Sc.dll</HintPath>
+    </Reference>
+    <Reference Include="Glass.Mapper.Sc.Mvc">
+      <HintPath>..\packages\Glass.Mapper.Sc.4.0.11.63\lib\Mvc52\Glass.Mapper.Sc.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Dependencies\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Analytics">
+      <HintPath>..\Lib\Sitecore.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Analytics.Aggregation">
+      <HintPath>..\Lib\Sitecore.Analytics.Aggregation.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Analytics.Automation">
+      <HintPath>..\Lib\Sitecore.Analytics.Automation.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Analytics.Core">
+      <HintPath>..\Lib\Sitecore.Analytics.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Analytics.DataAccess">
+      <HintPath>..\Lib\Sitecore.Analytics.DataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Analytics.Model">
+      <HintPath>..\Lib\Sitecore.Analytics.Model.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Analytics.Processing">
+      <HintPath>..\Lib\Sitecore.Analytics.Processing.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Client">
+      <HintPath>..\Lib\Sitecore.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.ContentSearch">
+      <HintPath>..\Lib\Sitecore.ContentSearch.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.ContentSearch.Analytics">
+      <HintPath>..\Lib\Sitecore.ContentSearch.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.ContentSearch.Linq">
+      <HintPath>..\Lib\Sitecore.ContentSearch.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.ExperienceEditor">
+      <HintPath>..\Lib\Sitecore.ExperienceEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Forms.Core">
+      <HintPath>..\Lib\Sitecore.Forms.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Forms.Custom">
+      <HintPath>..\Lib\Sitecore.Forms.Custom.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Forms.Mvc">
+      <HintPath>..\Lib\Sitecore.Forms.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Kernel">
+      <HintPath>..\Lib\Sitecore.Kernel.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.ListManagement">
+      <HintPath>..\Lib\Sitecore.ListManagement.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.ListManagement.ContentSearch">
+      <HintPath>..\Lib\Sitecore.ListManagement.ContentSearch.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Logging">
+      <HintPath>..\Lib\Sitecore.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Logging.Client">
+      <HintPath>..\Lib\Sitecore.Logging.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Marketing">
+      <HintPath>..\Lib\Sitecore.Marketing.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Marketing.Core">
+      <HintPath>..\Lib\Sitecore.Marketing.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Marketing.Taxonomy">
+      <HintPath>..\Lib\Sitecore.Marketing.Taxonomy.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Mvc">
+      <HintPath>..\Lib\Sitecore.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.NVelocity">
+      <HintPath>..\Lib\Sitecore.NVelocity.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.SegmentBuilder">
+      <HintPath>..\Lib\Sitecore.SegmentBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.WFFM">
+      <HintPath>..\Lib\Sitecore.WFFM.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.WFFM.Abstractions">
+      <HintPath>..\Lib\Sitecore.WFFM.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.WFFM.Actions">
+      <HintPath>..\Lib\Sitecore.WFFM.Actions.dll</HintPath>
+    </Reference>
+    <Reference Include="Sitecore.Zip">
+      <HintPath>..\Lib\Sitecore.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\FXChinaRoutes.cs" />
+    <Compile Include="Controllers\DataSyncApiController.cs" />
+    <Content Include="App_Code\FXGlassView.cshtml" />
+    <Compile Include="App_Start\GlassMapperSc.cs" />
+    <Compile Include="App_Start\GlassMapperScCustom.cs" />
+    <Compile Include="Controllers\ComponentController.cs" />
+    <Compile Include="Controllers\ApiController.cs" />
+    <Compile Include="Controllers\ExmController.cs" />
+    <Compile Include="Controllers\MicrositeController.cs" />
+    <Compile Include="Controllers\PageController.cs" />
+    <Compile Include="Controllers\SharedController.cs" />
+    <Compile Include="DataSyncVerification.aspx.cs">
+      <DependentUpon>DataSyncVerification.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataSyncVerification.aspx.designer.cs">
+      <DependentUpon>DataSyncVerification.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Careers\CareersListingViewModel.cs" />
+    <Compile Include="Models\Components\AnnouncementViewModel.cs" />
+    <Compile Include="Models\Components\CookieSetPair.cs" />
+    <Compile Include="Models\Components\CtaPanelViewModel.cs" />
+    <Compile Include="Models\Components\LatestEventsViewModel.cs" />
+    <Compile Include="Models\Events\EventsListingViewModel.cs" />
+    <Compile Include="Models\Pages\NewsroomModel.cs" />
+    <Compile Include="Models\Pages\HomeViewModel.cs" />
+    <Compile Include="Models\Pages\ProductCompareViewModel.cs" />
+    <Compile Include="Models\Pages\ProductFinderViewModel.cs" />
+    <Compile Include="Models\Pages\SitemapViewModel.cs" />
+    <Compile Include="Models\PopupForm.cs" />
+    <Compile Include="Models\Shared\HeadViewModel.cs" />
+    <Compile Include="Models\Shared\NavigationLink.cs" />
+    <Compile Include="Models\SuccessStories\SuccessStoriesLandingViewModel.cs" />
+    <Compile Include="Mvc\Pipelines\GetFromLayoutFieldFix.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Config\Include\z.Glass.Mapper.Sc.ViewRender.config.exclude" />
+    <Content Include="App_Config\Include\Glass.Mapper.Sc.Start.config" />
+    <Content Include="App_Config\Include\Glass.Mapper.Sc.config" />
+    <Content Include="App_Config\Include\Glass.Mapper.Sc.CodeFirst.config.exclude" />
+    <Content Include="ffassets\fuji-xerox\css\common.css" />
+    <Content Include="ffassets\fuji-xerox\css\common.min.css">
+      <DependentUpon>common.css</DependentUpon>
+    </Content>
+    <Content Include="ffassets\fuji-xerox\css\Default.css" />
+    <Content Include="ffassets\fuji-xerox\css\Default.min.css" />
+    <Content Include="ffassets\fuji-xerox\css\fuji-xerox-print.css" />
+    <Content Include="ffassets\fuji-xerox\css\fuji-xerox-print.min.css" />
+    <Content Include="ffassets\fuji-xerox\css\fuji-xerox.css" />
+    <Content Include="ffassets\fuji-xerox\css\fuji-xerox.fuji-xerox.css" />
+    <Content Include="ffassets\fuji-xerox\css\fuji-xerox.min.css">
+      <DependentUpon>fuji-xerox.css</DependentUpon>
+    </Content>
+    <Content Include="ffassets\fuji-xerox\css\local-css\aus\en\local.css" />
+    <Content Include="ffassets\fuji-xerox\css\local-css\aus\en\local.min.css">
+      <DependentUpon>local.css</DependentUpon>
+    </Content>
+    <Content Include="ffassets\fuji-xerox\css\local-css\ca\en\local.css" />
+    <Content Include="ffassets\fuji-xerox\css\local-css\ca\en\local.min.css">
+      <DependentUpon>local.css</DependentUpon>
+    </Content>
+    <Content Include="ffassets\fuji-xerox\css\local-css\ca\km-KH\local.css" />
+    <Content Include="ffassets\fuji-xerox\css\local-css\ca\km-KH\local.min.css">
+      <DependentUpon>local.css</DependentUpon>
+    </Content>
+    <Content Include="ffassets\fuji-xerox\css\local-css\ch\zh-CN\local.css" />
+    <Content Include="ffassets\fuji-xerox\css\local-css\ch\zh-CN\local.min.css">
+      <DependentUpon>local.css</DependentUpon>
+    </Content>
+    <Content Include="ffassets\fuji-xerox\css\local-css\hk\en\local.css" />
+    <Content Include="ffassets\fuji-xerox\css\local-css\hk\en\local.min.css">
+      <DependentUpon>local.css</DependentUpon>
+    </Content>
+    <Content Include="ffassets\fuji-xerox\css\local-css\hk\zh-HK\local.css" />
+    <Content Include="ffassets\fuji-xerox\css\local-css\hk\zh-HK\local.min.css">
+      <DependentUpon>local.css</DependentUpon>
+    </Content>
+    <Content Include="ffassets\fuji-xerox\css\local-css\kor\ja-JP\local.css" />
+    <Content Include="ffassets\fuji-xerox\css\local-css\kor\ja-JP\local.min.css">
+      <DependentUpon>local.css</DependentUpon>
+    </Content>
+    <Content Include="ffassets\fuji-xerox\css\local-css\kor\ko-KR\local.css" />
+    <Content Include="ffassets\fuji-xerox\css\local-css\kor\ko-KR\local.min.css">
+      <DependentUpon>local.css</DependentUpon>
+    </Content>
+    <Content Include="ffassets\fuji-xerox\css\local-css\mm\en\local.css" />
+    <Content Include="ffassets\fuji-xerox\css\local-css\mm\en\local.min.css">
+      <DependentUpon>local.css</DependentUpon>
+    </Content>
+    <Content Include="ffassets\fuji-xerox\css\local-css\mm\my-MM\local.css" />
+    <Content Include="ffassets\fuji-xerox\css\local-css\mm\my-MM\local.min.css">
+      <DependentUpon>local.css</DependentUpon>
+    </Content>
+    <Content Include="ffassets\fuji-xerox\css\local-css\my\en\local.css" />
+    <Content Include="ffassets\fuji-xerox\css\local-css\my\en\local.min.css">
+      <DependentUpon>local.css</DependentUpon>
+    </Content>
+    <Content Include="ffassets\fuji-xerox\css\local-css\nz\en\local.css" />
+    <Content Include="ffassets\fuji-xerox\css\local-css\nz\en\local.min.css">
+      <DependentUpon>local.css</DependentUpon>
+    </Content>
+    <Content Include="ffassets\fuji-xerox\css\local-css\ph\en\local.css" />
+    <Content Include="ffassets\fuji-xerox\css\local-css\ph\en\local.min.css">
+      <DependentUpon>local.css</DependentUpon>
+    </Content>
+    <Content Include="ffassets\fuji-xerox\css\local-css\sg\en\local.css" />
+    <Content Include="ffassets\fuji-xerox\css\local-css\sg\en\local.min.css">
+      <DependentUpon>local.css</DependentUpon>
+    </Content>
+    <Content Include="ffassets\fuji-xerox\css\local-css\tha\en\local.css" />
+    <Content Include="ffassets\fuji-xerox\css\local-css\tha\en\local.min.css">
+      <DependentUpon>local.css</DependentUpon>
+    </Content>
+    <Content Include="ffassets\fuji-xerox\css\local-css\tha\th-TH\local.css" />
+    <Content Include="ffassets\fuji-xerox\css\local-css\tha\th-TH\local.min.css">
+      <DependentUpon>local.css</DependentUpon>
+    </Content>
+    <Content Include="ffassets\fuji-xerox\css\local-css\tw\zh-TW\local.css" />
+    <Content Include="ffassets\fuji-xerox\css\local-css\tw\zh-TW\local.min.css">
+      <DependentUpon>local.css</DependentUpon>
+    </Content>
+    <Content Include="ffassets\fuji-xerox\css\local-css\vn\en\local.css" />
+    <Content Include="ffassets\fuji-xerox\css\local-css\vn\en\local.min.css">
+      <DependentUpon>local.css</DependentUpon>
+    </Content>
+    <Content Include="ffassets\fuji-xerox\css\local-css\vn\vi-VN\local.css" />
+    <Content Include="ffassets\fuji-xerox\css\local-css\vn\vi-VN\local.min.css">
+      <DependentUpon>local.css</DependentUpon>
+    </Content>
+    <Content Include="ffassets\fuji-xerox\css\Login.css" />
+    <Content Include="ffassets\fuji-xerox\css\Login.min.css" />
+    <Content Include="ffassets\fuji-xerox\css\SitecoreLogin.css" />
+    <Content Include="ffassets\fuji-xerox\css\SitecoreLogin.min.css" />
+    <Content Include="ffassets\fuji-xerox\fonts\icomoon.svg" />
+    <Content Include="ffassets\fuji-xerox\images\1200x440-d.png" />
+    <Content Include="ffassets\fuji-xerox\images\1200x440.png" />
+    <Content Include="ffassets\fuji-xerox\images\154x154.png" />
+    <Content Include="ffassets\fuji-xerox\images\276x250.png" />
+    <Content Include="ffassets\fuji-xerox\images\320x140.png" />
+    <Content Include="ffassets\fuji-xerox\images\404-banner-logo.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\640x440-d.png" />
+    <Content Include="ffassets\fuji-xerox\images\969x686.png" />
+    <Content Include="ffassets\fuji-xerox\images\articles\AutoCount.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\articles\case-study.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\articles\ccm.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\articles\c_bpo-fig-03.png" />
+    <Content Include="ffassets\fuji-xerox\images\articles\EF software.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\articles\EF-software.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\articles\EPS.png" />
+    <Content Include="ffassets\fuji-xerox\images\articles\Esker.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\articles\Faxcore.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\articles\Imagine.png" />
+    <Content Include="ffassets\fuji-xerox\images\articles\Infenion.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\articles\Inspiretech.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\articles\MPS.png" />
+    <Content Include="ffassets\fuji-xerox\images\articles\Wavex.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\articles\WMD.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\articles\XPS.png" />
+    <Content Include="ffassets\fuji-xerox\images\blog.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\bnr_ff_en_01-1.png" />
+    <Content Include="ffassets\fuji-xerox\images\bnr_fh_en_01-1.png" />
+    <Content Include="ffassets\fuji-xerox\images\box-2.png" />
+    <Content Include="ffassets\fuji-xerox\images\bronze.png" />
+    <Content Include="ffassets\fuji-xerox\images\CaptchaImage.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\chat-blue.png" />
+    <Content Include="ffassets\fuji-xerox\images\cloud-blue.png" />
+    <Content Include="ffassets\fuji-xerox\images\content\awards\best_employer_brand.png" />
+    <Content Include="ffassets\fuji-xerox\images\content\awards\best_supportive_employer.png" />
+    <Content Include="ffassets\fuji-xerox\images\content\awards\biz-safe-award.png" />
+    <Content Include="ffassets\fuji-xerox\images\content\awards\fogra-cert.png" />
+    <Content Include="ffassets\fuji-xerox\images\content\awards\fsc-cert.png" />
+    <Content Include="ffassets\fuji-xerox\images\content\awards\green_label.png" />
+    <Content Include="ffassets\fuji-xerox\images\content\awards\HR Excellence Awards.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\content\awards\hrm.png" />
+    <Content Include="ffassets\fuji-xerox\images\content\awards\idc.png" />
+    <Content Include="ffassets\fuji-xerox\images\content\awards\iso-14001-cert.png" />
+    <Content Include="ffassets\fuji-xerox\images\content\awards\iso-9001-cert.png" />
+    <Content Include="ffassets\fuji-xerox\images\content\awards\market_probe.png" />
+    <Content Include="ffassets\fuji-xerox\images\content\awards\ohsas-18001-cert.png" />
+    <Content Include="ffassets\fuji-xerox\images\content\awards\service-capability-performance-standard.png" />
+    <Content Include="ffassets\fuji-xerox\images\content\awards\Singapore-Health-Award-Logo-Horiz-CMYK.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\content\awards\singapore-quality-class-award.png" />
+    <Content Include="ffassets\fuji-xerox\images\content\awards\superbrands-logo.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\content\awards\worklifeaward.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\content\banners\docucenter.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\content\banners\events.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\content\banners\home-01-small.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\content\banners\home-01.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\content\banners\home-02-small.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\content\banners\home-02.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\content\banners\home-03-small.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\content\banners\home-03.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\content\banners\home-04-small.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\content\banners\home-04.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\content\banners\solutions.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\content\banner\solutions.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\content\captcha-refresh.png" />
+    <Content Include="ffassets\fuji-xerox\images\content\captcha.png" />
+    <Content Include="ffassets\fuji-xerox\images\content\doc-cover.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\content\events\speakers\speaker_1.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\content\events\speakers\speaker_10.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\content\events\speakers\speaker_11.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\content\events\speakers\speaker_2.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\content\events\speakers\speaker_3.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\content\events\speakers\speaker_4.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\content\events\speakers\speaker_5.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\content\events\speakers\speaker_6.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\content\events\speakers\speaker_7.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\content\events\speakers\speaker_8.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\content\events\speakers\speaker_9.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\content\events\sponsors\logo_1.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\content\events\sponsors\logo_10.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\content\events\sponsors\logo_11.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\content\events\sponsors\logo_2.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\content\events\sponsors\logo_3.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\content\events\sponsors\logo_4.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\content\events\sponsors\logo_5.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\content\events\sponsors\logo_6.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\content\events\sponsors\logo_7.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\content\events\sponsors\logo_8.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\content\events\sponsors\logo_9.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\content\events\thumbnail_1.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\content\events\thumbnail_2.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\content\events\thumbnail_3.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\content\events\thumbnail_4.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\content\events\thumbnail_5.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\content\logo-arcadis.png" />
+    <Content Include="ffassets\fuji-xerox\images\content\mt\mt_bert_wong.png" />
+    <Content Include="ffassets\fuji-xerox\images\content\mt\mt_paulina_chua.png" />
+    <Content Include="ffassets\fuji-xerox\images\content\mt\mt_raphael_foo.png" />
+    <Content Include="ffassets\fuji-xerox\images\content\mt\mt_richard_teo.png" />
+    <Content Include="ffassets\fuji-xerox\images\content\mt\mt_sharon_kong.png" />
+    <Content Include="ffassets\fuji-xerox\images\content\mt\mt_tan_yew_luan.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\content\news_thumbnail_placeholder.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\content\printer-1.png" />
+    <Content Include="ffassets\fuji-xerox\images\content\printer-icon.png" />
+    <Content Include="ffassets\fuji-xerox\images\content\product\product-image.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\content\promotions\thumbnail_1.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\content\promotions\thumbnail_2.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\content\promotions\thumbnail_3.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\content\testimony.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\content\video_thumbnail_01.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\doc-cover.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\drop_wallpaper.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\dummy\captcha\captcha.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\dummy\captcha\loudspeaker.png" />
+    <Content Include="ffassets\fuji-xerox\images\dummy\captcha\refresh.png" />
+    <Content Include="ffassets\fuji-xerox\images\dummy\office-supplies\01.png" />
+    <Content Include="ffassets\fuji-xerox\images\dummy\office-supplies\02.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\dummy\office-supplies\03.png" />
+    <Content Include="ffassets\fuji-xerox\images\dummy\office-supplies\04.png" />
+    <Content Include="ffassets\fuji-xerox\images\dummy\office-supplies\05.png" />
+    <Content Include="ffassets\fuji-xerox\images\dummy\office-supplies\06.png" />
+    <Content Include="ffassets\fuji-xerox\images\dummy\office-supplies\threesteps.png" />
+    <Content Include="ffassets\fuji-xerox\images\fancybox\blank.gif" />
+    <Content Include="ffassets\fuji-xerox\images\fancybox\fancybox_loading%402x.gif" />
+    <Content Include="ffassets\fuji-xerox\images\fancybox\fancybox_loading.gif" />
+    <Content Include="ffassets\fuji-xerox\images\fancybox\fancybox_overlay.png" />
+    <Content Include="ffassets\fuji-xerox\images\fancybox\fancybox_sprite%402x.png" />
+    <Content Include="ffassets\fuji-xerox\images\fancybox\fancybox_sprite.png" />
+    <Content Include="ffassets\fuji-xerox\images\favicon.ico" />
+    <Content Include="ffassets\fuji-xerox\images\flyout\bg-products-dropdown.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\FUJIFILM_Slogan.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\gold.png" />
+    <Content Include="ffassets\fuji-xerox\images\home-blue.png" />
+    <Content Include="ffassets\fuji-xerox\images\icn_download-w.svg" />
+    <Content Include="ffassets\fuji-xerox\images\icn_download.svg" />
+    <Content Include="ffassets\fuji-xerox\images\icon-facebook.svg" />
+    <Content Include="ffassets\fuji-xerox\images\icon-googleplus.svg" />
+    <Content Include="ffassets\fuji-xerox\images\icon-linkedin.svg" />
+    <Content Include="ffassets\fuji-xerox\images\icon-search.svg" />
+    <Content Include="ffassets\fuji-xerox\images\icon-twitter.svg" />
+    <Content Include="ffassets\fuji-xerox\images\icon-youtube.svg" />
+    <Content Include="ffassets\fuji-xerox\images\icons\branch_office_wht.png" />
+    <Content Include="ffassets\fuji-xerox\images\icons\camcorder_wht.png" />
+    <Content Include="ffassets\fuji-xerox\images\icons\chart.png" />
+    <Content Include="ffassets\fuji-xerox\images\icons\chat.png" />
+    <Content Include="ffassets\fuji-xerox\images\icons\chat_white.png" />
+    <Content Include="ffassets\fuji-xerox\images\icons\contact.png" />
+    <Content Include="ffassets\fuji-xerox\images\icons\delivery_cart_wht.png" />
+    <Content Include="ffassets\fuji-xerox\images\icons\handshake.png" />
+    <Content Include="ffassets\fuji-xerox\images\icons\piggybank.png" />
+    <Content Include="ffassets\fuji-xerox\images\icons\video.png" />
+    <Content Include="ffassets\fuji-xerox\images\icons\warehouse_wht.png" />
+    <Content Include="ffassets\fuji-xerox\images\ie\box-button.png" />
+    <Content Include="ffassets\fuji-xerox\images\ie\main-navigation.png" />
+    <Content Include="ffassets\fuji-xerox\images\ie\search-button.png" />
+    <Content Include="ffassets\fuji-xerox\images\ie\short-main-nav.png" />
+    <Content Include="ffassets\fuji-xerox\images\ie\site-footer.png" />
+    <Content Include="ffassets\fuji-xerox\images\ie\site-header.png" />
+    <Content Include="ffassets\fuji-xerox\images\img.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\logo-arcadis.png" />
+    <Content Include="ffassets\fuji-xerox\images\logo.gif" />
+    <Content Include="ffassets\fuji-xerox\images\logos\bg-products-dropdown.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\logos\hp.png" />
+    <Content Include="ffassets\fuji-xerox\images\loudspeaker.png" />
+    <Content Include="ffassets\fuji-xerox\images\main-logo.png" />
+    <Content Include="ffassets\fuji-xerox\images\news2.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\news3.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\news4.png" />
+    <Content Include="ffassets\fuji-xerox\images\news_thumbnail_placeholder.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\office-imaging-blue.png" />
+    <Content Include="ffassets\fuji-xerox\images\product-640x440.png" />
+    <Content Include="ffassets\fuji-xerox\images\qrcode.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\refresh.png" />
+    <Content Include="ffassets\fuji-xerox\images\silver.png" />
+    <Content Include="ffassets\fuji-xerox\images\sitecore-login-logo.png" />
+    <Content Include="ffassets\fuji-xerox\images\solutions\box-1.png" />
+    <Content Include="ffassets\fuji-xerox\images\solutions\box-2.png" />
+    <Content Include="ffassets\fuji-xerox\images\solutions\box-3.png" />
+    <Content Include="ffassets\fuji-xerox\images\solutions\box-4.png" />
+    <Content Include="ffassets\fuji-xerox\images\solutions\box-5.png" />
+    <Content Include="ffassets\fuji-xerox\images\solutions\box-6.png" />
+    <Content Include="ffassets\fuji-xerox\images\solutions\square-photo.png" />
+    <Content Include="ffassets\fuji-xerox\images\solutions_hero.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\sprite.png" />
+    <Content Include="ffassets\fuji-xerox\images\tall.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\twitter-actions.png" />
+    <Content Include="ffassets\fuji-xerox\images\video_thumbnail_01.jpg" />
+    <Content Include="ffassets\fuji-xerox\images\white-asc.gif" />
+    <Content Include="ffassets\fuji-xerox\images\white-desc.gif" />
+    <Content Include="ffassets\fuji-xerox\images\white-unsorted.gif" />
+    <Content Include="ffassets\fuji-xerox\images\yeogurt-swirl.png" />
+    <Content Include="ffassets\fuji-xerox\images\youtube.jpg" />
+    <Content Include="ffassets\fuji-xerox\js\fuji-xerox orig.js" />
+    <Content Include="ffassets\fuji-xerox\js\fuji-xerox.1.2.js" />
+    <Content Include="ffassets\fuji-xerox\js\fuji-xerox.js" />
+    <Content Include="ffassets\fuji-xerox\js\fuji-xerox.min.js">
+      <DependentUpon>fuji-xerox.js</DependentUpon>
+    </Content>
+    <Content Include="ffassets\fuji-xerox\js\main.js" />
+    <Content Include="ffassets\fuji-xerox\js\main.min.js" />
+    <Content Include="ffassets\fuji-xerox\js\modules.js" />
+    <Content Include="ffassets\fuji-xerox\js\modules.min.js" />
+    <Content Include="ffassets\fuji-xerox\js\modules\rr.accordion.js" />
+    <Content Include="ffassets\fuji-xerox\js\modules\rr.articleQuicklinks.js" />
+    <Content Include="ffassets\fuji-xerox\js\modules\rr.backToTop.js" />
+    <Content Include="ffassets\fuji-xerox\js\modules\rr.homeCarousel.js" />
+    <Content Include="ffassets\fuji-xerox\js\modules\rr.modals.js" />
+    <Content Include="ffassets\fuji-xerox\js\modules\rr.navigation.js" />
+    <Content Include="ffassets\fuji-xerox\js\modules\rr.newsroom.js" />
+    <Content Include="ffassets\fuji-xerox\js\modules\rr.productFilters.js" />
+    <Content Include="ffassets\fuji-xerox\js\modules\rr.sideMenu.js" />
+    <Content Include="ffassets\fuji-xerox\js\modules\rr.solutionMapper.js" />
+    <Content Include="ffassets\fuji-xerox\js\plugins.js" />
+    <Content Include="ffassets\fuji-xerox\js\plugins.min.js" />
+    <Content Include="ffassets\fuji-xerox\js\plugins\jquery.customSelect.js" />
+    <Content Include="ffassets\fuji-xerox\js\plugins\jquery.responsiveTable.js" />
+    <Content Include="ffassets\fuji-xerox\js\plugins\jquery.swapeImage.js" />
+    <Content Include="ffassets\fuji-xerox\js\plugins\vendor\enquire.js" />
+    <Content Include="ffassets\fuji-xerox\js\plugins\vendor\handlebars.js" />
+    <Content Include="ffassets\fuji-xerox\js\plugins\vendor\handlebars.runtime.js" />
+    <Content Include="ffassets\fuji-xerox\js\plugins\vendor\jquery.fancybox-media.js" />
+    <Content Include="ffassets\fuji-xerox\js\plugins\vendor\jquery.fancybox.js" />
+    <Content Include="ffassets\fuji-xerox\js\plugins\vendor\jquery.matchHeight-min.js" />
+    <Content Include="ffassets\fuji-xerox\js\plugins\vendor\jquery.stacktable.js" />
+    <Content Include="ffassets\fuji-xerox\js\plugins\vendor\js.cookie.js" />
+    <Content Include="ffassets\fuji-xerox\js\plugins\vendor\shims.js" />
+    <Content Include="ffassets\fuji-xerox\js\plugins\vendor\slick.js" />
+    <Content Include="ffassets\fuji-xerox\js\poc-update.js" />
+    <Content Include="ffassets\fuji-xerox\js\poc.js" />
+    <Content Include="ffassets\fuji-xerox\js\proxychannel7.js" />
+    <Content Include="ffassets\fuji-xerox\js\proxychannel7.min.js">
+      <DependentUpon>proxychannel7.js</DependentUpon>
+    </Content>
+    <Content Include="ffassets\fuji-xerox\js\run-fb.js" />
+    <Content Include="ffassets\fuji-xerox\js\run-fb.min.js">
+      <DependentUpon>run-fb.js</DependentUpon>
+    </Content>
+    <Content Include="ffassets\fuji-xerox\js\typesquare.js" />
+    <Content Include="ffassets\fuji-xerox\js\typesquare.min.js">
+      <DependentUpon>typesquare.js</DependentUpon>
+    </Content>
+    <Content Include="ffassets\fuji-xerox\js\vendor\jquery-1.11.3.js" />
+    <Content Include="ffassets\fuji-xerox\js\vendor\jquery-2.2.4.min.js" />
+    <Content Include="ffassets\fuji-xerox\js\vendor\modernizr.js" />
+    <Content Include="ffassets\fuji-xerox\js\vendor\selectivizr.js" />
+    <Content Include="ffassets\sitecore modules\Shell\emailcampaign\Images\check_document.png" />
+    <Content Include="ffassets\sitecore modules\Shell\emailcampaign\Images\spindown.png" />
+    <Content Include="ffassets\sitecore modules\Shell\emailcampaign\Images\spindown_h.png" />
+    <Content Include="ffassets\sitecore modules\Shell\emailcampaign\Images\spinup.png" />
+    <Content Include="ffassets\sitecore modules\Shell\emailcampaign\Images\spinup_h.png" />
+    <Content Include="ffassets\sitecore modules\Shell\emailcampaign\Images\tooltip_arrow.gif" />
+    <Content Include="ffassets\sitecore modules\Shell\emailcampaign\UI\Controls\EmailCampaign RichText Commands.js" />
+    <Content Include="ffassets\sitecore modules\Shell\emailcampaign\UI\Dialogs\Action Dialogs\ChangeSubscriptions.css" />
+    <Content Include="ffassets\sitecore modules\Shell\emailcampaign\UI\Dialogs\Action Dialogs\ChangeSubscriptions.xml" />
+    <Content Include="ffassets\sitecore modules\Shell\emailcampaign\UI\Dialogs\Action Dialogs\SelectStandardMessage.xml" />
+    <Content Include="ffassets\sitecore modules\Shell\emailcampaign\UI\Dialogs\AddWebPageMessage.xml" />
+    <Content Include="ffassets\sitecore modules\Shell\emailcampaign\UI\Dialogs\InsertUserProperty.xml" />
+    <Content Include="ffassets\sitecore modules\Shell\emailcampaign\UI\Dialogs\MessageBody.aspx" />
+    <Content Include="ffassets\sitecore modules\Shell\emailcampaign\UI\Dialogs\SelectDomain.xaml.xml" />
+    <Content Include="ffassets\sitecore modules\Shell\emailcampaign\UI\Dialogs\SelectRole.xaml.xml" />
+    <Content Include="ffassets\sitecore modules\Shell\emailcampaign\UI\Dialogs\TestSendWizard.xml" />
+    <Content Include="ffassets\sitecore modules\Shell\emailcampaign\UI\Dialogs\TestSMTPConnection.xml" />
+    <Content Include="ffassets\sitecore modules\Shell\emailcampaign\UI\Editors\InsertFolder.xaml.xml" />
+    <Content Include="ffassets\sitecore modules\Shell\emailcampaign\UI\Editors\MessageFolder.xaml.xml" />
+    <Content Include="ffassets\sitecore modules\Shell\emailcampaign\UI\Editors\MessagePreview.css" />
+    <Content Include="ffassets\sitecore modules\Shell\emailcampaign\UI\Editors\MessagePreview.xaml.xml" />
+    <Content Include="ffassets\sitecore modules\Shell\emailcampaign\UI\EmailCampaignShell.css" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Shell\OpenXamlModalDialog\OpenXamlModalDialog.aspx" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\autocomplete.htc" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\Colors\Blue.css" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\Colors\Brown.css" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\Colors\Burgundy.css" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\Colors\Default.css" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\Colors\Green.css" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\Colors\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\Colors\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\Colors\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\Colors\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\Colors\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\Colors\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\Colors\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\Colors\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\Colors\images\ui-icons_222222_256x240.png" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\Colors\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\Colors\images\ui-icons_454545_256x240.png" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\Colors\images\ui-icons_888888_256x240.png" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\Colors\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\Colors\jquery-ui.custom.default.css" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\Colors\Pink.css" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\Colors\Red.css" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\Colors\Violet.css" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\Colors\Yellow.css" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\Custom.css" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\Default.css" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\Firefox\Right-Oriented.css" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\Left-Oriented.css" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\mvc\base\accordion.css" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\mvc\base\all.css" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\mvc\base\autocomplete.css" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\mvc\base\base.css" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\mvc\base\button.css" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\mvc\base\core.css" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\mvc\base\datepicker.css" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\mvc\base\dialog.css" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\mvc\base\draggable.css" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\mvc\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\mvc\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\mvc\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\mvc\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\mvc\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\mvc\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\mvc\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\mvc\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\mvc\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\mvc\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\mvc\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\mvc\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\mvc\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\mvc\base\menu.css" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\mvc\base\progressbar.css" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\mvc\base\resizable.css" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\mvc\base\selectable.css" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\mvc\base\selectmenu.css" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\mvc\base\slider.css" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\mvc\base\sortable.css" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\mvc\base\spinner.css" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\mvc\base\tabs.css" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\mvc\base\theme.css" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\mvc\base\tooltip.css" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\Right-Oriented.css" />
+    <Content Include="ffassets\sitecore modules\Shell\Web Forms for Marketers\Themes\Top-Oriented.css" />
+    <Content Include="ffassets\sitecore modules\Web\EmailCampaign\DedicatedDispatchService.asmx" />
+    <Content Include="ffassets\sitecore modules\Web\EmailCampaign\ECMClientService.asmx" />
+    <Content Include="ffassets\sitecore modules\Web\EmailCampaign\GetUserFields.aspx" />
+    <Content Include="ffassets\sitecore modules\Web\ExperienceExplorer\Assets\css\experience-explorer-global-header.css" />
+    <Content Include="ffassets\sitecore modules\Web\ExperienceExplorer\Assets\css\experience-explorer-iframe-editor.css" />
+    <Content Include="ffassets\sitecore modules\Web\ExperienceExplorer\Assets\css\experience-explorer-iframe-viewer.css" />
+    <Content Include="ffassets\sitecore modules\Web\ExperienceExplorer\Assets\css\experience-explorer-iframe.css" />
+    <Content Include="ffassets\sitecore modules\Web\ExperienceExplorer\Assets\css\experience-explorer.css" />
+    <Content Include="ffassets\sitecore modules\Web\ExperienceExplorer\Assets\experience-explorer-iframe.min.js" />
+    <Content Include="ffassets\sitecore modules\Web\ExperienceExplorer\Assets\experience-explorer.min.js" />
+    <Content Include="ffassets\sitecore modules\Web\ExperienceExplorer\Assets\images\bullet_circle_green.png" />
+    <Content Include="ffassets\sitecore modules\Web\ExperienceExplorer\Assets\images\bullet_circle_red.png" />
+    <Content Include="ffassets\sitecore modules\Web\ExperienceExplorer\Assets\images\bullet_circle_yellow.png" />
+    <Content Include="ffassets\sitecore modules\Web\ExperienceExplorer\Assets\images\check-icon.gif" />
+    <Content Include="ffassets\sitecore modules\Web\ExperienceExplorer\Assets\images\con-tick.png" />
+    <Content Include="ffassets\sitecore modules\Web\ExperienceExplorer\Assets\images\default.jpg" />
+    <Content Include="ffassets\sitecore modules\Web\ExperienceExplorer\Assets\images\element_selection.png" />
+    <Content Include="ffassets\sitecore modules\Web\ExperienceExplorer\Assets\images\fixed-mode.png" />
+    <Content Include="ffassets\sitecore modules\Web\ExperienceExplorer\Assets\images\journey-mode.png" />
+    <Content Include="ffassets\sitecore modules\Web\ExperienceExplorer\Assets\images\loading.gif" />
+    <Content Include="ffassets\sitecore modules\Web\ExperienceExplorer\Assets\images\mode.png" />
+    <Content Include="ffassets\sitecore modules\Web\ExperienceExplorer\Assets\images\no-image.jpg" />
+    <Content Include="ffassets\sitecore modules\Web\ExperienceExplorer\Assets\images\sc-edit.png" />
+    <Content Include="ffassets\sitecore modules\Web\ExperienceExplorer\Assets\images\star.png" />
+    <Content Include="ffassets\sitecore modules\Web\ExperienceExplorer\Assets\images\views.png" />
+    <Content Include="ffassets\sitecore modules\Web\ExperienceExplorer\Assets\vendors.min.js" />
+    <Content Include="ffassets\sitecore modules\Web\ExperienceExplorer\Assets\vendors\jquery-ui\css\jquery-ui-1.9.1.custom.css" />
+    <Content Include="ffassets\sitecore modules\Web\ExperienceExplorer\Commands\ExplorerMode.js" />
+    <Content Include="ffassets\sitecore modules\Web\ExperienceExplorer\Controls\ExpEditor.aspx" />
+    <Content Include="ffassets\sitecore modules\Web\ExperienceExplorer\Controls\ExpExplorerExtender.ascx" />
+    <Content Include="ffassets\sitecore modules\Web\ExperienceExplorer\Controls\ExpFooter.ascx" />
+    <Content Include="ffassets\sitecore modules\Web\ExperienceExplorer\Controls\ExpHeader.ascx" />
+    <Content Include="ffassets\sitecore modules\Web\ExperienceExplorer\Controls\ExpViewer.aspx" />
+    <Content Include="ffassets\sitecore modules\Web\ExperienceExplorer\Controls\GlobalHeader.ascx" />
+    <Content Include="ffassets\sitecore modules\Web\ExperienceExplorer\Dialogs\SelectUser.xaml.xml" />
+    <Content Include="ffassets\sitecore modules\Web\ExperienceExplorer\Services\ContentService.asmx" />
+    <Content Include="ffassets\sitecore modules\Web\ExperienceExplorer\Services\Service.asmx" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\Control\SitecoreSimpleFormAscx.ascx" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\export.aspx" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\content\bootstrap-theme.min.css" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\content\bootstrap.min.css" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\content\Fields.css" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\content\themes\base\accordion.css" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\content\themes\base\all.css" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\content\themes\base\autocomplete.css" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\content\themes\base\base.css" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\content\themes\base\button.css" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\content\themes\base\core.css" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\content\themes\base\datepicker.css" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\content\themes\base\dialog.css" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\content\themes\base\draggable.css" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\content\themes\base\menu.css" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\content\themes\base\progressbar.css" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\content\themes\base\resizable.css" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\content\themes\base\selectable.css" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\content\themes\base\selectmenu.css" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\content\themes\base\slider.css" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\content\themes\base\sortable.css" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\content\themes\base\spinner.css" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\content\themes\base\tabs.css" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\content\themes\base\theme.css" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\content\themes\base\tooltip.css" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\libs\bootstrap\bootstrap.js" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\libs\bootstrap\bootstrap.min.js" />
+    <None Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\libs\jquery\jquery-2.1.3.intellisense.js" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\libs\jquery\jquery-2.1.3.js" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\libs\jquery\jquery-2.1.3.min.js" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\libs\jquery\jquery-ui-1.11.3.js" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\libs\jquery\jquery-ui-1.11.3.min.js" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\libs\jquery\jquery.unobtrusive-ajax.js" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\libs\jquery\jquery.unobtrusive-ajax.min.js" />
+    <None Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\libs\jquery\jquery.validate-vsdoc.js" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\libs\jquery\jquery.validate.js" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\libs\jquery\jquery.validate.min.js" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\libs\jquery\jquery.validate.unobtrusive.js" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\libs\jquery\jquery.validate.unobtrusive.min.js" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\libs\modernizr\modernizr-2.6.2.js" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\main.js" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\main.min.js">
+      <DependentUpon>main.js</DependentUpon>
+    </Content>
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\wffm.js" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\wffm.min.js">
+      <DependentUpon>wffm.js</DependentUpon>
+    </Content>
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\scripts\head.load.min.js" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\scripts\jquery-ui-i18n.js" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\scripts\jquery-ui.min.js" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\scripts\jquery.js" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\scripts\JSON2.min.js" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\scripts\sc.webform.js" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\Tracking.aspx" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\UI\UserControl\Captcha.ascx" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\UI\UserControl\CreditCard.ascx" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\UI\UserControl\PasswordConfirmation.ascx" />
+    <Content Include="ffassets\fuji-xerox\videos\innovation-1200x440_1.mp4" />
+    <Content Include="ffassets\fuji-xerox\videos\mov_bbb.mp4" />
+    <Content Include="ffassets\fuji-xerox\videos\test.mp4" />
+    <Content Include="ffassets\microsite\css\bootstrap.min.css" />
+    <Content Include="ffassets\microsite\css\colorbox.css" />
+    <Content Include="ffassets\microsite\css\custom.css" />
+    <Content Include="ffassets\microsite\css\images\controls.png" />
+    <Content Include="ffassets\microsite\css\images\loading.gif" />
+    <Content Include="ffassets\microsite\css\magnific-popup.css" />
+    <Content Include="ffassets\microsite\css\owl.carousel.css" />
+    <Content Include="ffassets\microsite\css\style.css" />
+    <Content Include="ffassets\microsite\img\16_Whitepaper_Customer_centricity.png" />
+    <Content Include="ffassets\microsite\img\arrow-left-icon.svg" />
+    <Content Include="ffassets\microsite\img\arrow-right-icon.svg" />
+    <Content Include="ffassets\microsite\img\articles\digitizing-workflow.png" />
+    <Content Include="ffassets\microsite\img\articles\resource-management.png" />
+    <Content Include="ffassets\microsite\img\articles\workforce-on-the-go.jpg" />
+    <Content Include="ffassets\microsite\img\brochure-1.jpg" />
+    <Content Include="ffassets\microsite\img\brochure-2.jpg" />
+    <Content Include="ffassets\microsite\img\brochure-3.jpg" />
+    <Content Include="ffassets\microsite\img\brochure-4.jpg" />
+    <Content Include="ffassets\microsite\img\cloud-icon.svg" />
+    <Content Include="ffassets\microsite\img\favicon.ico" />
+    <Content Include="ffassets\microsite\img\feature-banner1.jpg" />
+    <Content Include="ffassets\microsite\img\feature-banner2.jpg" />
+    <Content Include="ffassets\microsite\img\feature-banner3.jpg" />
+    <Content Include="ffassets\microsite\img\feature-banner4.jpg" />
+    <Content Include="ffassets\microsite\img\feature-cloud-icon1.png" />
+    <Content Include="ffassets\microsite\img\feature-cloud-icon2.png" />
+    <Content Include="ffassets\microsite\img\feature-cloud-icon3.png" />
+    <Content Include="ffassets\microsite\img\feature-document-icon1.png" />
+    <Content Include="ffassets\microsite\img\feature-document-icon2.png" />
+    <Content Include="ffassets\microsite\img\feature-document-icon3.png" />
+    <Content Include="ffassets\microsite\img\feature-hero1.jpg" />
+    <Content Include="ffassets\microsite\img\feature-hero2.jpg" />
+    <Content Include="ffassets\microsite\img\feature-hero3.jpg" />
+    <Content Include="ffassets\microsite\img\feature-hero4.jpg" />
+    <Content Include="ffassets\microsite\img\feature-management-icon1.png" />
+    <Content Include="ffassets\microsite\img\feature-management-icon2.png" />
+    <Content Include="ffassets\microsite\img\feature-management-icon3.png" />
+    <Content Include="ffassets\microsite\img\feature-mobile-icon1.png" />
+    <Content Include="ffassets\microsite\img\feature-mobile-icon2.png" />
+    <Content Include="ffassets\microsite\img\feature-mobile-icon3.png" />
+    <Content Include="ffassets\microsite\img\flowchart-icon.svg" />
+    <Content Include="ffassets\microsite\img\fx-logo.png" />
+    <Content Include="ffassets\microsite\img\home-cloud-icon.png" />
+    <Content Include="ffassets\microsite\img\home-flowchart-icon.png" />
+    <Content Include="ffassets\microsite\img\home-hero.jpg" />
+    <Content Include="ffassets\microsite\img\home-manage-icon.png" />
+    <Content Include="ffassets\microsite\img\home-mobile-icon.png" />
+    <Content Include="ffassets\microsite\img\home-slider1.jpg" />
+    <Content Include="ffassets\microsite\img\home-slider2.jpg" />
+    <Content Include="ffassets\microsite\img\home-slider3.jpg" />
+    <Content Include="ffassets\microsite\img\home-solution-icon1.png" />
+    <Content Include="ffassets\microsite\img\home-solution-icon2.png" />
+    <Content Include="ffassets\microsite\img\home-solution-icon3.png" />
+    <Content Include="ffassets\microsite\img\icon-search.svg" />
+    <Content Include="ffassets\microsite\img\img-graphic1.jpg" />
+    <Content Include="ffassets\microsite\img\img-graphic2.jpg" />
+    <Content Include="ffassets\microsite\img\img-graphic3.jpg" />
+    <Content Include="ffassets\microsite\img\img-graphic4.jpg" />
+    <Content Include="ffassets\microsite\img\img-graphic5.jpg" />
+    <Content Include="ffassets\microsite\img\img-graphic6.jpg" />
+    <Content Include="ffassets\microsite\img\img-paper1.jpg" />
+    <Content Include="ffassets\microsite\img\img-paper2.jpg" />
+    <Content Include="ffassets\microsite\img\img-paper3.jpg" />
+    <Content Include="ffassets\microsite\img\img-paper4.jpg" />
+    <Content Include="ffassets\microsite\img\img-paper5.jpg" />
+    <Content Include="ffassets\microsite\img\img-paper6.jpg" />
+    <Content Include="ffassets\microsite\img\infographic_cloud_type_n_security.jpg" />
+    <Content Include="ffassets\microsite\img\infographic_Document-Workflow-heads-to-cloud.jpg" />
+    <Content Include="ffassets\microsite\img\infographic_Leverage-on-data-to-reduce-and-recover-costs.jpg" />
+    <Content Include="ffassets\microsite\img\infographic_Mobilise-your-workplace-with-printing-on-the-go.jpg" />
+    <Content Include="ffassets\microsite\img\infographic_Uncontrolled-workflow-practices-expose-your-organisation-to-unwanted-risks.jpg" />
+    <Content Include="ffassets\microsite\img\infographic_Unleash-your-worforce-productivity.jpg" />
+    <Content Include="ffassets\microsite\img\mobile-icon.svg" />
+    <Content Include="ffassets\microsite\img\people-icon.svg" />
+    <Content Include="ffassets\microsite\img\resource-hero.jpg" />
+    <Content Include="ffassets\microsite\img\resources\16_Whitepaper_Customer_centricity.png" />
+    <Content Include="ffassets\microsite\img\resources\17_Slideshare_10_Hottest_Trends.png" />
+    <Content Include="ffassets\microsite\img\resources\24_Ahead_on_the_cloud.jpg" />
+    <Content Include="ffassets\microsite\img\resources\25_Apps_that_can_bolster_business_productivity.jpg" />
+    <Content Include="ffassets\microsite\img\resources\26_Automating_criticle_backend_functions.jpg" />
+    <Content Include="ffassets\microsite\img\resources\27_Customer_centricity_in_the_digital_age.jpg" />
+    <Content Include="ffassets\microsite\img\resources\28_Digital_document_workflow.jpg" />
+    <Content Include="ffassets\microsite\img\resources\29_Digital_transformation_and_its_impact_on_customer_care.jpg" />
+    <Content Include="ffassets\microsite\img\resources\30_Guarding_against_phishing_attacks_and_social_engineering.jpg" />
+    <Content Include="ffassets\microsite\img\resources\31_How_mobility_can_boost_productivity.jpg" />
+    <Content Include="ffassets\microsite\img\resources\32_Is_my_cloud_secured.jpg" />
+    <Content Include="ffassets\microsite\img\resources\33_Leveraging_the_power_of_partnership.jpg" />
+    <Content Include="ffassets\microsite\img\resources\34_Making_sense_of_the_cloud_bandwagon.jpg" />
+    <Content Include="ffassets\microsite\img\resources\35_Reinvent_your_business_by_rethinking_printing.jpg" />
+    <Content Include="ffassets\microsite\img\resources\36_Shining_a_light_on_shawdow_IT.jpg" />
+    <Content Include="ffassets\microsite\img\resources\37_Simplify_IT_with_cloud.jpg" />
+    <Content Include="ffassets\microsite\img\resources\38_Transforming_business_with_iOT.jpg" />
+    <Content Include="ffassets\microsite\img\resources\39_What_remote_service_can_do_for_you.jpg" />
+    <Content Include="ffassets\microsite\img\resources\40_Why_the_cloud_is_safer_than_your_think.jpg" />
+    <Content Include="ffassets\microsite\img\resources\41_Workforce_mobility.jpg" />
+    <Content Include="ffassets\microsite\img\resources\infographic_cloud_type_n_security.jpg" />
+    <Content Include="ffassets\microsite\img\resources\infographic_Document-Workflow-heads-to-cloud.jpg" />
+    <Content Include="ffassets\microsite\img\resources\infographic_Leverage-on-data-to-reduce-and-recover-costs.jpg" />
+    <Content Include="ffassets\microsite\img\resources\infographic_Mobilise-your-workplace-with-printing-on-the-go.jpg" />
+    <Content Include="ffassets\microsite\img\resources\infographic_Uncontrolled-workflow-practices-expose-your-organisation-to-unwanted-risks.jpg" />
+    <Content Include="ffassets\microsite\img\resources\infographic_Unleash-your-worforce-productivity.jpg" />
+    <Content Include="ffassets\microsite\img\role-hero1.jpg" />
+    <Content Include="ffassets\microsite\img\role-hero2.jpg" />
+    <Content Include="ffassets\microsite\img\role-hero3.jpg" />
+    <Content Include="ffassets\microsite\img\roles-it-icon1.png" />
+    <Content Include="ffassets\microsite\img\roles-it-icon2.png" />
+    <Content Include="ffassets\microsite\img\roles-it-icon3.png" />
+    <Content Include="ffassets\microsite\img\roles-office-icon1.png" />
+    <Content Include="ffassets\microsite\img\roles-office-icon2.png" />
+    <Content Include="ffassets\microsite\img\roles-office-icon3.png" />
+    <Content Include="ffassets\microsite\img\roles-owner-icon1.png" />
+    <Content Include="ffassets\microsite\img\roles-owner-icon2.png" />
+    <Content Include="ffassets\microsite\img\roles-owner-icon3.png" />
+    <Content Include="ffassets\microsite\img\solution-hero1.jpg" />
+    <Content Include="ffassets\microsite\img\solution-hero2.jpg" />
+    <Content Include="ffassets\microsite\img\solution-hero3.jpg" />
+    <Content Include="ffassets\microsite\img\solution-img1.jpg" />
+    <Content Include="ffassets\microsite\img\solution-img2.jpg" />
+    <Content Include="ffassets\microsite\img\solution-img3.jpg" />
+    <Content Include="ffassets\microsite\js\bootstrap-hover-dropdown.min.js" />
+    <Content Include="ffassets\microsite\js\bootstrap.min.js" />
+    <Content Include="ffassets\microsite\js\header.js" />
+    <Content Include="ffassets\microsite\js\jquery.colorbox-min.js" />
+    <Content Include="ffassets\microsite\js\jquery.magnific-popup.min.js" />
+    <Content Include="ffassets\microsite\js\jquery.min.js" />
+    <Content Include="ffassets\microsite\js\jquery.smooth-scroll.js" />
+    <Content Include="ffassets\microsite\js\jquery.zoom.js" />
+    <Content Include="ffassets\microsite\js\main.js" />
+    <Content Include="ffassets\microsite\js\object-fit-polyfill.js" />
+    <Content Include="ffassets\microsite\js\owl.carousel.min.js" />
+    <Content Include="ffassets\microsite\js\svg-injector.min.js" />
+    <Content Include="default.css" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="DataSyncVerification.aspx" />
+    <Content Include="sitecore\shell\Controls\Rich Text Editor\InsertVideo\InsertVideo.js" />
+    <Content Include="sitecore\shell\Controls\Rich Text Editor\InsertVideo\InsertVideo.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="sitecore\shell\Controls\Rich Text Editor\RTECustomization.js" />
+    <Content Include="sitemap.xml" />
+    <Content Include="Views\FX\Layout\FX Blank Layout.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="ffassets\sitecore modules\debug\" />
+    <Folder Include="ffassets\sitecore modules\Shell\emailcampaign\debug\" />
+    <Folder Include="Helpers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Config\Include\FX\FX.Settings.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="..\..\Website\App_Config\Security\Domains.config">
+      <Link>App_Config\Security\Domains.config</Link>
+    </None>
+    <Content Include="App_Config\Include\FX\LanguageFallBackFix\LanguageFallBackFix.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="App_Config\Include\FX\FXPeriodInFileNameFix.config" />
+    <Content Include="App_Config\Include\FX\Phase3\FX.P3.Settings.config">
+      <TransformOnBuild>true</TransformOnBuild>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="App_Config\Include\FX\Phase3\BranchPresets.config" />
+    <Content Include="App_Config\Include\FX\DuplicateReferenceFix\DuplicateReferenceConflictFix.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="App_Config\Include\FX\Phase2\FX.SolrIndex.NewFields.Config" />
+    <Content Include="App_Config\Include\FX\FX.SolrIndex.Reset.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="App_Config\Include\FX\FX.Timezone.config" />
+    <None Include="App_Config\Commands.config" />
+    <None Include="App_Config\Include\FX\Phase3\FX.P3.Settings.Debug.config">
+      <DependentUpon>FX.P3.Settings.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="App_Config\Include\FX\Phase3\FX.P3.Settings.FX Production CM.config">
+      <DependentUpon>FX.P3.Settings.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="App_Config\Include\FX\Phase3\FX.P3.Settings.FX Production.config">
+      <DependentUpon>FX.P3.Settings.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="App_Config\Include\FX\Phase3\FX.P3.Settings.FX Staging.config">
+      <DependentUpon>FX.P3.Settings.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="App_Config\Include\FX\Phase3\FX.P3.Settings.Local.config">
+      <DependentUpon>FX.P3.Settings.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="App_Config\Include\FX\Phase3\FX.P3.Settings.Release.config">
+      <DependentUpon>FX.P3.Settings.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="App_Config\Include\FX\Phase3\FX.P3.Settings.UAT Content.config">
+      <DependentUpon>FX.P3.Settings.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="App_Config\Include\FX\Phase3\FX.P3.Settings.UAT.config">
+      <DependentUpon>FX.P3.Settings.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="App_Config\Include\FX\Phase3\FX.P3.Settings.Website.config">
+      <DependentUpon>FX.P3.Settings.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <Content Include="App_Config\Include\Sitecore.ContentSearch.Solr.DefaultIndexConfiguration.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="App_Config\Include\FX\Phase4\FX.DataSyncApi.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="App_Config\Include\FX\Phase4\FX.P4.Settings.config">
+      <TransformOnBuild>true</TransformOnBuild>
+    </Content>
+    <None Include="App_Config\Include\FX\Phase4\FX.P4.Settings.Debug.config">
+      <DependentUpon>FX.P4.Settings.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="App_Config\Include\FX\Phase4\FX.P4.Settings.FX Production CM.config">
+      <DependentUpon>FX.P4.Settings.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="App_Config\Include\FX\Phase4\FX.P4.Settings.FX Production.config">
+      <DependentUpon>FX.P4.Settings.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="App_Config\Include\FX\Phase4\FX.P4.Settings.FX Staging.config">
+      <DependentUpon>FX.P4.Settings.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="App_Config\Include\FX\Phase4\FX.P4.Settings.Local.config">
+      <DependentUpon>FX.P4.Settings.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="App_Config\Include\FX\Phase4\FX.P4.Settings.Production CM Target.config">
+      <DependentUpon>FX.P4.Settings.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="App_Config\Include\FX\Phase4\FX.P4.Settings.Production Target.config">
+      <DependentUpon>FX.P4.Settings.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="App_Config\Include\FX\Phase4\FX.P4.Settings.Release.config">
+      <DependentUpon>FX.P4.Settings.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="App_Config\Include\FX\Phase4\FX.P4.Settings.UAT Content.config">
+      <DependentUpon>FX.P4.Settings.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="App_Config\Include\FX\Phase4\FX.P4.Settings.UAT.config">
+      <DependentUpon>FX.P4.Settings.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <None Include="App_Config\Include\FX\Phase4\FX.P4.Settings.Website.config">
+      <DependentUpon>FX.P4.Settings.config</DependentUpon>
+      <IsTransformFile>True</IsTransformFile>
+    </None>
+    <Content Include="App_Config\Include\FX\Phase4_1b\FX.P4.RichText.config" />
+    <Content Include="App_Config\Include\FX\Phase4_1b\FX.P4_1b.Settings.config" />
+    <Content Include="App_Config\Include\FX\Phase4_1b\FX.P4_1b.Settings.Debug.config" />
+    <Content Include="App_Config\Include\FX\Phase4_1b\FX.P4_1b.Settings.FX Production CM.config" />
+    <Content Include="App_Config\Include\FX\Phase4_1b\FX.P4_1b.Settings.FX Production.config" />
+    <Content Include="App_Config\Include\FX\Phase4_1b\FX.P4_1b.Settings.FX Staging.config" />
+    <Content Include="App_Config\Include\FX\Phase4_1b\FX.P4_1b.Settings.Local.config" />
+    <Content Include="App_Config\Include\FX\Phase4_1b\FX.P4_1b.Settings.Release.config" />
+    <Content Include="App_Config\Include\FX\Phase4_1b\FX.P4_1b.Settings.UAT Content.config" />
+    <Content Include="App_Config\Include\FX\Phase4_1b\FX.P4_1b.Settings.UAT.config" />
+    <None Include="App_Config\Sitecore.config" />
+    <Content Include="ffassets\fuji-xerox\api\career-listing.json" />
+    <Content Include="ffassets\fuji-xerox\api\event-results.json" />
+    <Content Include="ffassets\fuji-xerox\api\insight-map.json" />
+    <Content Include="ffassets\fuji-xerox\api\insights.json" />
+    <Content Include="ffassets\fuji-xerox\api\new-reseller.json" />
+    <Content Include="ffassets\fuji-xerox\api\new-reseller2.json" />
+    <Content Include="ffassets\fuji-xerox\api\news.json" />
+    <Content Include="ffassets\fuji-xerox\api\product-listing.json" />
+    <Content Include="ffassets\fuji-xerox\api\reseller.json" />
+    <Content Include="ffassets\fuji-xerox\api\reseller2.json" />
+    <Content Include="ffassets\fuji-xerox\api\solution-map.json" />
+    <Content Include="ffassets\fuji-xerox\api\solution-results.json" />
+    <Content Include="ffassets\fuji-xerox\api\solutions.json" />
+    <Content Include="ffassets\fuji-xerox\api\story-results.json" />
+    <Content Include="ffassets\fuji-xerox\css\Default.css.map" />
+    <Content Include="ffassets\fuji-xerox\css\fuji-xerox-print.css.map" />
+    <Content Include="ffassets\fuji-xerox\css\fuji-xerox.css.map" />
+    <Content Include="ffassets\fuji-xerox\css\SitecoreLogin.css.map" />
+    <Content Include="ffassets\fuji-xerox\fonts\icomoon.eot" />
+    <Content Include="ffassets\fuji-xerox\fonts\icomoon.ttf" />
+    <Content Include="ffassets\fuji-xerox\fonts\icomoon.woff" />
+    <Content Include="ffassets\fuji-xerox\js\fuji-xerox.js orig.map" />
+    <Content Include="ffassets\fuji-xerox\js\fuji-xerox.js.map" />
+    <Content Include="ffassets\microsite\css\.sass-cache\b75d4f1b04a7e059751acea9a553f9398b157b81\custom.scssc" />
+    <Content Include="ffassets\microsite\css\custom.css.bkp06June2017.disabled" />
+    <Content Include="ffassets\microsite\css\custom.css.bkp1" />
+    <Content Include="ffassets\microsite\css\custom.css.map" />
+    <Content Include="ffassets\microsite\css\custom.scss" />
+    <Content Include="ffassets\microsite\css\images\Thumbs.db" />
+    <Content Include="ffassets\microsite\documents\.DS_Store" />
+    <Content Include="ffassets\microsite\documents\brochure-1.pdf" />
+    <Content Include="ffassets\microsite\documents\brochure-2.pdf" />
+    <Content Include="ffassets\microsite\documents\brochure-3.pdf" />
+    <Content Include="ffassets\microsite\documents\brochure-4.pdf" />
+    <Content Include="ffassets\microsite\documents\CE_White_Paper_Give_Your_Customer_a_Voice_How_You_Can_Transform_Your_SMB_with__a_Customer_Centric_Focus.pdf" />
+    <Content Include="ffassets\microsite\documents\infographic_Leverage_on_data_to_reduce_and_recover_costs.pdf" />
+    <Content Include="ffassets\microsite\documents\infographic_Mobilise_your_workplace_with_printing_on_the_go.pdf" />
+    <Content Include="ffassets\microsite\documents\infographic_Uncontrolled_workflow_practices_expose_your_organisation_to_unwanted_risks.pdf" />
+    <Content Include="ffassets\microsite\documents\infographic_Unleash_your_worforce_productivity.pdf" />
+    <Content Include="ffassets\microsite\documents\Insights-_Cloud_Infographics.pdf" />
+    <Content Include="ffassets\microsite\documents\IT_Infographic_cloud_types_and_security.pdf" />
+    <Content Include="ffassets\microsite\documents\slideshare_10_hottest_trends.pdf" />
+    <Content Include="ffassets\microsite\documents\Thumbs.db" />
+    <Content Include="ffassets\microsite\fonts\XeroxSans-Bold.otf" />
+    <Content Include="ffassets\microsite\fonts\XeroxSans-Light.otf" />
+    <Content Include="ffassets\microsite\img\.DS_Store" />
+    <Content Include="ffassets\microsite\img\articles\.DS_Store" />
+    <Content Include="ffassets\microsite\img\articles\Thumbs.db" />
+    <Content Include="ffassets\microsite\img\resources\.DS_Store" />
+    <Content Include="ffassets\microsite\img\resources\Thumbs.db" />
+    <Content Include="ffassets\microsite\img\Thumbs.db" />
+    <Content Include="App_Config\UrlRewrite\RewriteRules.config" />
+    <None Include="bundleconfig.json" />
+    <Content Include="ffassets\sitecore modules\Shell\emailcampaign\Web.config" />
+    <Content Include="ffassets\sitecore modules\Web\ExperienceExplorer\Assets\experience-explorer-iframe.min.js.map" />
+    <Content Include="ffassets\sitecore modules\Web\ExperienceExplorer\Assets\experience-explorer.min.js.map" />
+    <Content Include="ffassets\sitecore modules\Web\ExperienceExplorer\Assets\vendors.min.js.map" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\libs\bootstrap\bootstrap.min.js.map" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\libs\jquery\jquery-2.1.3.min.js.map" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\libs\jquery\jquery-ui-1.11.3.min.js.map" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\libs\jquery\jquery.unobtrusive-ajax.min.js.map" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\libs\jquery\jquery.validate.min.js.map" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\libs\jquery\jquery.validate.unobtrusive.min.js.map" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\main.min.js.map" />
+    <Content Include="ffassets\sitecore modules\Web\Web Forms for Marketers\mvc\wffm.min.js.map" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\Production CM Target.pubxml" />
+    <None Include="Properties\PublishProfiles\Production Target.pubxml" />
+    <None Include="Properties\PublishProfiles\Deploy to UAT Release.pubxml" />
+    <None Include="Properties\PublishProfiles\to local.pubxml" />
+    <None Include="Properties\PublishProfiles\Dev Publish Debug.pubxml" />
+    <None Include="Properties\PublishProfiles\FujiXerox.pubxml" />
+    <Content Include="Views\Alipay\AlipayForm.cshtml" />
+    <Content Include="Views\Alipay\AlipaySubmit.cshtml" />
+    <Content Include="Views\Form\EditorTemplates\CheckboxField.cshtml" />
+    <Content Include="Views\Form\EditorTemplates\CheckboxListField.cshtml" />
+    <Content Include="Views\Form\EditorTemplates\DateField.cshtml" />
+    <Content Include="Views\Form\EditorTemplates\DatePickerField.cshtml" />
+    <Content Include="Views\Form\EditorTemplates\DropListField.cshtml" />
+    <Content Include="Views\Form\EditorTemplates\FieldViewModel.cshtml" />
+    <Content Include="Views\Form\EditorTemplates\FileUploadField.cshtml" />
+    <Content Include="Views\Form\EditorTemplates\FormViewModel.cshtml" />
+    <Content Include="Views\Form\EditorTemplates\FormViewModelold.cshtml" />
+    <Content Include="Views\Form\EditorTemplates\ListBoxField.cshtml" />
+    <Content Include="Views\Form\EditorTemplates\MultipleLineTextField.cshtml" />
+    <Content Include="Views\Form\EditorTemplates\PasswordConfirmationField.cshtml" />
+    <Content Include="Views\Form\EditorTemplates\RadioListField.cshtml" />
+    <Content Include="Views\Form\EditorTemplates\RecaptchaField.cshtml" />
+    <Content Include="Views\Form\EditorTemplates\SectionViewModel.cshtml" />
+    <Content Include="Views\Form\Index.cshtml" />
+    <Content Include="Views\Form\SuccessRedirect.cshtml" />
+    <Content Include="Views\Form\Web.config" />
+    <Content Include="Views\FX\Component\Accordion.cshtml" />
+    <Content Include="Views\FX\Component\Announcement.cshtml" />
+    <Content Include="Views\FX\Component\AsidePanel.cshtml" />
+    <Content Include="Views\FX\Component\BlankPage.cshtml" />
+    <Content Include="Views\FX\Component\CareerApplyNow.cshtml" />
+    <Content Include="Views\FX\Component\Carousel.cshtml" />
+    <Content Include="Views\FX\Component\ChatWindow.cshtml" />
+    <Content Include="Views\FX\Component\ChildCards.cshtml" />
+    <Content Include="Views\FX\Component\CtaPanel.cshtml" />
+    <Content Include="Views\FX\Component\EventAgenda.cshtml" />
+    <Content Include="Views\FX\Component\EventFeaturedSpeaker.cshtml" />
+    <Content Include="Views\FX\Component\EventOverview.cshtml" />
+    <Content Include="Views\FX\Component\FeaturedContent.cshtml" />
+    <Content Include="Views\FX\Component\Footer.cshtml" />
+    <Content Include="Views\FX\Component\FormPlaceholder.cshtml" />
+    <Content Include="Views\FX\Component\FullWidthVideo.cshtml" />
+    <Content Include="Views\FX\Component\GeneralLinks.cshtml" />
+    <Content Include="Views\FX\Component\Header.cshtml" />
+    <Content Include="Views\FX\Component\HeaderlessBlankPage.cshtml" />
+    <Content Include="Views\FX\Component\HeaderlessBlankPageBodyComponent.cshtml" />
+    <Content Include="Views\FX\Component\HeroBanner.cshtml" />
+    <Content Include="Views\FX\Component\HomepagePanel.cshtml" />
+    <Content Include="Views\FX\Component\IFrame.cshtml" />
+    <Content Include="Views\FX\Component\InquiryComponent.cshtml" />
+    <Content Include="Views\FX\Component\ItemListing.cshtml" />
+    <Content Include="Views\FX\Component\LanguageSelector.cshtml" />
+    <Content Include="Views\FX\Component\LanguageSelectorMobile.cshtml" />
+    <Content Include="Views\FX\Component\LatestEvents.cshtml" />
+    <Content Include="Views\FX\Component\LatestNews.cshtml" />
+    <Content Include="Views\FX\Component\Listings.cshtml" />
+    <Content Include="Views\FX\Component\PanelComponent.cshtml" />
+    <Content Include="Views\FX\Component\ProductIntro.cshtml" />
+    <Content Include="Views\FX\Component\QuickLinks.cshtml" />
+    <Content Include="Views\FX\Component\RecommendedProducts.cshtml" />
+    <Content Include="Views\FX\Component\RelatedPages.cshtml" />
+    <Content Include="Views\FX\Component\RelatedProducts.cshtml" />
+    <Content Include="Views\FX\Component\RelatedProductsAndSolutions.cshtml" />
+    <Content Include="Views\FX\Component\Resources.cshtml" />
+    <Content Include="Views\FX\Component\RichText.cshtml" />
+    <Content Include="Views\FX\Component\SocialFeed.cshtml" />
+    <Content Include="Views\FX\Component\TabbedCarousel.cshtml" />
+    <Content Include="Views\FX\Component\TakeTheNextStep.cshtml" />
+    <Content Include="Views\FX\Component\TestimonyBox.cshtml" />
+    <Content Include="Views\FX\Component\ThreeQuarterCarousel.cshtml" />
+    <Content Include="Views\FX\Component\TitleAndText.cshtml" />
+    <Content Include="Views\FX\Component\TopCarousel.cshtml" />
+    <Content Include="Views\FX\Component\MainBanner.cshtml" />
+    <Content Include="Views\FX\Component\TwoColumnCarousel.cshtml" />
+    <Content Include="Views\FX\Component\TwoColumnFormPlaceholder.cshtml" />
+    <Content Include="Views\FX\Component\VideoBox.cshtml" />
+    <Content Include="Views\FX\Component\_ProductForm.cshtml" />
+    <Content Include="Views\FX\EXM\Component\BannerImage.cshtml" />
+    <Content Include="Views\FX\EXM\Component\BarContentLeft.cshtml" />
+    <Content Include="Views\FX\EXM\Component\BarContentRight.cshtml" />
+    <Content Include="Views\FX\EXM\Component\CtaButton.cshtml" />
+    <Content Include="Views\FX\EXM\Component\EmailBody.cshtml" />
+    <Content Include="Views\FX\EXM\Component\Footer.cshtml" />
+    <Content Include="Views\FX\EXM\Component\Header.cshtml" />
+    <Content Include="Views\FX\EXM\Component\StripImage.cshtml" />
+    <Content Include="Views\FX\EXM\Component\TwoCol.cshtml" />
+    <Content Include="Views\FX\EXM\Layout\_BaseLayout.cshtml" />
+    <Content Include="Views\FX\Layout\_BaseLayout.cshtml" />
+    <Content Include="Views\FX\Layout\_BlankLayout.cshtml" />
+    <Content Include="Views\FX\Layout\_PopupLayout.cshtml" />
+    <Content Include="Views\FX\Page\BlankPage.cshtml" />
+    <Content Include="Views\FX\Page\CareerDetailPage.cshtml" />
+    <Content Include="Views\FX\Page\CareerListingPage.cshtml" />
+    <Content Include="Views\FX\Page\EventDetailPage.cshtml" />
+    <Content Include="Views\FX\Page\EventListingPage.cshtml" />
+    <Content Include="Views\FX\Page\EventRegistrationPage.cshtml" />
+    <Content Include="Views\FX\Page\FullWidthPage.cshtml" />
+    <Content Include="Views\FX\Page\Home.cshtml" />
+    <Content Include="Views\FX\Page\InsightPage.cshtml" />
+    <Content Include="Views\FX\Page\LandingPage.cshtml" />
+    <Content Include="Views\FX\Page\NewResellerLocatorPage.cshtml" />
+    <Content Include="Views\FX\Page\NewsroomPage.cshtml" />
+    <Content Include="Views\FX\Page\PopupForm.cshtml" />
+    <Content Include="Views\FX\Page\ProductCategoryFilter.cshtml" />
+    <Content Include="Views\FX\Page\ProductComparePage.cshtml" />
+    <Content Include="Views\FX\Page\ProductFinderPage.cshtml" />
+    <Content Include="Views\FX\Page\ProductListingPage.cshtml" />
+    <Content Include="Views\FX\Page\ProductPage.cshtml" />
+    <Content Include="Views\FX\Page\PromotionDetailPage.cshtml" />
+    <Content Include="Views\FX\Page\PromotionListingPage.cshtml" />
+    <Content Include="Views\FX\Page\ResellerLocator.cshtml" />
+    <Content Include="Views\FX\Page\SearchPage.cshtml" />
+    <Content Include="Views\FX\Page\SitemapPage.cshtml" />
+    <Content Include="Views\FX\Page\SnSPage.cshtml" />
+    <Content Include="Views\FX\Page\StandardPage.cshtml" />
+    <Content Include="Views\FX\Page\SuccessStoriesLandingPage.cshtml" />
+    <Content Include="Views\FX\Page\SuccessStoryDetailPage.cshtml" />
+    <Content Include="Views\FX\Page\TopicPage.cshtml" />
+    <Content Include="Views\FX\Shared\AddThis.cshtml" />
+    <Content Include="Views\FX\Shared\Bottom.cshtml" />
+    <Content Include="Views\FX\Shared\Breadcrumb.cshtml" />
+    <Content Include="Views\FX\Shared\EnquiryForm.cshtml" />
+    <Content Include="Views\FX\Shared\Head.cshtml" />
+    <Content Include="Views\FX\Shared\IFrameMicrositeComponent.cshtml" />
+    <Content Include="Views\FX\Shared\LinkData.cshtml" />
+    <Content Include="Views\FX\Shared\MainNavigation.cshtml" />
+    <Content Include="Views\FX\Shared\RichText.cshtml" />
+    <Content Include="Views\FX\Shared\SiblingNavigation.cshtml" />
+    <Content Include="Views\FX\Shared\SideBarNotification.cshtml" />
+    <Content Include="Views\FX\Shared\SideMenu.cshtml" />
+    <Content Include="Views\FX\Shared\TopBanner.cshtml" />
+    <Content Include="Views\Microsite\Component\ContactForm.cshtml" />
+    <Content Include="Views\Microsite\Component\Discover.cshtml" />
+    <Content Include="Views\Microsite\Component\FeaturedContent.cshtml" />
+    <Content Include="Views\Microsite\Component\FeaturedRows.cshtml" />
+    <Content Include="Views\Microsite\Component\Footer.cshtml" />
+    <Content Include="Views\Microsite\Component\Header.cshtml" />
+    <Content Include="Views\Microsite\Component\HeroBanner.cshtml" />
+    <Content Include="Views\Microsite\Component\HtmlComponent.cshtml" />
+    <Content Include="Views\Microsite\Component\IFrameMicrositeComponent.cshtml" />
+    <Content Include="Views\Microsite\Component\Introduction.cshtml" />
+    <Content Include="Views\Microsite\Component\Listings.cshtml" />
+    <Content Include="Views\Microsite\Component\MainContent.cshtml" />
+    <Content Include="Views\Microsite\Component\MicrositeArticleCarousel.cshtml" />
+    <Content Include="Views\Microsite\Component\MicrositeBrochureCarousel.cshtml" />
+    <Content Include="Views\Microsite\Component\MicrositeCarousel.cshtml" />
+    <Content Include="Views\Microsite\Component\MicrositeFormComponent.cshtml" />
+    <Content Include="Views\Microsite\Component\MicrositeVideoCarousel.cshtml" />
+    <Content Include="Views\Microsite\Component\PowerfulFeatures.cshtml" />
+    <Content Include="Views\Microsite\Component\PowerfulFeaturesThreeColumn.cshtml" />
+    <Content Include="Views\Microsite\Component\TwoColumnContentBlock.cshtml" />
+    <Content Include="Views\Microsite\Component\TwoColumnImageFormComponent.cshtml" />
+    <Content Include="Views\Microsite\Component\TwoColumnImageTextContentBlock.cshtml" />
+    <Content Include="Views\Microsite\Component\TwoColumnTextFormComponent.cshtml" />
+    <Content Include="Views\Microsite\Layout\MicrositeLayout.cshtml" />
+    <Content Include="Views\Microsite\Shared\Head.cshtml" />
+    <Content Include="Views\Microsite\Shared\MicrositeBreadcrumb.cshtml" />
+    <Content Include="Views\Microsite\Shared\MicrositeNavigation.cshtml" />
+    <Content Include="Views\Microsite\Shared\MicrositeSubNavigation.cshtml" />
+    <Content Include="Views\Shared\ExperienceExplorerView.cshtml" />
+    <Content Include="Views\web.config" />
+    <Content Include="Views\FX\Component\CategoryBanner.cshtml" />
+    <Content Include="Views\FX\Component\LinkToMainPage.cshtml" />
+    <Content Include="Web.config" />
+    <Content Include="Views\FX\Shared\_CookiePolicy.cshtml" />
+    <Content Include="Views\Gcaptcha\recaptchavthree.cshtml" />
+    <Content Include="Views\FX\Shared\FormReporting.cshtml" />
+    <Content Include="Views\FX\Shared\FormReportingData.cshtml" />
+    <None Include="Web.Debug.config" />
+    <None Include="Web.FX Production CM.config" />
+    <None Include="Web.FX Production.config" />
+    <None Include="Web.FX Staging.config" />
+    <None Include="Web.Local.config" />
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.UAT Content.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.UAT.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AD.Alipay\AD.Alipay.csproj">
+      <Project>{9d8815b4-ff41-4d96-8164-a7feea4a51b4}</Project>
+      <Name>AD.Alipay</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BranchPresets\BranchPresets.csproj">
+      <Project>{40613875-c8e6-4784-93f0-298305ce8804}</Project>
+      <Name>BranchPresets</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FX.Core\FX.Core.csproj">
+      <Project>{24c8a184-5da3-4e2d-81a7-2da20bd04ec9}</Project>
+      <Name>FX.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Local|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'FX Staging|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'FX Production|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'UAT|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'FX Production CM|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'UAT Content|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="..\packages\Microsoft.VisualStudio.SlowCheetah.3.0.61\build\Microsoft.VisualStudio.SlowCheetah.targets" Condition="Exists('..\packages\Microsoft.VisualStudio.SlowCheetah.3.0.61\build\Microsoft.VisualStudio.SlowCheetah.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.VisualStudio.SlowCheetah.3.0.61\build\Microsoft.VisualStudio.SlowCheetah.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.VisualStudio.SlowCheetah.3.0.61\build\Microsoft.VisualStudio.SlowCheetah.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

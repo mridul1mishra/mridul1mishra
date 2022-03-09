@@ -1,0 +1,12 @@
+﻿@using FX.Core.Utils
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Components.IRichText>
+
+<section class="section">
+	@if (!string.IsNullOrEmpty(Model.SectionTitle))
+	{
+		<a id="" class="anchor-link" data-label="@Model.SectionTitle"></a>
+	}
+	<h2>@Model.SectionTitle.Left(FX.Core.Constants.MaxLength.SectionTitle)</h2>
+
+	@Editable(Model, i => i.MainContent)
+</section>

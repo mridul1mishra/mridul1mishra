@@ -1,0 +1,73 @@
+﻿@model FX.Core.Models.Form.FormReportingData
+@using System.Linq
+@using System.Collections.Generic
+@using System.Data
+
+<style type="text/css">
+    table, th, td {
+        border: 1px solid black;
+    }
+
+    td, th {
+        vertical-align: top;
+    }
+</style>
+
+<script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+
+<script>
+
+    function ExportToExcel(type, fn, dl) {
+        var elt = document.getElementById('tbl_exporttable_to_xls');
+        var wb = XLSX.utils.table_to_book(elt, { sheet: "sheet1" });
+        return dl ?
+            XLSX.write(wb, { bookType: type, bookSST: true, type: 'base64' }) :
+            XLSX.writeFile(wb, fn || ('MySheetName.' + (type || 'xlsx')));
+    }
+
+</script>
+
+<div class="data-table">
+    @if (Model != null && Model.FormDataTable != null && Model.FormDataTable.Rows.Count > 0)
+    {
+        <button onclick="ExportToExcel('xlsx'); return false;">Export table to excel</button>
+        var columnNames = Model.FormDataTable.Columns;
+        <table id="tbl_exporttable_to_xls" cellpadding="0" cellspacing="0">
+            <thead>
+                @foreach (DataColumn dataColumn in columnNames)
+                {
+                    if (!string.IsNullOrEmpty(dataColumn.ColumnName) && dataColumn.ColumnName.Contains("-"))
+                    {
+                    <th>@dataColumn.ColumnName.Substring(0, dataColumn.ColumnName.LastIndexOf("-") - 1)</th>
+                }
+                else
+                {
+                    <th>@dataColumn.ColumnName</th>
+                }
+
+            }
+                </thead>
+                <tbody>
+                    @foreach (DataRow row in Model.FormDataTable.Rows)
+                    {
+                        <tr>
+                            @foreach (var item in row.ItemArray)
+                            {
+                                <td>@item.ToString()</td>
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <div class="message">
+                No data found
+            </div>
+        }
+
+</div>
+
+
+

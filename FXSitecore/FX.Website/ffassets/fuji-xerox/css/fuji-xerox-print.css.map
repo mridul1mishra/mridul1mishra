@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,YAAa;EACZ,KAEC;IADA,MAAM,EAAE,IAAI",
+"sources": ["../../../../_styles/fuji-xerox-print.scss"],
+"names": [],
+"file": "fuji-xerox-print.css"
+}

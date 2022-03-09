@@ -1,0 +1,84 @@
+﻿@using FX.Core.GlassMapper
+@using FX.Core.Utils
+@using FX.Core.Models.Products
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Components.IProductIntro>
+
+@{
+	bool hasContent = this.IsInEditingMode || Model != null;
+}
+
+@if (this.IsInEditingMode)
+{
+	<h2 style="text-align:center">[@FXGlassView.GetComponentName()]</h2>
+}
+
+@if (hasContent)
+{
+    var currentPage = Model.ProductPage;
+    var enquiryLink = currentPage.GetEnquiryLink();
+    var productListingPage = currentPage.GetListingPage(this.SitecoreContext);
+    string enquiryLinkUrl = FXGlassView.GetButtonUrl(productListingPage, enquiryLink, currentPage.MainTitle);
+    var contactLinkAttribute = new
+    {
+        @class = "contact-link modalbox"
+    };
+
+	<section class="section product-introduction">
+		@if (!string.IsNullOrEmpty(Model.SectionTitle))
+		{
+			if (Model.ShowInStickyTab)
+			{
+				<a id='content@(Model.Id.ToString("N"))' class="anchor-link" data-label="@Model.SectionTitle.Left(FX.Core.Constants.MaxLength.SectionTitle)"></a>
+			}
+			<h3>
+				@Editable(Model, x => x.SectionTitle)
+			</h3>
+		}
+		<div class="row-col-12">
+			<div class="col-sm-7 desc">
+				@if (FXGlassView.IsNew(currentPage.ArticleDate.ToLocalTime()))
+				{
+					<span class="label new-item">@productListingPage.NewLabel</span>
+				}
+				@if (FXGlassView.IsFieldVisible(this.IsInEditingMode, currentPage.MainTitle))
+				{
+					<h4 class="product-name">@Editable(currentPage, x => x.MainTitle)</h4>
+				}
+
+				@if (this.IsInEditingMode)
+				{
+					using (BeginEditFrame(FX.Core.Keys.EditorItems.ProductEnquiryForm, currentPage.Id.ToString()))
+					{
+						<p>
+							@Editable(currentPage, x => x.ProductFormLinkText)
+							<br />
+							@RenderLink(currentPage, x => x.ProductLink, contactLinkAttribute, isEditable: true)
+						</p>
+					}
+				}
+				else if (enquiryLink != null && !string.IsNullOrEmpty(enquiryLinkUrl))
+				{
+					<p>
+						@if (enquiryLink.IsEnquiryForm)
+						{
+							<a href="#productForm" class="button contact-link @enquiryLink.ButtonType" data-iframe="@enquiryLinkUrl" data-productid="@Util.GetNormalizedId(currentPage.Id)">@enquiryLink.Label</a>
+						}
+						else
+						{
+							<a href="@enquiryLinkUrl" class="button contact-link @enquiryLink.ButtonType" target="_blank" data-productid="@Util.GetNormalizedId(currentPage.Id)">@enquiryLink.Label</a>
+						}
+					</p>
+				}
+
+				@Editable(Model, x => x.MainContent)
+			</div>
+
+			@if (FXGlassView.IsFieldVisible(this.IsInEditingMode, currentPage.ProductImage))
+			{
+				<div class="col-sm-5 image push-left-10">
+					@RenderImage(currentPage, x => x.ProductImage, isEditable: true)
+				</div>
+			}
+		</div>
+	</section>
+}

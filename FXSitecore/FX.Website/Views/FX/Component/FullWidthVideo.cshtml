@@ -1,0 +1,53 @@
+﻿@using FX.Core.Utils
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Components.TwoColumnCarousel.IFullWidthVideo>
+
+@{
+    bool hasContent = Model != null && Model.Video != null && !string.IsNullOrEmpty(Model.Video.Src) || Model != null && this.IsInEditingMode;
+}
+
+@if (this.IsInEditingMode)
+{
+    <h2 style="text-align:center">[Video Looping Banner Component]</h2>
+    if (Model == null)
+    {
+        <p>No component datasource found</p>
+    }
+}
+
+@if (hasContent)
+{
+    string videoUrl = Model.Video != null && !string.IsNullOrEmpty(Model.Video.Src) ? Model.Video.Src : string.Empty;
+    string linkToUrl = Model.LinkTo != null && !string.IsNullOrEmpty(Model.LinkTo.Url) ? Model.LinkTo.Url : string.Empty;
+
+    
+    <section class="section">
+        @if (!string.IsNullOrEmpty(Model.SectionTitle) && Model.ShowInStickyTab)
+        {
+            <a id='content@(Model.Id.ToString("N"))' class="anchor-link" data-label="@Model.SectionTitle.Left(FX.Core.Constants.MaxLength.SectionTitle)"></a>
+        }
+        <div class="video-looping">
+            <div class="video-looping__video">
+                <video src="@videoUrl" autoplay muted loop></video>
+            </div>
+            <div class="video-looping__overlay">
+                <p class="year">
+                    <span>
+                        @RenderImage(Model, x => x.Image)
+                    </span>
+                </p>
+                @if (!string.IsNullOrEmpty(Model.Title))
+                {
+                    <p class="title">@Model.Title</p>
+                }
+                @if (!string.IsNullOrEmpty(linkToUrl))
+                {
+                    <a href="@linkToUrl">
+                        <p class="next tablet-desktop">
+                            <span>Next</span>
+                        </p>
+                    </a>
+                }
+            </div>
+        </div>
+    </section>
+}

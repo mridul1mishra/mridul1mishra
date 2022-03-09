@@ -1,0 +1,75 @@
+﻿@using FX.Core.GlassMapper
+@using System.Web.Mvc.Html
+@using Sitecore.Mvc
+@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.EXM.Header>
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" border-collapse collapse;>
+    <tbody>
+        <tr>
+            <td align="center" bgcolor="#d9d9d6" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse;">
+                <div class="wrapper">
+                    <!-- START: Email Header-->
+                    <!--[if mso | IE]>
+                    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="640" align="center" style="width: 640px;">
+                    <tr>
+                    <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
+                    <![endif]-->
+                    <div style="background: #ffffff; margin: 0px auto; max-width: 640px;">
+                        <table role="presentation" border="0" cellpadding="0" cellspacing="0" style="border-bottom: 1px solid #ebebeb; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; border-collapse: collapse;" align="center" width="100%">
+                            <tbody>
+                                @if (Request.QueryString["sc_pd_view"] != "1")
+                                {
+                                    <tr>
+                                        <td class="browser-padding" width="100%" align="right" bgcolor="#ebebeb" border="0" style="width: 100%; cursor: auto; font-family: Arial, sans-serif; font-size: 12px; line-height: 16px; mso-table-lspace: 0pt; mso-table-rspace: 0pt; padding-left: 15px; padding-right: 15px; padding-top: 12px; padding-bottom: 11px; border-collapse: collapse; background: #ebebeb;">
+                                            <p style="display: block; margin: 0; text-align: center; color: #101010;">
+                                                @Editable(Model, m => m.TopText)&nbsp;
+                                                <a href="/?sc_itemid=@Sitecore.Context.Item.ID&sc_lang=@Sitecore.Context.Language.Name&sc_pd_view=1" style="color:#d92231; text-decoration: underline;">@Editable(Model, m => m.BrowserLinkText)</a>
+                                            </p>
+                                        </td>
+                                    </tr>
+                                }
+                            <tr>
+                                <td border="0" bgcolor="#ffffff" valign="top" style="direction: ltr; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; background: #ffffff;" align="center">
+                                    <table width="100%" role="presentation" cellpadding="0" cellspacing="0" border="0" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse;">
+                                        <tbody>
+                                            <tr>
+                                                <td class="header-logo" width="172" align="left" style="border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; padding: 0px; word-break: break-word; width: 172px;" valign="top">
+                                                    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse;">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td width="100%" bgcolor="ffffff" direction="rtl" style="background: #ffffff; border-collapse: collapse; text-align: right; direction: rtl; mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word; width: auto; padding: 15px; border-collapse:collapse;" valign="top">
+                                                                    @using (BeginRenderLink(Model, x => x.LogoLink, new System.Collections.Specialized.NameValueCollection { { "style", "font-family: Arial, sans-serif; display: block; text-align: right;" }, { "target", "_blank" } }, isEditable: true))
+                                                                    {
+                                                                        if (IsInEditingMode)
+                                                                        {
+                                                                            @RenderImage(Model, x => x.LogoImage, new { style = "display:block; -ms-interpolation-mode: bicubic; border: 0 none; font-family: sans-serif; font-size: 10px; height: auto; line-height: 100%; outline: none; text-decoration: none; height: 33px; max-height: 33px; max-width:168px;", valign = "top", h = 0, w = 0 }, isEditable: true, outputHeightWidth: false)
+                                                                        }
+                                                                        else if (@Model.LogoImage != null)
+                                                                        {
+                                                                            <img src="@Model.LogoImage.Src" alt="@Model.LogoImage.Alt" valign="top" width="168" height="33" style="display:block; -ms-interpolation-mode: bicubic; border: 0 none; font-family: sans-serif; font-size: 10px; height: auto; line-height: 100%; outline: none; text-decoration: none; height: 33px; max-height: 33px; max-width:168px;">
+                                                                        }                                                                    
+                                                                    }
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!--[if mso | IE]>
+                </td>
+                </tr>
+                </table>
+                <![endif]-->
+                <!-- END: Email Header-->
+            </div>
+        </td>
+    </tr>
+</tbody>
+</table>

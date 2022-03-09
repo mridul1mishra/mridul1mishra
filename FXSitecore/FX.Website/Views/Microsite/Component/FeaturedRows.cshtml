@@ -1,0 +1,118 @@
+﻿@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Microsite.Components.FeaturedLinks.IFeaturedLink>
+@using FX.Core.GlassMapper
+
+@{
+    bool hasContent = Model != null && Model.FeaturedRows != null || Model != null && this.IsInEditingMode;
+}
+
+@if (this.IsInEditingMode)
+{
+    <h2 style="text-align:center">[Microsite Featured Links component]</h2>
+    if (Model == null)
+    {
+        <p>No component datasource found</p>
+    }
+}
+
+@if (Model != null)
+{
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                <h3>@Editable(Model, m => m.Title)</h3>
+                <p>
+                    @Editable(Model, m => m.Description)
+                </p>
+            </div>
+        </div>
+
+        @foreach (var row in Model.FeaturedRows)
+        {
+        <div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-12 list-feature2 text-center">
+                @using (BeginRenderLink(row, m => m.Link1, 
+                    new System.Collections.Specialized.NameValueCollection {
+                            { "class", "block circle-block center-block"},
+                            { "data-toggle", "swapcolor" },
+                            { "data-hover-color", Model.HoverColour },
+                            { "data-static-color", Model.StaticColour }
+                        }, isEditable: true))
+                {
+                    <div class="table-display">
+                        <div class="table-cell">
+                            @RenderImage(row, m => m.Icon1, new { @class = "img-responsive center-block" }, isEditable: true)
+                        </div>
+                    </div>
+                }
+                <div class="feature2-desc">
+                    <h3>@Editable(row, m => m.Title1)</h3>
+                    <p>
+                        @Editable(row, m => m.Description1)
+                    </p>
+                </div>
+                @using (BeginRenderLink(row, m => m.Link1, new { @class = "block" }, isEditable: true))
+                {
+                    @Editable(row, m => m.LinkText1)
+                    <i class="fa fa-angle-right"></i>
+                }
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12 list-feature2 text-center">
+                @using (BeginRenderLink(row, m => m.Link2,
+                    new System.Collections.Specialized.NameValueCollection {
+                            { "class", "block circle-block center-block"},
+                            { "data-toggle", "swapcolor" },
+                            { "data-hover-color", Model.HoverColour },
+                            { "data-static-color", Model.StaticColour }
+                        }, isEditable: true))
+                {
+                    <div class="table-display">
+                        <div class="table-cell">
+                            @RenderImage(row, m => m.Icon2, new { @class = "img-responsive center-block" }, isEditable: true)
+                        </div>
+                    </div>
+                }
+                <div class="feature2-desc">
+                    <h3>@Editable(row, m => m.Title2)</h3>
+                    <p>
+                        @Editable(row, m => m.Description2)
+                    </p>
+                </div>
+                @using (BeginRenderLink(row, m => m.Link2, new { @class = "block" }, isEditable: true))
+                {
+                    @Editable(row, m => m.LinkText2)
+                    <i class="fa fa-angle-right"></i>
+                }
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12 list-feature2 text-center">
+                @using (BeginRenderLink(row, m => m.Link3,
+                    new System.Collections.Specialized.NameValueCollection {
+                            { "class", "block circle-block center-block"},
+                            { "data-toggle", "swapcolor" },
+                            { "data-hover-color", Model.HoverColour },
+                            { "data-static-color", Model.StaticColour }
+                        }, isEditable: true))
+                {
+                    <div class="table-display">
+                        <div class="table-cell">
+                            @RenderImage(row, m => m.Icon3, new { @class = "img-responsive center-block" }, isEditable: true)
+                        </div>
+                    </div>
+                }
+                <div class="feature2-desc">
+                    <h3>@Editable(row, m => m.Title3)</h3>
+                    <p>
+                        @Editable(row, m => m.Description3)
+                    </p>
+                </div>
+                @using (BeginRenderLink(row, m => m.Link3, new { @class = "block" }, isEditable: true))
+                {
+                    @Editable(row, m => m.LinkText3)
+                    <i class="fa fa-angle-right"></i>
+                }
+            </div>
+        </div>
+        }
+    </div>
+</section>
+}

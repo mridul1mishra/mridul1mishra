@@ -1,0 +1,33 @@
+﻿@inherits Glass.Mapper.Sc.Web.Mvc.GlassView<FX.Core.Models.Microsite.Components.IDiscover>
+@if (this.IsInEditingMode)
+{
+    <h2 style="text-align:center">[Discover Component]</h2>
+    if (Model == null)
+    {
+        <p>No component datasource found</p>
+    }
+}
+@if (Model != null)
+{
+<section class="discovery">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 content">
+                
+                    @*@using (BeginRenderLink(Model, m => m.Link, isEditable: true))
+                    {
+                        @Editable(Model, m => m.Text)
+                    }*@
+                    @Editable(Model, m => m.Text)
+                
+                <div>
+                    @using (BeginRenderLink(Model, m => m.ButtonLink, new { @class = "btn btn-primary btn-contact", target = "_blank" }, isEditable: true))
+                    {
+                        @Editable(Model, m => m.ButtonText)
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>;
+}
